@@ -1,6 +1,5 @@
-/* 沒列在這裡的變數或網頁上大小看起來很怪的在 #ui 問設計組 */
 :root {
-  /* common color */
+  /* main color */
   --c-primary: #223843; /* Gunmetal */
   --c-secondary: #eff1f3; /* Cultured */
   --c-white: #ffffff; /* White */
@@ -14,7 +13,7 @@
   --c-important: #c16e70; /* Fuzzy Wuzzy */
   --c-modal-button: #ffa042; /* Sunshade */
 
-  /* custom color*/
+  /* custom color */
   --c-herb: rgb(184, 215, 199);
   --c-flower: rgb(249, 229, 148);
   --c-fruit: rgb(252, 202, 91);
@@ -51,7 +50,8 @@
   --ds-card: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.2));
   --ds-product: drop-shadow(-5px 10px 10px rgba(0, 0, 0, 0.3));
 }
-​ body {
+
+body {
   font-family: 'Noto Sans', sans-serif;
   color: var(--c-primary);
 }
@@ -60,7 +60,9 @@ p,
 ul,
 li,
 article,
-figure {
+figure,
+body,
+hr {
   margin: 0;
   padding: 0;
 }
@@ -78,9 +80,9 @@ a:hover {
 }
 
 /* default icon */
-.feather-s {
-  width: var(--is-s);
-  height: var(--is-s);
+.feather {
+  width: 24px;
+  height: 24px;
   stroke: var(--c-primary);
   stroke-width: 2;
   stroke-linecap: round;
@@ -88,14 +90,51 @@ a:hover {
   fill: none;
 }
 
-.feather-m {
-  width: var(--is-m);
-  height: var(--is-m);
-  stroke: var(--c-primary);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
+/* example */
+/* logo */
+.logo {
+  font-family: var(--ff-didot);
+  color: var(--c-primary);
+}
+
+/* header icon */
+.header-i {
+  stroke-width: 1px;
+}
+
+/* button */
+.orderBtn {
+  font-size: var(--fs-h5);
+  color: var(--c-primary);
+  background: rgba(184, 215, 199);
+  opacity: 0.8;
+  border: none;
+  width: 180px;
+  height: 60px;
+  border-radius: var(--br-b);
+}
+
+.orderBtn:hover {
+  font-weight: bold;
+  opacity: 1;
+}
+
+/* link */
+.bestsellerLink {
+  font-size: var(--fs-h4);
+}
+
+.homepage-i {
+  width: 40px;
+  height: 40px;
+}
+
+/* card */
+.card {
+  width: 200px;
+  height: 300px;
+  border-radius: var(--br-m) !important;
+  filter: var(--ds-card);
 }
 
 /* 以下為暫定樣式尚未完成，若有更好的寫法歡迎提供 */
@@ -155,4 +194,92 @@ input[type='radio']:checked:after {
   background-color: var(--c-primary);
   border-radius: var(--br-circle);
   text-align: center;
+}
+.header__page {
+  height: 100vh;
+}
+.header {
+  background: var(--c-bg-filter);
+  height: 128px;
+  width: 100%;
+}
+.header__line {
+  height: 8px;
+  background: var(--c-primary);
+}
+.header__top {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 27px;
+}
+.header__menu__list {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px 0px 0px;
+  list-style: none;
+  font-size: var(--fs-h5);
+}
+
+.header__menu__list li {
+  margin: 0 35px;
+  border-bottom: 4px solid dashed;
+}
+.header__menu__list li:hover {
+  transition: 0.5s;
+  border-bottom: 4px solid var(--c-primary);
+}
+.header__icon-border {
+  width: 80%;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  top: 5px;
+}
+.icon {
+  display: flex;
+  justify-content: space-around;
+  align-self: flex-end;
+  width: 180px;
+}
+.header__rwd-icon-1 {
+  width: 80px;
+  display: flex;
+  justify-content: space-around;
+}
+.header__rwd-icon-2 {
+  width: 90px;
+  display: flex;
+  justify-content: space-around;
+}
+@media screen and (max-width: 800px) {
+  .header__menu__list {
+    display: none;
+  }
+  .header__icon-border {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 706px) {
+  .header__rwd-icon-2 {
+    display: none;
+  }
+  .icon {
+    width: 100px;
+    position: relative;
+    top: -5px;
+  }
+  .header__icon-border {
+    width: 100%;
+  }
+  .header {
+    height: 64px;
+  }
+  .logo {
+    font-size: var(--fs-h4);
+    top: 12px;
+  }
+  .header__line {
+    height: 4px;
+  }
 }
