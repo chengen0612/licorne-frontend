@@ -1,7 +1,13 @@
 @import '../../../App.css';
 
 /* Noto Sans Regular 400 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
+
+:root {
+  --c-bg-main: #fcf9ee; /* Light Floral White */
+  --c-bg-locator: #fffbeb; /* Floral White */
+  --c-bg-filter: #f4e7d3; /* Pita */
+}
 
 input {
   margin: 0;
@@ -31,14 +37,19 @@ input {
   left: 140px;
   width: 500px;
   height: 600px;
-  background: var(--c-bg-filter);
+  background: var(--c-bg-locator);
   border-radius: var(--br-s);
   filter: var(--ds-card);
+  overflow: hidden;
 }
 
 .map__top {
   padding: 40px 40px 30px 40px;
   border-bottom: 1px solid var(--c-primary);
+}
+
+.map__top-title {
+  font: 600 28px var(--ff-didot);
 }
 
 .map__search-bar {
@@ -60,6 +71,11 @@ input {
   border: none;
 }
 
+/* remove border after focus */
+.map__input:focus {
+  outline: none;
+}
+
 .map__search-icon-top {
   width: 50px;
   height: auto;
@@ -73,23 +89,41 @@ input {
 }
 
 .map__content {
-  height: 210px;
-  padding: 44px 40px 46px;
-  font-size: var(--fs-span);
-  border-top: 0.5px solid var(--c-primary);
-  border-bottom: 0.5px solid var(--c-primary);
+  height: 420px;
+  overflow-y: scroll;
+}
+
+/* scrollbar */
+.map__content::-webkit-scrollbar {
+  width: 12px;
+  /* height: 400px; */
+  background: var(--c-secondary);
+}
+
+.map__content::-webkit-scrollbar-thumb {
+  width: 8px;
+  /* height: 100px; */
+  margin: 2px;
+  background: var(--c-primary);
+  border-radius: 6px;
 }
 
 .map__item {
-  width: 100%;
-  height: 100%;
+  height: 210px;
+  padding: 44px 40px 46px;
+  font-size: var(--fs-span);
+  border-bottom: 1px solid var(--c-primary);
   position: relative;
+}
+
+.map__item:last-child:not(:first-child) {
+  border-bottom: none;
 }
 
 .map__item-title {
   margin-bottom: 15px;
   font-size: var(--fs-h4);
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .map__item-intro {
@@ -100,8 +134,8 @@ input {
   border-bottom: 1px solid var(--c-primary);
   line-height: 1;
   position: absolute;
-  right: 18px;
-  bottom: 44px;
+  right: 46px;
+  bottom: 96px;
 }
 
 .map__store-btn {
@@ -113,6 +147,6 @@ input {
   color: var(--c-white);
   font-size: var(--fs-span);
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 28px;
+  bottom: 51px;
 }
