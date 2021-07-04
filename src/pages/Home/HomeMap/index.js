@@ -1,14 +1,14 @@
 import React from 'react'
 import './style.css'
 import MyMap from './MyMap'
-import MapController from './MapController'
+import MapCard from './MapCard'
 
 function HomeMap() {
   return (
     <>
       <div className="map">
         <MyMap />
-        <MapController />
+        <MapCard />
       </div>
     </>
   )
