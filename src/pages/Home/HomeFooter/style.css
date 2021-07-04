@@ -1,0 +1,107 @@
+/* footer css */
+footer {
+  background-image: url('./imgs/background1080.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: var(--c-primary);
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.footer__logoBox {
+  width: 16vw;
+  margin: 0 auto;
+  padding: 15vw 0 0 0;
+  /* border: 1px solid red; */
+}
+/* LOGO */
+.footer__logo {
+  width: 100%;
+  height: 150px;
+}
+/* 連結 */
+.footer__listBox {
+  width: 35vw;
+  margin: 0 auto;
+  padding: 2vw 0 0 0;
+}
+.footer__topList {
+  font-size: 1.5vw;
+}
+.footer__topList li {
+  display: inline;
+  padding-left: 2vw;
+}
+.footer__bottomList {
+  font-size: 1.5vw;
+  padding-left: 3.8vw;
+}
+.footer__bottomList li {
+  display: inline;
+  padding-left: 2vw;
+}
+
+/* 訂閱電子報 */
+.footer__inputBox {
+  width: 28vw;
+  margin: 0 auto;
+  padding-top: 2vw;
+}
+.footer__subscribe {
+  font-size: 1vw;
+  color: var(--c-gray);
+  background-color: var(--c-secondary);
+  vertical-align: middle;
+  width: 20vw;
+  height: 2.3vw;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid var(--c-primary);
+  padding-left: 15px;
+}
+.footer__subButton {
+  vertical-align: middle;
+  border: none;
+  color: var(--c-secondary);
+  background-color: var(--c-primary);
+  font-size: 1vw;
+  width: 8vw;
+  height: 2.3vw;
+  border-radius: 0 10px 10px 0;
+  margin-left: -5px;
+}
+.footer__Text {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  height: 80px;
+  line-height: 80px;
+}
+.footer__copyRight {
+  width: 23vw;
+  color: var(--c-primary);
+  font-size: 1vw;
+  font-family: var(--ff-didot);
+  margin: 0 auto;
+}
+
+/* 背景圖片 */
+.footer__rightBackGround {
+  transform: rotate(90deg);
+  position: absolute;
+  top: -170px;
+  right: 0;
+}
+.footer__leaves {
+  width: 25vw;
+  opacity: 0.5;
+}
+.footer__leftBackGround {
+  transform: rotate(deg);
+  position: absolute;
+  left: -50px;
+  bottom: 0;
+}
+.footer__whiteFlower {
+  width: 40vw;
+}
