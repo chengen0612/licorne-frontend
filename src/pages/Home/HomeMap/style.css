@@ -1,5 +1,18 @@
 @import '../../../App.css';
 
+/* Noto Sans Regular 400 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+input {
+  margin: 0;
+  padding: 0;
+}
+
+.feather-s,
+.feather-m {
+  vertical-align: unset;
+}
+
 .map {
   position: relative;
   height: 100vh;
@@ -12,7 +25,7 @@
     url(./imgs/home_map.png) center center no-repeat;
 }
 
-.map__controller {
+.map__card {
   position: absolute;
   top: 240px;
   left: 140px;
@@ -23,11 +36,83 @@
   filter: var(--ds-card);
 }
 
-.map__contorller__top {
+.map__top {
+  padding: 40px 40px 30px 40px;
+  border-bottom: 1px solid var(--c-primary);
 }
 
-.map__contorller__content {
+.map__search-bar {
+  width: 420px;
+  height: 60px;
+  background: var(--c-white);
+  border: 1px solid var(--c-primary);
+  border-radius: var(--br-s);
+  display: flex;
+  overflow: hidden;
 }
 
-.map__controller__item {
+.map__map-icon-top {
+  padding: 17px 23px;
+}
+
+.map__input {
+  flex-grow: 1;
+  border: none;
+}
+
+.map__search-icon-top {
+  width: 50px;
+  height: auto;
+  padding: 14px 11px;
+  background: var(--c-primary);
+  cursor: pointer;
+}
+
+.map__search-icon {
+  stroke: var(--c-white);
+}
+
+.map__content {
+  height: 210px;
+  padding: 44px 40px 46px;
+  font-size: var(--fs-span);
+  border-top: 0.5px solid var(--c-primary);
+  border-bottom: 0.5px solid var(--c-primary);
+}
+
+.map__item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.map__item-title {
+  margin-bottom: 15px;
+  font-size: var(--fs-h4);
+  font-weight: bold;
+}
+
+.map__item-intro {
+  /* float: left; */
+}
+
+.map__route-link {
+  border-bottom: 1px solid var(--c-primary);
+  line-height: 1;
+  position: absolute;
+  right: 18px;
+  bottom: 44px;
+}
+
+.map__store-btn {
+  width: 100px;
+  height: 35px;
+  background: var(--c-primary);
+  border: none;
+  border-radius: var(--br-s);
+  color: var(--c-white);
+  font-size: var(--fs-span);
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
