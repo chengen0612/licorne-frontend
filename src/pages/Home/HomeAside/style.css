@@ -1,0 +1,41 @@
+.sidePagination {
+  /* border: 1px solid blue; */
+  width: 400px;
+  height: 50px;
+  transform: rotate(-90deg);
+  position: fixed;
+  top: 40vh;
+  right: -100px;
+}
+
+.sidePaginationTitle {
+  /* border: 1px solid red; */
+}
+
+.sidePaginationTitle h4 {
+  font-family: var(--ff-didot);
+  font-weight: 400;
+}
+
+.sidePaginationButtons {
+  /* border: 1px solid red; */
+}
+
+.sidePaginationButtons a {
+  display: block;
+  border: 1px solid grey;
+  width: 80px;
+  height: 20px;
+}
+.sidePaginationButtons a:hover {
+  background-color: #c4c4c4;
+}
+
+.sideFeatherIcon {
+  /* border: 1px solid red; */
+  width: 25px;
+  height: 150px;
+  position: fixed;
+  top: 75vh;
+  right: 69px;
+}
