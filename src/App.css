@@ -6,8 +6,9 @@
   --c-white: #ffffff; /* White */
   --c-gray: #c4c4c4; /* Gray */
   --c-black: #000000; /* Black */
-  --c-bg-filter: #fcf9ee; /* Floral White */
-  --c-bg-window: #f4e7d3; /* Pita */
+  --c-bg-main: #fcf9ee; /* Light Floral White */
+  --c-bg-locator: #fffbeb; /* Floral White */
+  --c-bg-filter: #f4e7d3; /* Pita */
   --c-backdrop: rgba(0, 0, 0, 0.5); /* Cod Gray */
   --c-label: #6e7781; /* Pale Sky */
   --c-warning: #ffd289; /* Deep Champagne */
@@ -60,7 +61,8 @@ p,
 ul,
 li,
 article,
-figure {
+figure,
+input {
   margin: 0;
   padding: 0;
 }
@@ -86,6 +88,7 @@ a:hover {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
+  vertical-align: unset;
 }
 
 .feather-m {
@@ -96,6 +99,7 @@ a:hover {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
+  vertical-align: unset;
 }
 
 /* 以下為暫定樣式尚未完成，若有更好的寫法歡迎提供 */

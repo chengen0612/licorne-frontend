@@ -1,24 +1,5 @@
 @import '../../../App.css';
 
-/* Noto Sans Regular 400 */
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
-
-:root {
-  --c-bg-main: #fcf9ee; /* Light Floral White */
-  --c-bg-locator: #fffbeb; /* Floral White */
-  --c-bg-filter: #f4e7d3; /* Pita */
-}
-
-input {
-  margin: 0;
-  padding: 0;
-}
-
-.feather-s,
-.feather-m {
-  vertical-align: unset;
-}
-
 .map {
   position: relative;
   height: 100vh;
