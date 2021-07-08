@@ -33,7 +33,7 @@ function HomeCustomized() {
           alt="customPerfume"
         />
       </div>
-      <div className="homeCustomWrapper container vh-100"></div>
+      {/* <div className="homeCustomWrapper container vh-100"></div> */}
     </>
   )
 }
