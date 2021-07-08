@@ -1,0 +1,28 @@
+/* 晁榮：以下是我自己的 CSS Code */
+h2.homeCustom {
+  font-size: var(--fs-h2);
+  font-family: 'Noto Sans', sans-serif;
+  color: var(--c-primary);
+}
+h4.homeCustom {
+  font-size: var(--fs-h4);
+}
+
+.homeCustomWrapper {
+  /* border: 1px solid red; */
+}
+
+h2.homeCustomWraperH2 {
+  font-weight: 500;
+}
+
+h4.homeCustomWraperH4 {
+  font-family: var(--ff-didot);
+  font-weight: normal;
+  color: var(--c-primary);
+}
+
+.homeCustomWrapperImage {
+  width: 550px;
+  height: 550px;
+}
