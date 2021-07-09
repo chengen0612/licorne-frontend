@@ -1,9 +1,9 @@
 .header__page {
-  height: 100vh;
+  height: calc(100vh - 140px);
 }
 .header {
   background: var(--c-bg-main);
-  height: 128px;
+  height: 120px;
   width: 100%;
 }
 .header__line {
@@ -19,17 +19,19 @@
 .header__menu__list {
   display: flex;
   justify-content: center;
-  margin: 30px 0px 0px 0px;
+  margin: 22px 0px 0px 0px;
   list-style: none;
   font-size: var(--fs-h5);
 }
 
 .header__menu__list li {
   margin: 0 35px;
-  border-bottom: 4px solid dashed;
+  border-bottom: 4px solid var(--c-bg-main);
+  padding-bottom: 8px;
 }
 .header__menu__list li:hover {
-  transition: 0.5s;
+  transition: 0.8s;
+  font-weight: bold;
   border-bottom: 4px solid var(--c-primary);
 }
 .header__icon-border {
@@ -44,6 +46,7 @@
   justify-content: space-around;
   align-self: flex-end;
   width: 180px;
+  font-size: var(--is-s);
 }
 .header__rwd-icon-1 {
   width: 80px;
@@ -54,6 +57,11 @@
   width: 90px;
   display: flex;
   justify-content: space-around;
+}
+
+.logo {
+  font-size: var(--fs-h1);
+  font-family: var(--ff-didot);
 }
 @media screen and (max-width: 800px) {
   .header__menu__list {
