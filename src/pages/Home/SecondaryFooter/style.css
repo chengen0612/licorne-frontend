@@ -1,0 +1,136 @@
+/* footer css */
+.secondaryFooter__style {
+  background-size: 100%;
+  background-color: #f8f8f8;
+  color: var(--c-primary);
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+.secondaryFooter__logoBox {
+  width: 16vw;
+  margin: 0 auto;
+  padding: 1.5vw 0 0 0;
+  /* border: 1px solid red; */
+}
+/* LOGO */
+.secondaryFooter__logo {
+  width: 100%;
+  height: 150px;
+}
+/* 連結 */
+.secondaryFooter__listBox {
+  width: 35vw;
+  margin: 0 auto;
+  padding: 2vw 0 0 0;
+}
+.secondaryFooter__topList {
+  font-size: 1.5vw;
+}
+.secondaryFooter__topList li {
+  display: inline;
+  padding-left: 2vw;
+}
+.secondaryFooter__bottomList {
+  font-size: 1.5vw;
+  padding-left: 3.8vw;
+}
+.secondaryFooter__bottomList li {
+  display: inline;
+  padding-left: 2vw;
+}
+
+/* 訂閱電子報 */
+.secondaryFooter__inputBox {
+  width: 28vw;
+  margin: 0 auto;
+  padding-top: 2vw;
+}
+.secondaryFooter__subscribe {
+  font-size: 1vw;
+  color: var(--c-gray);
+  background-color: var(--c-white);
+  vertical-align: middle;
+  width: 20vw;
+  height: 2.3vw;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid var(--c-primary);
+  padding-left: 15px;
+}
+.secondaryFooter__subButton {
+  vertical-align: middle;
+  border: none;
+  color: var(--c-secondary);
+  background-color: var(--c-primary);
+  font-size: 1vw;
+  width: 8vw;
+  height: 2.3vw;
+  border-radius: 0 10px 10px 0;
+  margin-left: -5px;
+}
+.secondaryFooter__Text {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  height: 80px;
+  line-height: 80px;
+}
+.secondaryFooter__copyRight {
+  width: 23vw;
+  color: var(--c-primary);
+  font-size: 1vw;
+  font-family: var(--ff-didot);
+  margin: 0 auto;
+}
+
+/* 背景圖片 */
+.secondaryFooter__rightBackGround {
+  transform: rotate(90deg);
+  position: absolute;
+  top: -170px;
+  right: 0;
+}
+.secondaryFooter__leaves {
+  width: 25vw;
+  opacity: 0.5;
+}
+.secondaryFooter__leftBackGround {
+  transform: rotate(deg);
+  position: absolute;
+  left: -50px;
+  bottom: 0;
+}
+.secondaryFooter__whiteFlower {
+  width: 40vw;
+}
+
+/* icon */
+.secondaryFooter__icon {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  color: var(--c-primary);
+}
+.secondaryFooter__facebook {
+  stroke-width: 1.5px;
+}
+.secondaryFooter__instagram {
+  stroke-width: 1.5px;
+}
+.secondaryFooter__message {
+  stroke-width: 1.5px;
+}
+.secondaryFooter__arrow {
+  stroke-width: 1.5px;
+}
+.secondaryFooter__button {
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid transparent;
+  outline: none;
+}
