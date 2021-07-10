@@ -23,7 +23,7 @@ function HomeAside() {
           <a href="http://google.com"></a>
         </div>
       </div>
-
+      {/* TODO: 請改用公版裡的變數 feather-s, feather-m 調整，或自己將 stroke-width 改為 1.5 */}
       <div className="sideFeatherIcon d-flex flex-column justify-content-between">
         <a href="http://google.com">
           <Facebook />
