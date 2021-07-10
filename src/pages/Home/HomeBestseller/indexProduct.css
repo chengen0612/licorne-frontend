@@ -65,6 +65,13 @@
   max-height: 100vh;
   width: auto;
 }
+
+.popular__title{
+  font-size: var(--fs-h2);
+}
+.popular__text {
+  font-size: var(--fs-h4);
+}
 .popular__ranking {
   width: 1635px;
   display: flex;
