@@ -14,7 +14,8 @@
 
 .sidePaginationTitle h4 {
   font-family: var(--ff-didot);
-  font-weight: 400;
+  font-weight: var(--fw-regular);
+  text-transform: capitalize;
 }
 
 .sidePaginationButtons {
