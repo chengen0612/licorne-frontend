@@ -1,5 +1,5 @@
 import React from 'react'
-import '../indexProduct.css'
+
 function HomeBestsellerProduct(props) {
   const { Nopicture, picture, code, price } = props
   return (

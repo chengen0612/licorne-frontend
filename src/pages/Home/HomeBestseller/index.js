@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as Icon from 'react-feather'
-import './indexProduct.css'
+import './style.css'
 import { data } from './data'
 import HomeBestsellerProduct from './components/HomeBestsellerProduct'
 
