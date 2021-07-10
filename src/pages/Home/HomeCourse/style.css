@@ -1,10 +1,7 @@
 @import '../../../App.css';
 
-section {
-  height: 100vh;
-}
-
 .course {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -28,6 +25,8 @@ section {
 .course__cards {
   display: flex;
   justify-content: space-evenly;
+  margin-right: 140px;
+  margin-left: 140px;
   position: relative;
   top: -30px;
 }
