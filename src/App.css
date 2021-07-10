@@ -1,3 +1,5 @@
+@import url("https://use.typekit.net/abg1jwm.css");
+
 /* 沒列在這裡的變數或網頁上大小看起來很怪的在 #ui 問設計組 */
 :root {
   /* common color */
@@ -15,10 +17,10 @@
   --c-important: #c16e70; /* Fuzzy Wuzzy */
   --c-modal-button: #ffa042; /* Sunshade */
 
-  /* custom color*/
-  --c-herb: rgb(184, 215, 199);
-  --c-flower: rgb(249, 229, 148);
-  --c-fruit: rgb(252, 202, 91);
+  /* custom color */
+  --c-herb: #b8d7c7;
+  --c-flower: #f9e594;
+  --c-fruit: #fcca5b;
   --c-blob-yellow: rgba(230, 194, 44, 0.5);
   --c-blob-purple: rgba(83, 89, 164, 0.5);
   --c-blob-red: rgba(209, 18, 73, 0.5);
@@ -36,13 +38,16 @@
   --fs-p: 18px;
   --fs-span: 16px; /* a, span */
 
+  /* font-weight */
+  --fw-light: 300;
+  --fw-regular: 400; /* didot */
+  --fw-medium: 500;
+  --fw-bold: 700; /* didot */
+
   /* border-radius */
   --br-b: 30px; /* course single page, product single page */
   --br-m: 20px; /* homepage(course card) */
   --br-s: 10px; /* input */
-  --br-circle: 50%;
-  --br-checkbox: 5px;
-  --br-checkbox-after: 3px;
 
   /* icon size */
   --is-m: 30px;
@@ -54,6 +59,7 @@
 }
 ​ body {
   font-family: 'Noto Sans', sans-serif;
+  font-weight: var(--fw-regular);
   color: var(--c-primary);
 }
 
@@ -84,7 +90,7 @@ a:hover {
   width: var(--is-s);
   height: var(--is-s);
   stroke: var(--c-primary);
-  stroke-width: 2;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
@@ -95,68 +101,73 @@ a:hover {
   width: var(--is-m);
   height: var(--is-m);
   stroke: var(--c-primary);
-  stroke-width: 2;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
   vertical-align: unset;
 }
 
-/* 以下為暫定樣式尚未完成，若有更好的寫法歡迎提供 */
-/* checkbox */
-label {
-  font-size: var(--fs-h5);
-  color: var(--c-primary);
+/* checkbox, radio horizontal */
+.checkbox,
+.radio {
+  margin-top: -2px;
 }
 
-input[type='checkbox'] {
+/* checkbox, radio vertical */
+.checkbox-label,
+.radio-label {
+  font-size: 20px;
+  color: var(--c-primary);
+  display: flex;
+  align-items: center;
+}
+
+/* checkbox */
+input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearance: none;
   appearance: none;
-  margin-right: 5px;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   border: 1px solid var(--c-primary);
-  border-radius: var(--br-checkbox);
-  position: relative;
+  border-radius: 5px;
+  background-clip: content-box;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
-input[type='checkbox']:checked:after {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  top: 0;
-  content: ' ';
-  display: inline-block;
-  visibility: visible;
+input[type="checkbox"]:checked {
   background-color: var(--c-primary);
-  border-radius: var(--br-checkbox-after);
 }
 
 /* radio */
-input[type='radio'] {
+input[type="radio"] {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  border: 1px solid var(--c-primary);
-  border-radius: var(--br-circle);
-  text-align: center;
+     -moz-appearance: none;
+          appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--c-primary);
+  border-radius: 50%;
+  background-clip: content-box;
+  padding: 3px !important;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
-input[type='radio']:checked:after {
-  width: 15px;
-  height: 15px;
-  top: 0;
-  content: ' ';
-  display: inline-block;
-  visibility: visible;
+input[type="radio"]:checked {
   background-color: var(--c-primary);
-  border-radius: var(--br-circle);
-  text-align: center;
+}
+
+/* 頁面左右及上方間距 */
+.pageWrapper {
+  max-width: 1520px;
+  margin-top: 100px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
