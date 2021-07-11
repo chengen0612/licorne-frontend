@@ -40,7 +40,7 @@ function Header() {
         <div className="header__menu">
           <ul className="header__menu__list">
             <li>
-              <a href="#/">課製香水</a>
+              <a href="#/">客製香水</a>
             </li>
             <li>
               <a href="#/">課程體驗</a>
