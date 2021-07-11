@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HomeHeader from './HomeHeader'
+import HomeHero from './HomeHero'
 import HomeCustomized from './HomeCustomized'
 import HomeCourse from './HomeCourse'
 import HomeBestseller from './HomeBestseller'
@@ -11,7 +11,7 @@ import HomeAside from './HomeAside'
 function Home() {
   return (
     <>
-      <HomeHeader />
+      <HomeHero />
       <HomeCustomized />
       <HomeCourse />
       <HomeBestseller />

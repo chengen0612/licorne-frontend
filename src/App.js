@@ -10,10 +10,15 @@ import Member from './pages/Member'
 import Official from './pages/Official'
 import LoginAndRegister from './pages/LoginAndRegister'
 
+// 共通元件
+import Header from './components/Header'
+
 function App() {
   return (
     <Router>
       <>
+        <Header />
+
         <Switch>
           <Route path="/bestseller">
             <Bestseller />
