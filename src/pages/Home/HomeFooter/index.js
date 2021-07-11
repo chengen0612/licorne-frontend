@@ -5,7 +5,7 @@ import imgURL from './imgs/LICORNE_logo.svg'
 function Footer() {
   return (
     <>
-      <footer className="">
+      <footer className="footer">
         <div className="footer__logoBox">
           <img className="footer__logo" src={imgURL} alt="" />
         </div>
