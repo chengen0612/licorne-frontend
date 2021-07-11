@@ -57,6 +57,7 @@
   /* drop-shadow */
   --ds-card: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.2));
   --ds-product: drop-shadow(-5px 10px 10px rgba(0, 0, 0, 0.3));
+  --ds-sidebar: drop-shadow(0px 5px 10px rgba(0,0,0,0.5));
 }
 
 ​body {
@@ -91,6 +92,11 @@ a:hover {
 .logo {
   font-family: var(--ff-didot);
   color: var(--c-primary);
+}
+
+/* header icon */
+.header-i {
+  stroke-width: 1px;
 }
 
 /* default icon */
@@ -156,6 +162,7 @@ input[type='radio'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  cursor: pointer;
   width: 25px;
   height: 25px;
   border: 2px solid var(--c-primary);
@@ -172,10 +179,28 @@ input[type='radio']:checked {
 
 /* 頁面左右及上方間距 */
 .pageWrapper {
-  max-width: 1520px;
+  width: 1520px;
   margin-top: 100px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  /* border: 1px solid var(--c-important); */
 }
+/* @media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+} */
