@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import * as Icon from 'react-feather'
+import { FiArrowRight } from 'react-icons/fi'
 import './style.css'
 import { data } from './data'
 import HomeBestsellerProduct from './components/HomeBestsellerProduct'
@@ -40,7 +40,7 @@ function HomeBestseller() {
           <h4 className="mr-5">
             {/* TODO: 箭頭與上面客製產品卡元件對齊，或移至不會被進度條擋住的產品卡下方 */}
             <a className="d-flex align-items-center popular__aArrow" href="/#">
-              前往排行榜 <Icon.ArrowRight size={25} />
+              前往排行榜 <FiArrowRight size={25} />
             </a>
           </h4>
         </div>

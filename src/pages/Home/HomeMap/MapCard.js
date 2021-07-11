@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import * as Icon from 'react-feather' // icon
+import { FiMapPin, FiSearch } from 'react-icons/fi'
 import MapListItem from './MapListItem'
 import shop_list from './shop_list.json'
 
@@ -30,7 +30,7 @@ export default function MapCard() {
           <h2 className="map__top-title">實體店鋪</h2>
           <div className="map__search-bar">
             <figure className="map__map-icon-top">
-              <Icon.MapPin className="feather-s" />
+              <FiMapPin className="feather-s" />
             </figure>
             <input
               type="text"
@@ -40,7 +40,7 @@ export default function MapCard() {
               onKeyPress={(event) => event.key === 'Enter' && queryHandler()}
             />
             <figure className="map__search-icon-top" onClick={queryHandler}>
-              <Icon.Search className="map__search-icon feather-m" />
+              <FiSearch className="map__search-icon feather-m" />
             </figure>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-// import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
+import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 
 function Header() {
   return (
@@ -16,21 +16,21 @@ function Header() {
             <div className="icon">
               <div className="header__rwd-icon-1">
                 <a href="#/">
-                  {/* <FiSearch data-feather="search" className="header-i" /> */}
+                  <FiSearch data-feather="search" className="header-i" />
                 </a>
                 <a href="#/">
-                  {/* <FiUser data-feather="user" className="header-i" /> */}
+                  <FiUser data-feather="user" className="header-i" />
                 </a>
               </div>
               <div className="header__rwd-icon-2">
                 <a href="#/">
-                  {/* <FiHeart data-feather="heart" className="header-i" /> */}
+                  <FiHeart data-feather="heart" className="header-i" />
                 </a>
                 <a href="#/">
-                  {/* <FiShoppingBag
+                  <FiShoppingBag
                     data-feather="shopping-bag"
                     className="header-i"
-                  /> */}
+                  />
                 </a>
               </div>
             </div>

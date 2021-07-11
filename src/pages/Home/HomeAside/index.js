@@ -1,9 +1,9 @@
 import {
-  Facebook,
-  Instagram,
-  MessageSquare,
-  ArrowUpCircle,
-} from 'react-feather'
+  FiFacebook,
+  FiInstagram,
+  FiMessageSquare,
+  FiArrowUpCircle,
+} from 'react-icons/fi'
 
 import React from 'react'
 import './style.css'
@@ -16,26 +16,26 @@ function HomeAside() {
           <h4 className="mb-1 homeCustom">custom fragrance</h4>
         </div>
         <div className="sidePaginationButtons d-flex">
-          <a href="http://google.com"></a>
-          <a href="http://google.com"></a>
-          <a href="http://google.com"></a>
-          <a href="http://google.com"></a>
-          <a href="http://google.com"></a>
+          <a href="#/"></a>
+          <a href="#/"></a>
+          <a href="#/"></a>
+          <a href="#/"></a>
+          <a href="#/"></a>
         </div>
       </div>
       {/* TODO: 請改用公版裡的變數 feather-s, feather-m 調整，或自己將 stroke-width 改為 1.5 */}
       <div className="sideFeatherIcon d-flex flex-column justify-content-between">
-        <a href="http://google.com">
-          <Facebook />
+        <a className="feather-m" href="#/">
+          <FiFacebook />
         </a>
-        <a href="http://google.com">
-          <Instagram />
+        <a className="feather-m" href="#/">
+          <FiInstagram />
         </a>
-        <a href="http://google.com">
-          <MessageSquare />
+        <a className="feather-m" href="#/">
+          <FiMessageSquare />
         </a>
-        <a href="http://google.com">
-          <ArrowUpCircle />
+        <a href="#/">
+          <FiArrowUpCircle />
         </a>
       </div>
     </>

@@ -1,10 +1,3 @@
-import {
-  Facebook,
-  Instagram,
-  MessageSquare,
-  ArrowUpCircle,
-} from 'react-feather'
-
 import React from 'react'
 import './style.css'
 import customImage from './image/customImage.jpg'
