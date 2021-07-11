@@ -1,14 +1,19 @@
 import React from 'react'
 import './style.css'
 import imgURL from './imgs/LICORNE_logo.svg'
-import FeatherIcon from 'feather-icons-react'
+import {
+  FiArrowUpCircle,
+  FiFacebook,
+  FiInstagram,
+  FiMessageSquare,
+} from 'react-icons/fi'
 
 function SecondaryFooter() {
   return (
     <>
       <footer className="secondaryFooter__style">
         <div className="secondaryFooter__logoBox">
-          <img className="footer__logo" src={imgURL} alt="" />
+          <img className="secondaryFooter__logo" src={imgURL} alt="" />
         </div>
         <div className="secondaryFooter__listBox">
           <ul className="secondaryFooter__topList">
@@ -55,23 +60,17 @@ function SecondaryFooter() {
           </p>
         </div>
         <div className="secondaryFooter__icon">
-          <button class="secondaryFooter__button">
-            <FeatherIcon class="secondaryFooter__facebook" icon="facebook" />
+          <button className="secondaryFooter__button">
+            <FiFacebook className="secondaryFooter__facebook" />
           </button>
-          <button class="secondaryFooter__button">
-            <FeatherIcon class="secondaryFooter__instagram" icon="instagram" />
+          <button className="secondaryFooter__button">
+            <FiInstagram className="secondaryFooter__instagram" />
           </button>
-          <button class="secondaryFooter__button">
-            <FeatherIcon
-              class="secondaryFooter__message"
-              icon="message-square"
-            />
+          <button className="secondaryFooter__button">
+            <FiMessageSquare className="secondaryFooter__message" />
           </button>
-          <button class="secondaryFooter__button">
-            <FeatherIcon
-              class="secondaryFooter__arrow"
-              icon="arrow-up-circle"
-            />
+          <button className="secondaryFooter__button">
+            <FiArrowUpCircle className="secondaryFooter__arrow" />
           </button>
         </div>
       </footer>
