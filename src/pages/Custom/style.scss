@@ -1,1 +1,63 @@
-// @import '../../styles/global.scss';
+/* @import '../../styles/global.css'; */
+@import '../../styles/global.scss';
+
+.custom {
+  height: 100vh;
+  background: $c-white;
+  position: relative;
+}
+.custom__progress-bar {
+  width: 900px;
+  height: 80px;
+  background: $c-secondary;
+  filter: $ds-card;
+  border-radius: 50px;
+  position: absolute;
+  top: 50px;
+  left: 24vw;
+  overflow: hidden;
+  display: flex;
+}
+.custom__progress-note {
+  // width: 300px;
+  height: 100%;
+  padding: 18px 120px 22px;
+  font-size: 30px;
+}
+.custom__close-btn {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 65px;
+  right: 125px;
+  cursor: pointer;
+}
+.custom__progress-note:first-child {
+  background: $c-gray;
+  border-radius: 50px;
+}
+.custom__description {
+  width: 570px;
+  height: 800px;
+  background: $c-blob-orange;
+  border-radius: 60%;
+  position: relative;
+  top: 104px;
+}
+.custom__fragrance-bar {
+  width: 100px;
+  height: 600px;
+  background: $c-secondary;
+  filter: $ds-card;
+  border-radius: 50px;
+  position: absolute;
+  top: 240px;
+  right: 100px;
+}
+.custom__fragrance-symbol {
+  width: 300px;
+  height: 300px;
+  display: block;
+}
+.custom__fragrance-fruit {
+}
