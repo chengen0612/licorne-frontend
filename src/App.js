@@ -12,36 +12,48 @@ import LoginAndRegister from './pages/LoginAndRegister'
 
 // 共通元件
 import Header from './components/Header'
+import SecondaryFooter from './components/SecondaryFooter'
 
 function App() {
   return (
     <Router>
       <>
-        <Header />
-
         <Switch>
           <Route path="/bestseller">
+            <Header />
             <Bestseller />
+            <SecondaryFooter />
           </Route>
           <Route path="/course">
+            <Header />
             <Course />
+            <SecondaryFooter />
           </Route>
           <Route path="/custom">
             <Custom />
           </Route>
           <Route path="/checkout">
+            <Header />
             <Checkout />
+            <SecondaryFooter />
           </Route>
           <Route path="/member">
+            <Header />
             <Member />
+            <SecondaryFooter />
           </Route>
           <Route path="/official">
+            <Header />
             <Official />
+            <SecondaryFooter />
           </Route>
           <Route path="/login">
+            <Header />
             <LoginAndRegister />
+            <SecondaryFooter />
           </Route>
           <Route exact path="/">
+            <Header />
             <Home />
           </Route>
         </Switch>
