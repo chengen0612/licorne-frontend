@@ -1,4 +1,5 @@
-@import url("https://use.typekit.net/abg1jwm.css");
+// font-family
+@import url('https://use.typekit.net/abg1jwm.css');
 
 /* 沒列在這裡的變數或網頁上大小看起來很怪的在 #ui 問設計組 */
 /* main color */
@@ -57,7 +58,7 @@ $ds-card: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.2));
 $ds-product: drop-shadow(-5px 10px 10px rgba(0, 0, 0, 0.3));
 
 body {
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-weight: $fw-regular;
   color: $c-primary;
 }
@@ -66,7 +67,8 @@ p,
 ul,
 li,
 article,
-figure {
+figure,
+input {
   margin: 0;
   padding: 0;
 }
@@ -83,6 +85,12 @@ a:hover {
   color: $c-primary;
 }
 
+/* logo */
+.logo {
+  font-family: var(--ff-didot);
+  color: var(--c-primary);
+}
+
 /* default icon */
 .feather-s {
   width: $is-s;
@@ -93,7 +101,6 @@ a:hover {
   stroke-linejoin: round;
   fill: none;
   vertical-align: unset;
-
 }
 
 .feather-m {
@@ -123,7 +130,7 @@ a:hover {
 }
 
 /* checkbox */
-input[type="checkbox"] {
+input[type='checkbox'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearance: none;
@@ -138,14 +145,14 @@ input[type="checkbox"] {
   vertical-align: middle;
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
   background-color: $c-primary;
 }
 
 /* radio */
-input[type="radio"] {
+input[type='radio'] {
   -webkit-appearance: none;
-    -moz-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   width: 25px;
   height: 25px;
@@ -157,7 +164,7 @@ input[type="radio"] {
   vertical-align: middle;
 }
 
-input[type="radio"]:checked {
+input[type='radio']:checked {
   background-color: $c-primary;
 }
 

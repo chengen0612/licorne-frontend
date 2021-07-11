@@ -1,4 +1,3 @@
-import './App.css'
 import Home from './pages/Home'
 import Bestseller from './pages/Bestseller'
 import Course from './pages/Course'

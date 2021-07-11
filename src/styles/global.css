@@ -1,4 +1,5 @@
-@import url("https://use.typekit.net/abg1jwm.css");
+/* font-family */
+@import url('https://use.typekit.net/abg1jwm.css');
 
 /* 沒列在這裡的變數或網頁上大小看起來很怪的在 #ui 問設計組 */
 :root {
@@ -57,7 +58,8 @@
   --ds-card: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.2));
   --ds-product: drop-shadow(-5px 10px 10px rgba(0, 0, 0, 0.3));
 }
-​ body {
+
+​body {
   font-family: 'Noto Sans', sans-serif;
   font-weight: var(--fw-regular);
   color: var(--c-primary);
@@ -82,6 +84,12 @@ a:link {
 a:focus,
 a:hover {
   text-decoration: none;
+  color: var(--c-primary);
+}
+
+/* logo */
+.logo {
+  font-family: var(--ff-didot);
   color: var(--c-primary);
 }
 
@@ -124,7 +132,7 @@ a:hover {
 }
 
 /* checkbox */
-input[type="checkbox"] {
+input[type='checkbox'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearance: none;
@@ -139,15 +147,15 @@ input[type="checkbox"] {
   vertical-align: middle;
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
   background-color: var(--c-primary);
 }
 
 /* radio */
-input[type="radio"] {
+input[type='radio'] {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 25px;
   height: 25px;
   border: 2px solid var(--c-primary);
@@ -158,7 +166,7 @@ input[type="radio"] {
   vertical-align: middle;
 }
 
-input[type="radio"]:checked {
+input[type='radio']:checked {
   background-color: var(--c-primary);
 }
 
