@@ -30,7 +30,7 @@
 }
 
 .map__top-title {
-  font: 600 28px var(--ff-didot);
+  font: 600 28px;
 }
 
 .map__search-bar {
