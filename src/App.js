@@ -5,6 +5,7 @@ import Custom from './pages/Custom'
 import Checkout from './pages/Checkout'
 import Member from './pages/Member'
 import Official from './pages/Official'
+import LoginAndRegister from './pages/LoginAndRegister'
 import * as Icon from 'react-feather' // icon
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Checkout />
       <Member />
       <Official />
+      <LoginAndRegister />
     </>
   )
 }
