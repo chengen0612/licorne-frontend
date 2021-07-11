@@ -1,3 +1,6 @@
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
 import Home from './pages/Home'
 import Bestseller from './pages/Bestseller'
 import Course from './pages/Course'
@@ -6,20 +9,39 @@ import Checkout from './pages/Checkout'
 import Member from './pages/Member'
 import Official from './pages/Official'
 import LoginAndRegister from './pages/LoginAndRegister'
-import * as Icon from 'react-feather' // icon
 
 function App() {
   return (
-    <>
-      <Home />
-      <Bestseller />
-      <Course />
-      <Custom />
-      <Checkout />
-      <Member />
-      <Official />
-      <LoginAndRegister />
-    </>
+    <Router>
+      <>
+        <Switch>
+          <Route path="/bestseller">
+            <Bestseller />
+          </Route>
+          <Route path="/course">
+            <Course />
+          </Route>
+          <Route path="/custom">
+            <Custom />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
+          <Route path="/member">
+            <Member />
+          </Route>
+          <Route path="/official">
+            <Official />
+          </Route>
+          <Route path="/login">
+            <LoginAndRegister />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </>
+    </Router>
   )
 }
 
