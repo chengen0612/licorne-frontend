@@ -1,10 +1,9 @@
 import React from 'react'
 import { imgPath } from '../../config'
-import items_data from './sidebar_items.json'
 
 function SidebarItems(props) {
-  const { checkedSeries } = props
-  const seriesItems = items_data.filter((item) => {
+  const { data, checkedSeries } = props
+  const seriesItems = data.filter((item) => {
     return item.fragrance_id === checkedSeries
   })
   return (
