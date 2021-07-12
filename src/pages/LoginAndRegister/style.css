@@ -1,1 +1,100 @@
 /* @import '../../styles/global.css'; */
+.loginAndRegister__card {
+  display: flex;
+  width: 1400px;
+  height: 600px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+  margin: 70px auto 70px auto;
+  position: relative;
+}
+.loginAndRegister__leftBox {
+  display: flex;
+  padding-right: 50px;
+  flex-direction: column;
+  width: 650px;
+  height: 500px;
+  border-right: 1px solid #d1d1d1;
+  margin: 50px 0 50px 50px;
+}
+.loginAndRegister__leftTitle {
+  color: #223843;
+  text-align: center;
+  margin: 20px auto;
+}
+.loginAndRegister__passwordBox {
+  margin: 0 auto;
+  position: relative;
+}
+.loginAndRegister__eyeBtn {
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  outline: none;
+  position: absolute;
+  right: 10px;
+  bottom: 30px;
+}
+.loginAndRegister .leftInput {
+  font-size: 20px;
+  font-weight: lighter;
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #223843;
+  margin: 20px auto;
+  padding-left: 15px;
+}
+.loginAndRegister__leftButton {
+  font-size: 20px;
+  font-weight: lighter;
+  width: 150px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #223843;
+  color: #ffffff;
+  border: none;
+  margin: 60px auto 0 auto;
+}
+.loginAndRegister__rightBox {
+  display: flex;
+  padding-right: 50px;
+  flex-direction: column;
+  width: 650px;
+  height: 500px;
+  margin: 50px 0 50px 50px;
+}
+.loginAndRegister__rightTitle {
+  color: #223843;
+  text-align: center;
+  margin: 20px auto;
+}
+.loginAndRegister .rightInput {
+  font-size: 20px;
+  font-weight: lighter;
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #223843;
+  margin: 20px auto;
+  padding-left: 15px;
+}
+.loginAndRegister__forgetPassword {
+  text-decoration: underline;
+  margin: 0 0 0 390px;
+}
+.loginAndRegister__forgetPassword a {
+  color: #223843;
+  font-weight: lighter;
+  font-size: 15px;
+}
+.loginAndRegister__rightButton {
+  font-size: 20px;
+  font-weight: lighter;
+  width: 150px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #223843;
+  color: #ffffff;
+  border: none;
+  margin: 125px auto 0 auto;
+}
