@@ -16,9 +16,11 @@ import './style.scss'
 import series_data from './sidebar_series.json'
 
 import SidebarSeries from './SidebarSeries'
+import SidebarItems from './SidebarItems'
 
 function Custom() {
   const [checkedSeries, setCheckedSeries] = useState('')
+  const [selectedItems, setSelectedItems] = useState([])
 
   const seriesClass = [
     'custom__series-fruit',
@@ -39,18 +41,8 @@ function Custom() {
         <p className="custom__description"></p>
         <div className="custom__bottle"></div>
         <aside className="custom__sidebar-wrapper">
-          {checkedSeries && (
-            <ul className="custom__sidebar-items">
-              <li>
-                <img
-                  className="custom__item-image"
-                  src={imgPath + '/images/custom/fruit_lemon1.png'}
-                  alt=""
-                ></img>
-              </li>
-            </ul>
-          )}
-
+          {/* 材料選擇清單 */}
+          {checkedSeries && <SidebarItems checkedSeries={checkedSeries} />}
           <ul className="custom__sidebar-series">
             {/* <li>
               <img
@@ -83,7 +75,7 @@ function Custom() {
             {series_data.map((item, i) => {
               return (
                 <SidebarSeries
-                  key={i}
+                  key={item.id}
                   data={item}
                   checkedSeries={checkedSeries}
                   setCheckedSeries={setCheckedSeries}
