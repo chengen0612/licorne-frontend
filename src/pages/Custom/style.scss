@@ -81,6 +81,10 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   padding: 18px 120px 22px;
   font-size: 30px;
 }
+.custom__progress-note:first-child {
+  background: $c-gray;
+  border-radius: 50px;
+}
 .custom__close-btn {
   width: 50px;
   height: 50px;
@@ -88,10 +92,6 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   top: 65px;
   right: 125px;
   cursor: pointer;
-}
-.custom__progress-note:first-child {
-  background: $c-gray;
-  border-radius: 50px;
 }
 .custom__description {
   width: 570px;
@@ -113,8 +113,11 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   top: 420px;
   left: 50vw;
 }
-.custom__fragrance-bar {
-  width: 100px;
+
+// sidebar
+.custom__sidebar-wrapper{
+  // width: 400px;
+  // width: 100px;
   height: 600px;
   background: $c-secondary;
   filter: $ds-card;
@@ -122,26 +125,66 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   position: absolute;
   top: 240px;
   right: 100px;
+  overflow: hidden;
+  display: flex;
+}
+.custom__sidebar-items {
+  // background: pink;
+  width: 300px;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.custom__sidebar-items li {
+  background:rgba(230, 194, 44, 0.5);
+  width: 100%;
+  text-align: center;
+  line-height: 200px;
+  cursor: pointer;
+}
+.custom__item-image {
+  width: 150px;
+}
+.custom__sidebar-series {
+  // background: $c-secondary;
+  width: 100px;
+  height: 100%;
+  padding: 60px 0;
+  border-radius: 50px;
+  list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
-.custom__fragrance-fruit {
-  width: 60px;
-  height: 66.13px;
+.custom__sidebar-series li {
+  // background-color: #b8d7c7;
+  // outline: 1px solid blue;
+  width: 100%;
+  text-align: center;
+  line-height: 120px;
+  cursor: pointer;
 }
-.custom__fragrance-flower {
+.custom__series-fruit {
   width: 60px;
-  height: 56.75px;
+  // height: 66.13px;
+  // margin-top: 110px;
 }
-.custom__fragrance-leaf {
+.custom__series-flower {
   width: 60px;
-  height: 62.03px;
+  // height: 56.75px;
 }
-.custom__fragrance-herb {
+.custom__series-leaf {
+  width: 60px;
+  // height: 62.03px;
+}
+.custom__series-herb {
   width: 70px;
-  width: 71.94px;
+  // height: 71.94px;
+  // margin-bottom: 110px;
 }
 %btn {
   width: 150px;
