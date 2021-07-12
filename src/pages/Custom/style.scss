@@ -1,5 +1,61 @@
 /* @import '../../styles/global.css'; */
-@import '../../styles/global.scss';
+// @import '../../styles/global.scss';
+
+/* main color */
+$c-primary: #223843; /* Gunmetal */
+$c-secondary: #eff1f3; /* Cultured */
+$c-white: #ffffff; /* White */
+$c-gray: #c4c4c4; /* Gray */
+$c-black: #000000; /* Black */
+$c-bg-main: #fcf9ee; /* Light Floral White */
+$c-bg-locator: #fffbeb; /* Floral White */
+$c-bg-window: #f4e7d3; /* Pita */
+$c-backdrop: rgba(0, 0, 0, 0.5); /* Cod Gray */
+$c-label: #6e7781; /* Pale Sky */
+$c-warning: #ffd289; /* Deep Champagne */
+$c-important: #c16e70; /* Fuzzy Wuzzy */
+$c-modal-button: #ffa042; /* Sunshade */
+
+/* custom color */
+$c-herb: #b8d7c7;
+$c-flower: #f9e594;
+$c-fruit: #fcca5b;
+$c-blob-yellow: rgba(230, 194, 44, 0.5);
+$c-blob-purple: rgba(83, 89, 164, 0.5);
+$c-blob-red: rgba(209, 18, 73, 0.5);
+$c-blob-orange: rgba(241, 113, 10, 0.5);
+
+/* font-family */
+$ff-didot: linotype-didot, serif; /* logo, homepage(custom product card, progress bar, copyright) */
+
+/* font-size */
+$fs-h1: 40px; /* logo */
+$fs-h2: 36px;
+$fs-h3: 30px;
+$fs-h4: 24px;
+$fs-h5: 20px; /* button */
+$fs-p: 18px;
+$fs-span: 16px; /* a, span */
+
+/* font-weight */
+$fw-light: 300;
+$fw-regular: 400; /* didot */
+$fw-medium: 500;
+$fw-bold: 700; /* didot */
+
+/* border-radius */
+$br-b: 30px; /* course single page, product single page */
+$br-m: 20px; /* homepage(course card) */
+$br-s: 10px; /* input */
+
+/* icon size */
+$is-m: 30px;
+$is-s: 24px; /* feather icon 預設大小 */
+
+/* drop-shadow */
+$ds-card: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.2));
+$ds-product: drop-shadow(-5px 10px 10px rgba(0, 0, 0, 0.3));
+$ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
 
 .custom {
   height: 100vh;
@@ -9,13 +65,14 @@
 .custom__progress-bar {
   width: 900px;
   height: 80px;
+  margin-left: -450px;
   background: $c-secondary;
   filter: $ds-card;
   border-radius: 50px;
   position: absolute;
   top: 50px;
-  left: 24vw;
-  overflow: hidden;
+  left: 50vw;
+  // overflow: hidden;
   display: flex;
 }
 .custom__progress-note {
@@ -44,6 +101,18 @@
   position: relative;
   top: 104px;
 }
+.custom__bottle {
+  width: 500px;
+  height: 500px;
+  margin-left: -250px;
+  border-radius: 0 0 80px 80px;
+  border-right: 20px solid $c-primary;
+  border-bottom: 20px solid $c-primary;
+  border-left: 20px solid $c-primary;
+  position: absolute;
+  top: 420px;
+  left: 50vw;
+}
 .custom__fragrance-bar {
   width: 100px;
   height: 600px;
@@ -53,11 +122,67 @@
   position: absolute;
   top: 240px;
   right: 100px;
-}
-.custom__fragrance-symbol {
-  width: 300px;
-  height: 300px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .custom__fragrance-fruit {
+  width: 60px;
+  height: 66.13px;
+}
+.custom__fragrance-flower {
+  width: 60px;
+  height: 56.75px;
+}
+.custom__fragrance-leaf {
+  width: 60px;
+  height: 62.03px;
+}
+.custom__fragrance-herb {
+  width: 70px;
+  width: 71.94px;
+}
+%btn {
+  width: 150px;
+  height: 60px;
+  background: $c-secondary;
+  // border: none;
+  border-radius: $br-s;
+  font-size: $fs-h3;
+  filter: $ds-card;
+  position: absolute;
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+}
+.custom__ {
+  &btn-reset {
+    @extend %btn;
+    bottom: 50px;
+    left: 100px;
+  }
+  &btn-goback {
+    @extend %btn;
+    bottom: 50px;
+    left: 290px;
+  }
+  &btn-complete {
+    @extend %btn;
+    bottom: 50px;
+    right: 100px;
+  }
+  &btn-favorite {
+  }
+  &btn-purchase {
+  }
+  &btn-share {
+  }
+}
+.custom__icon{
+  // height: 20px;
+  // stroke-width: 1px;
+  align-items: center;
+  text-align: 30px;
 }
