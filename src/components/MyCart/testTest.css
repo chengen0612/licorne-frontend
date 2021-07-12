@@ -1,0 +1,62 @@
+/* @import '../../styles/global.css'; */
+
+/* 
+fav-cart
+fav-cart__sidebar
+fav-cart__bk-screen
+fav-cart__sidebar__fav
+fav-cart__sidebar__cart
+*/
+
+.dummy-page {
+  width: 1000px;
+  /* height: 100vh; */
+}
+
+.fav-cart__bk-screen {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  background-color: rgba(34, 33, 33, 0.65);
+  /* visibility: hidden; */
+}
+
+.fav-cart__sidebar {
+  width: 500px;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 200;
+  background-color: rgba(255, 255, 255);
+}
+
+.fav-cart__sidebar__top1 {
+  /* border: 1px solid red; */
+  height: 80px;
+}
+
+.fav-cart__sidebar__top1 div {
+  height: 35px;
+  /* border: 1px solid red; */
+}
+
+.fav-cart__sidebar__top2 {
+  width: 500px;
+  height: 50px;
+  /* border: 1px solid blue; */
+}
+
+.fav-cart__sidebar__top2 div {
+  width: 250px;
+  height: 50px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.fav-cart__sidebar__no-item {
+  margin-top: 52px;
+}
