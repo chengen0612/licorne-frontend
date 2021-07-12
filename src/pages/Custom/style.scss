@@ -140,13 +140,15 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
 }
 .custom__sidebar-items li {
   background:rgba(230, 194, 44, 0.5);
+  // outline: 1px solid blue;
   width: 100%;
   text-align: center;
   line-height: 200px;
   cursor: pointer;
 }
 .custom__item-image {
-  width: 150px;
+  width: 130px;
+  // max-height: 160px;
 }
 .custom__sidebar-series {
   // background: $c-secondary;
