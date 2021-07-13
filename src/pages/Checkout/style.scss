@@ -1,1 +1,203 @@
-// @import '../../styles/global.scss';
+@import '../../styles/global.scss';
+
+/* global */
+// number
+input[type='number'] {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: $br-s;
+  border: 1px solid $c-primary;
+  color: $c-primary;
+}
+
+// list
+ul {
+  list-style: none;
+}
+
+/* checkout */
+.checkout {
+  margin-bottom: 100px;
+}
+
+// text
+.checkout__text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout__text-title {
+  font-size: $fs-h3;
+}
+
+.checkout__text-link {
+  align-self: center;
+  border-bottom: 1px solid $c-primary;
+}
+
+// product-box
+.checkout__official-box,
+.checkout__custom-box,
+.checkout__course-box {
+  margin-top: 20px;
+  width: 950px;
+  height: fit-content;
+  border: 1px solid $c-primary;
+  border-radius: $br-s;
+}
+
+.checkout__official-box-top,
+.checkout__custom-box-top,
+.checkout__course-box-top {
+  font-size: $fs-h4;
+  height: fit-content;
+  color: $c-primary;
+  border-bottom: 1px solid $c-primary;
+}
+
+.checkout__official-box-list,
+.checkout__custom-box-list,
+.checkout__course-box-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout__official-box-img-wrapper,
+.checkout__custom-box-img-wrapper,
+.checkout__course-box-img-wrapper {
+  width: 150px;
+  height: 150px;
+}
+
+.checkout__official-box-img,
+.checkout__custom-box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.checkout__course-box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.checkout__official-box-details,
+.checkout__custom-box-details,
+.checkout__course-box-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout__official-box-name-zh,
+.checkout__custom-box-name-zh,
+.checkout__course-box-name-zh {
+  font-size: $fs-h5;
+}
+
+.checkout__official-box-product-name-en,
+.checkout__official-box-product-series,
+.checkout__official-box-product-volume,
+.checkout__official-box-product-info,
+.checkout__custom-box-product-ingredient,
+.checkout__custom-box-product-fragrance,
+.checkout__custom-box-product-volume,
+.checkout__course-box-product-package,
+.checkout__course-box-product-date,
+.checkout__course-box-product-time,
+.checkout__course-box-product-place,
+.checkout__custom-box-product-info,
+.checkout__course-box-product-info {
+  font-size: $fs-p;
+  font-weight: $fw-light;
+  line-height: 1.4;
+}
+
+.checkout__official-box-product-price,
+.checkout__official-box-product-subtotal,
+.checkout__custom-box-product-price,
+.checkout__custom-box-product-subtotal,
+.checkout__course-box-product-price,
+.checkout__course-box-product-quantity,
+.checkout__course-box-product-subtotal{
+  font-size: $fs-p;
+}
+
+// order-box
+.checkout__order-box {
+  margin-top: 20px;
+  width: 450px;
+  height: fit-content;
+  border: 1px solid $c-primary;
+  border-radius: $br-s;
+}
+
+.checkout__order-box-top {
+  font-size: $fs-h4;
+  height: fit-content;
+  color: $c-secondary;
+  background: $c-primary;
+  border-bottom: 1px solid $c-primary;
+  border-radius: 8px 8px 0 0;
+}
+
+.checkout__order-box-delivery-title,
+.checkout__order-box-payment-title,
+.checkout__order-box-amount-title,
+.checkout__order-box-total {
+  font-size: $fs-h4;
+}
+
+.checkout__order-box-delivery-labels,
+.checkout__order-box-payment-labels {
+  font-size: $fs-h5;
+  // border: 1px solid salmon;
+}
+
+.checkout__order-box-delivery-store,
+.checkout__order-box-payment-cash {
+  margin-left: 80px;
+}
+
+.checkout__order-box-delivery-edit-bg {
+  width: 400px;
+  background: #e5e5e5;
+  border-radius: $br-s;
+  font-size: $fs-p;
+  font-weight: $fw-medium;
+}
+.checkout__order-box-delivery-edit-wrapper {
+  // border: 1px solid gold;
+}
+
+.checkout__order-box-recipient-phone,
+.checkout__order-box-recipient-address,
+.checkout__order-box-buyer{
+  // border: 1px solid pink;
+  font-weight: $fw-light;
+}
+
+.checkout__order-box-subtotal,
+.checkout__order-box-delivery-fee,
+.checkout__order-box-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: $fw-light;
+}
+
+.checkout__order-box-divider{
+  border: 1px solid $c-gray;
+}
+
+.checkout__checkoutBtn {
+  width: 250px;
+  height: 60px;
+  color: $c-white;
+  background: $c-important;
+  border: none;
+  border-radius: $br-b;
+  text-align: center;
+  font-size: $fs-p;
+}
