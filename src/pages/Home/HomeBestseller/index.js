@@ -38,7 +38,7 @@ function HomeBestseller() {
         {/* <!-- 前往排行榜區塊 --> */}
         <div className="d-flex justify-content-end">
           <h4 className="mr-5">
-            {/* TODO: 箭頭與上面客製產品卡元件對齊，或移至不會被進度條擋住的產品卡下方 */}
+            {/* TODO: 箭頭與上面客製產品卡元件對齊，或移至不會被進度條擋住的產品卡下方 完成 */}
             <a className="d-flex align-items-center popular__aArrow" href="/#">
               前往排行榜 <FiArrowRight size={25} />
             </a>
