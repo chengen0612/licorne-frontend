@@ -1,9 +1,9 @@
 import React from 'react'
 import './style.scss'
-import OfficialOrder from './components/OfficialOrder'
-import CustomOrder from './components/CustomOrder'
-import CourseOrder from './components/CourseOrder'
-import OrderDetail from './components/OrderDetail'
+import OfficialOrder from './OfficialOrder'
+import CustomOrder from './CustomOrder'
+import CourseOrder from './CourseOrder'
+import OrderDetail from './OrderDetail'
 
 function Checkout() {
   return (
@@ -28,7 +28,7 @@ function Checkout() {
             </div>
           </div>
           <div className="checkout__order-box">
-          <OrderDetail />
+            <OrderDetail />
           </div>
         </div>
       </div>
