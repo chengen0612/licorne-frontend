@@ -80,11 +80,15 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   height: 100%;
   padding: 18px 120px 22px;
   font-size: 30px;
+  &.active {
+    background: $c-gray;
+    border-radius: 50px;
+  }
 }
-.custom__progress-note:first-child {
-  background: $c-gray;
-  border-radius: 50px;
-}
+// .custom__progress-note:first-child {
+//   background: $c-gray;
+//   border-radius: 50px;
+// }
 .custom__close-btn {
   width: 50px;
   height: 50px;
@@ -93,13 +97,24 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   right: 125px;
   cursor: pointer;
 }
-.custom__description {
+.description {
   width: 570px;
   height: 800px;
+  padding: 150px 90px;
   background: $c-blob-orange;
   border-radius: 60%;
   position: relative;
   top: 104px;
+  &__title {
+    // background:rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    font-size: $fs-h4;
+    text-align: center;
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3))
+  }
+  &__content {
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3))
+  }
 }
 .custom__bottle {
   width: 500px;
@@ -115,7 +130,7 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
 }
 
 // sidebar
-.custom__sidebar-wrapper{
+.custom__sidebar-wrapper {
   // width: 400px;
   // width: 100px;
   height: 600px;
@@ -139,7 +154,7 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   align-items: center;
 }
 .custom__sidebar-items li {
-  background:rgba(230, 194, 44, 0.5);
+  background: rgba(230, 194, 44, 0.5);
   // outline: 1px solid blue;
   width: 100%;
   text-align: center;
@@ -225,7 +240,7 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   &btn-share {
   }
 }
-.custom__icon{
+.custom__icon {
   // height: 20px;
   // stroke-width: 1px;
   align-items: center;
