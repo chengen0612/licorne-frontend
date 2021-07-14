@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import CheckoutRadio from './CheckoutRadio'
+import PaymentRadio from './PaymentRadio'
 
 function PaymentMethod() {
-  const [payment, setPayment] = useState('')
+  const [payment, setPayment] = useState('信用卡')
   const paymentList = ['信用卡', '貨到付款']
   return (
     <div className="checkout__order-box-payment pr-4 pl-4 pb-4">
@@ -10,7 +10,7 @@ function PaymentMethod() {
       <div className="checkout__order-box-payment-labels">
         {paymentList.map((v, i) => {
           return (
-            <CheckoutRadio
+            <PaymentRadio
               key={i}
               value={v}
               checkedValue={payment}
