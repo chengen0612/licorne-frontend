@@ -1,5 +1,5 @@
 import React from 'react'
-// import { imgPath } from '../../config'
+import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 
 function CourseOrder() {
@@ -19,7 +19,7 @@ function CourseOrder() {
         <div className="checkout__course-box-img-wrapper">
           <img
             className="checkout__course-box-img"
-            // src={imgPath + '/images/course/perfume.jpeg'}
+            src={imgPath + '/images/course/perfume.jpeg'}
             alt=""
           />
         </div>
@@ -35,7 +35,8 @@ function CourseOrder() {
         <span className="checkout__course-box-product-price">NT $1200</span>
         <span className="checkout__course-box-product-quantity">單人</span>
         <span className="checkout__course-box-product-subtotal">NT $1200</span>
-        <FiX className="feather-s" />
+        {/* TODO: delete product detail */}
+        <FiX className="feather-s" role="button" />
       </div>
     </>
   )

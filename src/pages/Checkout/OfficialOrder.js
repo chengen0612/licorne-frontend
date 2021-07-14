@@ -1,5 +1,5 @@
 import React from 'react'
-// import { imgPath } from '../../config'
+import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 
 function OfficialOrder() {
@@ -11,7 +11,7 @@ function OfficialOrder() {
             className="checkout__official-box-checkbox-all"
             type="checkbox"
           />
-          官方商品 (3)
+          官方商品 <span>(3)</span>
         </label>
       </div>
       <div className="checkout__official-box-list p-4">
@@ -19,7 +19,7 @@ function OfficialOrder() {
         <div className="checkout__official-box-img-wrapper">
           <img
             className="checkout__official-box-img"
-            // src={imgPath + '/images/official/animal_100ml.png'}
+            src={imgPath + '/images/official/animal_100ml.png'}
             alt=""
           />
         </div>
@@ -38,7 +38,8 @@ function OfficialOrder() {
         <span className="checkout__official-box-product-subtotal">
           NT $6000
         </span>
-        <FiX className="feather-s" />
+        {/* TODO: delete product detail */}
+        <FiX className="feather-s" role="button" />
       </div>
     </>
   )

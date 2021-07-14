@@ -1,5 +1,5 @@
 import React from 'react'
-// import { imgPath } from '../../config'
+import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 
 function CustomOrder() {
@@ -19,7 +19,7 @@ function CustomOrder() {
         <div className="checkout__custom-box-img-wrapper">
           <img
             className="checkout__custom-box-img"
-            // src={imgPath + '/images/custom/fragrance_flower.png'}
+            src={imgPath + '/images/custom/fragrance_flower.png'}
             alt=""
           />
         </div>
@@ -34,7 +34,8 @@ function CustomOrder() {
         <span className="checkout__custom-box-product-price">NT $2000</span>
         <input className="box-quantity" type="number" min="1" />
         <span className="checkout__custom-box-product-subtotal">NT $6000</span>
-        <FiX className="feather-s" />
+        {/* TODO: delete product detail */}
+        <FiX className="feather-s" role="button" />
       </div>
     </>
   )
