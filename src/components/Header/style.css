@@ -2,6 +2,7 @@
   background: var(--c-bg-main);
   height: 120px;
   width: 100%;
+  filter: var(--ds-card);
 }
 .header__line {
   height: 8px;
