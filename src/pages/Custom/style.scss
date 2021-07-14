@@ -154,16 +154,26 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   align-items: center;
 }
 .custom__sidebar-items li {
-  background: rgba(230, 194, 44, 0.5);
+  // background: rgba(230, 194, 44, 0.5);
   // outline: 1px solid blue;
   width: 100%;
   text-align: center;
   line-height: 200px;
   cursor: pointer;
+  &:hover{
+    background: rgba(200, 200, 200, 0.3);
+  }
+  &:hover .custom__item-image {
+    transform: scale(1.1);
+  }
 }
 .custom__item-image {
   width: 130px;
   // max-height: 160px;
+  transition: .3s;
+  // &:hover {
+  //   transform: scale(1.1);
+  // }
 }
 .custom__sidebar-series {
   // background: $c-secondary;
