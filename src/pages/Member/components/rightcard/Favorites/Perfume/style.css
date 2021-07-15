@@ -1,0 +1,61 @@
+.memberFavorites__rightCard {
+  width: 1500px;
+  height: 900px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  margin: 26px 20px 26px auto;
+}
+.memberFavorites__favoritesBtn {
+  width: 154px;
+  margin: 0 auto;
+}
+.favoritesBtn {
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  font-size: 30px;
+  font-weight: normal;
+  color: #223843;
+  padding: 0;
+  margin: 34px 0 0 0;
+}
+.memberFavorites__coursebtn {
+  margin: 0 0 0 30px;
+}
+.memberFavorites__perfumeBox {
+  display: flex;
+  margin: 31px 0 0 148px;
+}
+.memberFavorites__perfumeLeftBox {
+  width: 500px;
+  height: 680px;
+  border: 1px solid red;
+}
+.memberFavorites__perfumeRightBox {
+  width: 500px;
+  height: 680px;
+  border: 1px solid red;
+  margin: 0 0 0 200px;
+}
+.memberFavorites__perfumeLeftMiddle {
+  margin: 40px 0 0 0;
+}
+.memberFavorites__perfumeLeftBottom {
+  margin: 40px 0 0 0;
+}
+.memberFavorites__perfumeRightMiddle {
+  margin: 40px 0 0 0;
+}
+.memberFavorites__perfumeRightBottom {
+  margin: 40px 0 0 0;
+}
+.perfumeLeftItem {
+  width: 500px;
+  height: 200px;
+  border: 1px solid blue;
+}
+.perfumeRightItem {
+  width: 500px;
+  height: 200px;
+  border: 1px solid blue;
+}
