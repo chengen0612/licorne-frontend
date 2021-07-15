@@ -5,27 +5,37 @@ import { BrowserRouter as Route, Switch } from 'react-router-dom'
 import Header from '../components/Header'
 
 // 分頁元件
-import Member from '../pages/Member'
-// import MemberData from '../pages/Member/MemberData'
-// import MemberFavorites from '../pages/Member/MemberFavorites'
-// import MemberOrder from '../pages/Member/MemberOrder'
+import Member from '../pages/Member/HomePage'
+import MemberData from '../pages/Member/MemberData'
+import MemberFavoritesCourse from '../pages/Member/Favorites/Course'
+import MemberFavoritesPerfume from '../pages/Member/Favorites/Perfume'
+import MemberOrderCourse from '../pages/Member/Order/Course'
+import MemberOrderPerfume from '../pages/Member/Order/Perfume'
 
 function SwitchMember() {
   return (
     <>
       <Switch>
-        {/* <Route path="/member/data">
+        <Route path="/member/data">
           <Header />
           <MemberData />
-        </Route> */}
-        {/* <Route path="/member/favorites">
+        </Route>
+        <Route path="/member/favorites/course">
           <Header />
-          <MemberFavorites />
-        </Route> */}
-        {/* <Route path="/member/order">
+          <MemberFavoritesCourse />
+        </Route>
+        <Route path="/member/favorites/perfume">
           <Header />
-          <MemberOrder />
-        </Route> */}
+          <MemberFavoritesPerfume />
+        </Route>
+        <Route path="/member/order/perfume">
+          <Header />
+          <MemberOrderPerfume />
+        </Route>
+        <Route path="/member/order/course">
+          <Header />
+          <MemberOrderCourse />
+        </Route>
         <Route path="/member">
           <Header />
           <Member />
