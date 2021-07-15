@@ -13,7 +13,7 @@ function SwitchOfficial() {
     <>
       <Switch>
         {/* 系列篩選 */}
-        <Route path="/official/tea">
+        {/* <Route path="/official/tea">
           <Header />
           <Official />
         </Route>
@@ -32,13 +32,13 @@ function SwitchOfficial() {
         <Route path="/official/all">
           <Header />
           <Official />
-        </Route>
+        </Route> */}
         {/* 各別頁面 */}
-        <Route path="/official/:id?">
+        {/* <Route path="/official/:id?">
           <Header />
           <Official />
           <SecondaryFooter />
-        </Route>
+        </Route> */}
         {/* 入口畫面 */}
         <Route path="/official">
           <Header />
