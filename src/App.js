@@ -13,7 +13,7 @@ import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
 
 // 分頁集合
-import SwitchMember from './routes/SwitchMember'
+// import SwitchMember from './routes/SwitchMember'
 // import SwitchOfficial from './routes/SwitchOfficial'
 // import SwitchCourse from './routes/SwitchCourse'
 
