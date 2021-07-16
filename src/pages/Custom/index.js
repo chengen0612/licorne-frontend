@@ -10,11 +10,9 @@ import {
   FiUpload,
 } from 'react-icons/fi'
 
-import { imgPath } from '../../config'
-
 import './style.scss'
-import series_data from './sidebar_series.json'
-import items_data from './sidebar_items.json'
+import series_data from './data/sidebar_series.json'
+import items_data from './data/sidebar_items.json'
 
 import SidebarSeries from './SidebarSeries'
 import SidebarItems from './SidebarItems'
@@ -49,8 +47,12 @@ function Custom() {
         <ProgressBar noteStatus={noteStatus} />
         <FiX className="custom__close-btn" />
         <article className="description">
-          <p className="description__title">成分說明</p>
-          <span className="description__content">{description}</span>
+          {description && (
+            <>
+              <p className="description__title">成分說明</p>
+              <span className="description__content">{description}</span>
+            </>
+          )}
         </article>
         <div className="custom__bottle"></div>
         <aside className="custom__sidebar-wrapper">
