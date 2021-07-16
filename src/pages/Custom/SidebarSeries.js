@@ -29,7 +29,7 @@ function SidebarSeries(props) {
 
   return (
     <>
-      <ul className="custom__sidebar-series">
+      <ul className="custom__series-menu">
         {data.map((item, i) => {
           return (
             <li

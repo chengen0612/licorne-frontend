@@ -62,6 +62,8 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   background: $c-white;
   position: relative;
 }
+
+// progress bar
 .custom__progress-bar {
   width: 900px;
   height: 80px;
@@ -85,10 +87,7 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
     border-radius: 50px;
   }
 }
-// .custom__progress-note:first-child {
-//   background: $c-gray;
-//   border-radius: 50px;
-// }
+
 .custom__close-btn {
   width: 50px;
   height: 50px;
@@ -97,6 +96,8 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   right: 125px;
   cursor: pointer;
 }
+
+// description
 .description {
   width: 570px;
   height: 800px;
@@ -110,12 +111,14 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
     padding: 30px;
     font-size: $fs-h4;
     text-align: center;
-    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3))
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
   }
   &__content {
-    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3))
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
   }
 }
+
+// custom bottle
 .custom__bottle {
   width: 500px;
   height: 500px;
@@ -129,7 +132,7 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   left: 50vw;
 }
 
-// sidebar
+// sidebar top
 .custom__sidebar-wrapper {
   // width: 400px;
   // width: 100px;
@@ -143,7 +146,9 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   overflow: hidden;
   display: flex;
 }
-.custom__sidebar-items {
+
+// sidebar items menu
+.custom__items-menu {
   // background: pink;
   width: 300px;
   height: 100%;
@@ -153,29 +158,27 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   justify-content: start;
   align-items: center;
 }
-.custom__sidebar-items li {
+.custom__items-menu li {
   // background: rgba(230, 194, 44, 0.5);
   // outline: 1px solid blue;
   width: 100%;
   text-align: center;
   line-height: 200px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     background: rgba(200, 200, 200, 0.3);
   }
-  &:hover .custom__item-image {
+  &:hover .custom__items-image {
     transform: scale(1.1);
   }
 }
-.custom__item-image {
+.custom__items-image {
   width: 130px;
-  // max-height: 160px;
-  transition: .3s;
-  // &:hover {
-  //   transform: scale(1.1);
-  // }
+  transition: 0.3s;
 }
-.custom__sidebar-series {
+
+// sidebar series menu
+.custom__series-menu {
   // background: $c-secondary;
   width: 100px;
   height: 100%;
@@ -187,7 +190,7 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   justify-content: space-evenly;
   align-items: center;
 }
-.custom__sidebar-series li {
+.custom__series-menu li {
   // background-color: #b8d7c7;
   // outline: 1px solid blue;
   width: 100%;
@@ -197,22 +200,20 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
 }
 .custom__series-fruit {
   width: 60px;
-  // height: 66.13px;
   // margin-top: 110px;
 }
 .custom__series-flower {
   width: 60px;
-  // height: 56.75px;
 }
 .custom__series-leaf {
   width: 60px;
-  // height: 62.03px;
 }
 .custom__series-herb {
   width: 70px;
-  // height: 71.94px;
   // margin-bottom: 110px;
 }
+
+// control button group
 %btn {
   width: 150px;
   height: 60px;

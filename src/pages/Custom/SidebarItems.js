@@ -25,7 +25,7 @@ function SidebarItems(props) {
 
   return (
     <>
-      <ul className="custom__sidebar-items">
+      <ul className="custom__items-menu">
         {seriesItems.map((item) => {
           return (
             <li
@@ -33,7 +33,7 @@ function SidebarItems(props) {
               onClick={() => setItems(item.id, item.fragrance_id)}
             >
               <img
-                className="custom__item-image"
+                className="custom__items-image"
                 src={imgPath + item.ingredient_img}
                 alt={item.name_zh}
               />
