@@ -1,0 +1,62 @@
+.memberOrder__coursebtn {
+  margin: 0 0 0 30px;
+}
+.memberOrder__titleBox {
+  width: 1260px;
+  height: 50px;
+  background-color: #223843;
+  border-radius: 10px 10px 0 0;
+  font-size: 25px;
+  font-weight: lighter;
+  color: #ffffff;
+}
+.memberOrder__title {
+  padding: 0 0 0 20px;
+  line-height: 50px;
+}
+.memberOrder__orderBox {
+  width: 1260px;
+  height: 220px;
+  border: 1px solid #223843;
+  border-radius: 10px;
+  margin: 84px auto;
+}
+.memberOrder__detailBox {
+  width: 1260px;
+  height: 170px;
+  display: flex;
+  /* border: 1px solid red; */
+}
+.memberOrder__detailBtnBox {
+  width: 630px;
+}
+.memberOrder__detailLeftBox {
+  width: 630px;
+}
+.detail {
+  display: flex;
+}
+.detail h4 {
+  margin: 0 25px 0 0;
+  font-weight: lighter;
+}
+.memberOrder__orderStatusBox {
+  margin: 24px 0 15px 30px;
+}
+.memberOrder__numberBox {
+  margin: 0 0 15px 30px;
+}
+.memberOrder__totalBox {
+  margin: 0 0 0 30px;
+}
+.memberOrder__detailBtn {
+  width: 135px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: lighter;
+  background-color: #ffffff;
+  border: 1px solid #223843;
+  border-radius: 50px;
+  float: right;
+  margin: 95px 35px 25px 0;
+}

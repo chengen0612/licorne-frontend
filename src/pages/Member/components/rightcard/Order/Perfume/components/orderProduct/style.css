@@ -1,0 +1,32 @@
+.memberOrder__productBox {
+  display: flex;
+}
+.memberOrder__productImageBox {
+  width: 77px;
+  height: 118px;
+  /* border: 1px solid red; */
+}
+.memberOrder__productImage {
+  width: 77px;
+}
+.memberOrder__productNameBox {
+  width: 150px;
+  margin: 20px 0 0 60px;
+}
+.chName {
+  font-weight: normal;
+}
+.enName,
+.series {
+  font-weight: lighter;
+}
+.memberOrder__productCapacityBox,
+.memberOrder__productCountBox,
+.memberOrder__productPriceBox {
+  margin: 49px 0 0 50px;
+}
+.memberOrder__productCapacity,
+.memberOrder__productCount,
+.memberOrder__productPrice {
+  font-weight: lighter;
+}
