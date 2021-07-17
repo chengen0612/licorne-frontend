@@ -9,6 +9,7 @@ import Checkout from './pages/Checkout'
 import Member from './pages/Member'
 import Official from './pages/Official'
 import LoginAndRegister from './pages/LoginAndRegister'
+import MyCart from './components/MyCart'
 
 // 共通元件
 import Header from './components/Header'
@@ -54,6 +55,11 @@ function App() {
           </Route>
           <Route exact path="/">
             <Header />
+            {/*  */}
+            {/*  */}
+            <MyCart />
+            {/*  */}
+            {/*  */}
             <Home />
           </Route>
         </Switch>
