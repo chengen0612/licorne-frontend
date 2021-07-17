@@ -1,11 +1,13 @@
 import React from 'react'
 import './style.css'
+import MyCart from '../MyCart'
 
 import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 
 function Header() {
   return (
     <>
+      <MyCart />
       <div className="header__line col-md col-sm"></div>
       <header className="header col-md col-sm">
         {/* -- logo -- */}

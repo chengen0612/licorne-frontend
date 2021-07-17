@@ -55,11 +55,6 @@ function App() {
           </Route>
           <Route exact path="/">
             <Header />
-            {/*  */}
-            {/*  */}
-            <MyCart />
-            {/*  */}
-            {/*  */}
             <Home />
           </Route>
         </Switch>
