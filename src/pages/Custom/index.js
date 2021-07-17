@@ -41,6 +41,20 @@ function Custom() {
     setNoteStatus(newProgressBar)
   }, [selectedItems])
 
+  // refresh choices
+  const resetExecutor = () => {
+    setSelectedItems([])
+    setSelectedSeries([])
+  }
+
+  // back to previous step
+  const gobackExecuter = () => {
+    const [lastItem, ...otherItems] = selectedItems.reverse()
+    setSelectedItems(otherItems)
+    const [lastSerie, ...otherSeries] = selectedSeries.reverse()
+    setSelectedSeries(otherSeries)
+  }
+
   return (
     <>
       <div className="custom">
@@ -75,18 +89,18 @@ function Custom() {
             selectedSeries={selectedSeries}
           />
         </aside>
-        {/* <button className="btn custom__btn-reset">
+        <button className="btn custom__btn-reset" onClick={resetExecutor}>
           <FiRefreshCw className="feather-m custom__icon" />
           重做
         </button>
-        <button className="btn custom__btn-goback">
+        <button className="btn custom__btn-goback" onClick={gobackExecuter}>
           <FiSkipBack />
           退回
         </button>
         <button className="btn custom__btn-complete">
           <FiCheckSquare />
           完成
-        </button> */}
+        </button>
       </div>
     </>
   )
