@@ -1,5 +1,5 @@
 import React from 'react'
-import { imgPath } from '../../config'
+import { imgPath } from '../../../config'
 
 function SidebarSeries(props) {
   const {
