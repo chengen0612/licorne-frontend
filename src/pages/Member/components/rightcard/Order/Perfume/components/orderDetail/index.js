@@ -6,87 +6,99 @@ import MemberOrderProduct from '../orderProduct'
 function MemberLeftCard() {
   return (
     <>
-      <div className="memberOrder__detailOrderBox">
-        <div className="memberOrder__detailTitleBox">
-          <p className="memberOrder__detailTitle">官方商品</p>
-          <button className="memberOrder__goBackBtn">
+      <div className="memberOrderPerfume__detailOrderBox">
+        <div className="memberOrderPerfume__detailTitleBox">
+          <p className="memberOrderPerfume__detailTitle">官方商品</p>
+          <button className="memberOrderPerfume__goBackBtn">
             <FiArrowLeft size={30} />
           </button>
         </div>
-        <div className="memberOrder__detailNumberBox">
-          <div className="memberOrder__detailNumberTitle">
+        <div className="memberOrderPerfume__detailNumberBox">
+          <div className="memberOrderPerfume__detailNumberTitle">
             <h5>訂單編號</h5>
           </div>
-          <div className="memberOrder__detailNumber">
+          <div className="memberOrderPerfume__detailNumber">
             <h5>20210608168LCR</h5>
           </div>
         </div>
-        <hr className="memberOrder__detailTopLine" />
-        <div className="memberOrder__detailBox">
-          <div className="memberOrder__detailLeftBox">
-            <div className="memberOrder__detailItemTitle">
-              <h2 className="memberOrder__orderTitle">訂單內容</h2>
+        <hr className="memberOrderPerfume__detailTopLine" />
+        <div className="memberOrderPerfume__detailBox">
+          <div className="memberOrderPerfume__detailLeftBox">
+            <div className="memberOrderPerfume__detailItemTitle">
+              <h2 className="memberOrderPerfume__orderTitle">訂單內容</h2>
             </div>
-            <div className="memberOrder__orderTopItem orderItem">
+            <div className="memberOrderPerfume__orderTopItem orderItem">
               <MemberOrderProduct />
             </div>
-            <div className="memberOrder__orderBottomItem orderItem">
+            <div className="memberOrderPerfume__orderBottomItem orderItem">
               <MemberOrderProduct />
             </div>
           </div>
-          <div className="memberOrder__detailRightBox">
-            <div className="memberOrder__rightTopBox">
-              <div className="memberOrder__receiveBox">
-                <h2 className="memberOrder__receiveTitle">收件資訊</h2>
-                <h3 className="memberOrder__receiveName receiveText">
+          <div className="memberOrderPerfume__detailRightBox">
+            <div className="memberOrderPerfume__rightTopBox">
+              <div className="memberOrderPerfume__receiveBox">
+                <h2 className="memberOrderPerfume__receiveTitle">收件資訊</h2>
+                <h3 className="memberOrderPerfume__receiveName receiveText">
                   哭肉狗狗
                 </h3>
-                <h3 className="memberOrder__receiveAddress receiveText">
+                <h3 className="memberOrderPerfume__receiveAddress receiveText">
                   桃園市桃園區中正路100巷100號101樓
                 </h3>
-                <h3 className="memberOrder__receivePhone receiveText">
+                <h3 className="memberOrderPerfume__receivePhone receiveText">
                   0912 345 678
                 </h3>
               </div>
             </div>
-            <div className="memberOrder__rightBottomBox">
-              <div className="memberOrder__statusBox">
-                <h2 className="memberOrder__statusTitle">訂單狀態</h2>
-                <div className="memberOrder__statusIconBox">
-                  <div className="memberOrder__statusCircle">
-                    <FiCheck size={26} className="memberOrder__statusConfirm" />
+            <div className="memberOrderPerfume__rightBottomBox">
+              <div className="memberOrderPerfume__statusBox">
+                <h2 className="memberOrderPerfume__statusTitle">訂單狀態</h2>
+                <div className="memberOrderPerfume__statusIconBox">
+                  <div className="memberOrderPerfume__statusCircle">
+                    <FiCheck
+                      size={26}
+                      className="memberOrderPerfume__statusConfirm"
+                    />
                   </div>
-                  <div className="memberOrder__statusLine leftLine"></div>
-                  <div className="memberOrder__statusCircle">
-                    <FiCheck size={26} className="memberOrder__statusConfirm" />
+                  <div className="memberOrderPerfume__statusLine leftLine"></div>
+                  <div className="memberOrderPerfume__statusCircle">
+                    <FiCheck
+                      size={26}
+                      className="memberOrderPerfume__statusConfirm"
+                    />
                   </div>
-                  <div className="memberOrder__statusLine middleLine"></div>
-                  <div className="memberOrder__statusCircle">
-                    <FiCheck size={26} className="memberOrder__statusConfirm" />
+                  <div className="memberOrderPerfume__statusLine middleLine"></div>
+                  <div className="memberOrderPerfume__statusCircle">
+                    <FiCheck
+                      size={26}
+                      className="memberOrderPerfume__statusConfirm"
+                    />
                   </div>
-                  <div className="memberOrder__statusLine rightLine"></div>
-                  <div className="memberOrder__statusCircle">
-                    <FiCheck size={26} className="memberOrder__statusConfirm" />
+                  <div className="memberOrderPerfume__statusLine rightLine"></div>
+                  <div className="memberOrderPerfume__statusCircle">
+                    <FiCheck
+                      size={26}
+                      className="memberOrderPerfume__statusConfirm"
+                    />
                   </div>
                 </div>
-                <div className="memberOrder__statusNameBox">
-                  <div className="memberOrder__statusName">
-                    <h4 className="memberOrder__statusNameText processing">
+                <div className="memberOrderPerfume__statusNameBox">
+                  <div className="memberOrderPerfume__statusName">
+                    <h4 className="memberOrderPerfume__statusNameText processing">
                       處理中
                     </h4>
                   </div>
-                  <div className="memberOrder__statusName">
-                    <h4 className="memberOrder__statusNameText shipped">
+                  <div className="memberOrderPerfume__statusName">
+                    <h4 className="memberOrderPerfume__statusNameText shipped">
                       已出貨
                     </h4>
                   </div>
-                  <div className="memberOrder__statusName">
-                    <h4 className="memberOrder__statusNameText transporting">
+                  <div className="memberOrderPerfume__statusName">
+                    <h4 className="memberOrderPerfume__statusNameText transporting">
                       運送中
                     </h4>
                   </div>
-                  <div className="memberOrder__statusName">
-                    <h4 className="memberOrder__statusNameText completed">
+                  <div className="memberOrderPerfume__statusName">
+                    <h4 className="memberOrderPerfume__statusNameText completed">
                       已完成
                     </h4>
                   </div>
@@ -95,12 +107,12 @@ function MemberLeftCard() {
             </div>
           </div>
         </div>
-        <hr className="memberOrder__detailBottomLine" />
-        <div className="memberOrder__detailTotalBox">
-          <div className="memberOrder__detailTotalTital">
+        <hr className="memberOrderPerfume__detailBottomLine" />
+        <div className="memberOrderPerfume__detailTotalBox">
+          <div className="memberOrderPerfume__detailTotalTital">
             <h5>總計</h5>
           </div>
-          <div className="memberOrder__detailTotalNumber">
+          <div className="memberOrderPerfume__detailTotalNumber">
             <h5>NT$ 7,300 </h5>
           </div>
         </div>

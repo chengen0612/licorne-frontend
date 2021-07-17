@@ -12,20 +12,22 @@ function MemberLeftCard() {
         <div className="memberOrderPerfume__detailBox">
           <div className="memberOrderPerfume__detailLeftBox">
             <div className="memberOrderPerfume__orderStatusBox detail">
-              <h4>訂單狀態</h4>
-              <h4 className="memberOrderPerfume__status">已出貨</h4>
+              <h4>課程時間</h4>
+              <h4 className="memberOrderPerfume__status">
+                2021-12-31 13:00 ~ 18:30
+              </h4>
             </div>
             <div className="memberOrderPerfume__numberBox detail">
-              <h4>訂單編號</h4>
+              <h4>課程編號</h4>
               <h4 className="memberOrderPerfume__number">20210608168LCR</h4>
             </div>
             <div className="memberOrderPerfume__totalBox detail">
-              <h4>訂單總計</h4>
-              <h4 className="memberOrderPerfume__total">NT$ 4,500</h4>
+              <h4>課程費用</h4>
+              <h4 className="memberOrderPerfume__total">NT$ 1,200</h4>
             </div>
           </div>
           <div className="memberOrderPerfume__detailBtnBox">
-            <button className="memberOrderPerfume__detailBtn">訂單詳情</button>
+            <button className="memberOrderPerfume__detailBtn">課程詳情</button>
           </div>
         </div>
       </div>

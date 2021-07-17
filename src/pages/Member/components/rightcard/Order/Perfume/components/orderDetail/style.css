@@ -1,7 +1,4 @@
-.memberOrder__coursebtn {
-  margin: 0 0 0 30px;
-}
-.memberOrder__detailTitleBox {
+.memberOrderPerfume__detailTitleBox {
   display: flex;
   width: 1260px;
   height: 50px;
@@ -11,11 +8,11 @@
   font-weight: lighter;
   color: #ffffff;
 }
-.memberOrder__detailTitle {
+.memberOrderPerfume__detailTitle {
   padding: 0 0 0 20px;
   line-height: 50px;
 }
-.memberOrder__goBackBtn {
+.memberOrderPerfume__goBackBtn {
   width: 30px;
   height: 30px;
   border: 1px solid transparent;
@@ -24,63 +21,63 @@
   color: #ffffff;
   margin: 0 30px 0 auto;
 }
-.memberOrder__detailOrderBox {
+.memberOrderPerfume__detailOrderBox {
   width: 1260px;
   height: 580px;
   border: 1px solid #223843;
   border-radius: 10px;
   margin: 84px auto;
 }
-.memberOrder__detailNumberBox {
+.memberOrderPerfume__detailNumberBox {
   display: flex;
   float: right;
   width: 300px;
   margin: 26px 0 0 0;
 }
-.memberOrder__detailNumberTitle h5 {
+.memberOrderPerfume__detailNumberTitle h5 {
   color: #707070;
   font-weight: lighter;
 }
-.memberOrder__detailNumber h5 {
+.memberOrderPerfume__detailNumber h5 {
   color: #707070;
   font-weight: lighter;
 }
-.memberOrder__detailNumberTitle {
+.memberOrderPerfume__detailNumberTitle {
   margin: 0 25px 0 0;
 }
-.memberOrder__detailTopLine {
+.memberOrderPerfume__detailTopLine {
   width: 1217px;
   background-color: #223843;
   margin: 64px 0 0 22px;
 }
-.memberOrder__detailBottomLine {
+.memberOrderPerfume__detailBottomLine {
   width: 700px;
   background-color: #223843;
   margin: 0 0 0 22px;
 }
-.memberOrder__detailBox {
+.memberOrderPerfume__detailBox {
   display: flex;
   width: 1260px;
   height: 385px;
 }
-.memberOrder__detailLeftBox {
+.memberOrderPerfume__detailLeftBox {
   width: 700px;
 }
-.memberOrder__detailRightBox {
+.memberOrderPerfume__detailRightBox {
   width: 530px;
 }
-.memberOrder__rightTopBox {
+.memberOrderPerfume__rightTopBox {
   /* border: 1px solid red; */
   height: 192px;
 }
-.memberOrder__receiveBox {
+.memberOrderPerfume__receiveBox {
   margin: 35px 0 0 45px;
 }
-.memberOrder__receiveTitle {
+.memberOrderPerfume__receiveTitle {
   font-size: 25px;
   font-weight: lighter;
 }
-.memberOrder__receiveName {
+.memberOrderPerfume__receiveName {
   margin: 20px 0 0 0;
 }
 .receiveText {
@@ -88,30 +85,30 @@
   font-weight: lighter;
   color: #707070;
 }
-.memberOrder__rightBottomBox {
+.memberOrderPerfume__rightBottomBox {
   /* border: 1px solid red; */
   height: 192px;
 }
-.memberOrder__statusBox {
+.memberOrderPerfume__statusBox {
   margin: 20px 0 0 45px;
 }
-.memberOrder__statusTitle {
+.memberOrderPerfume__statusTitle {
   font-size: 25px;
   font-weight: lighter;
 }
-.memberOrder__detailItemTitle {
+.memberOrderPerfume__detailItemTitle {
   margin: 35px 0 0 45px;
 }
-.memberOrder__orderTitle {
+.memberOrderPerfume__orderTitle {
   margin: 0;
   font-size: 25px;
   font-weight: lighter;
 }
-.memberOrder__orderTopItem {
+.memberOrderPerfume__orderTopItem {
   width: 650px;
   height: 120px;
 }
-.memberOrder__orderBottomItem {
+.memberOrderPerfume__orderBottomItem {
   width: 650px;
   height: 120px;
 }
@@ -119,51 +116,51 @@
   margin: 25px 0 0 60px;
   /* border: 1px solid red; */
 }
-.memberOrder__statusIconBox {
+.memberOrderPerfume__statusIconBox {
   display: flex;
   width: 350px;
   margin: 40px 0 0 35px;
 }
-.memberOrder__statusCircle {
+.memberOrderPerfume__statusCircle {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background-color: #223843;
   opacity: 0.5;
 }
-.memberOrder__statusLine {
+.memberOrderPerfume__statusLine {
   width: 75px;
   margin: 15px 3px 15px 3px;
   border-top: 2px solid #223843;
   opacity: 0.5;
 }
-.memberOrder__statusConfirm {
+.memberOrderPerfume__statusConfirm {
   margin: 3px 2px 2px 2px;
   color: #ffffff;
 }
-.memberOrder__statusNameBox {
+.memberOrderPerfume__statusNameBox {
   display: flex;
   width: 390px;
   margin: 12px 0 0 15px;
   justify-content: space-between;
 }
-.memberOrder__statusNameText {
+.memberOrderPerfume__statusNameText {
   color: #707070;
   font-size: 20px;
   font-weight: lighter;
 }
-.memberOrder__detailTotalBox {
+.memberOrderPerfume__detailTotalBox {
   display: flex;
   margin: 16px 0 0 495px;
 }
-.memberOrder__detailTotalNumber {
+.memberOrderPerfume__detailTotalNumber {
   margin: 0 0 0 45px;
 }
-.memberOrder__detailTotalTital h5 {
+.memberOrderPerfume__detailTotalTital h5 {
   font-size: 20px;
   font-weight: lighter;
 }
-.memberOrder__detailTotalNumber h5 {
+.memberOrderPerfume__detailTotalNumber h5 {
   font-size: 20px;
   font-weight: lighter;
 }

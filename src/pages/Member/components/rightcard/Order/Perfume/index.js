@@ -7,12 +7,16 @@ import MemberOrderPerfumeDetail from './components/orderDetail'
 function MemberLeftCard() {
   return (
     <>
-      <div className="memberOrder__rightCard">
-        <div className="memberOrder__orderBtn">
-          <button className="memberOrder__perfumebtn orderBtn">香水</button>
-          <button className="memberOrder__coursebtn orderBtn">課程</button>
+      <div className="memberOrderPerfume__rightCard">
+        <div className="memberOrderPerfume__orderBtn">
+          <button className="memberOrderPerfume__perfumebtn orderBtn">
+            香水
+          </button>
+          <button className="memberOrderPerfume__coursebtn orderBtn">
+            課程
+          </button>
         </div>
-        <MemberOrderPerfumeItem />
+        {/* <MemberOrderPerfumeItem /> */}
         <MemberOrderPerfumeDetail />
       </div>
     </>
