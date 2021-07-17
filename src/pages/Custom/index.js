@@ -5,8 +5,17 @@ import ShowProduct from './ShowProduct'
 
 function Custom() {
   const [productDetail, setProductDetail] = useState({})
+  // console.log(Object.keys(productDetail))
 
-  return <>{!productDetail.length ? <MakeProduct /> : <ShowProduct />}</>
+  return (
+    <>
+      {Object.keys(productDetail).length === 0 ? (
+        <MakeProduct setProductDetail={setProductDetail} />
+      ) : (
+        <ShowProduct />
+      )}
+    </>
+  )
 }
 
 export default Custom

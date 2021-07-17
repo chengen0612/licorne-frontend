@@ -11,14 +11,15 @@ import {
 } from 'react-icons/fi'
 
 import '../style.scss'
-import series_data from './data/sidebar_series.json'
 import items_data from './data/sidebar_items.json'
+import series_data from './data/sidebar_series.json'
 
 import SidebarSeries from './SidebarSeries'
 import SidebarItems from './SidebarItems'
 import ProgressBar from './ProgressBar'
 
-function Custom() {
+function MakeProduct(props) {
+  const { setProductDetail } = props
   const [displaySeries, setDisplaySeries] = useState('')
   const [description, setDescription] = useState('')
   const [selectedItems, setSelectedItems] = useState([])
@@ -53,6 +54,29 @@ function Custom() {
     setSelectedItems(otherItems)
     const [lastSerie, ...otherSeries] = selectedSeries.reverse()
     setSelectedSeries(otherSeries)
+  }
+
+  // set product data
+  const completeExecuter = () => {
+    if (selectedItems.length !== 3) return
+
+    const topNote = items_data.filter((item) => item.id === selectedItems[0])
+    const middleNote = items_data.filter((item) => item.id === selectedItems[1])
+    const baseNote = items_data.filter((item) => item.id === selectedItems[2])
+    const serie = series_data.filter((item) => item.id === selectedSeries[0])
+
+    const result = {
+      noteList: selectedItems,
+      topNote: { title: topNote[0].name_zh, price: topNote[0].price },
+      middleNote: { title: middleNote[0].name_zh, price: middleNote[0].price },
+      baseNote: { title: baseNote[0].name_zh, price: baseNote[0].price },
+      serieId: selectedSeries[0],
+      serieName: serie[0].name_zh,
+      serieDescription: serie[0].description_zh,
+      productImage: serie[0].product_img,
+    }
+
+    setProductDetail(result)
   }
 
   return (
@@ -97,7 +121,7 @@ function Custom() {
           <FiSkipBack />
           退回
         </button>
-        <button className="btn custom__btn-complete">
+        <button className="btn custom__btn-complete" onClick={completeExecuter}>
           <FiCheckSquare />
           完成
         </button>
@@ -106,4 +130,4 @@ function Custom() {
   )
 }
 
-export default Custom
+export default MakeProduct
