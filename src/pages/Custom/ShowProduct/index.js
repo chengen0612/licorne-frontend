@@ -12,7 +12,7 @@ import { imgPath } from '../../../config'
 import CostList from './OfferList'
 
 function ShowProduct(props) {
-  const { productDetail } = props
+  const { productDetail, setProductDetail } = props
   console.log(productDetail)
 
   const {
@@ -48,7 +48,10 @@ function ShowProduct(props) {
           middleNote={middleNote}
           baseNote={baseNote}
         />
-        <button className="product__btn-reset">
+        <button
+          className="product__btn-reset"
+          onClick={() => setProductDetail({})}
+        >
           <FiRefreshCw /> 重做
         </button>
         <button className="product__btn-favorite">

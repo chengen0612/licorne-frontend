@@ -12,7 +12,10 @@ function Custom() {
       {Object.keys(productDetail).length === 0 ? (
         <MakeProduct setProductDetail={setProductDetail} />
       ) : (
-        <ShowProduct productDetail={productDetail} />
+        <ShowProduct
+          productDetail={productDetail}
+          setProductDetail={setProductDetail}
+        />
       )}
     </>
   )
