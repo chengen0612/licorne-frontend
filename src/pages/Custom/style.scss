@@ -111,10 +111,10 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
     padding: 30px;
     font-size: $fs-h4;
     text-align: center;
-    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   }
   &__content {
-    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -256,4 +256,51 @@ $ds-sidebar: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   // stroke-width: 1px;
   align-items: center;
   text-align: 30px;
+}
+
+// product name
+.top-bar {
+  width: 900px;
+  height: 80px;
+  margin-left: -450px;
+  background: $c-secondary;
+  filter: $ds-card;
+  border-radius: 50px;
+  font-size: $fs-h2;
+  text-align: center;
+  line-height: 80px;
+  position: absolute;
+  top: 50px;
+  left: 50vw;
+}
+
+// product image
+.product__image-top {
+  margin-left: -175px;
+  position: absolute;
+  top: 230px;
+  left: 50vw;
+}
+.product__image {
+  width: 350px;
+  height: 710px;
+  filter: $ds-product;
+}
+
+.cost-list {
+  width: 300px;
+  height: 200px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 460px;
+  right: 140px;
+  &__col {
+    width: 33%;
+    font-weight: 300;
+  }
+  &__foot {
+    border-top: 1px solid $c-primary;
+  }
 }
