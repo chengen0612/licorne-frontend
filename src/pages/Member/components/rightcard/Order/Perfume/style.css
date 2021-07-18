@@ -6,6 +6,9 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   margin: 26px 20px 26px auto;
 }
+#perfumebtn {
+  border-bottom: 3px solid #223843;
+}
 .memberOrderPerfume__orderBtn {
   width: 200px;
   margin: 0 auto;

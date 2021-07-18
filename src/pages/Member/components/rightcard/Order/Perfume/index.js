@@ -9,15 +9,18 @@ function MemberLeftCard() {
     <>
       <div className="memberOrderPerfume__rightCard">
         <div className="memberOrderPerfume__orderBtn">
-          <button className="memberOrderPerfume__perfumebtn orderBtn">
+          <button
+            id="perfumebtn"
+            className="memberOrderPerfume__perfumebtn orderBtn"
+          >
             香水
           </button>
           <button className="memberOrderPerfume__coursebtn orderBtn">
             課程
           </button>
         </div>
-        {/* <MemberOrderPerfumeItem /> */}
-        <MemberOrderPerfumeDetail />
+        <MemberOrderPerfumeItem />
+        {/* <MemberOrderPerfumeDetail /> */}
       </div>
     </>
   )

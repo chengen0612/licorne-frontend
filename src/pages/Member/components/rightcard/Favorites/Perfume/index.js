@@ -7,7 +7,10 @@ function MemberFavorites() {
     <>
       <div className="memberFavorites__rightCard">
         <div className="memberFavorites__favoritesBtn">
-          <button className="memberFavorites__perfumebtn favoritesBtn">
+          <button
+            id="perfumebtn"
+            className="memberFavorites__perfumebtn favoritesBtn"
+          >
             香水
           </button>
           <button className="memberFavorites__coursebtn favoritesBtn">

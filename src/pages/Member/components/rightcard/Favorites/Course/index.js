@@ -11,7 +11,10 @@ function MemberFavorites() {
           <button className="memberFavorites__perfumebtn favoritesBtn">
             香水
           </button>
-          <button className="memberFavorites__coursebtn favoritesBtn">
+          <button
+            id="coursebtn"
+            className="memberFavorites__coursebtn favoritesBtn"
+          >
             課程
           </button>
         </div>

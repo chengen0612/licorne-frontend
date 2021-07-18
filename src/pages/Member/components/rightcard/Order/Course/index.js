@@ -12,7 +12,10 @@ function MemberLeftCard() {
           <button className="memberOrderCourse__perfumebtn orderBtn">
             香水
           </button>
-          <button className="memberOrderCourse__coursebtn orderBtn">
+          <button
+            id="coursebtn"
+            className="memberOrderCourse__coursebtn orderBtn"
+          >
             課程
           </button>
         </div>
