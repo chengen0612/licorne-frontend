@@ -9,6 +9,8 @@ import {
 
 import { imgPath } from '../../../config'
 
+import './style.scss'
+
 import CostList from './OfferList'
 
 function ShowProduct(props) {
@@ -29,14 +31,14 @@ function ShowProduct(props) {
 
   return (
     <>
-      <div className="custom">
+      <div className="product">
         <div className="top-bar">
           <span>
             {serieName}&nbsp;&nbsp;{productId}
           </span>
         </div>
-        <FiX className="custom__close-btn" />
-        <article className="description">
+        <FiX className="close-btn" />
+        <article className="description blob-orange">
           <p className="description__title">成分說明</p>
           <span className="description__content">{serieDescription}</span>
         </article>

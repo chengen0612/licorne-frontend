@@ -1,0 +1,148 @@
+@import '../../../styles/global.scss';
+
+// progress bar
+.custom__progress-bar {
+  width: 900px;
+  height: 80px;
+  margin-left: -450px;
+  background: $c-secondary;
+  filter: $ds-card;
+  border-radius: 50px;
+  position: absolute;
+  top: 50px;
+  left: 50vw;
+  // overflow: hidden;
+  display: flex;
+}
+.custom__progress-note {
+  height: 100%;
+  padding: 18px 120px 22px;
+  font-size: 30px;
+  &.active {
+    background: $c-gray;
+    border-radius: 50px;
+  }
+}
+
+// custom bottle
+.custom__bottle {
+  width: 500px;
+  height: 500px;
+  margin-left: -250px;
+  border-radius: 0 0 80px 80px;
+  border-right: 20px solid $c-primary;
+  border-bottom: 20px solid $c-primary;
+  border-left: 20px solid $c-primary;
+  position: absolute;
+  top: 420px;
+  left: 50vw;
+}
+
+// sidebar top
+.custom__sidebar-wrapper {
+  // width: 400px;
+  // width: 100px;
+  height: 600px;
+  background: $c-secondary;
+  filter: $ds-card;
+  border-radius: 50px;
+  position: absolute;
+  top: 240px;
+  right: 100px;
+  overflow: hidden;
+  display: flex;
+}
+
+// sidebar items menu
+.custom__items-menu {
+  width: 300px;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.custom__items-menu li {
+  width: 100%;
+  text-align: center;
+  line-height: 200px;
+  cursor: pointer;
+  &:hover {
+    background: rgba(200, 200, 200, 0.3);
+  }
+  &:hover .custom__items-image {
+    transform: scale(1.1);
+  }
+}
+.custom__items-image {
+  width: 130px;
+  transition: 0.3s;
+}
+
+// sidebar series menu
+.custom__series-menu {
+  width: 100px;
+  height: 100%;
+  padding: 60px 0;
+  border-radius: 50px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.custom__series-menu li {
+  // outline: 1px solid blue;
+  width: 100%;
+  text-align: center;
+  line-height: 120px;
+  cursor: pointer;
+}
+.custom__series-fruit {
+  width: 60px;
+  // margin-top: 110px;
+}
+.custom__series-flower {
+  width: 60px;
+}
+.custom__series-leaf {
+  width: 60px;
+}
+.custom__series-herb {
+  width: 70px;
+  // margin-bottom: 110px;
+}
+
+// button group
+%btn {
+  width: 150px;
+  height: 60px;
+  background: $c-secondary;
+  border: none;
+  border-radius: $br-b;
+  font-size: $fs-h3;
+  filter: $ds-card;
+  position: absolute;
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+}
+.custom {
+  &__btn-reset {
+    @extend %btn;
+    bottom: 50px;
+    left: 100px;
+  }
+  &__btn-goback {
+    @extend %btn;
+    bottom: 50px;
+    left: 290px;
+  }
+  &__btn-complete {
+    @extend %btn;
+    bottom: 50px;
+    right: 100px;
+  }
+}

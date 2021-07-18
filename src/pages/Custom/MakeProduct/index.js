@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { FiX, FiRefreshCw, FiSkipBack, FiCheckSquare } from 'react-icons/fi'
 
-import '../style.scss'
+import './style.scss'
 import items_data from './data/sidebar_items.json'
 import series_data from './data/sidebar_series.json'
 
@@ -81,7 +81,7 @@ function MakeProduct(props) {
     <>
       <div className="custom">
         <ProgressBar noteStatus={noteStatus} />
-        <FiX className="custom__close-btn" />
+        <FiX className="close-btn" />
         <article className="description">
           {description && (
             <>

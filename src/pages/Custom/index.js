@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import './style.scss'
+
 import MakeProduct from './MakeProduct'
 import ShowProduct from './ShowProduct'
 
