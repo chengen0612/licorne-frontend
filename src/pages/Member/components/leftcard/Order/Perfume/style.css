@@ -1,4 +1,4 @@
-.member__leftCard {
+.memberOrderPerfume__leftCard {
   width: 350px;
   height: 900px;
   background-color: #ffffff;
@@ -6,45 +6,51 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   margin: 26px auto 26px 25px;
 }
-.member__photo {
+.memberOrderPerfume__Order.memberOrderPerfume__Order {
+  background-color: #223843;
+}
+.memberOrderPerfume__Order.memberOrderPerfume__Order h3 {
+  color: #ffffff;
+}
+.memberOrderPerfume__photo {
   width: 250px;
   height: 250px;
   margin: 34px 50px -25px 50px;
   border-radius: 50%;
 }
-.member__photoEditIcon {
+.memberOrderPerfume__photoEditIcon {
   width: 100%;
   margin: 0 275px;
 }
-.member__photoEditBtn {
+.memberOrderPerfume__photoEditBtn {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
   border: 1px solid transparent;
   outline: none;
 }
-.member__textBox {
+.memberOrderPerfume__textBox {
   width: 150px;
   margin: 20px auto;
 }
-.member__nickName {
+.memberOrderPerfume__nickName {
   text-align: center;
 }
-.member__account {
+.memberOrderPerfume__account {
   text-align: center;
   margin: -10px 0 0 0;
 }
-.member__account h3 {
+.memberOrderPerfume__account h3 {
   font-weight: lighter;
 }
-.member__memberLevel {
+.memberOrderPerfume__memberLevel {
   text-align: center;
   padding: 10px 0 0 0;
 }
-.member__memberLevel h4 {
+.memberOrderPerfume__memberLevel h4 {
   font-weight: lighter;
 }
-.member__menuBtn {
+.memberOrderPerfume__menuBtn {
   width: 250px;
   height: 50px;
   border-radius: 10px;
@@ -53,7 +59,7 @@
   border: 1px solid transparent;
   outline: none;
 }
-.member__menuBtn h3 {
+.memberOrderPerfume__menuBtn h3 {
   color: #223843;
   font-weight: normal;
 }

@@ -25,7 +25,7 @@ function MemberData() {
             <textarea
               className="memberData__introContent"
               type="text"
-              name="contactAddress"
+              name="introContent"
               value="對香水充滿好奇心的可愛狗狗，尋找好吃的味道。"
               disabled
             ></textarea>

@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 
 // 左邊會員目錄元件
-import MemberLeftCard from '../components/leftcard'
+import MemberLeftCard from '../components/leftcard/MemberData'
 import MemberRightCard from '../components/rightcard/MemberData'
 
 function MemberData() {

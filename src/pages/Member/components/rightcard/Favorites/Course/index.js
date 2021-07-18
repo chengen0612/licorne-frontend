@@ -8,15 +8,19 @@ function MemberFavorites() {
     <>
       <div className="memberFavorites__rightCard">
         <div className="memberFavorites__favoritesBtn">
-          <button className="memberFavorites__perfumebtn favoritesBtn">
-            香水
-          </button>
-          <button
-            id="coursebtn"
-            className="memberFavorites__coursebtn favoritesBtn"
-          >
-            課程
-          </button>
+          <a href="/member/favorites/perfume">
+            <button className="memberFavorites__perfumebtn favoritesBtn">
+              香水
+            </button>
+          </a>
+          <a href="/member/favorites/course">
+            <button
+              id="coursebtn"
+              className="memberFavorites__coursebtn favoritesBtn"
+            >
+              課程
+            </button>
+          </a>
         </div>
         <div className="memberFavorites__courseBox">
           <div className="memberFavorites__courseItem">

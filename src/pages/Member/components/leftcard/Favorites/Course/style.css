@@ -1,0 +1,65 @@
+.memberFavoritesCourse__leftCard {
+  width: 350px;
+  height: 900px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  margin: 26px auto 26px 25px;
+}
+.memberFavoritesCourse__favorites.memberFavoritesCourse__favorites {
+  background-color: #223843;
+}
+.memberFavoritesCourse__favorites.memberFavoritesCourse__favorites h3 {
+  color: #ffffff;
+}
+.memberFavoritesCourse__photo {
+  width: 250px;
+  height: 250px;
+  margin: 34px 50px -25px 50px;
+  border-radius: 50%;
+}
+.memberFavoritesCourse__photoEditIcon {
+  width: 100%;
+  margin: 0 275px;
+}
+.memberFavoritesCourse__photoEditBtn {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  outline: none;
+}
+.memberFavoritesCourse__textBox {
+  width: 150px;
+  margin: 20px auto;
+}
+.memberFavoritesCourse__nickName {
+  text-align: center;
+}
+.memberFavoritesCourse__account {
+  text-align: center;
+  margin: -10px 0 0 0;
+}
+.memberFavoritesCourse__account h3 {
+  font-weight: lighter;
+}
+.memberFavoritesCourse__memberLevel {
+  text-align: center;
+  padding: 10px 0 0 0;
+}
+.memberFavoritesCourse__memberLevel h4 {
+  font-weight: lighter;
+}
+.memberFavoritesCourse__menuBtn {
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  margin: 20px 50px 0 50px;
+  background-color: #efefef;
+  border: 1px solid transparent;
+  outline: none;
+}
+.memberFavoritesCourse__menuBtn h3 {
+  color: #223843;
+  font-weight: normal;
+}
