@@ -119,15 +119,15 @@ function MakeProduct(props) {
             selectedSeries={selectedSeries}
           />
         </aside>
-        <button className="btn custom__btn-reset" onClick={resetExecutor}>
-          <FiRefreshCw className="feather-m custom__icon" />
+        <button className="custom__btn-reset" onClick={resetExecutor}>
+          <FiRefreshCw className="custom__icon" />
           重做
         </button>
-        <button className="btn custom__btn-goback" onClick={gobackExecuter}>
+        <button className="custom__btn-goback" onClick={gobackExecuter}>
           <FiSkipBack />
           退回
         </button>
-        <button className="btn custom__btn-complete" onClick={completeExecuter}>
+        <button className="custom__btn-complete" onClick={completeExecuter}>
           <FiCheckSquare />
           完成
         </button>

@@ -1,5 +1,11 @@
 import React from 'react'
-import { FiX, FiHeart, FiShoppingBag, FiUpload } from 'react-icons/fi'
+import {
+  FiX,
+  FiRefreshCw,
+  FiHeart,
+  FiShoppingBag,
+  FiUpload,
+} from 'react-icons/fi'
 
 import { imgPath } from '../../../config'
 
@@ -8,6 +14,7 @@ import CostList from './OfferList'
 function ShowProduct(props) {
   const { productDetail } = props
   console.log(productDetail)
+
   const {
     noteIdList,
     topNote,
@@ -41,6 +48,18 @@ function ShowProduct(props) {
           middleNote={middleNote}
           baseNote={baseNote}
         />
+        <button className="product__btn-reset">
+          <FiRefreshCw /> 重做
+        </button>
+        <button className="product__btn-favorite">
+          <FiHeart /> 收藏
+        </button>
+        <button className="product__btn-purchase">
+          <FiShoppingBag /> 訂購
+        </button>
+        <button className="product__btn-share">
+          <FiUpload /> 分享
+        </button>
       </div>
     </>
   )

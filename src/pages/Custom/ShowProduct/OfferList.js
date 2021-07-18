@@ -10,9 +10,9 @@ function CostList(props) {
       <table className="cost-list">
         <thead>
           <tr>
-            <th className="cost-list__col"></th>
-            <th className="cost-list__col">材料</th>
-            <th className="cost-list__col">單價</th>
+            <th></th>
+            <th>材料</th>
+            <th>單價</th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@ function CostList(props) {
             <td>NT$ {baseNote.price}</td>
           </tr>
         </tbody>
-        <tfoot className="cost-list__foot">
+        <tfoot>
           <tr>
             <td></td>
             <td></td>
