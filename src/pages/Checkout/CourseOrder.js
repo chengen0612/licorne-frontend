@@ -11,7 +11,7 @@ function CourseOrder() {
             className="checkout__course-box-checkbox-all"
             type="checkbox"
           />
-          工作方課程 (1)
+          工作坊課程 (1)
         </label>
       </div>
       <div className="checkout__course-box-list p-4">
