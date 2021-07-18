@@ -48,30 +48,30 @@ function MakeProduct(props) {
     setSelectedSeries(otherSeries)
   }
 
-  // set product data
+  // pass product data
   const completeExecuter = () => {
     if (selectedItems.length !== 3) return
 
-    const topNote = items_data.filter((item) => item.id === selectedItems[0])
-    const middleNote = items_data.filter((item) => item.id === selectedItems[1])
-    const baseNote = items_data.filter((item) => item.id === selectedItems[2])
-    const serie = series_data.filter((item) => item.id === selectedSeries[0])
+    /* eslint-disable*/
+    const topNote = items_data.filter((item) => item.id === selectedItems[0])[0]
+    const middleNote = items_data.filter((item) => item.id === selectedItems[1])[0]
+    const baseNote = items_data.filter((item) => item.id === selectedItems[2])[0]
+    const serie = series_data.filter((item) => item.id === selectedSeries[0])[0]
+    /* eslint-enable*/
 
     const productId =
-      topNote[0].ingredient_id +
-      middleNote[0].ingredient_id +
-      baseNote[0].ingredient_id
+      topNote.ingredient_id + middleNote.ingredient_id + baseNote.ingredient_id
 
     const result = {
       noteIdList: selectedItems,
-      topNote: { title: topNote[0].name_zh, price: topNote[0].price },
-      middleNote: { title: middleNote[0].name_zh, price: middleNote[0].price },
-      baseNote: { title: baseNote[0].name_zh, price: baseNote[0].price },
-      serieId: selectedSeries[0],
-      serieName: serie[0].name_zh,
-      serieDescription: serie[0].description_zh,
+      topNote: { title: topNote.name_zh, price: topNote.price },
+      middleNote: { title: middleNote.name_zh, price: middleNote.price },
+      baseNote: { title: baseNote.name_zh, price: baseNote.price },
+      serieId: selectedSeries,
+      serieName: serie.name_zh,
+      serieDescription: serie.description_zh,
       productId: productId,
-      productImage: serie[0].product_img,
+      productImage: serie.product_img,
     }
 
     setProductDetail(result)
@@ -112,16 +112,13 @@ function MakeProduct(props) {
           />
         </aside>
         <button className="custom__btn-reset" onClick={resetExecutor}>
-          <FiRefreshCw className="custom__icon" />
-          重做
+          <FiRefreshCw /> 重做
         </button>
         <button className="custom__btn-goback" onClick={gobackExecuter}>
-          <FiSkipBack />
-          退回
+          <FiSkipBack /> 退回
         </button>
         <button className="custom__btn-complete" onClick={completeExecuter}>
-          <FiCheckSquare />
-          完成
+          <FiCheckSquare /> 完成
         </button>
       </div>
     </>
