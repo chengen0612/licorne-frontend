@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {
-  FiX,
-  FiRefreshCw,
-  FiSkipBack,
-  FiCheckSquare,
-  FiHeart,
-  FiShoppingBag,
-  FiUpload,
-} from 'react-icons/fi'
+import { FiX, FiRefreshCw, FiSkipBack, FiCheckSquare } from 'react-icons/fi'
 
 import '../style.scss'
 import items_data from './data/sidebar_items.json'
