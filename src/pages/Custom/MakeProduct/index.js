@@ -59,8 +59,7 @@ function MakeProduct(props) {
 
   // handle progress bar
   useEffect(() => {
-    let count = selectedItems.length
-    if (count >= 2) count = 2
+    const count = Math.min(selectedItems.length, 2)
     const newProgressBar = [false, false, false]
     newProgressBar[count] = true
     setNoteStatus(newProgressBar)
@@ -147,9 +146,11 @@ function MakeProduct(props) {
           <FiRefreshCw /> 重做
         </button>
         <button className="custom__btn-goback" onClick={gobackExecuter}>
+          {/* TODO pop up message after click*/}
           <FiSkipBack /> 退回
         </button>
         <button className="custom__btn-complete" onClick={completeExecuter}>
+          {/* TODO control color with useState() */}
           <FiCheckSquare /> 完成
         </button>
       </div>
