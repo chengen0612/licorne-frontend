@@ -1,24 +1,10 @@
 /* @import '../../styles/global.css'; */
 
-/* @import '../../styles/global.css'; */
+/* body {
+  overflow: hidden;
+} */
 
-/* 
-fav-cart
-fav-cart__sidebar
-fav-cart__bk-screen
-fav-cart__sidebar__fav
-fav-cart__sidebar__cart
-*/
-body {
-  /* overflow: hidden; */
-}
-
-.dummy-page {
-  width: 1000px;
-  /* height: 100vh; */
-}
-
-.fav-cart__bk-screen {
+.cj-blackscreen {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -29,7 +15,7 @@ body {
   /* visibility: hidden; */
 }
 
-.fav-cart__sidebar {
+.cj-sidebar {
   width: 520px;
   height: 100vh;
   position: fixed;
@@ -40,30 +26,37 @@ body {
   filter: var(--ds-sidebar);
 }
 
-.fav-cart__sidebar__top1 {
+.cj-sidebar__x {
   /* border: 1px solid red; */
   height: 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.fav-cart__sidebar__top1 div {
+.cj-sidebar__x div {
   height: var(--is-m);
   /* border: 1px solid red; */
 }
 
-.fav-cart__sidebar__top2 {
+.cj-sidebar__switch {
   width: 500px;
   height: 50px;
   /* border: 1px solid blue; */
   border-top: 1px solid #707070;
   border-bottom: 1px solid #707070;
+  display: flex;
 }
 
-.fav-cart__sidebar__top2 div {
+.cj-sidebar__switch div {
   width: 250px;
   height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.fav-cart__sidebar__top2 p {
+.cj-sidebar__switch p {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);
   font-weight: var(--fw-light);
@@ -71,21 +64,29 @@ body {
   line-height: 48px;
 }
 
-.fav-cart__sidebar__top2 p:hover {
+.cj-sidebar__switch p:hover {
   border-bottom: 3px solid var(--c-primary);
   font-weight: var(--fw-medium);
 }
 
-.fav-cart__sidebar__placeholder {
+.cj-sidebar__space {
   height: 50px;
 }
 
-.fav-cart__sidebar__no-item p {
+/* 
+---------- No Item ---------
+*/
+
+.cj-sidebar__no-item p {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-h5);
   font-weight: var(--fw-light);
   color: #000000;
 }
+
+/* 
+---------- Favorite Items ---------
+*/
 
 .fav-cart__sidebar__fav__wrap {
   /* border: 1px solid red; */

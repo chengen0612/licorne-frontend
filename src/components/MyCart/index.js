@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../styles/global.css'
 import './style.css'
 import { FiX } from 'react-icons/fi'
@@ -7,36 +7,38 @@ import MyCartCartContainer from './childComponent/MyCartCartContainer'
 import MyCartFavContainer from './childComponent/MyCartFavContainer'
 
 function MyCart() {
+  const [sidebarStatus, setSidebarStatus] = useState(true)
+
   return (
     <>
-      <div className="fav-cart__bk-screen"></div>
+      <div className="cj-blackscreen"></div>
 
-      <div className="fav-cart__sidebar">
-        <div
-          className="
-        fav-cart__sidebar__top1
-        d-flex
-        justify-content-end
-        align-items-center
-        pr-4
-      "
-        >
+      <div
+        className={
+          sidebarStatus ? 'cj-sidebar' : 'cj-sidebar cj-sidebar--close'
+        }
+      >
+        <div className="cj-sidebar__x pr-4">
           <div>
-            <FiX role="button" className="feather-m" />
+            <FiX
+              role="button"
+              className="feather-m"
+              onClick={() => setSidebarStatus(!sidebarStatus)}
+            />
           </div>
         </div>
 
-        <div className="fav-cart__sidebar__top2 d-flex">
-          <div className="d-flex justify-content-center align-items-center">
+        <div className="cj-sidebar__switch">
+          <div>
             <p role="button">收藏清單</p>
           </div>
 
-          <div className="d-flex justify-content-center align-items-center">
+          <div>
             <p role="button">購物籃</p>
           </div>
         </div>
 
-        <div className="fav-cart__sidebar__placeholder"></div>
+        <div className="cj-sidebar__space"></div>
         {/* <MyCartNoContnt /> */}
         {/* <MyCartCartContainer /> */}
         <MyCartFavContainer />
