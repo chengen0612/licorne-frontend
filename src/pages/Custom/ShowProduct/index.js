@@ -32,6 +32,11 @@ function ShowProduct(props) {
   return (
     <>
       <div className="product">
+        {/* background blob */}
+        <div className="pink-blob"></div>
+        <div className="orange-blob"></div>
+        <div className="yellow-blob"></div>
+        {/* background blob end */}
         <div className="top-bar">
           <span>
             {serieName}&nbsp;&nbsp;{productId}

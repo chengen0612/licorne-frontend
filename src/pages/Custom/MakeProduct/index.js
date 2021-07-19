@@ -111,6 +111,11 @@ function MakeProduct(props) {
   return (
     <>
       <div className="custom">
+        {/* background blob */}
+        <div className="pink-blob"></div>
+        <div className="orange-blob"></div>
+        <div className="yellow-blob"></div>
+        {/* background blob end */}
         <ProgressBar noteStatus={noteStatus} />
         <FiX className="close-btn" />
         <article className="description">
