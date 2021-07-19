@@ -11,12 +11,44 @@ import SidebarItems from './SidebarItems'
 import ProgressBar from './ProgressBar'
 
 function MakeProduct(props) {
+  // pass finished product's data
   const { setProductDetail } = props
+
+  // store data from server
+  const [itemsData, setItemsData] = useState([])
+  const [seriesData, setSeriesData] = useState([])
+
+  // states effect screen
   const [displaySeries, setDisplaySeries] = useState('')
   const [description, setDescription] = useState('')
   const [selectedItems, setSelectedItems] = useState([])
   const [selectedSeries, setSelectedSeries] = useState([])
   const [noteStatus, setNoteStatus] = useState([false, false, false])
+
+  // get data
+  async function getDataFromServer() {
+    const url = 'http://localhost:6005/custom'
+
+    const request = new Request({
+      method: 'GET',
+      header: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+
+    const reponse = await fetch(url, request)
+    const data = await reponse.json()
+    // console.log(data)
+
+    setItemsData(data.ingredientData)
+    setSeriesData(data.fragranceData)
+  }
+
+  // set data after first loading
+  useEffect(() => {
+    getDataFromServer()
+  }, [])
 
   // handle description
   useEffect(() => {
