@@ -4,27 +4,27 @@
     "name_zh": "果香調",
     "description_zh": "果香調香氛包括以各類柑橘屬水果為主導的香水，以及眾多熱帶水果混合而成的香氛。 果香調香氛通常包含很多種熱帶水果。 桃子，梨，蘋果，李子​​，草莓等。 通常果香調香氛也會加入一些花香來做點綴，讓香氛變得更加美味誘人。",
     "series_img": "/images/custom/sidebar_fruit.png",
-    "product_img": "/images/custom/fragrance_fruit.png"
+    "product_img": "/images/custom/products/fragrance_fruit.png"
   },
   {
     "id": "2",
     "name_zh": "花香調",
     "description_zh": "顧名思義，就是以花香為主調的香水。在香調表中可能會看見玫瑰、茉莉、百合等味道，在所有香氛產品中，花香調香水可以說是大宗。將花香密封在小瓶子裡的構想，是製造香水的原創點，花香調的香氣，更令人想起「花」的嬌美。花香調可分為三種：單純的花香調，比如單純的茉莉花香、梔子花香、玫瑰花香等。",
     "series_img": "/images/custom/sidebar_flower.png",
-    "product_img": "/images/custom/fragrance_flower.png"
+    "product_img": "/images/custom/products/fragrance_flower.png"
   },
   {
     "id": "3",
     "name_zh": "綠香調",
     "description_zh": "春天裡，破土而出的野草、鮮嫩的綠葉、一大片一大片各種色彩，想必大家都不陌生。那麼，這些自然界的植物所散發出的香草味道，你又有否認真留意？綠香調香水以樹葉或青草所散發出來的綠草香作為主旋律。綠香調常與花香混合，散發出的香氣會令人想起了綠意盎然的大自然，這就是這種香調的特徵。綠香調屬於清爽的香氣，適用於中性或者男性香水。相比之下女士香水不太會專門做綠香調香水，但卻往往以清爽自然的綠香調收尾，令人感覺意猶未盡，沁心潤脾。",
     "series_img": "/images/custom/sidebar_leaf.png",
-    "product_img": "/images/custom/fragrance_herb.png"
+    "product_img": "/images/custom/products/fragrance_herb.png"
   },
   {
     "id": "4",
     "name_zh": "綠香調",
     "description_zh": "春天裡，破土而出的野草、鮮嫩的綠葉、一大片一大片各種色彩，想必大家都不陌生。那麼，這些自然界的植物所散發出的香草味道，你又有否認真留意？綠香調香水以樹葉或青草所散發出來的綠草香作為主旋律。綠香調常與花香混合，散發出的香氣會令人想起了綠意盎然的大自然，這就是這種香調的特徵。綠香調屬於清爽的香氣，適用於中性或者男性香水。相比之下女士香水不太會專門做綠香調香水，但卻往往以清爽自然的綠香調收尾，令人感覺意猶未盡，沁心潤脾。",
     "series_img": "/images/custom/sidebar_herb.png",
-    "product_img": "/images/custom/fragrance_herb.png"
+    "product_img": "/images/custom/products/fragrance_herb.png"
   }
 ]
