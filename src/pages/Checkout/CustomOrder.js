@@ -39,10 +39,10 @@ function CustomOrder() {
     <>
       <div className="checkout__custom-box-top pl-4 pt-3 pb-2">
         <label className="checkout__custom-box-title">
-          {/* <input
+          <input
             className="checkout__custom-box-checkbox-all"
             type="checkbox"
-          /> */}
+          />
           客製商品 <span>({customItems.length})</span>
         </label>
       </div>
@@ -51,7 +51,10 @@ function CustomOrder() {
         return (
           <>
             <div className="checkout__custom-box-list p-4" key={customItem.id}>
-              {/* <input className="checkout__custom-box-checkbox" type="checkbox" /> */}
+              <input
+                className="checkout__custom-box-checkbox"
+                type="checkbox"
+              />
               <Link to="/" className="checkout__custom-box-img-wrapper">
                 <img
                   className="checkout__custom-box-img"
@@ -83,7 +86,7 @@ function CustomOrder() {
                 className="box-quantity"
                 type="number"
                 min="1"
-                value={customQuantities[i]}
+                defaultValue={customQuantities[i]}
               />
               <span className="checkout__custom-box-product-subtotal">
                 NT $6000

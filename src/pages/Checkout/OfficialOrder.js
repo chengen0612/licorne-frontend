@@ -7,7 +7,7 @@ function OfficialOrder() {
   const [officialQuantities, setOfficialQuantities] = useState([])
   // const [dataLoading, setDataLoading] = useState(false)
 
-  async function getProductInfoFromServer() {
+  async function getOfficialInfoFromServer() {
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/checkout'
 
@@ -32,17 +32,17 @@ function OfficialOrder() {
   }
 
   useEffect(() => {
-    getProductInfoFromServer()
+    getOfficialInfoFromServer()
   }, [])
 
   return (
     <>
       <div className="checkout__official-box-top pl-4 pt-3 pb-2">
         <label className="checkout__official-box-title">
-          {/* <input
+          <input
             className="checkout__official-box-checkbox-all"
             type="checkbox"
-          /> */}
+          />
           官方商品 <span>({officialItems.length})</span>
         </label>
       </div>
@@ -54,10 +54,10 @@ function OfficialOrder() {
               className="checkout__official-box-list p-4"
               key={officialItem.id}
             >
-              {/* <input
+              <input
                 className="checkout__official-box-checkbox"
                 type="checkbox"
-              /> */}
+              />
               <Link to="/" className="checkout__official-box-img-wrapper">
                 <img
                   className="checkout__official-box-img"
@@ -94,7 +94,7 @@ function OfficialOrder() {
                 className="box-quantity"
                 type="number"
                 min="1"
-                value={officialQuantities[i]}
+                defaultValue={officialQuantities[i]}
               />
               <span className="checkout__official-box-product-subtotal">
                 NT $6000
