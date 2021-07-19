@@ -1,46 +1,110 @@
-import React from 'react'
-import { imgPath } from '../../config'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
 function OfficialOrder() {
+  const [officialItems, setOfficialItems] = useState([])
+  const [officialQuantities, setOfficialQuantities] = useState([])
+  // const [dataLoading, setDataLoading] = useState(false)
+
+  async function getProductInfoFromServer() {
+    // 連接的伺服器資料網址
+    const url = 'http://localhost:6005/checkout'
+
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+
+    const response = await fetch(request)
+    const data = await response.json()
+    const officialProduct = data.official
+    const officialQuantity = data.officialQuantity.split(',')
+    console.log(officialProduct)
+    console.log(officialQuantity)
+    // 設定資料
+    setOfficialItems(officialProduct)
+    setOfficialQuantities(officialQuantity)
+  }
+
+  useEffect(() => {
+    getProductInfoFromServer()
+  }, [])
+
   return (
     <>
       <div className="checkout__official-box-top pl-4 pt-3 pb-2">
         <label className="checkout__official-box-title">
-          <input
+          {/* <input
             className="checkout__official-box-checkbox-all"
             type="checkbox"
-          />
-          官方商品 <span>(3)</span>
+          /> */}
+          官方商品 <span>({officialItems.length})</span>
         </label>
       </div>
-      <div className="checkout__official-box-list p-4">
-        <input className="checkout__official-box-checkbox" type="checkbox" />
-        <div className="checkout__official-box-img-wrapper">
-          <img
-            className="checkout__official-box-img"
-            src={imgPath + '/images/official/animal_100ml.png'}
-            alt=""
-          />
-        </div>
-        <div className="checkout__official-box-details w-25 pl-4">
-          <span className="checkout__official-box-name-zh">夜鶯</span>
-          <span className="checkout__official-box-product-name-en">
-            Nightingale
-          </span>
-          <span className="checkout__official-box-product-series">
-            動物香氛系列
-          </span>
-          <span className="checkout__official-box-product-volume">100ML</span>
-        </div>
-        <span className="checkout__official-box-product-price">NT $2000</span>
-        <input className="box-quantity" type="number" min="1" />
-        <span className="checkout__official-box-product-subtotal">
-          NT $6000
-        </span>
-        {/* TODO: delete product detail */}
-        <FiX className="feather-s" role="button" />
-      </div>
+      {officialItems.map((v, i) => {
+        const officialItem = v[0]
+        return (
+          <>
+            <div
+              className="checkout__official-box-list p-4"
+              key={officialItem.id}
+            >
+              {/* <input
+                className="checkout__official-box-checkbox"
+                type="checkbox"
+              /> */}
+              <Link to="/" className="checkout__official-box-img-wrapper">
+                <img
+                  className="checkout__official-box-img"
+                  // src={
+                  //   imgPath + '/images/official/animal_100ml.png'
+                  // }
+                  src={officialItem.img_id}
+                  alt=""
+                />
+              </Link>
+              <Link to="/" className="checkout__official-box-details w-25 pl-4">
+                <span className="checkout__official-box-name-zh">
+                  {/* 夜鶯 */}
+                  {officialItem.name_zh}
+                </span>
+                <span className="checkout__official-box-product-name-en">
+                  {/* Nightingale */}
+                  {officialItem.name_en}
+                </span>
+                <span className="checkout__official-box-product-series">
+                  {/* 動物香氛系列 */}
+                  {officialItem.series_id}
+                </span>
+                <span className="checkout__official-box-product-volume">
+                  {/* 100ML */}
+                  {officialItem.volume}
+                </span>
+              </Link>
+              <span className="checkout__official-box-product-price">
+                {/* NT $2000 */}
+                NT$ {officialItem.price}
+              </span>
+              <input
+                className="box-quantity"
+                type="number"
+                min="1"
+                value={officialQuantities[i]}
+              />
+              <span className="checkout__official-box-product-subtotal">
+                NT $6000
+              </span>
+              {/* TODO: delete product detail */}
+              <FiX className="feather-s" role="button" />
+            </div>
+          </>
+        )
+      })}
     </>
   )
 }
