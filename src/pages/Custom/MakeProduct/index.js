@@ -3,15 +3,15 @@ import React, { useState, useEffect } from 'react'
 import { FiX, FiRefreshCw, FiSkipBack, FiCheckSquare } from 'react-icons/fi'
 
 import './style.scss'
-import items_data from './data/sidebar_items.json'
-import series_data from './data/sidebar_series.json'
+// import items_data from './data/sidebar_items.json'
+// import series_data from './data/sidebar_series.json'
 
 import SidebarSeries from './SidebarSeries'
 import SidebarItems from './SidebarItems'
 import ProgressBar from './ProgressBar'
 
 function MakeProduct(props) {
-  // pass finished product's data
+  // pass data of finished product
   const { setProductDetail } = props
 
   // store data from server
@@ -53,7 +53,7 @@ function MakeProduct(props) {
   // handle description
   useEffect(() => {
     if (!displaySeries) return setDescription('')
-    const response = series_data.filter((item) => item.id === displaySeries)
+    const response = seriesData.filter((item) => item.id === displaySeries)
     setDescription(response[0].description_zh)
   }, [displaySeries])
 
@@ -85,10 +85,10 @@ function MakeProduct(props) {
     if (selectedItems.length !== 3) return
 
     /* eslint-disable*/
-    const topNote = items_data.filter((item) => item.id === selectedItems[0])[0]
-    const middleNote = items_data.filter((item) => item.id === selectedItems[1])[0]
-    const baseNote = items_data.filter((item) => item.id === selectedItems[2])[0]
-    const serie = series_data.filter((item) => item.id === selectedSeries[0])[0]
+    const topNote = itemsData.filter((item) => item.id === selectedItems[0])[0]
+    const middleNote = itemsData.filter((item) => item.id === selectedItems[1])[0]
+    const baseNote = itemsData.filter((item) => item.id === selectedItems[2])[0]
+    const serie = seriesData.filter((item) => item.id === selectedSeries[0])[0]
     /* eslint-enable*/
 
     const productId =
@@ -99,11 +99,11 @@ function MakeProduct(props) {
       topNote: { title: topNote.name_zh, price: topNote.price },
       middleNote: { title: middleNote.name_zh, price: middleNote.price },
       baseNote: { title: baseNote.name_zh, price: baseNote.price },
-      serieId: selectedSeries,
+      serieId: selectedSeries[0],
       serieName: serie.name_zh,
       serieDescription: serie.description_zh,
       productId: productId,
-      productImage: serie.product_img,
+      productImage: serie.bottle_img,
     }
 
     setProductDetail(result)
@@ -126,7 +126,7 @@ function MakeProduct(props) {
         <aside className="custom__sidebar-wrapper">
           {displaySeries && (
             <SidebarItems
-              data={items_data}
+              data={itemsData}
               displaySeries={displaySeries}
               setDisplaySeries={setDisplaySeries}
               selectedItems={selectedItems}
@@ -136,7 +136,7 @@ function MakeProduct(props) {
             />
           )}
           <SidebarSeries
-            data={series_data}
+            data={seriesData}
             displaySeries={displaySeries}
             setDisplaySeries={setDisplaySeries}
             selectedItems={selectedItems}
