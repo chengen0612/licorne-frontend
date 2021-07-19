@@ -245,7 +245,8 @@ header {
   margin-top: 100px;
 }
 .diffuser__box img {
-  width: 100%;
+  width: 600px;
+  height: 600px;
   position: relative;
   left: 250px;
 }
@@ -259,10 +260,12 @@ header {
   background: var(--c-white);
   border: 1px solid #ccc;
   border-radius: 15px;
-  position: relative;
+  /* position: relative; */
   top: 130px;
+  left: 10%;
   filter: var(--ds-sidebar);
   margin: 0 auto;
+  position: fixed;
   z-index: 500;
 }
 .icon__fix {
@@ -317,6 +320,9 @@ header {
   border-bottom: 1px solid var(--c-primary);
   position: relative;
 }
+.modal__map__item:last-child:not(:first-child) {
+  border-bottom: none;
+}
 /* scrollbar */
 .modal__content::-webkit-scrollbar {
   width: 12px;
@@ -354,6 +360,7 @@ header {
   height: 550px;
   border-radius: 10px;
   background: #ccc;
+  overflow: hidden;
 }
 .check__place-btn {
   width: 160px;
@@ -366,4 +373,19 @@ header {
   bottom: 15px;
   color: var(--c-white);
   font-size: var(--fs-span);
+}
+
+.modal__marker {
+  width: 30px;
+  height: 30px;
+  color: var(--c-primary);
+}
+.modal__backdrop {
+  background: var(--c-backdrop);
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
 }

@@ -6,7 +6,7 @@ function CourseExhibition() {
     <>
       <div className="diffuser__content">
         <div className="diffuser__box">
-          <img src={imgPath + '/images/course/course-perfume1.jpg'} alt="" />
+          <img src={imgPath + '/images/course/home-scent-square.jpg'} alt="" />
         </div>
 
         <aside className="diffuser__aside">

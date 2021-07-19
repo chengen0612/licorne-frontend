@@ -3,17 +3,17 @@ import './CourseList.css';
 import { imgPath } from '../../../config';
 import CourseContent from './CourseContent';
 import CourseForm from './CourseForm';
-//import CourseImgTitle from './CourseImgTitle';
 
 const infoBtnClassName = 'infoBtnClassName';
 const defaultClassName = 'info_btnCheck';
 
 function CourseList() {
   const [infoBtn, setInfoBtn] = useState(true);
-  const [value, onChange] = useState(new Date());
+
   const [click, setClick] = useState('info_btnCheck');
   const [clickInfo, setClickInfo] = useState('infoBtnClassName');
 
+  //切換下方資訊狀態
   const clickInfoBtn = (changeClassName, unChangeClassName) => (e) => {
     setInfoBtn(true);
     setClickInfo(changeClassName);
@@ -24,12 +24,6 @@ function CourseList() {
     setInfoBtn(false);
     setClick(changeClassName);
     setClickInfo(unChangeClassName);
-  };
-
-  const submitForm = (e) => {
-    //const data = new FormData(e.target);
-
-    console.log('送出報名');
   };
 
   return (
@@ -43,11 +37,7 @@ function CourseList() {
           <h1 className="title">香水調製工作坊</h1>
           <p className="title_content">調配屬於你的氣味與風格</p>
 
-          <CourseForm
-            submitForm={submitForm}
-            value={value}
-            onChange={onChange}
-          />
+          <CourseForm />
         </aside>
       </div>
       <section className="course_info">
