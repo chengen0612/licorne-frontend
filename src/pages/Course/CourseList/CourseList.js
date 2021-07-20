@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import './CourseList.css';
-import { imgPath } from '../../../config';
-import CourseContent from './CourseContent';
-import CourseForm from './CourseForm';
+import React, { useState } from 'react'
+import './CourseList.css'
+import { imgPath } from '../../../config'
+import CourseContent from './CourseContent'
+import CourseForm from './CourseForm'
 
-const infoBtnClassName = 'infoBtnClassName';
-const defaultClassName = 'info_btnCheck';
+const infoBtnClassName = 'infoBtnClassName'
+const defaultClassName = 'info_btnCheck'
 
 function CourseList() {
-  const [infoBtn, setInfoBtn] = useState(true);
+  const [infoBtn, setInfoBtn] = useState(true)
 
-  const [click, setClick] = useState('info_btnCheck');
-  const [clickInfo, setClickInfo] = useState('infoBtnClassName');
+  const [click, setClick] = useState('info_btnCheck')
+  const [clickInfo, setClickInfo] = useState('infoBtnClassName')
 
   //切換下方資訊狀態
   const clickInfoBtn = (changeClassName, unChangeClassName) => (e) => {
-    setInfoBtn(true);
-    setClickInfo(changeClassName);
-    setClick(unChangeClassName);
-  };
+    setInfoBtn(true)
+    setClickInfo(changeClassName)
+    setClick(unChangeClassName)
+  }
 
   const clickDescription = (changeClassName, unChangeClassName) => (e) => {
-    setInfoBtn(false);
-    setClick(changeClassName);
-    setClickInfo(unChangeClassName);
-  };
+    setInfoBtn(false)
+    setClick(changeClassName)
+    setClickInfo(unChangeClassName)
+  }
 
   return (
     <>
@@ -74,7 +74,7 @@ function CourseList() {
         <CourseContent infoBtn={infoBtn} />
       </section>
     </>
-  );
+  )
 }
 
-export default CourseList;
+export default CourseList

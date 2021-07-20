@@ -1,5 +1,5 @@
-import React from 'react';
-import { imgPath } from '../../../config';
+import React from 'react'
+import { imgPath } from '../../../config'
 
 function CourseDiffuser() {
   return (
@@ -16,6 +16,6 @@ function CourseDiffuser() {
         </aside>
       </div>
     </>
-  );
+  )
 }
-export default CourseDiffuser;
+export default CourseDiffuser

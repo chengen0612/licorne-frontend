@@ -1,15 +1,15 @@
-import React, { useState, useRef } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import { FiHeart, FiRotateCcw } from 'react-icons/fi';
-import CourseMapModal from './CourseMapModal';
-import Backdrop from './Backdrop';
+import React, { useState, useRef } from 'react'
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
+import { FiHeart, FiRotateCcw } from 'react-icons/fi'
+import CourseMapModal from './CourseMapModal'
+import Backdrop from './Backdrop'
 
-const defaultPlace = '請選擇店鋪';
-const defaultProgram = '半日體驗';
-const defaultTime = '09:00 - 12:00';
-const defaultPrice = '單人 NT$ 1,200';
-const defaultDate = new Date();
+const defaultPlace = '請選擇店鋪'
+const defaultProgram = '半日體驗'
+const defaultTime = '09:00 - 12:00'
+const defaultPrice = '單人 NT$ 1,200'
+const defaultDate = new Date()
 const selectPrograms = [
   {
     program: '半日體驗',
@@ -19,7 +19,7 @@ const selectPrograms = [
     program: '一日體驗',
     price: ['單人 NT$ 2,000', '雙人 NT$ 3,600', '四人 NT$ 5,500'],
   },
-];
+]
 
 const initialFormData = Object.freeze({
   form__place: '',
@@ -27,101 +27,101 @@ const initialFormData = Object.freeze({
   form__calendar: '',
   form__time: '',
   form__price: '',
-});
+})
 
 function CourseForm() {
   // 送出表單
-  const form = useRef(null);
-  const [formData, updateFormData] = useState(initialFormData);
+  const form = useRef(null)
+  const [formData, updateFormData] = useState(initialFormData)
 
   const handleChange = (e) => {
     updateFormData({
       ...formData,
       [e.target.name]: e.target.value.trim(),
-    });
-  };
+    })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+    e.preventDefault()
+    console.log(formData)
     // ... submit to API or something
-  };
+  }
 
   // 連動下拉式選單
   const [doSelect, setDoSelect] = useState({
     selectProgram: selectPrograms[0].program,
     selectPrice: selectPrograms[0].price[0],
-  });
+  })
 
   const changeProgram = (e) => {
     //setDoSelect({ selectProgram: e.target.value });
     selectPrograms.map((v, i) => {
       if (e.target.value === v.program) {
-        setDoSelect({ selectProgram: e.target.value, selectPrice: v.price[0] });
+        setDoSelect({ selectProgram: e.target.value, selectPrice: v.price[0] })
       }
-      return true;
-    });
+      return true
+    })
     updateFormData({
       ...formData,
       [e.target.name]: e.target.value.trim(),
-    });
-  };
+    })
+  }
 
   const changePrice = (e) => {
     setDoSelect({
       selectProgram: doSelect.selectProgram,
       selectPrice: e.target.value,
-    });
+    })
     updateFormData({
       ...formData,
       [e.target.name]: e.target.value.trim(),
-    });
-  };
+    })
+  }
 
   const programs = selectPrograms.map((v, i) => {
-    return <option key={i}>{v.program}</option>;
-  });
+    return <option key={i}>{v.program}</option>
+  })
 
   const prices = selectPrograms.map((v, i) => {
     if (doSelect.selectProgram === v.program) {
-      return v.price.map((v, i) => <option key={i}>{v}</option>);
+      return v.price.map((v, i) => <option key={i}>{v}</option>)
     }
-    return true;
-  });
+    return true
+  })
 
   // Modal開關
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
   function showModalHandler() {
-    setShowModal(true);
+    setShowModal(true)
   }
   function closeModalHandler() {
-    setShowModal(false);
+    setShowModal(false)
   }
 
   // 預設值
-  const [place, setPlace] = useState(defaultPlace);
-  const [dateValue, setDateValue] = useState(defaultDate);
+  const [place, setPlace] = useState(defaultPlace)
+  const [dateValue, setDateValue] = useState(defaultDate)
   // setDateValue + handleChange 日曆
   function onCalendarChange(newDate) {
-    setDateValue(newDate);
+    setDateValue(newDate)
     updateFormData({
       ...formData,
       form__calendar: newDate,
-    });
+    })
   }
   // setPlace + handleChange 地點
   function onPlaceChange(newPlace) {
-    setPlace(newPlace);
+    setPlace(newPlace)
     updateFormData({
       ...formData,
       form__place: newPlace,
-    });
+    })
   }
 
   // 重設表單
   function resetForm() {
-    setPlace(defaultPlace);
-    setDateValue(defaultDate);
+    setPlace(defaultPlace)
+    setDateValue(defaultDate)
   }
   return (
     <>
@@ -131,6 +131,7 @@ function CourseForm() {
           重選
         </button>
       </div>
+
       <form className="course__select__form" method="POST" ref={form}>
         <div className="fontContent">
           <div className="block_select">
@@ -211,6 +212,6 @@ function CourseForm() {
         )}
       </form>
     </>
-  );
+  )
 }
-export default CourseForm;
+export default CourseForm

@@ -1,5 +1,5 @@
-import React from 'react';
-import { imgPath } from '../../../config';
+import React from 'react'
+import { imgPath } from '../../../config'
 
 function CourseExhibition() {
   return (
@@ -16,6 +16,6 @@ function CourseExhibition() {
         </aside>
       </div>
     </>
-  );
+  )
 }
-export default CourseExhibition;
+export default CourseExhibition
