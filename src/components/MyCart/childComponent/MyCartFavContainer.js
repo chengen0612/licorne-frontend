@@ -3,16 +3,19 @@ import { FiShoppingBag } from 'react-icons/fi'
 import '../../../styles/global.css'
 import '../style.css'
 
-function MyCartFavContainer() {
+function MyCartFavContainer(prop) {
   return (
     <>
-      <div class="fav-cart__sidebar__fav__wrap">
-        <div class="fav-cart__sidebar__fav__wrap__item">
-          <div class="fav-cart__sidebar__fav__wrap__item__img">
+      <div
+        className="cj-sidebar__fav"
+        style={{ display: prop.favOrCart === 'Fav' ? 'block' : 'none' }}
+      >
+        <div className="cj-sidebar__fav__item">
+          <div className="cj-sidebar__fav__item__img">
             <img src="/public/images/member/animal_100ml.png" alt="" />
           </div>
 
-          <div class="fav-cart__sidebar__fav__wrap__item__desc">
+          <div className="cj-sidebar__fav__item__desc">
             <p>玉露綠茶</p>
             <p>
               Gyokuro Green Tea
@@ -25,7 +28,7 @@ function MyCartFavContainer() {
             </p>
           </div>
 
-          <div class="fav-cart__sidebar__fav__wrap__item__btn">
+          <div className="cj-sidebar__fav__item__btn">
             <div>
               <FiShoppingBag />
             </div>

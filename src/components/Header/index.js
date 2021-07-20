@@ -1,13 +1,20 @@
 import React from 'react'
 import './style.css'
 import MyCart from '../MyCart'
+import { useState } from 'react'
 
 import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
+// import { set } from 'immer/dist/internal'
 
 function Header() {
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
+  function closeSidebar() {
+    setSidebarIsOpen(false)
+  }
+
   return (
     <>
-      <MyCart />
+      <MyCart sidebarIsOpen={sidebarIsOpen} closeSidebar={closeSidebar} />
       <div className="header__line col-md col-sm"></div>
       <header className="header col-md col-sm">
         {/* -- logo -- */}
@@ -30,6 +37,7 @@ function Header() {
                 </a>
                 <a href="#/">
                   <FiShoppingBag
+                    onClick={() => setSidebarIsOpen(true)}
                     data-feather="shopping-bag"
                     className="header-i"
                   />

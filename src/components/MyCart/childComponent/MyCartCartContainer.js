@@ -4,19 +4,19 @@ import '../style.css'
 import { FiHeart, FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 import animal from './animal_50ml.png'
 
-function MyCartCartContainer() {
+function MyCartCartContainer(prop) {
   return (
-    <>
-      <div class="fav-cart__sidebar__cart__wrap">
-        <div class="fav-cart__sidebar__cart__wrap__item">
-          <div class="fav-cart__sidebar__cart__wrap__item__img">
+    <div style={{ display: prop.favOrCart === 'Cart' ? 'block' : 'none' }}>
+      <div className="cj-sidebar__cart">
+        <div className="cj-sidebar__cart__item">
+          <div className="cj-sidebar__cart__item__img">
             <img src={animal} alt="" />
             <div>
               <FiHeart className="feather-s" role="button" />
             </div>
           </div>
 
-          <div class="fav-cart__sidebar__cart__wrap__item__desc">
+          <div className="cj-sidebar__cart__item__desc">
             <p>玉露綠茶</p>
             <p>
               Gyokuro Green Tea
@@ -33,7 +33,7 @@ function MyCartCartContainer() {
             <p role="button">刪除 </p>
           </div>
 
-          <div class="fav-cart__sidebar__cart__wrap__item__btn">
+          <div className="cj-sidebar__cart__item__btn">
             <div role="button">-</div>
             <p>99</p>
             <div role="button">+</div>
@@ -41,18 +41,18 @@ function MyCartCartContainer() {
         </div>
       </div>
 
-      <div class="fav-cart__sidebar__fav__price">
+      <div className="cj-sidebar__cart__price">
         <div>
           <p>總金額：</p>
           <p>NT$ 7,500</p>
         </div>
       </div>
-      <div class="fav-cart__sidebar__fav__checkout">
+      <div className="cj-sidebar__cart__checkout">
         <div>
           <p role="button">前往結帳</p>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
