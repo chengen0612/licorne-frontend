@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
 function OfficialOrder() {
   const [officialItems, setOfficialItems] = useState([])
   const [officialQuantities, setOfficialQuantities] = useState([])
-  // const [dataLoading, setDataLoading] = useState(false)
+  const [subtotal, setSubtotal] = useState(2)
+  const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
   async function getOfficialInfoFromServer() {
     // 連接的伺服器資料網址
@@ -34,6 +35,19 @@ function OfficialOrder() {
   useEffect(() => {
     getOfficialInfoFromServer()
   }, [])
+
+  const handleDelete = (id) => {
+    const newOfficialItems = officialItems.filter((v, i) => {
+      return v.id !== id
+    })
+    const newOfficialQuantities = officialQuantities.filter((v, i) => {
+      return v.id !== id
+    })
+    console.log(newOfficialItems)
+    console.log(newOfficialQuantities)
+    setOfficialItems(newOfficialItems)
+    setOfficialQuantities(newOfficialQuantities)
+  }
 
   return (
     <>
@@ -94,13 +108,27 @@ function OfficialOrder() {
                 className="box-quantity"
                 type="number"
                 min="1"
+                name="quantity"
                 defaultValue={officialQuantities[i]}
+                // value={subtotal}
+                onInput={(e) => setSubtotal(e.target.value)}
+                onKeyDown={(e) =>
+                  symbolsArr.includes(e.key) && e.preventDefault()
+                }
               />
               <span className="checkout__official-box-product-subtotal">
-                NT $6000
+                {/* NT $6000 */}
+                NT$ {parseInt(officialItem.price) * parseInt(subtotal)}
+                {console.log(parseInt(officialItem.price) * parseInt(subtotal))}
               </span>
               {/* TODO: delete product detail */}
-              <FiX className="feather-s" role="button" />
+              <FiX
+                className="feather-s"
+                role="button"
+                onClick={() => {
+                  handleDelete(officialQuantities.id)
+                }}
+              />
             </div>
           </>
         )
