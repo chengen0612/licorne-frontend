@@ -13,7 +13,8 @@ import Header from '../components/Header'
 // import MemberOrderPerfume from '../pages/Member/Order/Perfume'
 
 // organized
-import Member from '../pages/Member/Organized'
+// import Member from '../pages/Member/Organized'
+import Member from '../pages/Member'
 
 function SwitchMember() {
   return (

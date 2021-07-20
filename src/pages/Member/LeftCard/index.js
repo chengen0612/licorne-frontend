@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
-import { imgPath } from '../../../../config'
+import { imgPath } from '../../../config'
 
 function MemberLeftCard() {
   return (
