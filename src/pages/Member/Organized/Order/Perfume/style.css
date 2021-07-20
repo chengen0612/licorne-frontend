@@ -1,0 +1,24 @@
+.memberOrderPerfume__rightCard {
+  width: 1500px;
+  height: 900px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  margin: 26px 20px 26px auto;
+}
+#perfumebtn {
+  border-bottom: 3px solid #223843;
+}
+.memberOrderPerfume__orderBtn {
+  width: 200px;
+  margin: 0 auto;
+}
+.orderBtn {
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  font-size: 30px;
+  font-weight: normal;
+  color: #223843;
+  padding: 0;
+  margin: 34px 0 0 30px;
+}

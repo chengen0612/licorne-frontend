@@ -1,0 +1,166 @@
+.memberOrderPerfume__detailTitleBox {
+  display: flex;
+  width: 1260px;
+  height: 50px;
+  background-color: #223843;
+  border-radius: 10px 10px 0 0;
+  font-size: 25px;
+  font-weight: lighter;
+  color: #ffffff;
+}
+.memberOrderPerfume__detailTitle {
+  padding: 0 0 0 20px;
+  line-height: 50px;
+}
+.memberOrderPerfume__goBackBtn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  line-height: 40px;
+  background-color: #223843;
+  color: #ffffff;
+  margin: 0 30px 0 auto;
+}
+.memberOrderPerfume__detailOrderBox {
+  width: 1260px;
+  height: 580px;
+  border: 1px solid #223843;
+  border-radius: 10px;
+  margin: 84px auto;
+}
+.memberOrderPerfume__detailNumberBox {
+  display: flex;
+  float: right;
+  width: 300px;
+  margin: 26px 0 0 0;
+}
+.memberOrderPerfume__detailNumberTitle h5 {
+  color: #707070;
+  font-weight: lighter;
+}
+.memberOrderPerfume__detailNumber h5 {
+  color: #707070;
+  font-weight: lighter;
+}
+.memberOrderPerfume__detailNumberTitle {
+  margin: 0 25px 0 0;
+}
+.memberOrderPerfume__detailTopLine {
+  width: 1217px;
+  background-color: #223843;
+  margin: 64px 0 0 22px;
+}
+.memberOrderPerfume__detailBottomLine {
+  width: 700px;
+  background-color: #223843;
+  margin: 0 0 0 22px;
+}
+.memberOrderPerfume__detailBox {
+  display: flex;
+  width: 1260px;
+  height: 385px;
+}
+.memberOrderPerfume__detailLeftBox {
+  width: 700px;
+}
+.memberOrderPerfume__detailRightBox {
+  width: 530px;
+}
+.memberOrderPerfume__rightTopBox {
+  /* border: 1px solid red; */
+  height: 192px;
+}
+.memberOrderPerfume__receiveBox {
+  margin: 35px 0 0 45px;
+}
+.memberOrderPerfume__receiveTitle {
+  font-size: 25px;
+  font-weight: lighter;
+}
+.memberOrderPerfume__receiveName {
+  margin: 20px 0 0 0;
+}
+.receiveText {
+  font-size: 20px;
+  font-weight: lighter;
+  color: #707070;
+}
+.memberOrderPerfume__rightBottomBox {
+  /* border: 1px solid red; */
+  height: 192px;
+}
+.memberOrderPerfume__statusBox {
+  margin: 20px 0 0 45px;
+}
+.memberOrderPerfume__statusTitle {
+  font-size: 25px;
+  font-weight: lighter;
+}
+.memberOrderPerfume__detailItemTitle {
+  margin: 35px 0 0 45px;
+}
+.memberOrderPerfume__orderTitle {
+  margin: 0;
+  font-size: 25px;
+  font-weight: lighter;
+}
+.memberOrderPerfume__orderTopItem {
+  width: 650px;
+  height: 120px;
+}
+.memberOrderPerfume__orderBottomItem {
+  width: 650px;
+  height: 120px;
+}
+.orderItem {
+  margin: 25px 0 0 60px;
+  /* border: 1px solid red; */
+}
+.memberOrderPerfume__statusIconBox {
+  display: flex;
+  width: 350px;
+  margin: 40px 0 0 35px;
+}
+.memberOrderPerfume__statusCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #223843;
+  opacity: 0.5;
+}
+.memberOrderPerfume__statusLine {
+  width: 75px;
+  margin: 15px 3px 15px 3px;
+  border-top: 2px solid #223843;
+  opacity: 0.5;
+}
+.memberOrderPerfume__statusConfirm {
+  margin: 3px 2px 2px 2px;
+  color: #ffffff;
+}
+.memberOrderPerfume__statusNameBox {
+  display: flex;
+  width: 390px;
+  margin: 12px 0 0 15px;
+  justify-content: space-between;
+}
+.memberOrderPerfume__statusNameText {
+  color: #707070;
+  font-size: 20px;
+  font-weight: lighter;
+}
+.memberOrderPerfume__detailTotalBox {
+  display: flex;
+  margin: 16px 0 0 495px;
+}
+.memberOrderPerfume__detailTotalNumber {
+  margin: 0 0 0 45px;
+}
+.memberOrderPerfume__detailTotalTital h5 {
+  font-size: 20px;
+  font-weight: lighter;
+}
+.memberOrderPerfume__detailTotalNumber h5 {
+  font-size: 20px;
+  font-weight: lighter;
+}
