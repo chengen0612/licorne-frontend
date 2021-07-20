@@ -5,18 +5,21 @@ import { BrowserRouter as Route, Switch } from 'react-router-dom'
 import Header from '../components/Header'
 
 // 分頁元件
-import Member from '../pages/Member/HomePage'
-import MemberData from '../pages/Member/MemberData'
-import MemberFavoritesCourse from '../pages/Member/Favorites/Course'
-import MemberFavoritesPerfume from '../pages/Member/Favorites/Perfume'
-import MemberOrderCourse from '../pages/Member/Order/Course'
-import MemberOrderPerfume from '../pages/Member/Order/Perfume'
+// import Member from '../pages/Member/HomePage'
+// import MemberData from '../pages/Member/MemberData'
+// import MemberFavoritesCourse from '../pages/Member/Favorites/Course'
+// import MemberFavoritesPerfume from '../pages/Member/Favorites/Perfume'
+// import MemberOrderCourse from '../pages/Member/Order/Course'
+// import MemberOrderPerfume from '../pages/Member/Order/Perfume'
+
+// organized
+import Member from '../pages/Member/Organized'
 
 function SwitchMember() {
   return (
     <>
       <Switch>
-        <Route path="/member/data">
+        {/* <Route path="/member/data">
           <Header />
           <MemberData />
         </Route>
@@ -35,7 +38,7 @@ function SwitchMember() {
         <Route path="/member/order/course">
           <Header />
           <MemberOrderCourse />
-        </Route>
+        </Route> */}
         <Route path="/member">
           <Header />
           <Member />

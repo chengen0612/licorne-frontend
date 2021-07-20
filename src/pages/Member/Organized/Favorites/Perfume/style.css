@@ -7,7 +7,7 @@
   /* margin: 26px 20px 26px auto; */
 }
 .memberFavorites__favoritesBtn {
-  width: 154px;
+  width: 200px;
   margin: 0 auto;
 }
 #perfumebtn {
@@ -20,7 +20,7 @@
   font-weight: normal;
   color: #223843;
   padding: 0;
-  margin: 34px 0 0 0;
+  margin: 34px 0 0 30px;
 }
 .memberFavorites__coursebtn {
   margin: 0 0 0 30px;

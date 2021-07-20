@@ -7,7 +7,8 @@ import './style.css'
 import LeftCard from './LeftCard'
 import HomePage from './HomePage'
 import Profile from './Profile'
-import Favorite from './Favorites'
+import Favorites from './Favorites'
+import Order from './Order'
 
 function Member(props) {
   // because getting props from withRouter, it would update after any click on the buttons of the left card
@@ -27,10 +28,10 @@ function Member(props) {
         res = <Profile />
         break
       case 'order':
-        res = <h1>order</h1>
+        res = <Order />
         break
       case 'favorites':
-        res = <Favorite />
+        res = <Favorites />
         break
       case 'member':
       default:

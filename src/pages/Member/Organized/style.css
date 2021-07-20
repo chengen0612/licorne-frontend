@@ -1,7 +1,7 @@
-.member-wrapper{
+.member-wrapper {
   width: 100vw;
   height: calc(100vh - 128px);
-  background: #aaa;
+  background: var(--c-secondary);
   /* align leftcard and right card */
   padding: 26px;
   display: flex;

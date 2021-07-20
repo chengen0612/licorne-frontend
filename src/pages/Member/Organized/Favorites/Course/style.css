@@ -10,7 +10,7 @@
   border-bottom: 3px solid #223843;
 }
 .memberFavorites__favoritesBtn {
-  width: 154px;
+  width: 200px;
   margin: 0 auto;
 }
 .favoritesBtn {
@@ -20,7 +20,7 @@
   font-weight: normal;
   color: #223843;
   padding: 0;
-  margin: 34px 0 0 0;
+  margin: 34px 0 0 30px;
 }
 .memberFavorites__courseBox {
   width: 1200px;
