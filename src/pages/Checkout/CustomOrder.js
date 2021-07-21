@@ -35,6 +35,14 @@ function CustomOrder() {
     getCustomInfoFromServer()
   }, [])
 
+  const handleDelete = (id) => {
+    const newCustomItems = customItems.filter((v, i) => {
+      return v.id !== id
+    })
+    console.log('current customItems', newCustomItems)
+    setCustomItems(newCustomItems)
+  }
+
   return (
     <>
       <div className="checkout__custom-box-top pl-4 pt-3 pb-2">
@@ -46,11 +54,11 @@ function CustomOrder() {
           客製商品 <span>({customItems.length})</span>
         </label>
       </div>
-      {customItems.map((v, i) => {
-        const customItem = v[0]
+      {customItems.map((customItem, i) => {
+        // const customItem = v[0]
         return (
           <>
-            <div className="checkout__custom-box-list p-4" key={customItem.id}>
+            <div className="checkout__custom-box-list p-4">
               <input
                 className="checkout__custom-box-checkbox"
                 type="checkbox"
@@ -59,12 +67,16 @@ function CustomOrder() {
                 <img
                   className="checkout__custom-box-img"
                   // src={imgPath + '/images/custom/fragrance_flower.png'}
+                  key={customItem.id}
                   src={customItem.bottle_img}
                   alt=""
                 />
               </Link>
               <Link to="/" className="checkout__custom-box-details w-25 pl-4">
-                <span className="checkout__custom-box-name-zh">
+                <span
+                  className="checkout__custom-box-name-zh"
+                  key={customItem.id}
+                >
                   {/* MTLALM */}
                   {customItem.cust_id}
                 </span>
@@ -78,7 +90,10 @@ function CustomOrder() {
                   100ML
                 </span>
               </Link>
-              <span className="checkout__custom-box-product-price">
+              <span
+                className="checkout__custom-box-product-price"
+                key={customItem.id}
+              >
                 {/* NT $2000 */}
                 NT$ {customItem.price}
               </span>
@@ -89,10 +104,17 @@ function CustomOrder() {
                 defaultValue={customQuantities[i]}
               />
               <span className="checkout__custom-box-product-subtotal">
-                NT $6000
+                {/* NT $6000 */}
+                NT$ {parseInt(customItem.price) * parseInt(customQuantities[i])}
               </span>
               {/* TODO: delete product detail */}
-              <FiX className="feather-s" role="button" />
+              <FiX
+                className="feather-s"
+                role="button"
+                onClick={() => {
+                  handleDelete(customItem.id)
+                }}
+              />
             </div>
           </>
         )
