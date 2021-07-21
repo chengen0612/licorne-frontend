@@ -10,6 +10,8 @@ import Member from './pages/Member'
 import Official from './pages/Official'
 import LoginAndRegister from './pages/LoginAndRegister'
 
+import Introduction from './pages/Custom/Introduction'
+
 // 共通元件
 import Header from './components/Header'
 import SecondaryFooter from './components/SecondaryFooter'
@@ -28,6 +30,9 @@ function App() {
             <Header />
             <Course />
             <SecondaryFooter />
+          </Route>
+          <Route path="/custom/introduction">
+            <Introduction />
           </Route>
           <Route path="/custom">
             <Custom />
