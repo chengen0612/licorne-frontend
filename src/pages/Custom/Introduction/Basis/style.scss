@@ -1,0 +1,68 @@
+@import '../../../../styles/global.scss';
+
+.c-intro__basis-intro {
+  width: 400px;
+  height: 510px;
+  position: absolute;
+  top: 108px;
+  left: 128px;
+  & h5 {
+    // font-size: 30px;
+    font-weight: bold;
+  }
+}
+
+// images
+.c-intro__img-alcohol {
+  width: 82px;
+  height: 298px;
+  position: absolute;
+  top: 391px;
+  left: 1209px;
+  animation: fadein 1.5s ease;
+}
+.c-intro__img-water {
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  top: 391px;
+  left: 1209px;
+  animation: fadein 1.5s ease;
+}
+%oil {
+  width: 200px;
+  height: 240px;
+  position: absolute;
+  animation: fadein 1.5s ease;
+}
+.c-intro__img-oil-lavender {
+  @extend %oil;
+  top: 273px;
+  left: 1082px;
+}
+.c-intro__img-oil-herb {
+  @extend %oil;
+  top: 326px;
+  left: 1377px;
+}
+.c-intro__img-oil-orange {
+  @extend %oil;
+  top: 568px;
+  left: 1177px;
+}
+.c-intro__img-finished {
+  width: 347px;
+  height: 420px;
+  position: absolute;
+  top: 347px;
+  left: 1166px;
+  animation: fadein 1.5s ease;
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
