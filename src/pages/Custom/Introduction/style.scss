@@ -1,0 +1,50 @@
+// custom introduction
+// ------------------------
+
+@import '../../../styles/global.scss';
+
+.c-intro-wrapper {
+  height: 100vh;
+  position: relative;
+}
+
+.c-intro__close-btn {
+  width: 60px;
+  height: 60px;
+  background: $c-secondary;
+  border-radius: $br-b;
+  position: absolute;
+  top: 65px;
+  right: 125px;
+  cursor: pointer;
+}
+
+%pageBtn {
+  background: rgba(32, 178, 171, 0.377);
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50vh;
+  transform: translateY(-25px);
+  cursor: pointer;
+}
+.c-intro__previous-page-btn {
+  @extend %pageBtn;
+  left: 30px;
+}
+.c-intro__next-page-btn {
+  @extend %pageBtn;
+  right: 30px;
+}
+
+.c-intro__skip-btn {
+  width: 150px;
+  height: 60px;
+  background: $c-primary;
+  border-radius: $br-s;
+  font-size: $fs-h3;
+  color: $c-white;
+  position: absolute;
+  right: 100px;
+  bottom: 75px;
+}
