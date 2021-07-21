@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
 function OfficialOrder() {
   const [officialItems, setOfficialItems] = useState([])
   const [officialQuantities, setOfficialQuantities] = useState([])
-  const [subtotal, setSubtotal] = useState(2)
+  const [quantity, setQuantity] = useState(2)
+  const [subtotal, setSubtotal] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
   async function getOfficialInfoFromServer() {
@@ -25,8 +26,8 @@ function OfficialOrder() {
     const data = await response.json()
     const officialProduct = data.official
     const officialQuantity = data.officialQuantity.split(',')
-    console.log(officialProduct)
-    console.log(officialQuantity)
+    console.log('data.official', officialProduct)
+    console.log('data.officialQuantity', officialQuantity)
     // 設定資料
     setOfficialItems(officialProduct)
     setOfficialQuantities(officialQuantity)
@@ -40,13 +41,13 @@ function OfficialOrder() {
     const newOfficialItems = officialItems.filter((v, i) => {
       return v.id !== id
     })
-    const newOfficialQuantities = officialQuantities.filter((v, i) => {
-      return v.id !== id
-    })
-    console.log(newOfficialItems)
-    console.log(newOfficialQuantities)
+    // const newOfficialQuantities = officialQuantities.filter((v, i) => {
+    //   return v.id !== id
+    // })
+    console.log('current officialItems', newOfficialItems)
+    // console.log(newOfficialQuantities)
     setOfficialItems(newOfficialItems)
-    setOfficialQuantities(newOfficialQuantities)
+    // setOfficialQuantities(newOfficialQuantities)
   }
 
   return (
@@ -60,14 +61,11 @@ function OfficialOrder() {
           官方商品 <span>({officialItems.length})</span>
         </label>
       </div>
-      {officialItems.map((v, i) => {
-        const officialItem = v[0]
+      {officialItems.map((officialItem, i) => {
+        // const officialItem = v[0]
         return (
           <>
-            <div
-              className="checkout__official-box-list p-4"
-              key={officialItem.id}
-            >
+            <div className="checkout__official-box-list p-4">
               <input
                 className="checkout__official-box-checkbox"
                 type="checkbox"
@@ -78,11 +76,16 @@ function OfficialOrder() {
                   // src={
                   //   imgPath + '/images/official/animal_100ml.png'
                   // }
+                  key={officialItem.id}
                   src={officialItem.img_id}
                   alt=""
                 />
               </Link>
-              <Link to="/" className="checkout__official-box-details w-25 pl-4">
+              <Link
+                to="/"
+                className="checkout__official-box-details w-25 pl-4"
+                key={officialItem.id}
+              >
                 <span className="checkout__official-box-name-zh">
                   {/* 夜鶯 */}
                   {officialItem.name_zh}
@@ -111,22 +114,24 @@ function OfficialOrder() {
                 name="quantity"
                 defaultValue={officialQuantities[i]}
                 // value={subtotal}
-                onInput={(e) => setSubtotal(e.target.value)}
+                // onInput={(e) => setQuantity(e.target.value)}
+                // onChange={quantityHandler}
+                setQuantity={setQuantity}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
                 }
               />
               <span className="checkout__official-box-product-subtotal">
                 {/* NT $6000 */}
-                NT$ {parseInt(officialItem.price) * parseInt(subtotal)}
-                {console.log(parseInt(officialItem.price) * parseInt(subtotal))}
+                NT$
+                {parseInt(officialItem.price) * parseInt(quantity)}
               </span>
               {/* TODO: delete product detail */}
               <FiX
                 className="feather-s"
                 role="button"
                 onClick={() => {
-                  handleDelete(officialQuantities.id)
+                  handleDelete(officialItem.id)
                 }}
               />
             </div>
