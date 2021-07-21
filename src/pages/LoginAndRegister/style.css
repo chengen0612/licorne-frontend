@@ -20,19 +20,27 @@
 .loginAndRegister__leftTitle {
   color: #223843;
   text-align: center;
-  margin: 20px auto;
+  margin: 20px auto 40px auto;
 }
 .loginAndRegister__passwordBox {
   margin: 0 auto;
   position: relative;
 }
-.loginAndRegister__eyeBtn {
+.loginAndRegister__regEyeBtn {
   background-color: #ffffff;
   border: 1px solid transparent;
   outline: none;
   position: absolute;
   right: 10px;
-  bottom: 30px;
+  bottom: 49px;
+}
+.loginAndRegister__loginEyeBtn {
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  outline: none;
+  position: absolute;
+  right: 10px;
+  bottom: 49px;
 }
 .loginAndRegister .leftInput {
   font-size: 20px;
@@ -41,7 +49,7 @@
   height: 50px;
   border-radius: 10px;
   border: 1px solid #223843;
-  margin: 20px auto;
+  margin: 0px auto;
   padding-left: 15px;
 }
 .loginAndRegister__leftButton {
@@ -53,7 +61,7 @@
   background-color: #223843;
   color: #ffffff;
   border: none;
-  margin: 60px auto 0 auto;
+  margin: 40px auto 0 auto;
 }
 .loginAndRegister__rightBox {
   display: flex;
@@ -66,7 +74,7 @@
 .loginAndRegister__rightTitle {
   color: #223843;
   text-align: center;
-  margin: 20px auto;
+  margin: 20px auto 40px auto;
 }
 .loginAndRegister .rightInput {
   font-size: 20px;
@@ -75,7 +83,7 @@
   height: 50px;
   border-radius: 10px;
   border: 1px solid #223843;
-  margin: 20px auto;
+  margin: 0 auto;
   padding-left: 15px;
 }
 .loginAndRegister__forgetPassword {
@@ -96,5 +104,21 @@
   background-color: #223843;
   color: #ffffff;
   border: none;
-  margin: 125px auto 0 auto;
+  margin: 100px auto 0 auto;
+}
+.loginAndRegister__errorBox {
+  width: 300px;
+  height: 40px;
+  margin: 0 auto;
+}
+.loginAndRegister__leftBox p {
+  color: #c16e70;
+}
+.loginAndRegister__loginErrorBox {
+  width: 300px;
+  height: 40px;
+  margin: 0 auto;
+}
+.loginAndRegister__rightBox p {
+  color: #c16e70;
 }
