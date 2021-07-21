@@ -37,6 +37,14 @@ function CourseOrder() {
     getCourseInfoFromServer()
   }, [])
 
+  const handleDelete = (id) => {
+    const newCourseItems = courseItems.filter((v, i) => {
+      return v.id !== id
+    })
+    console.log('current courseItems', newCourseItems)
+    setCourseItems(newCourseItems)
+  }
+
   return (
     <>
       <div className="checkout__course-box-top pl-4 pt-3 pb-2">
@@ -48,8 +56,8 @@ function CourseOrder() {
           工作坊課程 <span>({courseItems.length})</span>
         </label>
       </div>
-      {courseItems.map((v, i) => {
-        const courseItem = v[0]
+      {courseItems.map((courseItem, i) => {
+        // const courseItem = v[0]
         return (
           <div className="checkout__course-box-list p-4" key={courseItem.id}>
             <input className="checkout__course-box-checkbox" type="checkbox" />
@@ -95,7 +103,13 @@ function CourseOrder() {
               NT $1200
             </span>
             {/* TODO: delete product detail */}
-            <FiX className="feather-s" role="button" />
+            <FiX
+              className="feather-s"
+              role="button"
+              onClick={() => {
+                handleDelete(courseItem.id)
+              }}
+            />
           </div>
         )
       })}
