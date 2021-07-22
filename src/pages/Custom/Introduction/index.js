@@ -5,6 +5,7 @@ import './style.scss'
 
 // import components
 import Basis from './Basis'
+import Longevity from './Longevity'
 
 function Introduction() {
   const [page, setPage] = useState(1)
@@ -22,6 +23,7 @@ function Introduction() {
           component = <Basis page={page} setPage={setPage} />
           break
         case 5:
+          component = <Longevity />
           break
         case 6:
         case 7:
