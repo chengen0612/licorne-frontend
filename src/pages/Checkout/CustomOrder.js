@@ -5,7 +5,9 @@ import { FiX } from 'react-icons/fi'
 
 function CustomOrder() {
   const [customItems, setCustomItems] = useState([])
-  const [customQuantities, setCustomQuantities] = useState([])
+  const [quantity, setQuantity] = useState([])
+  const [subtotal, setSubtotal] = useState([])
+  const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
   async function getCustomInfoFromServer() {
     // 連接的伺服器資料網址
@@ -23,12 +25,21 @@ function CustomOrder() {
     const response = await fetch(request)
     const data = await response.json()
     const customProduct = data.custom
-    const customQuantity = data.customQuantity.split(',')
     console.log(customProduct)
-    console.log(customQuantity)
     // 設定資料
     setCustomItems(customProduct)
-    setCustomQuantities(customQuantity)
+
+    const customQuantity = customProduct.map((item) => {
+      return item.quantity
+    })
+    const customSubtotal = customProduct.map((item, i) => {
+      return +item.price * customQuantity[i]
+    })
+
+    console.log('customQuantity', customQuantity)
+    console.log('customSubtotal', customSubtotal)
+    setQuantity(customQuantity)
+    setSubtotal(customSubtotal)
   }
 
   useEffect(() => {
@@ -55,7 +66,6 @@ function CustomOrder() {
         </label>
       </div>
       {customItems.map((customItem, i) => {
-        // const customItem = v[0]
         return (
           <>
             <div className="checkout__custom-box-list p-4">
@@ -81,10 +91,12 @@ function CustomOrder() {
                   {customItem.cust_id}
                 </span>
                 <span className="checkout__custom-box-product-ingredient">
-                  薄荷、薰衣草、檸檬
+                  {/* 薄荷、薰衣草、檸檬 */}
+                  {customItem.custom_ingredient}
                 </span>
                 <span className="checkout__custom-box-product-fragrance">
-                  花香調
+                  {/* 花香調 */}
+                  {customItem.fragrance_name}
                 </span>
                 <span className="checkout__custom-box-product-volume">
                   100ML
@@ -101,13 +113,18 @@ function CustomOrder() {
                 className="box-quantity"
                 type="number"
                 min="1"
-                defaultValue={customQuantities[i]}
+                defaultValue={customItem.quantity}
+                // value={quantity[i]}
+                onChange={setQuantity}
+                onKeyDown={(e) =>
+                  symbolsArr.includes(e.key) && e.preventDefault()
+                }
               />
+              {/* TODO: recalculate subtotal when quantity changes */}
               <span className="checkout__custom-box-product-subtotal">
                 {/* NT $6000 */}
-                NT$ {parseInt(customItem.price) * parseInt(customQuantities[i])}
+                NT$ {subtotal[i]}
               </span>
-              {/* TODO: delete product detail */}
               <FiX
                 className="feather-s"
                 role="button"

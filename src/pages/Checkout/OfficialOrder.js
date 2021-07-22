@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
-function OfficialOrder() {
+function OfficialOrder(props) {
   const [officialItems, setOfficialItems] = useState([])
-  const [officialQuantities, setOfficialQuantities] = useState([])
-  const [quantity, setQuantity] = useState(2)
+  const [quantity, setQuantity] = useState([])
   const [subtotal, setSubtotal] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
@@ -25,12 +24,20 @@ function OfficialOrder() {
     const response = await fetch(request)
     const data = await response.json()
     const officialProduct = data.official
-    const officialQuantity = data.officialQuantity.split(',')
-    console.log('data.official', officialProduct)
-    console.log('data.officialQuantity', officialQuantity)
-    // 設定資料
+    console.log(officialProduct)
     setOfficialItems(officialProduct)
-    setOfficialQuantities(officialQuantity)
+
+    const officialQuantity = officialProduct.map((item) => {
+      return item.quantity
+    })
+    const officialSubtotal = officialProduct.map((item, i) => {
+      return +item.price * officialQuantity[i]
+    })
+
+    console.log('officialQuantity', officialQuantity)
+    console.log('officialSubtotal', officialSubtotal)
+    setQuantity(officialQuantity)
+    setSubtotal(officialSubtotal)
   }
 
   useEffect(() => {
@@ -41,17 +48,13 @@ function OfficialOrder() {
     const newOfficialItems = officialItems.filter((v, i) => {
       return v.id !== id
     })
-    // const newOfficialQuantities = officialQuantities.filter((v, i) => {
-    //   return v.id !== id
-    // })
     console.log('current officialItems', newOfficialItems)
-    // console.log(newOfficialQuantities)
     setOfficialItems(newOfficialItems)
-    // setOfficialQuantities(newOfficialQuantities)
   }
 
   return (
     <>
+      <div></div>
       <div className="checkout__official-box-top pl-4 pt-3 pb-2">
         <label className="checkout__official-box-title">
           <input
@@ -62,7 +65,6 @@ function OfficialOrder() {
         </label>
       </div>
       {officialItems.map((officialItem, i) => {
-        // const officialItem = v[0]
         return (
           <>
             <div className="checkout__official-box-list p-4">
@@ -76,16 +78,11 @@ function OfficialOrder() {
                   // src={
                   //   imgPath + '/images/official/animal_100ml.png'
                   // }
-                  key={officialItem.id}
                   src={officialItem.img_id}
                   alt=""
                 />
               </Link>
-              <Link
-                to="/"
-                className="checkout__official-box-details w-25 pl-4"
-                key={officialItem.id}
-              >
+              <Link to="/" className="checkout__official-box-details w-25 pl-4">
                 <span className="checkout__official-box-name-zh">
                   {/* 夜鶯 */}
                   {officialItem.name_zh}
@@ -96,7 +93,7 @@ function OfficialOrder() {
                 </span>
                 <span className="checkout__official-box-product-series">
                   {/* 動物香氛系列 */}
-                  {officialItem.series_id}
+                  {officialItem.series_name}
                 </span>
                 <span className="checkout__official-box-product-volume">
                   {/* 100ML */}
@@ -112,21 +109,23 @@ function OfficialOrder() {
                 type="number"
                 min="1"
                 name="quantity"
-                defaultValue={officialQuantities[i]}
-                // value={subtotal}
+                defaultValue={officialItem.quantity}
+                // value={quantity[i]}
                 // onInput={(e) => setQuantity(e.target.value)}
-                // onChange={quantityHandler}
-                setQuantity={setQuantity}
+                onChange={setQuantity}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
                 }
               />
-              <span className="checkout__official-box-product-subtotal">
+              {/* TODO: recalculate subtotal when quantity changes */}
+              <span
+                className="checkout__official-box-product-subtotal"
+                // setSubtotal={setSubtotal}
+              >
                 {/* NT $6000 */}
-                NT$
-                {parseInt(officialItem.price) * parseInt(quantity)}
+                NT$ {subtotal[i]}
+                {/* {parseInt(officialItem.price) * parseInt(officialItem.quantity)} */}
               </span>
-              {/* TODO: delete product detail */}
               <FiX
                 className="feather-s"
                 role="button"
