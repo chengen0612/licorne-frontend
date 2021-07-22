@@ -4,13 +4,8 @@ import { FiX } from 'react-icons/fi'
 
 function CourseOrder() {
   const [courseItems, setCourseItems] = useState([])
-  const [courseQuantities, setCourseQuantities] = useState([])
-  const [coursePackages, setCoursePackages] = useState([])
   async function getCourseInfoFromServer() {
-    // 連接的伺服器資料網址
     const url = 'http://localhost:6005/checkout'
-
-    // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
@@ -22,15 +17,8 @@ function CourseOrder() {
     const response = await fetch(request)
     const data = await response.json()
     const courseProduct = data.course
-    const courseQuantity = data.courseQuantity
-    const coursePackage = data.coursePackage
     console.log(courseProduct)
-    console.log(courseQuantity)
-    console.log(coursePackage)
-    // 設定資料
     setCourseItems(courseProduct)
-    setCourseQuantities(courseQuantity)
-    setCoursePackages(coursePackage)
   }
 
   useEffect(() => {
@@ -57,9 +45,8 @@ function CourseOrder() {
         </label>
       </div>
       {courseItems.map((courseItem, i) => {
-        // const courseItem = v[0]
         return (
-          <div className="checkout__course-box-list p-4" key={courseItem.id}>
+          <div className="checkout__course-box-list p-4">
             <input className="checkout__course-box-checkbox" type="checkbox" />
             <div className="checkout__course-box-img-wrapper">
               <img
@@ -76,7 +63,7 @@ function CourseOrder() {
               </span>
               <span className="checkout__course-box-product-package">
                 {/* 一日體驗 */}
-                {coursePackages}
+                {courseItem.package}
               </span>
               <span className="checkout__course-box-product-date">
                 {/* 2021/06/22 */}
@@ -97,7 +84,7 @@ function CourseOrder() {
             </span>
             <span className="checkout__course-box-product-quantity">
               {/* 單人 */}
-              {courseQuantities}
+              {courseItem.quantity}
             </span>
             <span className="checkout__course-box-product-subtotal">
               NT $1200
