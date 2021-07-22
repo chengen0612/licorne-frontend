@@ -22,7 +22,6 @@ function OrderDetail() {
     const data = await response.json()
     const memberInfo = data.member
     console.log(memberInfo)
-    // 設定資料
     setMembers(memberInfo)
   }
 
@@ -34,9 +33,11 @@ function OrderDetail() {
   function showModalHandler() {
     setShowModal(true)
   }
+
   function closeModalHandler() {
     setShowModal(false)
   }
+
   return (
     <>
       <div className="checkout__order-box-top pl-4 pt-3 pb-3">
@@ -47,7 +48,12 @@ function OrderDetail() {
           <span className="checkout__order-box-delivery-title">運送方式</span>
           <div className="checkout__order-box-delivery-labels">
             <label htmlFor="" className="checkout__order-box-delivery-address">
-              <input className="radio" type="radio" name="delivery" checked />
+              <input
+                className="radio"
+                type="radio"
+                name="delivery"
+                defaultChecked="checked"
+              />
               指定地址
             </label>
             <label htmlFor="" className="checkout__order-box-delivery-store">
@@ -56,15 +62,11 @@ function OrderDetail() {
             </label>
           </div>
           <div className="checkout__order-box-delivery-edit-bg d-flex flex-column p-3 mt-2 mb-2">
-            {members.map((v, i) => {
-              const member = v[0]
+            {members.map((member, i) => {
               return (
                 <>
                   <div className="checkout__order-box-delivery-edit-wrapper d-flex justify-content-between">
-                    <span
-                      className="checkout__order-box-recipient"
-                      key={member.id}
-                    >
+                    <span className="checkout__order-box-recipient">
                       {/* 哭肉狗狗 */}
                       {member.member_name}
                     </span>
@@ -75,17 +77,11 @@ function OrderDetail() {
                     />
                   </div>
 
-                  <span
-                    className="checkout__order-box-recipient-phone"
-                    key={member.id}
-                  >
+                  <span className="checkout__order-box-recipient-phone">
                     {/* (+886) 912 345 678 */}
                     {member.member_phone}
                   </span>
-                  <span
-                    className="checkout__order-box-recipient-address"
-                    key={member.id}
-                  >
+                  <span className="checkout__order-box-recipient-address">
                     {/* 29850桃園市桃園區中正路100巷100號 */}
                     {member.member_address}
                   </span>
@@ -103,7 +99,12 @@ function OrderDetail() {
           <span className="checkout__order-box-payment-title">付款方式</span>
           <div className="checkout__order-box-payment-labels">
             <label className="checkout__order-box-payment-card">
-              <input className="radio" type="radio" name="payment" checked />
+              <input
+                className="radio"
+                type="radio"
+                name="payment"
+                defaultChecked="checked"
+              />
               信用卡
             </label>
             <label className="checkout__order-box-payment-cash">
@@ -133,6 +134,7 @@ function OrderDetail() {
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
+          {/* TODO: disabled when cart is empty */}
           <button className="checkout__checkoutBtn">確認結帳</button>
         </div>
       </div>
