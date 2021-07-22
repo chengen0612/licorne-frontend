@@ -7,14 +7,19 @@ import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
 
 function Header() {
+  // CJ：這個 state 是設定購物車側邊欄開關狀態
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
+  // CJ：這個 function 是用來關上購物車側邊欄
   function closeSidebar() {
     setSidebarIsOpen(false)
   }
+  //
 
   return (
     <>
+      {/* CJ：MyCart 原件，以及傳入兩個 prop */}
       <MyCart sidebarIsOpen={sidebarIsOpen} closeSidebar={closeSidebar} />
+      {/*  */}
       <div className="header__line col-md col-sm"></div>
       <header className="header col-md col-sm">
         {/* -- logo -- */}
@@ -35,12 +40,17 @@ function Header() {
                 <a href="#/">
                   <FiHeart data-feather="heart" className="header-i" />
                 </a>
+                {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
                 <a href="#/">
                   <FiShoppingBag
-                    onClick={() => setSidebarIsOpen(true)}
+                    onClick={() => {
+                      setSidebarIsOpen(true)
+                      document.body.style.overflow = 'hidden'
+                    }}
                     data-feather="shopping-bag"
                     className="header-i"
                   />
+                  {/*  */}
                 </a>
               </div>
             </div>

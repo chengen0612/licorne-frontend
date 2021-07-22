@@ -5,6 +5,9 @@ import { FiHeart, FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 import animal from './animal_50ml.png'
 
 function MyCartCartContainer(prop) {
+  const productData = prop.productData
+  console.log(productData)
+
   return (
     <div style={{ display: prop.favOrCart === 'Cart' ? 'block' : 'none' }}>
       <div className="cj-sidebar__cart">
@@ -33,6 +36,10 @@ function MyCartCartContainer(prop) {
             <p role="button">刪除 </p>
           </div>
 
+          {/* {productData.map(() => {
+            return 
+          })} */}
+
           <div className="cj-sidebar__cart__item__btn">
             <div role="button">-</div>
             <p>99</p>
@@ -40,7 +47,6 @@ function MyCartCartContainer(prop) {
           </div>
         </div>
       </div>
-
       <div className="cj-sidebar__cart__price">
         <div>
           <p>總金額：</p>
