@@ -50,7 +50,7 @@ function AddressEditModal(props) {
       </span>
       {memberContacts.map((memberContact, i) => {
         return (
-          <form className="d-flex flex-column p-4">
+          <form className="d-flex flex-column p-4" key={i}>
             <span className="checkout__address-edit-modal-title pb-2">
               訂購人
             </span>
@@ -128,9 +128,7 @@ function AddressEditModal(props) {
               />
             </label>
             <label className="checkbox-label" htmlFor="">
-              <input
-                type="checkbox"
-              />
+              <input type="checkbox" />
               收件資訊同上
             </label>
             <button

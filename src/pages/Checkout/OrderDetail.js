@@ -21,7 +21,7 @@ function OrderDetail() {
     const response = await fetch(request)
     const data = await response.json()
     const memberInfo = data.member
-    console.log(memberInfo)
+    console.log('memberInfo', memberInfo)
     setMembers(memberInfo)
   }
 
@@ -64,7 +64,7 @@ function OrderDetail() {
           <div className="checkout__order-box-delivery-edit-bg d-flex flex-column p-3 mt-2 mb-2">
             {members.map((member, i) => {
               return (
-                <>
+                <React.Fragment key={member.id}>
                   <div className="checkout__order-box-delivery-edit-wrapper d-flex justify-content-between">
                     <span className="checkout__order-box-recipient">
                       {/* 哭肉狗狗 */}
@@ -88,7 +88,7 @@ function OrderDetail() {
                   <span className="checkout__order-box-buyer">
                     訂購人：同收件人
                   </span>
-                </>
+                </React.Fragment>
               )
             })}
           </div>
