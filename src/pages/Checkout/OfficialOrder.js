@@ -2,45 +2,45 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
-function OfficialOrder(props) {
+function OfficialOrder() {
   const [officialItems, setOfficialItems] = useState([])
   const [quantity, setQuantity] = useState([])
   const [subtotal, setSubtotal] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
-  async function getOfficialInfoFromServer() {
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/checkout'
-
-    // 注意header資料格式要設定，伺服器才知道是json格式
-    const request = new Request(url, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }),
-    })
-
-    const response = await fetch(request)
-    const data = await response.json()
-    const officialProduct = data.official
-    console.log(officialProduct)
-    setOfficialItems(officialProduct)
-
-    const officialQuantity = officialProduct.map((item) => {
-      return item.quantity
-    })
-    const officialSubtotal = officialProduct.map((item, i) => {
-      return +item.price * officialQuantity[i]
-    })
-
-    console.log('officialQuantity', officialQuantity)
-    console.log('officialSubtotal', officialSubtotal)
-    setQuantity(officialQuantity)
-    setSubtotal(officialSubtotal)
-  }
-
   useEffect(() => {
+    async function getOfficialInfoFromServer() {
+      // 連接的伺服器資料網址
+      const url = 'http://localhost:6005/checkout'
+
+      // 注意header資料格式要設定，伺服器才知道是json格式
+      const request = new Request(url, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+
+      const response = await fetch(request)
+      const data = await response.json()
+      const officialProduct = data.official
+      console.log('officialProduct', officialProduct)
+      setOfficialItems(officialProduct)
+
+      const officialQuantity = officialProduct.map((item) => {
+        return item.quantity
+      })
+
+      const officialSubtotal = officialProduct.map((item, i) => {
+        return +item.price * officialQuantity[i]
+      })
+
+      console.log('officialQuantity', officialQuantity)
+      console.log('officialSubtotal', officialSubtotal)
+      setQuantity(officialQuantity)
+      setSubtotal(officialSubtotal)
+    }
     getOfficialInfoFromServer()
   }, [])
 
@@ -66,7 +66,7 @@ function OfficialOrder(props) {
       </div>
       {officialItems.map((officialItem, i) => {
         return (
-          <>
+          <React.Fragment key={officialItem.id}>
             <div className="checkout__official-box-list p-4">
               <input
                 className="checkout__official-box-checkbox"
@@ -111,8 +111,9 @@ function OfficialOrder(props) {
                 name="quantity"
                 defaultValue={officialItem.quantity}
                 // value={quantity[i]}
-                // onInput={(e) => setQuantity(e.target.value)}
-                onChange={setQuantity}
+                onInput={(e) => {
+                  setQuantity(e.target.value)
+                }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
                 }
@@ -120,7 +121,9 @@ function OfficialOrder(props) {
               {/* TODO: recalculate subtotal when quantity changes */}
               <span
                 className="checkout__official-box-product-subtotal"
-                // setSubtotal={setSubtotal}
+                onChange={(e) => {
+                  setSubtotal(e.target.value)
+                }}
               >
                 {/* NT $6000 */}
                 NT$ {subtotal[i]}
@@ -134,7 +137,7 @@ function OfficialOrder(props) {
                 }}
               />
             </div>
-          </>
+          </React.Fragment>
         )
       })}
     </>

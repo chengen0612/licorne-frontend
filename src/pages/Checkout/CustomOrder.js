@@ -25,7 +25,7 @@ function CustomOrder() {
     const response = await fetch(request)
     const data = await response.json()
     const customProduct = data.custom
-    console.log(customProduct)
+    console.log('customProduct', customProduct)
     // 設定資料
     setCustomItems(customProduct)
 
@@ -67,7 +67,7 @@ function CustomOrder() {
       </div>
       {customItems.map((customItem, i) => {
         return (
-          <>
+          <React.Fragment key={customItem.id}>
             <div className="checkout__custom-box-list p-4">
               <input
                 className="checkout__custom-box-checkbox"
@@ -133,7 +133,7 @@ function CustomOrder() {
                 }}
               />
             </div>
-          </>
+          </React.Fragment>
         )
       })}
     </>
