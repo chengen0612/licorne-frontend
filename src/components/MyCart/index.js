@@ -6,34 +6,34 @@ import { FiX } from 'react-icons/fi'
 import MyCartCartContainer from './childComponent/MyCartCartContainer'
 import MyCartFavContainer from './childComponent/MyCartFavContainer'
 
-function MyCart(prop) {
+function MyCart(props) {
   // 這裡接住從 Header 傳來的資料
-  const closeSidebar = prop.closeSidebar
+  const closeSidebar = props.closeSidebar
   // 用來切換側邊欄購物車以及收藏清單的 state
   const [favOrCart, setFavOrCart] = useState('Fav')
   // 這個用來處理產品資料
-  const [productData, setProductData] = useState('')
+  // const [productDatas, setProductDatas] = useState('')
 
   // 以下是組長提供的跟伺服器抓資料的程式碼
-  async function getSidebarFromServer() {
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/sidebar'
-    // 注意header資料格式要設定，伺服器才知道是json格式
-    const request = new Request(url, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const response = await fetch(request)
-    const data = await response.json()
-    // console.log(data.product)
-    setProductData(data.product)
-  }
-  useEffect(() => {
-    getSidebarFromServer()
-  }, [])
+  // async function getSidebarFromServer() {
+  //   // 連接的伺服器資料網址
+  //   const url = 'http://localhost:6005/sidebar'
+  //   // 注意header資料格式要設定，伺服器才知道是json格式
+  //   const request = new Request(url, {
+  //     method: 'GET',
+  //     headers: new Headers({
+  //       Accept: 'application/json',
+  //       'Content-Type': 'appliaction/json',
+  //     }),
+  //   })
+  //   const response = await fetch(request)
+  //   const data = await response.json()
+  //   // console.log(data.product)
+  //   setProductDatas(data.product)
+  // }
+  // useEffect(() => {
+  //   getSidebarFromServer()
+  // }, [])
 
   //
   //
@@ -43,7 +43,7 @@ function MyCart(prop) {
     <>
       <div
         className={
-          prop.sidebarIsOpen
+          props.sidebarIsOpen
             ? 'cj-blackscreen'
             : 'cj-blackscreen cj-blackscreen--close'
         }
@@ -55,7 +55,7 @@ function MyCart(prop) {
 
       <div
         className={
-          prop.sidebarIsOpen ? 'cj-sidebar' : 'cj-sidebar cj-sidebar--close'
+          props.sidebarIsOpen ? 'cj-sidebar' : 'cj-sidebar cj-sidebar--close'
         }
       >
         <div className="cj-sidebar__x pr-4">
@@ -98,9 +98,7 @@ function MyCart(prop) {
         </div>
 
         <div className="cj-sidebar__space"></div>
-        {/* <MyCartNoContnt /> */}
-
-        <MyCartCartContainer favOrCart={favOrCart} productData={productData} />
+        <MyCartCartContainer favOrCart={favOrCart} />
         <MyCartFavContainer favOrCart={favOrCart} />
       </div>
     </>

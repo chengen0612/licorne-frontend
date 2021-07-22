@@ -3,12 +3,12 @@ import { FiShoppingBag } from 'react-icons/fi'
 import '../../../styles/global.css'
 import '../style.css'
 
-function MyCartFavContainer(prop) {
+function MyCartFavContainer(props) {
   return (
     <>
       <div
         className="cj-sidebar__fav"
-        style={{ display: prop.favOrCart === 'Fav' ? 'block' : 'none' }}
+        style={{ display: props.favOrCart === 'Fav' ? 'block' : 'none' }}
       >
         <div className="cj-sidebar__fav__item">
           <div className="cj-sidebar__fav__item__img">

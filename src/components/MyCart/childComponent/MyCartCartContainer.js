@@ -1,15 +1,37 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import { FiHeart, FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 import animal from './animal_50ml.png'
 
-function MyCartCartContainer(prop) {
-  const productData = prop.productData
-  console.log(productData)
+function MyCartCartContainer(props) {
+  // const productDatas = props.productDatas
+  const { favOrCart } = props
+
+  const [cartItems, setCartItems] = useState('')
+
+  async function getSidebarFromServer() {
+    // 連接的伺服器資料網址
+    const url = 'http://localhost:6005/sidebar'
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const response = await fetch(request)
+    const data = await response.json()
+    const result = [...data.product]
+    setCartItems(result)
+  }
+  useEffect(() => {
+    getSidebarFromServer()
+  }, [])
 
   return (
-    <div style={{ display: prop.favOrCart === 'Cart' ? 'block' : 'none' }}>
+    <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
       <div className="cj-sidebar__cart">
         <div className="cj-sidebar__cart__item">
           <div className="cj-sidebar__cart__item__img">
@@ -18,7 +40,6 @@ function MyCartCartContainer(prop) {
               <FiHeart className="feather-s" role="button" />
             </div>
           </div>
-
           <div className="cj-sidebar__cart__item__desc">
             <p>玉露綠茶</p>
             <p>
@@ -36,9 +57,6 @@ function MyCartCartContainer(prop) {
             <p role="button">刪除 </p>
           </div>
 
-          {/* {productData.map(() => {
-            return 
-          })} */}
 
           <div className="cj-sidebar__cart__item__btn">
             <div role="button">-</div>
