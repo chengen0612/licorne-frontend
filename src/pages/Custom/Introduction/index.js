@@ -6,9 +6,10 @@ import './style.scss'
 // import components
 import Basis from './Basis'
 import Longevity from './Longevity'
+import Notes from './Notes'
 
 function Introduction() {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(6)
   const [display, setDisplay] = useState()
 
   useEffect(() => {
@@ -28,6 +29,7 @@ function Introduction() {
         case 6:
         case 7:
         case 8:
+          component = <Notes page={page} />
           break
         default:
           break

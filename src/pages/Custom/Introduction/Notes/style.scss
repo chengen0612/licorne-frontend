@@ -1,0 +1,43 @@
+.c-intro-notes__description {
+  // background: lightcyan;
+  height: 330px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 130px;
+  left: 100px;
+  & h4 {
+    padding-right: 50px;
+    text-align: center;
+    line-height: 2rem;
+  }
+  & p {
+    width: 600px;
+  }
+}
+
+%default {
+  width: 200px;
+  height: 280px;
+  position: absolute;
+}
+
+// name className with map loop
+// .c-intro-notes__card {
+//   &0 {
+//     @extend %default;
+//     top: 820px;
+//     left: 1090px;
+//   }
+//   &1 {
+//     top: 820px;
+//     left: 1090px;
+//   }
+//   &2 {
+//     top: 820px;
+//     left: 1090px;
+//   }
+//   & img {
+//     height: 180px;
+//   }
+// }
