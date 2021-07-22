@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { FiX } from 'react-icons/fi'
 
 function AddressEditModal(props) {
-  const [members, setMembers] = useState([])
-  // const [username, setUsername] = useState('哭肉狗狗')
+  const [memberContacts, setMemberContacts] = useState([])
+  // const [username, setUsername] = useState([])
   // const [phone, setPhone] = useState('+886 912 345 678')
   // const [address, setAddress] = useState('29850 桃園市桃園區中正路100巷100號')
   // const [recipient, setRecipient] = useState('哭肉狗狗')
   // const [recipientPhone, setRecipientPhone] = useState('+886 912 345 678')
   // const [recipientAddress, setRecipientAddress] = useState('29850 桃園市桃園區中正路100巷100號')
-  const [same, setSame] = useState(true)
-
   async function getMemberInfoFromServer() {
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/checkout'
@@ -29,16 +27,12 @@ function AddressEditModal(props) {
     const memberInfo = data.member
     console.log(memberInfo)
     // 設定資料
-    setMembers(memberInfo)
+    setMemberContacts(memberInfo)
   }
 
   useEffect(() => {
     getMemberInfoFromServer()
   }, [])
-
-  function editHandler() {
-    props.onEdit()
-  }
 
   function closeHandler() {
     props.onClose()
@@ -54,8 +48,7 @@ function AddressEditModal(props) {
       <span className="checkout__address-edit-modal-title align-self-center">
         編輯收件資訊
       </span>
-      {members.map((v, i) => {
-        const member = v[0]
+      {memberContacts.map((memberContact, i) => {
         return (
           <form className="d-flex flex-column p-4">
             <span className="checkout__address-edit-modal-title pb-2">
@@ -66,11 +59,10 @@ function AddressEditModal(props) {
               <input
                 name="username"
                 type="text"
-                key={member.id}
-                defaultValue={member.member_name}
-                // onChange={(e) => {
-                //   setUsername(e.target.value)
-                // }}
+                // key={memberContact.id}
+                defaultValue={memberContact.member_name}
+                // value={state.username}
+                // onChange={handleChange}
                 required
               />
             </label>
@@ -79,11 +71,10 @@ function AddressEditModal(props) {
               <input
                 name="phone"
                 type="text"
-                key={member.id}
-                defaultValue={member.member_phone}
-                // onChange={(e) => {
-                //   setPhone(e.target.value)
-                // }}
+                // key={memberContact.id}
+                defaultValue={memberContact.member_phone}
+                // value={state.phone}
+                // onChange={handleChange}
                 required
               />
             </label>
@@ -92,11 +83,10 @@ function AddressEditModal(props) {
               <input
                 name="address"
                 type="text"
-                key={member.id}
-                defaultValue={member.member_address}
-                // onChange={(e) => {
-                //   setAddress(e.target.value)
-                // }}
+                // key={memberContact.id}
+                defaultValue={memberContact.member_address}
+                // value={state.address}
+                // onChange={handleChange}
                 required
               />
             </label>
@@ -106,11 +96,10 @@ function AddressEditModal(props) {
               <input
                 name="recipient"
                 type="text"
-                key={member.id}
-                defaultValue={member.member_name}
-                // onChange={(e) => {
-                //   setRecipient(e.target.value)
-                // }}
+                // key={memberContact.id}
+                defaultValue={memberContact.member_name}
+                // value={state.recipient}
+                // onChange={handleChange}
                 required
               />
             </label>
@@ -119,11 +108,10 @@ function AddressEditModal(props) {
               <input
                 name="recipientPhone"
                 type="text"
-                key={member.id}
-                defaultValue={member.member_phone}
-                // onChange={(e) => {
-                //   setRecipientPhone(e.target.value)
-                // }}
+                // key={memberContact.id}
+                defaultValue={memberContact.member_phone}
+                // value={state.recipientPhone}
+                // onChange={handleChange}
                 required
               />
             </label>
@@ -132,27 +120,22 @@ function AddressEditModal(props) {
               <input
                 name="recipientAddress"
                 type="text"
-                key={member.id}
-                value={member.member_receive}
-                // onChange={(e) => {
-                //   setRecipientAddress(e.target.value)
-                // }}
+                // key={memberContact.id}
+                defaultValue={memberContact.member_receive}
+                // value={state.recipientAddress}
+                // onChange={handleChange}
                 required
               />
             </label>
             <label className="checkbox-label" htmlFor="">
               <input
                 type="checkbox"
-                checked={same}
-                // onChange={(e) => {
-                //   setSame(e.target.checked)
-                // }}
               />
               收件資訊同上
             </label>
             <button
               className="checkout__address-edit-modal-btn align-self-end"
-              onClick={editHandler}
+              type="submit"
             >
               更新地址
             </button>
