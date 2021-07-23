@@ -1,3 +1,5 @@
+@import '../../../../styles/global.scss';
+
 .c-intro-notes__description {
   // background: lightcyan;
   height: 330px;
@@ -22,22 +24,37 @@
   position: absolute;
 }
 
-// name className with map loop
-// .c-intro-notes__card {
-//   &0 {
-//     @extend %default;
-//     top: 820px;
-//     left: 1090px;
-//   }
-//   &1 {
-//     top: 820px;
-//     left: 1090px;
-//   }
-//   &2 {
-//     top: 820px;
-//     left: 1090px;
-//   }
-//   & img {
-//     height: 180px;
-//   }
-// }
+@mixin card-status($y, $maxY: 420px) {
+  width: 240px;
+  // height: 280px;
+  position: absolute;
+  right: ($maxY - $y) * 2.2;
+  bottom: $y;
+  // display: flex;
+  // flex-direction: column;
+  & h5 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  & figure {
+    margin-top: 10px;
+    text-align: center;
+    // flex-grow: 1;
+  }
+  & img {
+    height: 180px;
+    vertical-align: baseline;
+  }
+}
+
+.c-intro-notes__card {
+  &0 {
+    @include card-status(320px);
+  }
+  &1 {
+    @include card-status(200px);
+  }
+  &2 {
+    @include card-status(60px);
+  }
+}

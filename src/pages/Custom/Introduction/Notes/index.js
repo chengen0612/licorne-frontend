@@ -34,8 +34,9 @@ function Notes(props) {
           <p>{display.explanation}</p>
         </section>
         {display.types.map((item, i) => {
+          console.log(`c-intro-notes__card ${i}`)
           return (
-            <div key={i} className={`c-intro-notes__card ${i}`}>
+            <div key={i} className={'c-intro-notes__card' + i}>
               <h5>
                 {item.name} {item.nameEn}
               </h5>
