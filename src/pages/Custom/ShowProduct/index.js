@@ -29,6 +29,20 @@ function ShowProduct(props) {
     productImage,
   } = productDetail
 
+  const purchaseHandler = async () => {
+    console.log(JSON.stringify(productDetail))
+    const url = 'http://localhost:6005/custom/addcart'
+    const request = new Request({
+      method: 'POST',
+      body: JSON.stringify(productDetail),
+      header: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+      }),
+    })
+    const response = await fetch(url, request)
+  }
+
   return (
     <>
       <div className="product">
@@ -64,7 +78,7 @@ function ShowProduct(props) {
         <button className="product__btn-favorite">
           <FiHeart /> 收藏
         </button>
-        <button className="product__btn-purchase">
+        <button className="product__btn-purchase" onClick={purchaseHandler}>
           <FiShoppingBag /> 訂購
         </button>
         <button className="product__btn-share">
