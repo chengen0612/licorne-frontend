@@ -3,7 +3,7 @@ import { FiShoppingBag } from 'react-icons/fi'
 import '../../../styles/global.css'
 import '../style.css'
 
-function MyCartFavContainer(props) {
+function MyCartFav(props) {
   return (
     <>
       <div
@@ -39,4 +39,4 @@ function MyCartFavContainer(props) {
   )
 }
 
-export default MyCartFavContainer
+export default MyCartFav

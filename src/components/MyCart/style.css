@@ -207,6 +207,7 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 40px;
+  transition-duration: 2s;
 }
 
 .cj-sidebar__cart__item__img {
