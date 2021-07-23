@@ -6,11 +6,11 @@ import './style.scss'
 function Longevity() {
   return (
     <>
-      <p className="c-in__long__intro">
+      <p className="c-intro-long__intro">
         一支香水的持久程度，取決於精油的濃度。一般來說，精油成分濃度愈高，持久度亦會愈高，相對的，香水價格也會因此而提高。
       </p>
-      <section className="c-in__long__cate-wrap">
-        <div className="c-in__long__cate-item">
+      <section className="c-intro-long__cate-wrap">
+        <div className="c-intro-long__cate-item">
           <h5>古龍水</h5>
           <figure>
             <img
@@ -19,7 +19,7 @@ function Longevity() {
             />
           </figure>
         </div>
-        <div className="c-in__long__cate-item">
+        <div className="c-intro-long__cate-item">
           <h5>淡香水</h5>
           <figure>
             <img
@@ -30,7 +30,7 @@ function Longevity() {
             />
           </figure>
         </div>
-        <div className="c-in__long__cate-item">
+        <div className="c-intro-long__cate-item">
           <h5>淡香精、香水</h5>
           <figure>
             <img
@@ -39,7 +39,7 @@ function Longevity() {
             />
           </figure>
         </div>
-        <div className="c-in__long__cate-item">
+        <div className="c-intro-long__cate-item">
           <h5>香精</h5>
           <figure>
             <img
@@ -49,7 +49,7 @@ function Longevity() {
           </figure>
         </div>
       </section>
-      <figure className="c-in-long__chart-wrap">
+      <figure className="c-intro-long__chart-wrap">
         <img
           src={imgPath + '/images/custom/intro/longevity/chart.svg'}
           alt="chart"

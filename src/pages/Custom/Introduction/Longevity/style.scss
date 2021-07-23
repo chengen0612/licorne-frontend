@@ -1,7 +1,7 @@
 @import '../../../../styles/global.scss';
 
 // introduction
-.c-in__long__intro {
+.c-intro-long__intro {
   width: 348px;
   height: 63px;
   position: absolute;
@@ -10,7 +10,7 @@
 }
 
 // product categorys
-.c-in__long {
+.c-intro-long {
   &__cate-wrap {
     width: 1000px;
     height: 300px;
@@ -35,7 +35,7 @@
 }
 
 // longevity chart
-.c-in-long__chart-wrap {
+.c-intro-long__chart-wrap {
   margin-left: -612px;
   position: absolute;
   top: 660px;

@@ -50,7 +50,7 @@ function Basis(props) {
   return (
     <>
       {/* blobs */}
-      <section className="c-intro__basis-intro">
+      <section className="c-intro-basis-intro">
         <h5>香水組成與結構</h5>
         <p>
           一瓶香水成份可分為三個部分，酒精(Alcohol)、水(Distilled
