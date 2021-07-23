@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { FiX, FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import './style.scss'
@@ -9,8 +10,8 @@ import Longevity from './Longevity'
 import Notes from './Notes'
 
 function Introduction() {
-  const [page, setPage] = useState(6)
-  const [display, setDisplay] = useState()
+  const [page, setPage] = useState(1)
+  const [display, setDisplay] = useState(<></>)
 
   useEffect(() => {
     const chooseComponent = () => {
@@ -41,6 +42,38 @@ function Introduction() {
     setDisplay(result)
   }, [page])
 
+  const renderBlobs = () => {
+    let result = ''
+    if (page >= 1 && page <= 4) {
+      result = (
+        <>
+          <div className="c-intro-basis__y-blob"></div>
+          <div className="c-intro-basis__r-blob"></div>
+          <div className="c-intro-basis__p-blob"></div>
+        </>
+      )
+    } else if (page === 5) {
+      result = (
+        <>
+          <div className="c-intro-long__y-blob"></div>
+          <div className="c-intro-long__r-blob"></div>
+          <div className="c-intro-long__p-blob"></div>
+          <div className="c-intro-long__o-blob"></div>
+        </>
+      )
+    } else {
+      result = (
+        <>
+          <div className="c-intro-notes__y-blob"></div>
+          <div className="c-intro-notes__r-blob"></div>
+          <div className="c-intro-notes__p-blob"></div>
+          <div className="c-intro-notes__o-blob"></div>
+        </>
+      )
+    }
+    return result
+  }
+
   // page handlers
   const previousPageExecutor = () => {
     if (page > 1) setPage(page - 1)
@@ -53,7 +86,33 @@ function Introduction() {
   return (
     <>
       <div className="c-intro-wrapper">
-        <FiX className="c-intro__close-btn" />
+        {/* {page >= 1 && page <= 4 && (
+          <>
+            <div className="c-intro-basis__y-blob"></div>
+            <div className="c-intro-basis__r-blob"></div>
+            <div className="c-intro-basis__p-blob"></div>
+          </>
+        )}
+        {page === 5 && (
+          <>
+            <div className="c-intro-long__y-blob"></div>
+            <div className="c-intro-long__r-blob"></div>
+            <div className="c-intro-long__p-blob"></div>
+            <div className="c-intro-long__o-blob"></div>
+          </>
+        )}
+        {page > 5 && page <= 8 && (
+          <>
+            <div className="c-intro-notes__y-blob"></div>
+            <div className="c-intro-notes__r-blob"></div>
+            <div className="c-intro-notes__p-blob"></div>
+            <div className="c-intro-notes__o-blob"></div>
+          </>
+        )} */}
+        {page && renderBlobs()}
+        <Link to="/">
+          <FiX className="c-intro__close-btn" />
+        </Link>
         <FiArrowLeft
           onClick={previousPageExecutor}
           className="c-intro__previous-page-btn"
@@ -63,7 +122,9 @@ function Introduction() {
           className="c-intro__next-page-btn"
         />
         {display}
-        <button className="c-intro__skip-btn">跳過介紹</button>
+        <Link to="/custom">
+          <button className="c-intro__skip-btn">跳過介紹</button>
+        </Link>
       </div>
     </>
   )
