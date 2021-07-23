@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
 import { imgPath } from '../../../../config/index'
-import { topNote } from './data'
+import { topNote, middleNote, baseNote } from './data'
 import './style.scss'
 
 function Notes(props) {
   const { page } = props
   const reference = [
     { page: 6, match: topNote },
-    { page: 7, match: '中調' },
-    { page: 8, match: '後調' },
+    { page: 7, match: middleNote },
+    { page: 8, match: baseNote },
   ]
 
   const [display, setDisplay] = useState({})
