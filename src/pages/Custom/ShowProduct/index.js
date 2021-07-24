@@ -18,11 +18,9 @@ function ShowProduct(props) {
   console.log(productDetail)
 
   const {
-    // noteIdList,
     topNote,
     middleNote,
     baseNote,
-    // serieId,
     serieName,
     serieDescription,
     productCode,
@@ -41,6 +39,8 @@ function ShowProduct(props) {
     })
     // console.log(request)
     const response = await fetch(request)
+    const result = await response.json()
+    console.log(result.message)
   }
 
   return (
