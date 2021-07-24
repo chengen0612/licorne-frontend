@@ -5,37 +5,38 @@ import Backdrop from './components/Backdrop'
 
 function OrderDetail() {
   const [members, setMembers] = useState([])
-  async function getMemberInfoFromServer() {
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/checkout'
-
-    // 注意header資料格式要設定，伺服器才知道是json格式
-    const request = new Request(url, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }),
-    })
-
-    const response = await fetch(request)
-    const data = await response.json()
-    const memberInfo = data.member
-    console.log('memberInfo', memberInfo)
-    setMembers(memberInfo)
-  }
 
   useEffect(() => {
+    async function getMemberInfoFromServer() {
+      // 連接的伺服器資料網址
+      const url = 'http://localhost:6005/checkout/member'
+
+      // 注意header資料格式要設定，伺服器才知道是json格式
+      const request = new Request(url, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+
+      const response = await fetch(request)
+      const data = await response.json()
+      console.log('memberInfo', data)
+      setMembers(data)
+    }
     getMemberInfoFromServer()
-  }, [])
+  }, [setMembers])
 
   const [showModal, setShowModal] = useState()
   function showModalHandler() {
     setShowModal(true)
+    document.body.style.overflow = 'hidden'
   }
 
   function closeModalHandler() {
     setShowModal(false)
+    document.body.style.overflow = 'visible'
   }
 
   return (
@@ -62,7 +63,7 @@ function OrderDetail() {
             </label>
           </div>
           <div className="checkout__order-box-delivery-edit-bg d-flex flex-column p-3 mt-2 mb-2">
-            {members.map((member, i) => {
+            {members.map((member) => {
               return (
                 <React.Fragment key={member.id}>
                   <div className="checkout__order-box-delivery-edit-wrapper d-flex justify-content-between">

@@ -11,7 +11,7 @@ function AddressEditModal(props) {
   // const [recipientAddress, setRecipientAddress] = useState('29850 桃園市桃園區中正路100巷100號')
   async function getMemberInfoFromServer() {
     // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/checkout'
+    const url = 'http://localhost:6005/checkout/member'
 
     // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
@@ -24,10 +24,9 @@ function AddressEditModal(props) {
 
     const response = await fetch(request)
     const data = await response.json()
-    const memberInfo = data.member
-    console.log(memberInfo)
+    console.log(data)
     // 設定資料
-    setMemberContacts(memberInfo)
+    setMemberContacts(data)
   }
 
   useEffect(() => {
@@ -36,6 +35,7 @@ function AddressEditModal(props) {
 
   function closeHandler() {
     props.onClose()
+    document.body.style.overflow = 'visible'
   }
 
   return (
@@ -59,7 +59,6 @@ function AddressEditModal(props) {
               <input
                 name="username"
                 type="text"
-                // key={memberContact.id}
                 defaultValue={memberContact.member_name}
                 // value={state.username}
                 // onChange={handleChange}
@@ -71,10 +70,8 @@ function AddressEditModal(props) {
               <input
                 name="phone"
                 type="text"
-                // key={memberContact.id}
                 defaultValue={memberContact.member_phone}
                 // value={state.phone}
-                // onChange={handleChange}
                 required
               />
             </label>
@@ -83,10 +80,8 @@ function AddressEditModal(props) {
               <input
                 name="address"
                 type="text"
-                // key={memberContact.id}
                 defaultValue={memberContact.member_address}
                 // value={state.address}
-                // onChange={handleChange}
                 required
               />
             </label>
@@ -96,10 +91,8 @@ function AddressEditModal(props) {
               <input
                 name="recipient"
                 type="text"
-                // key={memberContact.id}
                 defaultValue={memberContact.member_name}
                 // value={state.recipient}
-                // onChange={handleChange}
                 required
               />
             </label>
@@ -108,10 +101,8 @@ function AddressEditModal(props) {
               <input
                 name="recipientPhone"
                 type="text"
-                // key={memberContact.id}
                 defaultValue={memberContact.member_phone}
                 // value={state.recipientPhone}
-                // onChange={handleChange}
                 required
               />
             </label>
@@ -120,10 +111,8 @@ function AddressEditModal(props) {
               <input
                 name="recipientAddress"
                 type="text"
-                // key={memberContact.id}
                 defaultValue={memberContact.member_receive}
                 // value={state.recipientAddress}
-                // onChange={handleChange}
                 required
               />
             </label>
