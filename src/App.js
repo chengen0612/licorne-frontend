@@ -11,6 +11,7 @@ import Bestseller from './pages/Bestseller'
 import Custom from './pages/Custom'
 import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
+import MyCart from './components/MyCart'
 
 // 分頁集合
 // import SwitchMember from './routes/SwitchMember'
