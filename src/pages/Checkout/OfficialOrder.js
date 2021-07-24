@@ -4,15 +4,11 @@ import { FiX } from 'react-icons/fi'
 
 function OfficialOrder() {
   const [officialItems, setOfficialItems] = useState([])
-  const [quantity, setQuantity] = useState([])
-  const [subtotal, setSubtotal] = useState([])
+  const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
   async function getOfficialInfoFromServer() {
-    // 連接的伺服器資料網址
     const url = 'http://localhost:6005/checkout/official'
-
-    // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
@@ -26,23 +22,21 @@ function OfficialOrder() {
     console.log('officialProduct', data)
     setOfficialItems(data)
 
-    const officialQuantity = data.map((item) => {
+    const quantities = data.map((item) => {
       return item.quantity
     })
 
-    const officialSubtotal = data.map((item, i) => {
-      return +item.price * item.quantity
-    })
-
-    console.log('officialQuantity', officialQuantity)
-    console.log('officialSubtotal', officialSubtotal)
-    setQuantity(officialQuantity)
-    setSubtotal(officialSubtotal)
+    console.log('officialQuantities', quantities)
+    setQuantities(quantities)
   }
 
   useEffect(() => {
     getOfficialInfoFromServer()
   }, [])
+
+  const subtotals = officialItems.map((item, i) => {
+    return +item.price * quantities[i]
+  })
 
   const handleDelete = (id) => {
     const newOfficialItems = officialItems.filter((v, i) => {
@@ -108,27 +102,26 @@ function OfficialOrder() {
                 type="number"
                 min="1"
                 name="quantity"
-                // defaultValue={officialItem.quantity}
-                value={quantity[i]}
+                defaultValue={quantities[i]}
                 onInput={(e) => {
-                  setQuantity(e.target.value)
-                  console.log(e.target.value)
+                  const newQuantities = quantities.map((quantity, index) => {
+                    if (i === index) {
+                      return +e.target.value
+                    }
+                    return quantity
+                  })
+                  // quantities[i] = +e.target.value
+                  setQuantities(newQuantities)
+                  console.log('current officialQuantities', quantities)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
                 }
               />
-              {/* TODO: recalculate subtotal when quantity changes */}
-              <span
-                className="checkout__official-box-product-subtotal"
-                onChange={(e) => {
-                  setSubtotal(e.target.value)
-                }}
-              >
+              <span className="checkout__official-box-product-subtotal">
                 {/* NT $6000 */}
                 NT$
-                {subtotal[i]}
-                {/* {parseInt(officialItem.price) * parseInt(officialItem.quantity)} */}
+                {subtotals[i]}
               </span>
               <FiX
                 className="feather-s"

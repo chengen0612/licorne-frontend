@@ -5,15 +5,11 @@ import { FiX } from 'react-icons/fi'
 
 function CustomOrder() {
   const [customItems, setCustomItems] = useState([])
-  const [quantity, setQuantity] = useState([])
-  const [subtotal, setSubtotal] = useState([])
+  const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
   async function getCustomInfoFromServer() {
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/checkout'
-
-    // 注意header資料格式要設定，伺服器才知道是json格式
+    const url = 'http://localhost:6005/checkout/custom'
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
@@ -24,27 +20,24 @@ function CustomOrder() {
 
     const response = await fetch(request)
     const data = await response.json()
-    const customProduct = data.custom
-    console.log('customProduct', customProduct)
-    // 設定資料
-    setCustomItems(customProduct)
+    console.log('customProduct', data)
+    setCustomItems(data)
 
-    const customQuantity = customProduct.map((item) => {
+    const quantities = data.map((item) => {
       return item.quantity
     })
-    const customSubtotal = customProduct.map((item, i) => {
-      return +item.price * customQuantity[i]
-    })
 
-    console.log('customQuantity', customQuantity)
-    console.log('customSubtotal', customSubtotal)
-    setQuantity(customQuantity)
-    setSubtotal(customSubtotal)
+    console.log('customQuantities', quantities)
+    setQuantities(quantities)
   }
 
   useEffect(() => {
     getCustomInfoFromServer()
   }, [])
+
+  const subtotals = customItems.map((item, i) => {
+    return +item.price * quantities[i]
+  })
 
   const handleDelete = (id) => {
     const newCustomItems = customItems.filter((v, i) => {
@@ -113,17 +106,25 @@ function CustomOrder() {
                 className="box-quantity"
                 type="number"
                 min="1"
-                defaultValue={customItem.quantity}
-                // value={quantity[i]}
-                onChange={setQuantity}
+                defaultValue={quantities[i]}
+                onInput={(e) => {
+                  const newQuantities = quantities.map((quantity, index) => {
+                    if (i === index) {
+                      return +e.target.value
+                    }
+                    return quantity
+                  })
+                  // quantities[i] = +e.target.value
+                  setQuantities(newQuantities)
+                  console.log('current customQuantities', quantities)
+                }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
                 }
               />
-              {/* TODO: recalculate subtotal when quantity changes */}
               <span className="checkout__custom-box-product-subtotal">
                 {/* NT $6000 */}
-                NT$ {subtotal[i]}
+                NT$ {subtotals[i]}
               </span>
               <FiX
                 className="feather-s"
