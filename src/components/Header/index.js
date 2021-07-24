@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './style.css'
 import MyCart from '../MyCart'
-import { useState } from 'react'
 
 import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
@@ -36,26 +36,26 @@ function Header() {
           <div className="header__icon-border">
             <div className="icon">
               <div className="header__rwd-icon-1">
-                <a href="#/">
+                <Link to="/">
                   <FiSearch data-feather="search" className="header-i" />
-                </a>
-                <a href="#/">
+                </Link>
+                <Link to="/member">
                   <FiUser data-feather="user" className="header-i" />
-                </a>
+                </Link>
               </div>
               <div className="header__rwd-icon-2">
-                <a href="#/">
+                <Link to="/">
                   <FiHeart data-feather="heart" className="header-i" />
-                </a>
+                </Link>
                 {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
-                <a href="#/">
+                <Link to="/">
                   <FiShoppingBag
                     onClick={openSidebar}
                     data-feather="shopping-bag"
                     className="header-i"
                   />
                   {/*  */}
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -64,19 +64,19 @@ function Header() {
         <div className="header__menu">
           <ul className="header__menu__list">
             <li>
-              <a href="#/">客製香水</a>
+              <Link to="/custom">客製香水</Link>
             </li>
             <li>
-              <a href="#/">課程體驗</a>
+              <Link to="/course">課程體驗</Link>
             </li>
             <li>
-              <a href="#/">人氣熱銷</a>
+              <Link to="/bestseller">人氣熱銷</Link>
             </li>
             <li>
-              <a href="#/">官方經典</a>
+              <Link to="/official">官方經典</Link>
             </li>
             <li>
-              <a href="#/">專屬香氣</a>
+              <Link to="/">專屬香氣</Link>
             </li>
           </ul>
         </div>
