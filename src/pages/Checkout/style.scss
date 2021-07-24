@@ -23,6 +23,7 @@ ul {
   list-style: none;
 }
 
+// TODO: organize class names
 /* checkout */
 .checkout {
   margin-bottom: 100px;
@@ -61,6 +62,10 @@ ul {
   height: fit-content;
   color: $c-primary;
   border-bottom: 1px solid $c-primary;
+}
+
+.checkout__box-none{
+  font-size: $fs-h5;
 }
 
 .checkout__official-box-list,
