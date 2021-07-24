@@ -38,9 +38,9 @@ function App() {
           </Route>
 
           {/* switch member */}
-          {/* <Route path="/member">
+          <Route path="/member">
             <SwitchMember />
-          </Route> */}
+          </Route>
 
           {/* switch official */}
           {/* <Route path="/official">
