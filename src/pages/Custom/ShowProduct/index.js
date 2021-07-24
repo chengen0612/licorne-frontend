@@ -15,7 +15,7 @@ import CostList from './OfferList'
 
 function ShowProduct(props) {
   const { productDetail, setProductDetail } = props
-  console.log(productDetail)
+  // console.log(productDetail)
 
   const {
     noteIdList,
@@ -30,17 +30,17 @@ function ShowProduct(props) {
   } = productDetail
 
   const purchaseHandler = async () => {
-    console.log(JSON.stringify(productDetail))
     const url = 'http://localhost:6005/custom/addcart'
-    const request = new Request({
+    const request = new Request(url, {
       method: 'POST',
       body: JSON.stringify(productDetail),
-      header: new Headers({
+      headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
       }),
     })
-    const response = await fetch(url, request)
+    // console.log(request)
+    const response = await fetch(request)
   }
 
   return (

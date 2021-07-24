@@ -28,10 +28,9 @@ function MakeProduct(props) {
   // get data
   async function getDataFromServer() {
     const url = 'http://localhost:6005/custom'
-
     const request = new Request({
       method: 'GET',
-      header: new Headers({
+      headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json',
       }),
