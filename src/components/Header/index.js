@@ -12,8 +12,15 @@ function Header() {
   // CJ：這個 function 是用來關上購物車側邊欄
   function closeSidebar() {
     setSidebarIsOpen(false)
+    document.body.style.width = '100%'
   }
-  //
+
+  const openSidebar = () => {
+    setSidebarIsOpen(true)
+    const scrollbarWidth = window.innerWidth - document.body.offsetWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.width = `calc(100% - ${scrollbarWidth}px)`
+  }
 
   return (
     <>
@@ -43,10 +50,7 @@ function Header() {
                 {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
                 <a href="#/">
                   <FiShoppingBag
-                    onClick={() => {
-                      setSidebarIsOpen(true)
-                      document.body.style.overflow = 'hidden'
-                    }}
+                    onClick={openSidebar}
                     data-feather="shopping-bag"
                     className="header-i"
                   />
