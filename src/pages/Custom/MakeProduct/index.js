@@ -89,18 +89,18 @@ function MakeProduct(props) {
     const serie = seriesData.filter((item) => item.id === selectedSeries[0])[0]
     /* eslint-enable*/
 
-    const productId =
+    const productCode =
       topNote.ingredient_id + middleNote.ingredient_id + baseNote.ingredient_id
 
     const result = {
       noteIdList: selectedItems,
-      topNote: { title: topNote.name_zh, price: topNote.price },
-      middleNote: { title: middleNote.name_zh, price: middleNote.price },
-      baseNote: { title: baseNote.name_zh, price: baseNote.price },
+      topNote: { title: topNote.name_zh, ingredientId : topNote.ingredient_id, price: topNote.price },
+      middleNote: { title: middleNote.name_zh, ingredientId : middleNote.ingredient_id, price: middleNote.price },
+      baseNote: { title: baseNote.name_zh, ingredientId : baseNote.ingredient_id, price: baseNote.price },
       serieId: selectedSeries[0],
       serieName: serie.name_zh,
       serieDescription: serie.description_zh,
-      productId: productId,
+      productCode: productCode,
       productImage: serie.bottle_img,
     }
 

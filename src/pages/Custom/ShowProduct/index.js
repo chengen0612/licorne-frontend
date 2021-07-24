@@ -15,17 +15,17 @@ import CostList from './OfferList'
 
 function ShowProduct(props) {
   const { productDetail, setProductDetail } = props
-  // console.log(productDetail)
+  console.log(productDetail)
 
   const {
-    noteIdList,
+    // noteIdList,
     topNote,
     middleNote,
     baseNote,
-    serieId,
+    // serieId,
     serieName,
     serieDescription,
-    productId,
+    productCode,
     productImage,
   } = productDetail
 
@@ -53,7 +53,7 @@ function ShowProduct(props) {
         {/* background blob end */}
         <div className="top-bar">
           <span>
-            {serieName}&nbsp;&nbsp;{productId}
+            {serieName}&nbsp;&nbsp;{productCode}
           </span>
         </div>
         <FiX className="close-btn" />
