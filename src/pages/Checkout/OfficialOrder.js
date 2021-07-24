@@ -8,39 +8,39 @@ function OfficialOrder() {
   const [subtotal, setSubtotal] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
+  async function getOfficialInfoFromServer() {
+    // 連接的伺服器資料網址
+    const url = 'http://localhost:6005/checkout/official'
+
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log('officialProduct', data)
+    setOfficialItems(data)
+
+    const officialQuantity = data.map((item) => {
+      return item.quantity
+    })
+
+    const officialSubtotal = data.map((item, i) => {
+      return +item.price * item.quantity
+    })
+
+    console.log('officialQuantity', officialQuantity)
+    console.log('officialSubtotal', officialSubtotal)
+    setQuantity(officialQuantity)
+    setSubtotal(officialSubtotal)
+  }
+
   useEffect(() => {
-    async function getOfficialInfoFromServer() {
-      // 連接的伺服器資料網址
-      const url = 'http://localhost:6005/checkout'
-
-      // 注意header資料格式要設定，伺服器才知道是json格式
-      const request = new Request(url, {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-
-      const response = await fetch(request)
-      const data = await response.json()
-      const officialProduct = data.official
-      console.log('officialProduct', officialProduct)
-      setOfficialItems(officialProduct)
-
-      const officialQuantity = officialProduct.map((item) => {
-        return item.quantity
-      })
-
-      const officialSubtotal = officialProduct.map((item, i) => {
-        return +item.price * officialQuantity[i]
-      })
-
-      console.log('officialQuantity', officialQuantity)
-      console.log('officialSubtotal', officialSubtotal)
-      setQuantity(officialQuantity)
-      setSubtotal(officialSubtotal)
-    }
     getOfficialInfoFromServer()
   }, [])
 
@@ -54,7 +54,6 @@ function OfficialOrder() {
 
   return (
     <>
-      <div></div>
       <div className="checkout__official-box-top pl-4 pt-3 pb-2">
         <label className="checkout__official-box-title">
           <input
@@ -109,10 +108,11 @@ function OfficialOrder() {
                 type="number"
                 min="1"
                 name="quantity"
-                defaultValue={officialItem.quantity}
-                // value={quantity[i]}
+                // defaultValue={officialItem.quantity}
+                value={quantity[i]}
                 onInput={(e) => {
                   setQuantity(e.target.value)
+                  console.log(e.target.value)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
@@ -126,7 +126,8 @@ function OfficialOrder() {
                 }}
               >
                 {/* NT $6000 */}
-                NT$ {subtotal[i]}
+                NT$
+                {subtotal[i]}
                 {/* {parseInt(officialItem.price) * parseInt(officialItem.quantity)} */}
               </span>
               <FiX
