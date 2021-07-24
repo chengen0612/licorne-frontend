@@ -5,7 +5,16 @@ import { FiX } from 'react-icons/fi'
 function OfficialOrder() {
   const [officialItems, setOfficialItems] = useState([])
   const [quantities, setQuantities] = useState([])
+  const [showNoItem, setShowNoItem] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
+
+  const handleDelete = (id) => {
+    const newOfficialItems = officialItems.filter((v, i) => {
+      return v.id !== id
+    })
+    console.log('current officialItems', newOfficialItems)
+    setOfficialItems(newOfficialItems)
+  }
 
   async function getOfficialInfoFromServer() {
     const url = 'http://localhost:6005/checkout/official'
@@ -38,14 +47,6 @@ function OfficialOrder() {
     return +item.price * quantities[i]
   })
 
-  const handleDelete = (id) => {
-    const newOfficialItems = officialItems.filter((v, i) => {
-      return v.id !== id
-    })
-    console.log('current officialItems', newOfficialItems)
-    setOfficialItems(newOfficialItems)
-  }
-
   return (
     <>
       <div className="checkout__official-box-top pl-4 pt-3 pb-2">
@@ -57,6 +58,11 @@ function OfficialOrder() {
           官方商品 <span>({officialItems.length})</span>
         </label>
       </div>
+      {officialItems.length === 0 && (
+        <p className="checkout__box-none d-flex justify-content-center pt-4 pb-4">
+          購物籃中沒有任何商品
+        </p>
+      )}
       {officialItems.map((officialItem, i) => {
         return (
           <React.Fragment key={officialItem.id}>
@@ -101,6 +107,7 @@ function OfficialOrder() {
                 className="box-quantity"
                 type="number"
                 min="1"
+                max="9"
                 name="quantity"
                 defaultValue={quantities[i]}
                 onInput={(e) => {

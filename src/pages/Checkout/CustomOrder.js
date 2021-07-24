@@ -58,6 +58,11 @@ function CustomOrder() {
           客製商品 <span>({customItems.length})</span>
         </label>
       </div>
+      {customItems.length === 0 && (
+        <p className="checkout__box-none d-flex justify-content-center pt-4 pb-4">
+          購物籃中沒有任何商品
+        </p>
+      )}
       {customItems.map((customItem, i) => {
         return (
           <React.Fragment key={customItem.id}>

@@ -5,7 +5,7 @@ import { FiX } from 'react-icons/fi'
 function CourseOrder() {
   const [courseItems, setCourseItems] = useState([])
   async function getCourseInfoFromServer() {
-    const url = 'http://localhost:6005/checkout'
+    const url = 'http://localhost:6005/checkout/course'
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
@@ -16,9 +16,8 @@ function CourseOrder() {
 
     const response = await fetch(request)
     const data = await response.json()
-    const courseProduct = data.course
-    console.log('courseProduct', courseProduct)
-    setCourseItems(courseProduct)
+    console.log('courseProduct', data)
+    setCourseItems(data)
   }
 
   useEffect(() => {
@@ -44,6 +43,11 @@ function CourseOrder() {
           工作坊課程 <span>({courseItems.length})</span>
         </label>
       </div>
+      {courseItems.length === 0 && (
+        <p className="checkout__box-none d-flex justify-content-center pt-4 pb-4">
+          購物籃中沒有任何商品
+        </p>
+      )}
       {courseItems.map((courseItem, i) => {
         return (
           <React.Fragment key={i}>
