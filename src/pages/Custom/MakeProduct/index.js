@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { FiX, FiRefreshCw, FiSkipBack, FiCheckSquare } from 'react-icons/fi'
 
@@ -116,7 +117,9 @@ function MakeProduct(props) {
         <div className="yellow-blob"></div>
         {/* background blob end */}
         <ProgressBar noteStatus={noteStatus} />
-        <FiX className="close-btn" />
+        <Link to="/">
+          <FiX className="close-btn" />
+        </Link>
         <article className="description">
           {description && (
             <>

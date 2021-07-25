@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import {
   FiX,
   FiRefreshCw,
@@ -72,7 +74,9 @@ function ShowProduct(props) {
             {serieName}&nbsp;&nbsp;{productCode}
           </span>
         </div>
-        <FiX className="close-btn" />
+        <Link to="/">
+          <FiX className="close-btn" />
+        </Link>
         <article className="description blob-orange">
           <p className="description__title">成分說明</p>
           <span className="description__content">{serieDescription}</span>
