@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import { FiHeart } from 'react-icons/fi'
@@ -14,6 +14,28 @@ function MyCartCartItem({
   volume,
   quantity,
 }) {
+  function removeQTY() {
+    const newProductDatas = [...productDatas]
+    const index = newProductDatas.findIndex((v, i) => {
+      return v.id === id
+    })
+    if (index > -1 && quantity > 1) {
+      newProductDatas[index].productQuantity--
+    }
+    setProductDatas(newProductDatas)
+  }
+
+  function addQTY() {
+    const newProductDatas = [...productDatas]
+    const index = newProductDatas.findIndex((v, i) => {
+      return v.id === id
+    })
+    if (index > -1) {
+      newProductDatas[index].productQuantity++
+    }
+    setProductDatas(newProductDatas)
+  }
+
   return (
     <>
       <div className="cj-sidebar__cart__item__img">
@@ -30,24 +52,10 @@ function MyCartCartItem({
           XXXXXX系列
         </p>
         <div>
-          {/* <select name="" id="">
-            {volume === '100ml' ? (
-              <option selected>瓶裝 100ML</option>
-            ) : (
-              <option>瓶裝 100ML</option>
-            )}
-            {volume === '50ml' ? (
-              <option selected>瓶裝 50ML</option>
-            ) : (
-              <option>瓶裝 50ML</option>
-            )}
-          </select> */}
-          {/*  */}
-          <select name="" id="" value={volume}>
+          <select name="" id="" value={volume} disabled>
             <option value="100ml">瓶裝 100ML</option>
             <option value="50ml">瓶裝 50ML</option>
           </select>
-          {/*  */}
         </div>
         <p>NT$ {price}</p>
         <p
@@ -66,14 +74,7 @@ function MyCartCartItem({
         <div
           role="button"
           onClick={() => {
-            const newProductDatas = [...productDatas]
-            const index = newProductDatas.findIndex((v, i) => {
-              return v.id === id
-            })
-            if (index > -1 && quantity > 1) {
-              newProductDatas[index].productQuantity--
-            }
-            setProductDatas(newProductDatas)
+            removeQTY()
           }}
         >
           -
@@ -82,14 +83,7 @@ function MyCartCartItem({
         <div
           role="button"
           onClick={() => {
-            const newProductDatas = [...productDatas]
-            const index = newProductDatas.findIndex((v, i) => {
-              return v.id === id
-            })
-            if (index > -1) {
-              newProductDatas[index].productQuantity++
-            }
-            setProductDatas(newProductDatas)
+            addQTY()
           }}
         >
           +

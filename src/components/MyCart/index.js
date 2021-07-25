@@ -6,16 +6,13 @@ import MyCartCart from './childComponent/MyCartCart'
 import MyCartFav from './childComponent/MyCartFav'
 
 function MyCart(props) {
-  // 接住從 Header 傳來的資料
-  const closeSidebar = props.closeSidebar
-  // 切換側邊欄購物車及收藏清單
-  const [favOrCart, setFavOrCart] = useState('Fav')
-  // 處理產品資料
-  const [productDatas, setProductDatas] = useState([])
-  //處理總金額的
-  const [totalAmount, setTotalAmount] = useState(0)
-  //計算總金額函式
+  const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
+  const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
+  const [productDatas, setProductDatas] = useState([]) // 處理產品資料
+  const [totalAmount, setTotalAmount] = useState(0) //處理總金額
+
   function calculateTotal() {
+    //計算總金額函式
     let total = 0
     for (let obj of productDatas) {
       total += obj.productQuantity * obj.price
@@ -23,10 +20,9 @@ function MyCart(props) {
     setTotalAmount(total)
   }
 
-  // 以下是組長提供的跟伺服器抓資料的程式碼
   async function getSidebarFromServer() {
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/sidebar'
+    // 組長提供的函式：伺服器抓資料
+    const url = 'http://localhost:6005/sidebar' // 連接的伺服器資料網址
     // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
       method: 'GET',
@@ -36,7 +32,7 @@ function MyCart(props) {
       }),
     })
     const response = await fetch(request)
-    const data = await response.json()
+    const data = await response.json() // data 是從伺服器抓回來的資料
 
     const dataProduct = [...data.product]
     const dataQTY = data.productQuantity.split(',')
@@ -44,10 +40,8 @@ function MyCart(props) {
       dataProduct[i]['productQuantity'] = dataQTY[i]
     }
     setProductDatas(dataProduct)
-    // console.log('asdfasdf', dataProduct)
   }
   useEffect(() => {
-    console.log(productDatas)
     calculateTotal()
   }, [productDatas])
 
@@ -55,8 +49,6 @@ function MyCart(props) {
     getSidebarFromServer()
   }, [])
 
-  //
-  //
   //
 
   return (

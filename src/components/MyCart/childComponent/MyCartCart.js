@@ -1,29 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import MyCartCartItem from './MyCartCartItem'
 
-function MyCartCart({
-  favOrCart,
-  productDatas,
-  setProductDatas,
-  totalAmount,
-  setTotalAmount,
-  calculateTotal,
-}) {
-  //
-  //
-  // const [totalAmount, setTotalAmount] = useState(0)
-  // function calculateTotal() {
-  //   let total = 0
-  //   for (let obj of productDatas) {
-  //     total += obj.productQuantity * obj.price
-  //   }
-  //   setTotalAmount(total)
-  // }
-  //
-  //
-
+function MyCartCart({ favOrCart, productDatas, setProductDatas, totalAmount }) {
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
       <div className="cj-sidebar__cart">
@@ -45,24 +25,12 @@ function MyCartCart({
             </div>
           )
         })}
-
-        {/*  */}
       </div>
 
       <div className="cj-sidebar__cart__price">
         <div>
           <p>總金額：</p>
-          <p
-          // onClick={() => {
-          //   let total = 0
-          //   for (let obj of productDatas) {
-          //     total += obj.productQuantity * obj.price
-          //   }
-          //   console.log(total)
-          // }}
-          >
-            NT$ {totalAmount}
-          </p>
+          <p>NT$ {totalAmount}</p>
         </div>
       </div>
       <div className="cj-sidebar__cart__checkout">
