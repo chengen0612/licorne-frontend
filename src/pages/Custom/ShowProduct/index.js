@@ -15,7 +15,7 @@ import CostList from './OfferList'
 
 function ShowProduct(props) {
   const { productDetail, setProductDetail } = props
-  console.log(productDetail)
+  // console.log(productDetail)
 
   const {
     topNote,
@@ -37,10 +37,10 @@ function ShowProduct(props) {
         'Content-Type': 'application/json; charset=UTF-8',
       }),
     })
-    console.log(request)
+    // console.log(request)
     const response = await fetch(request)
     const result = await response.json()
-    console.log(result.message)
+    // console.log('資料輸入成功: ', result.message)
   }
 
   const collectHandler = async () => {
@@ -53,10 +53,10 @@ function ShowProduct(props) {
         'Content-Type': 'application/json; charset=UTF-8',
       }),
     })
-    console.log(request)
+    // console.log(request)
     const response = await fetch(request)
     const result = await response.json()
-    console.log(result.message)
+    // console.log('資料輸入成功: ', result.message)
   }
 
   return (
