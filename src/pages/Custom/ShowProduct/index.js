@@ -37,7 +37,23 @@ function ShowProduct(props) {
         'Content-Type': 'application/json; charset=UTF-8',
       }),
     })
-    // console.log(request)
+    console.log(request)
+    const response = await fetch(request)
+    const result = await response.json()
+    console.log(result.message)
+  }
+
+  const collectHandler = async () => {
+    const url = 'http://localhost:6005/custom/addfavorite'
+    const request = new Request(url, {
+      method: 'POST',
+      body: JSON.stringify(productDetail),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+      }),
+    })
+    console.log(request)
     const response = await fetch(request)
     const result = await response.json()
     console.log(result.message)
@@ -75,7 +91,7 @@ function ShowProduct(props) {
         >
           <FiRefreshCw /> 重做
         </button>
-        <button className="product__btn-favorite">
+        <button className="product__btn-favorite" onClick={collectHandler}>
           <FiHeart /> 收藏
         </button>
         <button className="product__btn-purchase" onClick={purchaseHandler}>
