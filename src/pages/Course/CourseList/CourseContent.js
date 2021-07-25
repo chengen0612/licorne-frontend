@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { imgPath } from '../../../config';
 import CourseDescription from './CourseDescription';
 
@@ -18,7 +18,7 @@ function CourseContent(props) {
               alt=""
             />
           </div>
-          <p className="image_text">我是圖片說明文字</p>
+          <p className="image_text">調製屬於自己的香味</p>
           <div className="course_box">
             <img
               className="course_img2"
@@ -26,7 +26,7 @@ function CourseContent(props) {
               alt=""
             />
           </div>
-          <p className="image_text">我是圖片說明文字</p>
+          <p className="image_text">上百種原料提供選擇</p>
         </div>
       </div>
     </>

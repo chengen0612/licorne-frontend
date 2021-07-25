@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { FiSearch, FiMapPin, FiX } from 'react-icons/fi'
-import { imgPath } from '../../../config'
-import GoogleMapReact from 'google-map-react'
-import shop_list from './data/shop_list.json'
-import CourseClassRoom from './CourseClassRoom'
+import React, { useState, useRef, useEffect } from 'react';
+import { FiSearch, FiMapPin, FiX } from 'react-icons/fi';
+import { imgPath } from '../../../config';
+import GoogleMapReact from 'google-map-react';
+import CourseClassRoom from './CourseClassRoom';
 
 //MarkerIcon樣式
 
@@ -22,22 +21,22 @@ const MarkerIcon = () => {
       </div>
       {/* <FiMapPin className="modal__marker" /> */}
     </>
-  )
-}
+  );
+};
 
 function CourseMapModal(props) {
   //設定選擇店鋪
-  const { closeModalHandler, setSelectForm } = props
+  const { closeModalHandler, setSelectForm, placeLatLng } = props;
 
   //const [select, setSelect] = useState('');
 
   // json抓出經緯度
-  const [jsonArrayLatLng, setJsonArrayLatLng] = useState([])
+  const [jsonArrayLatLng, setJsonArrayLatLng] = useState([]);
 
   // 經緯度預設值
   // const [lat, setLat] = useState(0);
   // const [lng, setLng] = useState(0);
-  const [defaultLatLng, setDefaultLatLng] = useState({ lat: 0, lng: 0 })
+  const [defaultLatLng, setDefaultLatLng] = useState({ lat: 0, lng: 0 });
 
   //console.log(JSON.stringify(defaultLatLng));
 
@@ -50,40 +49,44 @@ function CourseMapModal(props) {
       course_place_lat: '22.5662669501168',
       course_place_lng: '120.34782427919656',
     },
-  ])
+  ]);
 
   //搜尋功能
-  const queryString = useRef(null)
+  const queryString = useRef(null);
 
   const queryHandler = () => {
-    const keyword = queryString.current.value
-    if (keyword.length === 0) return
-    const results = shop_list.filter((item) => {
-      return item.course_place_address.includes(keyword)
-    })
-    setShops(results)
-  }
+    const keyword = queryString.current.value;
+    if (keyword.length === 0) return;
+    const results = placeLatLng.filter((item) => {
+      return item.course_place_address.includes(keyword);
+    });
+    setShops(results);
+  };
   // 顯示鄰近店鋪
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
   const clickShow = (e) => {
-    setShow(true)
-  }
+    setShow(true);
+    const results = placeLatLng.filter((item) => {
+      return item.course_place_address;
+    });
+    setShops(results);
+  };
 
   //自動定位目前位置
   const defaultProps = {
     center: {
-      lat: 22.573696160103022,
-      lng: 120.34492822739263,
+      lat: 0,
+      lng: 0,
     },
     zoom: 16,
-  }
+  };
 
   // 抓取經緯度
   useEffect(() => {
     if (navigator.geolocation) {
       // 執行要權限的function
       function error() {
-        alert('無法取得你的位置')
+        alert('無法取得你的位置');
       }
 
       // 使用者允許抓目前位置，回傳經緯度
@@ -93,24 +96,43 @@ function CourseMapModal(props) {
         setDefaultLatLng({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
-        })
+        });
       }
 
       // 跟使用者拿所在位置的權限
-      navigator.geolocation.getCurrentPosition(success, error)
+      navigator.geolocation.getCurrentPosition(success, error);
     } else {
-      alert('Sorry, 你的裝置不支援地理位置功能。')
+      alert('Sorry, 你的裝置不支援地理位置功能。');
     }
 
-    const latlngList = shop_list.map((v, i) => {
+    const latlngList = placeLatLng.map((v, i) => {
       return {
         course_place_lat: v.course_place_lat,
         course_place_lng: v.course_place_lng,
-      }
-    })
-    setJsonArrayLatLng(latlngList)
-  }, [])
+      };
+    });
+    setJsonArrayLatLng(latlngList);
+  }, []);
+  // 計算經緯度距離
+  function calcCrow(lat1, lon1, lat2, lon2) {
+    var R = 6371; // km
+    var dLat = toRad(lat2 - lat1);
+    var dLon = toRad(lon2 - lon1);
+    var lat1 = toRad(lat1);
+    var lat2 = toRad(lat2);
 
+    var a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c;
+    return d;
+  }
+
+  // Converts numeric degrees to radians
+  function toRad(Value) {
+    return (Value * Math.PI) / 180;
+  }
   return (
     <>
       <div className="modal__card">
@@ -156,10 +178,10 @@ function CourseMapModal(props) {
                     setDefaultLatLng({
                       lat: shop.course_place_lat,
                       lng: shop.course_place_lng,
-                    })
+                    });
                   }}
                 />
-              )
+              );
             })}
           </div>
           <div className="modal__map">
@@ -178,7 +200,7 @@ function CourseMapModal(props) {
                       lat={value.course_place_lat}
                       lng={value.course_place_lng}
                     />
-                  )
+                  );
                 })}
             </GoogleMapReact>
           </div>
@@ -191,6 +213,6 @@ function CourseMapModal(props) {
         />
       </div>
     </>
-  )
+  );
 }
-export default CourseMapModal
+export default CourseMapModal;
