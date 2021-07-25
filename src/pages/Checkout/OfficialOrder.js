@@ -2,11 +2,43 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
+function Checkbox({ id, handleClick, isChecked }) {
+  return (
+    <>
+      <input
+        id={id}
+        type="checkbox"
+        onChange={handleClick}
+        checked={isChecked}
+      />
+    </>
+  )
+}
+
 function OfficialOrder() {
   const [officialItems, setOfficialItems] = useState([])
   const [quantities, setQuantities] = useState([])
-  const [showNoItem, setShowNoItem] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
+  const [isAllChecked, setIsAllChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState([])
+
+  const handleSelectAll = (e) => {
+    setIsAllChecked(!isAllChecked)
+    setIsChecked(officialItems.map((officialItem) => officialItem.id))
+    if (isAllChecked) {
+      setIsChecked([])
+    }
+  }
+
+  // FIXME: single checkbox cannot be checked
+  const handleClick = (e) => {
+    const { id, checked } = e.target
+    setIsChecked([...isChecked, id])
+    if (!checked) {
+      setIsChecked(isChecked.filter((item) => item !== id))
+    }
+  }
+  console.log('isChecked', isChecked)
 
   const handleDelete = (id) => {
     const newOfficialItems = officialItems.filter((v, i) => {
@@ -51,9 +83,15 @@ function OfficialOrder() {
     <>
       <div className="checkout__official-box-top pl-4 pt-3 pb-2">
         <label className="checkout__official-box-title">
-          <input
+          {/* <input
             className="checkout__official-box-checkbox-all"
             type="checkbox"
+          /> */}
+          <Checkbox
+            className="checkout__official-box-checkbox-all"
+            id="selectAll"
+            handleClick={handleSelectAll}
+            isChecked={isAllChecked}
           />
           官方商品 <span>({officialItems.length})</span>
         </label>
@@ -67,9 +105,16 @@ function OfficialOrder() {
         return (
           <React.Fragment key={officialItem.id}>
             <div className="checkout__official-box-list p-4">
-              <input
+              {/* <input
                 className="checkout__official-box-checkbox"
                 type="checkbox"
+              /> */}
+              <Checkbox
+                className="checkout__official-box-checkbox"
+                key={officialItem.id}
+                id={officialItem.id}
+                handleClick={handleClick}
+                isChecked={isChecked.includes(officialItem.id)}
               />
               <Link to="/" className="checkout__official-box-img-wrapper">
                 <img
