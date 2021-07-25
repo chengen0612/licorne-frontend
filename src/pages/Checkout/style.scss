@@ -1,6 +1,26 @@
 @import '../../styles/global.scss';
 
 /* global */
+// text
+// input[type='text'] {
+//   font-size: $fs-h5;
+//   border-radius: 5px;
+//   color: $c-primary;
+//   border: none;
+// }
+
+// list
+// ul {
+//   list-style: none;
+// }
+
+.checkout__input-text {
+  font-size: $fs-h5;
+  border-radius: 5px;
+  color: $c-primary;
+  border: none;
+}
+
 // number
 .box-quantity {
   width: 50px;
@@ -9,18 +29,6 @@
   border-radius: $br-s;
   border: 1px solid $c-primary;
   color: $c-primary;
-}
-
-input[type='text'] {
-  font-size: $fs-h5;
-  border-radius: 5px;
-  color: $c-primary;
-  border: none;
-}
-
-// list
-ul {
-  list-style: none;
 }
 
 // TODO: organize class names

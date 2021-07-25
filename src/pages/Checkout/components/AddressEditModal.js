@@ -3,12 +3,13 @@ import { FiX } from 'react-icons/fi'
 
 function AddressEditModal(props) {
   const [memberContacts, setMemberContacts] = useState([])
-  // const [username, setUsername] = useState([])
+  // const [name, setName] = useState([])
   // const [phone, setPhone] = useState('+886 912 345 678')
   // const [address, setAddress] = useState('29850 桃園市桃園區中正路100巷100號')
   // const [recipient, setRecipient] = useState('哭肉狗狗')
   // const [recipientPhone, setRecipientPhone] = useState('+886 912 345 678')
   // const [recipientAddress, setRecipientAddress] = useState('29850 桃園市桃園區中正路100巷100號')
+
   async function getMemberInfoFromServer() {
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/checkout/member'
@@ -25,7 +26,6 @@ function AddressEditModal(props) {
     const response = await fetch(request)
     const data = await response.json()
     console.log(data)
-    // 設定資料
     setMemberContacts(data)
   }
 
@@ -57,10 +57,11 @@ function AddressEditModal(props) {
             <label className="checkout__address-edit-modal-label" htmlFor="">
               姓名
               <input
-                name="username"
+                className="checkout__input-text"
+                name="name"
                 type="text"
                 defaultValue={memberContact.member_name}
-                // value={state.username}
+                // value={state.name}
                 // onChange={handleChange}
                 required
               />
@@ -68,6 +69,7 @@ function AddressEditModal(props) {
             <label className="checkout__address-edit-modal-label" htmlFor="">
               電話
               <input
+                className="checkout__input-text"
                 name="phone"
                 type="text"
                 defaultValue={memberContact.member_phone}
@@ -78,6 +80,7 @@ function AddressEditModal(props) {
             <label className="checkout__address-edit-modal-label" htmlFor="">
               地址
               <input
+                className="checkout__input-text"
                 name="address"
                 type="text"
                 defaultValue={memberContact.member_address}
@@ -89,6 +92,7 @@ function AddressEditModal(props) {
             <label className="checkout__address-edit-modal-label" htmlFor="">
               姓名
               <input
+                className="checkout__input-text"
                 name="recipient"
                 type="text"
                 defaultValue={memberContact.member_name}
@@ -99,6 +103,7 @@ function AddressEditModal(props) {
             <label className="checkout__address-edit-modal-label" htmlFor="">
               電話
               <input
+                className="checkout__input-text"
                 name="recipientPhone"
                 type="text"
                 defaultValue={memberContact.member_phone}
@@ -109,6 +114,7 @@ function AddressEditModal(props) {
             <label className="checkout__address-edit-modal-label" htmlFor="">
               地址
               <input
+                className="checkout__input-text"
                 name="recipientAddress"
                 type="text"
                 defaultValue={memberContact.member_receive}
