@@ -12,6 +12,7 @@ import Custom from './pages/Custom'
 import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
 import MyCart from './components/MyCart'
+import Payment from './pages/Payment'
 
 // 分頁集合
 // import SwitchMember from './routes/SwitchMember'
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/custom">
             <Custom />
+          </Route>
+          <Route path="/checkout/payment">
+            <Payment />
           </Route>
           <Route path="/checkout">
             <Header />
