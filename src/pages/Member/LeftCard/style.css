@@ -7,12 +7,12 @@
   /* 改用上層元素加 padding 調位置避免多餘的白色空間 */
   /* margin: 26px auto 26px 25px; */
 }
-.memberHomePage__homePage.memberHomePage__homePage {
+/* .memberHomePage__homePage.memberHomePage__homePage {
   background-color: #223843;
-}
-.memberHomePage__homePage.memberHomePage__homePage h3 {
+} */
+/* .memberHomePage__homePage.memberHomePage__homePage h3 {
   color: #ffffff;
-}
+} */
 .memberHomePage__photo {
   width: 250px;
   height: 250px;
@@ -51,7 +51,7 @@
 .memberHomePage__memberLevel h4 {
   font-weight: lighter;
 }
-.memberHomePage__menuBtn {
+.memberHomePage__signOut {
   width: 250px;
   height: 50px;
   border-radius: 10px;
@@ -60,7 +60,6 @@
   border: 1px solid transparent;
   outline: none;
 }
-.memberHomePage__menuBtn h3 {
-  color: #223843;
+.memberHomePage__signOut h3 {
   font-weight: normal;
 }

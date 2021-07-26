@@ -1,11 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import styled from 'styled-components'
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
 import { imgPath } from '../../../config'
 
+// styled-components套件
+// 按鈕 CSS 樣式
+const Button = styled.button`
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  margin: 20px 50px 0 50px;
+  background-color: #efefef;
+  border: 1px solid transparent;
+  transition: ease 250ms;
+  outline: none;
+  font-size: 30px;
+`
+// 按鈕 active 樣式
+const ButtonToggle = styled(Button)`
+  ${({ active }) =>
+    active &&
+    `
+    background-color: #223843;
+    color: #ffffff;
+  `}
+`
+// 按鈕內文字 & link
+const types = [
+  { name: '主頁', link: '/member' },
+  { name: '會員資料', link: '/member/profile' },
+  { name: '我的收藏', link: '/member/favorites' },
+  { name: '訂單查詢', link: '/member/order' },
+]
+
 function MemberLeftCard() {
+  const [active, setActive] = useState(types[0])
   return (
     <>
       <div className="memberHomePage__leftCard">
@@ -36,29 +67,17 @@ function MemberLeftCard() {
           </div>
         </div>
         <div className="memberHomePage__menuBox">
-          <Link to="/member">
-            <button className="memberHomePage__homePage memberHomePage__menuBtn">
-              <h3>主頁</h3>
-            </button>
-          </Link>
-          <Link to="/member/profile">
-            <button className="memberHomePage__data memberHomePage__menuBtn">
-              <h3>會員資料</h3>
-            </button>
-          </Link>
-          {/* <Link to="/member/favorites/perfume"> */}
-          <Link to="/member/favorites">
-            <button className="memberHomePage__favorites memberHomePage__menuBtn">
-              <h3>我的收藏</h3>
-            </button>
-          </Link>
-          {/* <Link to="/member/order/perfume"> */}
-          <Link to="/member/order">
-            <button className="memberHomePage__Order memberHomePage__menuBtn">
-              <h3>訂單查詢</h3>
-            </button>
-          </Link>
-          <button className="memberHomePage__signOut memberHomePage__menuBtn">
+          {types.map((item) => (
+            <Link to={item.link}>
+              <ButtonToggle
+                active={active === item.name}
+                onClick={() => setActive(item.name)}
+              >
+                {item.name}
+              </ButtonToggle>
+            </Link>
+          ))}
+          <button className="memberHomePage__signOut">
             <h3>登出</h3>
           </button>
         </div>
