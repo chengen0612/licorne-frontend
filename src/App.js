@@ -15,7 +15,7 @@ import MyCart from './components/MyCart'
 import Payment from './pages/Payment'
 
 // 分頁集合
-// import SwitchMember from './routes/SwitchMember'
+import SwitchMember from './routes/SwitchMember'
 // import SwitchOfficial from './routes/SwitchOfficial'
 // import SwitchCourse from './routes/SwitchCourse'
 
