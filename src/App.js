@@ -9,6 +9,7 @@ import SecondaryFooter from './components/SecondaryFooter'
 import Home from './pages/Home'
 import Bestseller from './pages/Bestseller'
 import Custom from './pages/Custom'
+import Introduction from './pages/Custom/Introduction'
 import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
 import MyCart from './components/MyCart'
@@ -28,6 +29,9 @@ function App() {
             <Header />
             <Bestseller />
             <SecondaryFooter />
+          </Route>
+          <Route path="/custom/introduction">
+            <Introduction />
           </Route>
           <Route path="/custom">
             <Custom />
