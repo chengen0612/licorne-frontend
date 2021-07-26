@@ -1,4 +1,5 @@
 @import '../../../../styles/global.scss';
+@import '../style.scss';
 
 .c-intro-notes__description {
   height: 330px;
@@ -42,16 +43,22 @@
     height: 100%;
     object-fit: contain;
   }
+  &.active {
+    animation: $ani-fadein;
+  }
 }
 
 .c-intro-notes__card {
   &0 {
+    // animation: $ani-fadein;
     @include card-status(320px);
   }
   &1 {
+    // animation: $ani-fadein;
     @include card-status(200px);
   }
   &2 {
+    // animation: $ani-fadein;
     @include card-status(60px);
   }
 }

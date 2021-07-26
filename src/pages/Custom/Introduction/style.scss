@@ -223,3 +223,16 @@
     border-radius: 71% 29% 67% 33% / 55% 70% 30% 45%;
   }
 }
+
+// *************** styles shared by child components ***************
+// transition
+$ani-fadein: fadein 1s ease;
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

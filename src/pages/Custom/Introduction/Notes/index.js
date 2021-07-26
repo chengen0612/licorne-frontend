@@ -6,37 +6,52 @@ import './style.scss'
 
 function Notes(props) {
   const { page } = props
+
   const reference = [
     { page: 6, match: topNote },
     { page: 7, match: middleNote },
     { page: 8, match: baseNote },
   ]
 
-  const [display, setDisplay] = useState({})
+  const [topic, setTopic] = useState({})
+  const [isAnimate, setIsAnimate] = useState(false)
 
+  // set layout
   useEffect(() => {
     const result = reference.filter((item) => {
       return item.page === page
     })[0]
 
-    setDisplay(result.match)
+    setTopic(result.match)
+    setIsAnimate(true)
   }, [page])
+
+  // reset animation after render
+  useEffect(() => {
+    setTimeout(() => {
+      setIsAnimate(false)
+    }, 500)
+  }, [topic])
 
   const renderScreen = () => {
     return (
       <>
         <section className="c-intro-notes__description">
           <h4>
-            {display.title} <br />
-            {display.titleEn}
+            {topic.title} <br />
+            {topic.titleEn}
           </h4>
           {/* TODO 在文字間加入斷行 */}
-          <p>{display.explanation}</p>
+          <p>{topic.explanation}</p>
         </section>
-        {display.types.map((item, i) => {
-          console.log(`c-intro-notes__card ${i}`)
+        {topic.types.map((item, i) => {
           return (
-            <div key={i} className={'c-intro-notes__card' + i}>
+            <div
+              key={i}
+              className={
+                'c-intro-notes__card' + i + (isAnimate ? ' active' : '')
+              }
+            >
               <h5>
                 {item.name} {item.nameEn}
               </h5>
@@ -51,7 +66,7 @@ function Notes(props) {
     )
   }
 
-  return <>{Object.keys(display).length > 0 && renderScreen()}</>
+  return <>{Object.keys(topic).length > 0 && renderScreen()}</>
 }
 
 export default Notes

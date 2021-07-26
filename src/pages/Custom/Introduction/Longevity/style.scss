@@ -1,4 +1,5 @@
 @import '../../../../styles/global.scss';
+@import '../style.scss';
 
 // introduction
 .c-intro-long__intro {
@@ -20,6 +21,7 @@
     position: absolute;
     top: 350px;
     left: 50vw;
+    animation: $ani-fadein;
   }
   &__cate-item {
     text-align: center;
@@ -40,6 +42,7 @@
   position: absolute;
   top: 660px;
   left: 50vw;
+  animation: $ani-fadein;
   & img {
     width: 1224px;
     height: 107px;
