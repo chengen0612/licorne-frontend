@@ -11,6 +11,7 @@ function Pages(props) {
           <div
             className="page-count"
             onClick={() => {
+              //很怪問老師
               setClickPage(pagenumber)
               setClick(true)
             }}

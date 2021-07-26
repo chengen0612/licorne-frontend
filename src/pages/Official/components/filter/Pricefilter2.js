@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Slider from '@material-ui/core/Slider';
-import Tooltip from '@material-ui/core/Tooltip';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles, makeStyles } from '@material-ui/core/styles'
+import Slider from '@material-ui/core/Slider'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,23 +11,23 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     height: theme.spacing(3),
   },
-}));
+}))
 
 function ValueLabelComponent(props) {
-  const { children, open, value } = props;
+  const { children, open, value } = props
 
   return (
     <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
       {children}
     </Tooltip>
-  );
+  )
 }
 
 ValueLabelComponent.propTypes = {
   children: PropTypes.element.isRequired,
   open: PropTypes.bool.isRequired,
   value: PropTypes.number.isRequired,
-};
+}
 
 const AirbnbSlider = withStyles({
   root: {
@@ -64,7 +64,11 @@ const AirbnbSlider = withStyles({
     opacity: 1,
     height: 3,
   },
-})(Slider);
+})(Slider)
+
+function valuetext(value) {
+  return `${value}`
+}
 
 function AirbnbThumbComponent(props) {
   return (
@@ -73,11 +77,11 @@ function AirbnbThumbComponent(props) {
       <span className="bar" />
       <span className="bar" />
     </span>
-  );
+  )
 }
 
 export default function CustomizedSlider() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
@@ -87,7 +91,10 @@ export default function CustomizedSlider() {
           index === 0 ? 'Minimum price' : 'Maximum price'
         }
         defaultValue={[0, 100]}
+        getAriaValueText={valuetext}
+        valueLabelFormat={valuetext}
+        valueLabelDisplay="auto"
       />
     </div>
-  );
+  )
 }
