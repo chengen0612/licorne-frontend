@@ -72,7 +72,7 @@
     background: rgba(200, 200, 200, 0.3);
   }
   &:hover .custom__items-image {
-    transform: scale(1.1);
+    transform: translateZ(0) scale(1.1);
   }
 }
 .custom__items-image {
@@ -98,20 +98,33 @@
   text-align: center;
   line-height: 120px;
   cursor: pointer;
+  // &.active {
+  //   background: $c-gray;
+  // }
 }
-.custom__series-fruit {
-  width: 60px;
-  // margin-top: 110px;
+@mixin activeSerie($width) {
+  width: $width;
+  &.active {
+    transform: translateZ(0) scale(1.2);
+    filter: brightness(1.2) $ds-card;
+    transition: 0.3s;
+  }
 }
-.custom__series-flower {
-  width: 60px;
-}
-.custom__series-leaf {
-  width: 60px;
-}
-.custom__series-herb {
-  width: 70px;
-  // margin-bottom: 110px;
+.custom__series {
+  &-fruit {
+    @include activeSerie(60px);
+    // margin-top: 110px;
+  }
+  &-flower {
+    @include activeSerie(60px);
+  }
+  &-leaf {
+    @include activeSerie(60px);
+  }
+  &-herb {
+    @include activeSerie(70px);
+    // margin-bottom: 110px;
+  }
 }
 
 // button group
@@ -136,7 +149,7 @@
     background: #2e6e90;
     color: $c-white;
     // color: $c-secondary;
-    transition: .3s;
+    transition: 0.3s;
   }
 }
 .custom {

@@ -34,12 +34,18 @@ function SidebarSeries(props) {
           return (
             <li
               key={item.id}
+              // className={displaySeries === item.id && 'active'}
               onClick={() => {
                 displayHandler(item)
               }}
             >
               <img
-                className={className[i]}
+                // className={className[i]}
+                className={
+                  displaySeries === item.id
+                    ? `${className[i]} active`
+                    : `${className[i]}`
+                }
                 src={imgPath + item.series_img}
                 alt={item.name_zh}
               />
