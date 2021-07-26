@@ -38,6 +38,36 @@
   right: 30px;
 }
 
+// drops
+.c-intro__drops-wrap {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+}
+.c-intro__drop {
+  // height: 16px;
+  height: 12px;
+  margin-right: 3px;
+  cursor: pointer;
+  stroke: $c-gray;
+  fill: $c-gray;
+  // transition: 0.3s;
+  animation: easeInOut 1s ease;
+  &.active {
+    height: 16px;
+    stroke: $c-white;
+    fill: $c-white;
+  }
+}
+@keyframes easeInOut {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .c-intro__skip-btn {
   width: 150px;
   height: 60px;

@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import { FiX, FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import {
+  FiX,
+  FiArrowLeft,
+  FiArrowRight,
+  FiCircle,
+  FiDroplet,
+} from 'react-icons/fi'
 import './style.scss'
 
 // import components
@@ -74,6 +80,32 @@ function Introduction() {
     return result
   }
 
+  const renderDrops = () => {
+    const symbol = Array(8).fill(0)
+    return (
+      <div className="c-intro__drops-wrap">
+        {symbol.map((item, i) => {
+          const number = i + 1
+          return number <= page ? (
+            <FiDroplet
+              className="c-intro__drop active"
+              onClick={() => {
+                setPage(number)
+              }}
+            />
+          ) : (
+            <FiCircle
+              className="c-intro__drop"
+              onClick={() => {
+                setPage(number)
+              }}
+            />
+          )
+        })}
+      </div>
+    )
+  }
+
   // page handlers
   const previousPageExecutor = () => {
     if (page > 1) setPage(page - 1)
@@ -121,10 +153,11 @@ function Introduction() {
           onClick={nextPageExecutor}
           className="c-intro__next-page-btn"
         />
-        {display}
+        {renderDrops()}
         <Link to="/custom">
           <button className="c-intro__skip-btn">跳過介紹</button>
         </Link>
+        {display}
       </div>
     </>
   )
