@@ -1,39 +1,32 @@
 import React from 'react'
-import { FiShoppingBag } from 'react-icons/fi'
 import '../../../styles/global.css'
 import '../style.css'
+import MyCartFavItem from './MyCartFavItem'
 
-function MyCartFav(props) {
+function MyCartFav({ favOrCart, collectDatas, setCollectDatas }) {
   return (
     <>
       <div
         className="cj-sidebar__fav"
-        style={{ display: props.favOrCart === 'Fav' ? 'block' : 'none' }}
+        style={{ display: favOrCart === 'Fav' ? 'block' : 'none' }}
       >
-        <div className="cj-sidebar__fav__item">
-          <div className="cj-sidebar__fav__item__img">
-            <img src="/public/images/member/animal_100ml.png" alt="" />
-          </div>
+        {collectDatas.length > 0 ? '' : <h1>NO DATA</h1>}
 
-          <div className="cj-sidebar__fav__item__desc">
-            <p>玉露綠茶</p>
-            <p>
-              Gyokuro Green Tea
-              <br />
-              茗茶香氛系列
-            </p>
-            <p>NT$ 2,500</p>
-            <p>
-              <a href="">刪除</a>
-            </p>
-          </div>
-
-          <div className="cj-sidebar__fav__item__btn">
-            <div>
-              <FiShoppingBag />
+        {collectDatas.map((collectData, key) => {
+          return (
+            <div key={collectData.id} className="cj-sidebar__fav__item">
+              <MyCartFavItem
+                collectDatas={collectDatas}
+                setCollectDatas={setCollectDatas}
+                id={collectData.id}
+                name_zh={collectData.name_zh}
+                name_en={collectData.name_en}
+                price={collectData.price}
+                img_id={collectData.img_id}
+              />
             </div>
-          </div>
-        </div>
+          )
+        })}
       </div>
     </>
   )

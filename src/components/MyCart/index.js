@@ -8,45 +8,70 @@ import MyCartFav from './childComponent/MyCartFav'
 function MyCart(props) {
   const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
   const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
-  const [productDatas, setProductDatas] = useState([]) // 處理產品資料
+  const [officialProducts, setOfficialProducts] = useState([])
   const [totalAmount, setTotalAmount] = useState(0) //處理總金額
+  const [collectDatas, setCollectDatas] = useState([])
 
   function calculateTotal() {
     //計算總金額函式
     let total = 0
-    for (let obj of productDatas) {
-      total += obj.productQuantity * obj.price
+    for (let officialProduct of officialProducts) {
+      total += officialProduct.quantity * officialProduct.price
     }
     setTotalAmount(total)
   }
 
-  async function getSidebarFromServer() {
-    // 組長提供的函式：伺服器抓資料
-    const url = 'http://localhost:6005/sidebar' // 連接的伺服器資料網址
-    // 注意header資料格式要設定，伺服器才知道是json格式
-    const request = new Request(url, {
+  // 收藏清單 API
+  async function getOfficialCollectFromServer() {
+    const urlCollect = 'http://localhost:6005/sidebar/officialCollect'
+    const requestCollect = new Request(urlCollect, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
       }),
     })
-    const response = await fetch(request)
-    const data = await response.json() // data 是從伺服器抓回來的資料
-
-    const dataProduct = [...data.product]
-    const dataQTY = data.productQuantity.split(',')
-    for (let i = 0; i < dataProduct.length; i++) {
-      dataProduct[i]['productQuantity'] = dataQTY[i]
-    }
-    setProductDatas(dataProduct)
+    const responseCollect = await fetch(requestCollect)
+    const collectDatas = await responseCollect.json()
+    setCollectDatas(collectDatas)
   }
+
+  // 官方產品 API
+  async function getOfficialProductFromServer() {
+    const urlCart = 'http://localhost:6005/sidebar/official'
+    const requestCart = new Request(urlCart, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCart = await fetch(requestCart)
+    const officialProduct = await responseCart.json() // data 是從伺服器抓回來的資料
+    setOfficialProducts(officialProduct)
+  }
+
+  // async function getOfficialProductFromServer() {
+  //   const urlCart = 'http://localhost:6005/sidebar/official'
+  //   const requestCart = new Request(urlCart, {
+  //     method: 'GET',
+  //     headers: new Headers({
+  //       Accept: 'application/json',
+  //       'Content-Type': 'appliaction/json',
+  //     }),
+  //   })
+  //   const responseCart = await fetch(requestCart)
+  //   const officialProduct = await responseCart.json() // data 是從伺服器抓回來的資料
+  //   setOfficialProducts(officialProduct)
+  // }
+
   useEffect(() => {
     calculateTotal()
-  }, [productDatas])
+  }, [officialProducts])
 
   useEffect(() => {
-    getSidebarFromServer()
+    getOfficialProductFromServer()
+    getOfficialCollectFromServer()
   }, [])
 
   //
@@ -114,13 +139,17 @@ function MyCart(props) {
         <div className="cj-sidebar__space"></div>
         <MyCartCart
           favOrCart={favOrCart}
-          productDatas={productDatas}
-          setProductDatas={setProductDatas}
+          officialProducts={officialProducts}
+          setOfficialProducts={setOfficialProducts}
           totalAmount={totalAmount}
           setTotalAmount={setTotalAmount}
           calculateTotal={calculateTotal}
         />
-        <MyCartFav favOrCart={favOrCart} />
+        <MyCartFav
+          favOrCart={favOrCart}
+          collectDatas={collectDatas}
+          setCollectDatas={setCollectDatas}
+        />
       </div>
     </>
   )

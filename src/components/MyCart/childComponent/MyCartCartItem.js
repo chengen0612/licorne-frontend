@@ -5,35 +5,36 @@ import { FiHeart } from 'react-icons/fi'
 
 function MyCartCartItem({
   id,
-  productDatas,
-  setProductDatas,
+  officialProducts,
+  setOfficialProducts,
   img_id,
   name_zh,
   name_en,
   price,
   volume,
   quantity,
+  series_name,
 }) {
   function removeQTY() {
-    const newProductDatas = [...productDatas]
-    const index = newProductDatas.findIndex((v, i) => {
+    const newOfficialProducts = [...officialProducts]
+    const index = newOfficialProducts.findIndex((v, i) => {
       return v.id === id
     })
     if (index > -1 && quantity > 1) {
-      newProductDatas[index].productQuantity--
+      newOfficialProducts[index].quantity--
     }
-    setProductDatas(newProductDatas)
+    setOfficialProducts(newOfficialProducts)
   }
 
   function addQTY() {
-    const newProductDatas = [...productDatas]
-    const index = newProductDatas.findIndex((v, i) => {
+    const newOfficialProducts = [...officialProducts]
+    const index = newOfficialProducts.findIndex((v, i) => {
       return v.id === id
     })
     if (index > -1) {
-      newProductDatas[index].productQuantity++
+      newOfficialProducts[index].quantity++
     }
-    setProductDatas(newProductDatas)
+    setOfficialProducts(newOfficialProducts)
   }
 
   return (
@@ -49,7 +50,7 @@ function MyCartCartItem({
         <p>
           {name_en}
           <br />
-          XXXXXX系列
+          {series_name}系列
         </p>
         <div>
           <select name="" id="" value={volume} disabled>
@@ -61,10 +62,10 @@ function MyCartCartItem({
         <p
           role="button"
           onClick={() => {
-            const newProductDatas = productDatas.filter((v, i) => {
+            const newOfficialProducts = officialProducts.filter((v, i) => {
               return v.id !== id
             })
-            setProductDatas(newProductDatas)
+            setOfficialProducts(newOfficialProducts)
           }}
         >
           刪除{' '}

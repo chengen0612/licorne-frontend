@@ -3,24 +3,31 @@ import '../../../styles/global.css'
 import '../style.css'
 import MyCartCartItem from './MyCartCartItem'
 
-function MyCartCart({ favOrCart, productDatas, setProductDatas, totalAmount }) {
+function MyCartCart({
+  favOrCart,
+  officialProducts,
+  setOfficialProducts,
+  totalAmount,
+}) {
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
       <div className="cj-sidebar__cart">
+        {officialProducts.length > 0 ? '' : <h1>NO DATA</h1>}
         {/*  */}
-        {productDatas.map((productData, key) => {
+        {officialProducts.map((officialProduct, key) => {
           return (
-            <div key={productData.id} className="cj-sidebar__cart__item">
+            <div key={officialProduct.id} className="cj-sidebar__cart__item">
               <MyCartCartItem
-                id={productData.id}
-                productDatas={productDatas}
-                setProductDatas={setProductDatas}
-                img_id={productData.img_id}
-                name_zh={productData.name_zh}
-                name_en={productData.name_en}
-                price={productData.price}
-                volume={productData.volume}
-                quantity={productData.productQuantity}
+                id={officialProduct.id}
+                officialProducts={officialProducts}
+                setOfficialProducts={setOfficialProducts}
+                img_id={officialProduct.img_id}
+                name_zh={officialProduct.name_zh}
+                name_en={officialProduct.name_en}
+                price={officialProduct.price}
+                volume={officialProduct.volume}
+                quantity={officialProduct.quantity}
+                series_name={officialProduct.series_name}
               />
             </div>
           )
@@ -35,7 +42,9 @@ function MyCartCart({ favOrCart, productDatas, setProductDatas, totalAmount }) {
       </div>
       <div className="cj-sidebar__cart__checkout">
         <div>
-          <p role="button">前往結帳</p>
+          <p role="button" onClick={() => {}}>
+            前往結帳
+          </p>
         </div>
       </div>
     </div>

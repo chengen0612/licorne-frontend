@@ -165,6 +165,7 @@
   font-size: var(--fs-span);
   font-weight: var(--fw-light);
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .cj-sidebar__fav__item__btn {
@@ -187,6 +188,7 @@
 
 .cj-sidebar__fav__item__btn div:first-child {
   color: white;
+  cursor: pointer;
 }
 
 /* cart */
