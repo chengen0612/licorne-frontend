@@ -4,31 +4,16 @@ import AddressEditModal from './components/AddressEditModal'
 import Backdrop from './components/Backdrop'
 
 function OrderDetail() {
-  const [members, setMembers] = useState([])
-
-  useEffect(() => {
-    async function getMemberInfoFromServer() {
-      // 連接的伺服器資料網址
-      const url = 'http://localhost:6005/checkout/member'
-
-      // 注意header資料格式要設定，伺服器才知道是json格式
-      const request = new Request(url, {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-
-      const response = await fetch(request)
-      const data = await response.json()
-      console.log('memberInfo', data)
-      setMembers(data)
-    }
-    getMemberInfoFromServer()
-  }, [setMembers])
+  // const [members, setMembers] = useState([])
+  const [memberName, setMemberName] = useState([])
+  const [memberPhone, setMemberPhone] = useState([])
+  const [memberAddress, setMemberAddress] = useState([])
+  const [recipientName, setRecipientName] = useState([])
+  const [recipientPhone, setRecipientPhone] = useState([])
+  const [recipientAddress, setRecipientAddress] = useState([])
 
   const [showModal, setShowModal] = useState()
+
   function showModalHandler() {
     setShowModal(true)
     document.body.style.overflow = 'hidden'
@@ -38,6 +23,41 @@ function OrderDetail() {
     setShowModal(false)
     document.body.style.overflow = 'visible'
   }
+
+  async function getMemberInfoFromServer() {
+    // 連接的伺服器資料網址
+    const url = 'http://localhost:6005/checkout/member'
+
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log('member info', data)
+    // setMembers(data)
+    const memberName = data[0].member_name
+    console.log('name', memberName)
+    setMemberName(memberName)
+    setRecipientName(memberName)
+    const memberPhone = data[0].member_phone
+    console.log('phone', memberPhone)
+    setMemberPhone(memberPhone)
+    setRecipientPhone(memberPhone)
+    const memberAddress = data[0].member_address
+    console.log('address', memberAddress)
+    setMemberAddress(memberAddress)
+    setRecipientAddress(memberAddress)
+  }
+
+  useEffect(() => {
+    getMemberInfoFromServer()
+  }, [])
 
   return (
     <>
@@ -63,38 +83,50 @@ function OrderDetail() {
             </label>
           </div>
           <div className="checkout__order-box-delivery-edit-bg d-flex flex-column p-3 mt-2 mb-2">
-            {members.map((member) => {
-              return (
-                <React.Fragment key={member.id}>
-                  <div className="checkout__order-box-delivery-edit-wrapper d-flex justify-content-between">
-                    <span className="checkout__order-box-recipient">
-                      {/* 哭肉狗狗 */}
-                      {member.member_name}
-                    </span>
-                    <FiEdit
-                      className="feather-s"
-                      role="button"
-                      onClick={showModalHandler}
-                    />
-                  </div>
+            <div className="checkout__order-box-delivery-edit-wrapper d-flex justify-content-between">
+              <span
+                className="checkout__order-box-recipient"
+                // defaultValue={memberName}
+                // disabled
+              >
+                {/* 哭肉狗狗 */}
+                {memberName}
+              </span>
+              <FiEdit
+                className="feather-s"
+                role="button"
+                onClick={showModalHandler}
+              />
+            </div>
 
-                  <span className="checkout__order-box-recipient-phone">
-                    {/* (+886) 912 345 678 */}
-                    {member.member_phone}
-                  </span>
-                  <span className="checkout__order-box-recipient-address">
-                    {/* 29850桃園市桃園區中正路100巷100號 */}
-                    {member.member_address}
-                  </span>
-                  <span className="checkout__order-box-buyer">
-                    訂購人：同收件人
-                  </span>
-                </React.Fragment>
+            <span className="checkout__order-box-recipient-phone">
+              {/* (+886) 912 345 678 */}
+              {memberPhone}
+            </span>
+            <span className="checkout__order-box-recipient-address">
+              {/* 29850桃園市桃園區中正路100巷100號 */}
+              {memberAddress}
+            </span>
+            <span className="checkout__order-box-buyer">訂購人：同收件人</span>
+            {/* </React.Fragment>
               )
-            })}
+            })} */}
           </div>
           {showModal && <Backdrop onClick={closeModalHandler} />}
-          {showModal && <AddressEditModal onClose={closeModalHandler} />}
+          {showModal && (
+            <AddressEditModal
+              onClose={closeModalHandler}
+              memberName={memberName}
+              memberPhone={memberPhone}
+              memberAddress={memberAddress}
+              setMemberName={setMemberName}
+              setMemberPhone={setMemberPhone}
+              setMemberAddress={setMemberAddress}
+              setRecipientName={setRecipientName}
+              setRecipientPhone={setRecipientPhone}
+              setRecipientAddress={setRecipientAddress}
+            />
+          )}
         </div>
         <div className="checkout__order-box-payment pr-4 pl-4 pb-4">
           <span className="checkout__order-box-payment-title">付款方式</span>
@@ -136,7 +168,9 @@ function OrderDetail() {
         </div>
         <div className="d-flex justify-content-center pb-4">
           {/* TODO: disabled when cart is empty */}
-          <button className="checkout__checkoutBtn">確認結帳</button>
+          <button className="checkout__checkoutBtn" type="submit">
+            確認結帳
+          </button>
         </div>
       </div>
     </>
