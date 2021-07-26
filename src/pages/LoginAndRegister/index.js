@@ -26,7 +26,31 @@ function LoginAndRegister() {
   const loginTogglePasswordVisiblity = () => {
     setLoginPasswordShown(loginPasswordShown ? false : true)
   }
-  //登入功能
+  // 檢查是否登入
+  // async function checkLogin() {
+  //   // 連接的伺服器資料網址
+  //   const url = 'http://localhost:6005/loginAndRegister/checklogin'
+
+  //   // 注意資料格式要設定，伺服器才知道是json格式
+  //   // credentials: 'include' 意思要使用瀏覽器的cookies
+  //   const jwtToken = localStorage.getItem('jwt')
+  //   const request = new Request(url, {
+  //     method: 'GET',
+  //     // credentials: 'include',
+  //     headers: new Headers({
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //       Authorization: `Bearer ${jwtToken}`,
+  //     }),
+  //   })
+  //   const response = await fetch(request)
+  //   const data = await response.json()
+
+  //   console.log('伺服器回傳的json資料', data)
+  //   // 要等驗証過，再設定資料(簡單的直接設定)
+  //   // if (data.user) alert('登入中')
+  //   // else alert('未登入')
+  // }
 
   // 註冊功能
   async function addUserToSever() {
@@ -36,21 +60,21 @@ function LoginAndRegister() {
     if (values.passwordReg.length < 6) return
     // console.log(values)
 
-    const newData = { values }
+    const regData = { values }
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/loginAndRegister/register'
 
     // 注意資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
       method: 'POST',
-      body: JSON.stringify(newData),
+      body: JSON.stringify(regData),
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json',
       }),
     })
 
-    console.log(JSON.stringify(newData))
+    console.log(JSON.stringify(regData))
 
     const response = await fetch(request)
     const data = await response.json()
@@ -65,7 +89,6 @@ function LoginAndRegister() {
           <form className="loginAndRegister__register" onSubmit={handleSubmit}>
             <div className="loginAndRegister__leftBox">
               <h1 className="loginAndRegister__leftTitle">新會員註冊</h1>
-
               <input
                 className="loginAndRegister__leftPhone leftInput"
                 type="text"
@@ -158,6 +181,15 @@ function LoginAndRegister() {
                 <a href="/#">忘記密碼</a>
               </div>
               <button className="loginAndRegister__rightButton">登入</button>
+              {/* <button
+                type="button"
+                onClick={() => {
+                  checkLogin()
+                }}
+                className="btn btn-primary"
+              >
+                檢查登入狀態
+              </button> */}
             </div>
           </form>
         </div>
