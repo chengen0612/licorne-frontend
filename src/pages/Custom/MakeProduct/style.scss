@@ -129,20 +129,41 @@
     box-shadow: none;
   }
 }
+%btnHover {
+  &:hover {
+    // background: #1d475d;
+    // background: #265771;
+    background: #2e6e90;
+    color: $c-white;
+    // color: $c-secondary;
+    transition: .3s;
+  }
+}
 .custom {
   &__btn-reset {
     @extend %btn;
+    @extend %btnHover;
     bottom: 50px;
     left: 100px;
   }
   &__btn-goback {
     @extend %btn;
+    @extend %btnHover;
     bottom: 50px;
     left: 290px;
   }
   &__btn-complete {
     @extend %btn;
+    color: $c-gray;
     bottom: 50px;
     right: 100px;
+  }
+  &__btn-complete.active {
+    @extend .custom__btn-complete;
+    background: $c-primary;
+    color: $c-secondary;
+    &:hover {
+      @extend %btnHover;
+    }
   }
 }

@@ -95,9 +95,21 @@ function MakeProduct(props) {
 
     const result = {
       noteIdList: selectedItems,
-      topNote: { title: topNote.name_zh, ingredientId : topNote.ingredient_id, price: topNote.price },
-      middleNote: { title: middleNote.name_zh, ingredientId : middleNote.ingredient_id, price: middleNote.price },
-      baseNote: { title: baseNote.name_zh, ingredientId : baseNote.ingredient_id, price: baseNote.price },
+      topNote: {
+        title: topNote.name_zh,
+        ingredientId: topNote.ingredient_id,
+        price: topNote.price,
+      },
+      middleNote: {
+        title: middleNote.name_zh,
+        ingredientId: middleNote.ingredient_id,
+        price: middleNote.price,
+      },
+      baseNote: {
+        title: baseNote.name_zh,
+        ingredientId: baseNote.ingredient_id,
+        price: baseNote.price,
+      },
       serieId: selectedSeries[0],
       serieName: serie.name_zh,
       serieDescription: serie.description_zh,
@@ -156,8 +168,14 @@ function MakeProduct(props) {
           {/* TODO pop up message after click*/}
           <FiSkipBack /> 退回
         </button>
-        <button className="custom__btn-complete" onClick={completeExecuter}>
-          {/* TODO control color with useState() */}
+        <button
+          className={
+            selectedItems.length === 3
+              ? 'custom__btn-complete active'
+              : 'custom__btn-complete'
+          }
+          onClick={completeExecuter}
+        >
           <FiCheckSquare /> 完成
         </button>
       </div>
