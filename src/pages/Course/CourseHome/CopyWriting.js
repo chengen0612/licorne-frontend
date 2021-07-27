@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 function CopyWriting(props) {
-  const { mouseEnterHandler, CopyWritingContent, title, linkColor } = props;
+  const { mouseEnterHandler, CopyWritingContent, title, linkColor } = props
 
   return (
     <>
@@ -13,6 +13,6 @@ function CopyWriting(props) {
         </a>
       </div>
     </>
-  );
+  )
 }
-export default CopyWriting;
+export default CopyWriting
