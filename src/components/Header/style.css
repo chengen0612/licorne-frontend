@@ -15,10 +15,6 @@
   top: 27px;
 }
 
-.header__menu {
-  height: 100%;
-}
-
 .header__menu__list {
   display: flex;
   justify-content: center;
