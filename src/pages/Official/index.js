@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-
-// import Series from './components/Series'
 import './product-list.css'
 import CustomizedSlider from './components/filter/Pricefilter.js'
 import Materialfilter from './components/filter/Materialfilter.js'
@@ -21,6 +19,7 @@ function Official() {
   const [value, setValue] = React.useState([0, 100]) //給價格搜尋，將滑動條價格放進狀態
   const [searchMaterial, setSearchMaterial] = useState([]) //回傳的材料搜尋，將材料搜尋放進狀態
   const [clicksearch, setClicksearch] = useState(false)
+  const [clickdelete, setClickDelete] = useState(false)
   const initialFormData = Object.freeze({
     priceValue: value,
     searchMaterial: searchList,
@@ -55,21 +54,51 @@ function Official() {
     if (!searchList.includes(value)) {
       setSearchList([...searchList, value])
     }
-
-    // const newSearchList = [...searchList]
-    // updateFormData({
-    //   ...formData,
-    //   searchMaterial: newSearchList,
-    // })
   }
   //擋住跳轉，將資料放進formData送出
+
+  function handleDelete(id) {
+    setClickDelete(true)
+    const newSearchMaterial = [...searchMaterial]
+    // console.log('id', id)
+
+    const target = newSearchMaterial.filter((searchmaterial, i) => {
+      // console.log('searchmaterial.id', searchmaterial.id)
+      return searchmaterial.id !== id
+    })
+    // console.log(target)
+    setSearchMaterial(target)
+
+    let newSearchList = [...searchList]
+    newSearchList.splice(id, 1)
+
+    setSearchList(newSearchList)
+    console.log(searchList)
+
+    // postSearchToServer()
+    // setSearchList()
+    // console.log(searchMaterial)
+  }
+
+  // const handleDeletematerial = (key) => {
+  // const newSearchMaterial = [...searchMaterial]
+  // console.log(newSearchMaterial)
+  // newSearchMaterial.filter((searchmaterial, i) => {
+  //   return searchmaterial.id !== key
+  // })
+  // // console.log(searchMaterial)
+  // setSearchMaterial(newSearchMaterial)
+  // // setSearchList()
+  // // console.log(searchMaterial)
+  // }
+
   const handleSubmit = (e) => {
     //擋住跳轉
     e.preventDefault()
     postSearchToServer()
     setClickPage(1)
     setClicksearch(true)
-    console.log(formData)
+    // console.log(formData)
     //送到伺服器
   }
 
@@ -98,9 +127,9 @@ function Official() {
     let pagearray = Array.from({ length: pagenumbers }, (_, i) => i + 1) //建立出[1,2,3,4]
     // console.log(pagearray)
     setPages(pagearray)
-    let materials = data.material
+    let materialsTarget = data.material
     // console.log(materials)
-    setMaterials(materials)
+    setMaterials(materialsTarget)
   }
 
   async function getSeriesproductFromServer() {
@@ -139,7 +168,7 @@ function Official() {
     })
     const response = await fetch(request)
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     let productdata = data.data
     setPrdoducts(productdata)
     let pagenumbers = data.page //2
@@ -151,13 +180,13 @@ function Official() {
     let resMaterial = data.material
     //["乳香,柑橘"]
     resMaterial = resMaterial.split(',')
-    //[{zh_name:"乳香},{zh_name:"柑橘"}]
+    //[{id:0,zh_name:"乳香"},{id:1,zh_name:"柑橘"}]
     let target = resMaterial.map((material, i) => {
-      return [{ zh_name: material }]
+      return { id: i, zh_name: material }
     })
-    console.log(target)
-
-    setSearchMaterial(resMaterial)
+    // console.log(target)
+    // console.log(target)
+    setSearchMaterial(target)
   }
 
   //使用第一生命周期載入資料
@@ -171,6 +200,12 @@ function Official() {
       ...formData,
       searchMaterial: searchList,
     })
+  }, [searchList])
+  useEffect(() => {
+    if (clickdelete) {
+      postSearchToServer()
+    }
+    setClickDelete(false)
   }, [searchList])
   //很怪問老師
   useEffect(() => {
@@ -340,13 +375,16 @@ function Official() {
           </div> */}
             {/* 組件Labels */}
             <div className="product__labels__box d-flex">
-              {searchMaterial.length === 0 ? (
-                <div></div>
-              ) : (
-                searchMaterial.map((materialname, i) => {
-                  return <Labels key={i} name={materialname} />
-                })
-              )}
+              {searchMaterial.map((material, i) => {
+                return (
+                  <Labels
+                    key={material.id}
+                    id={material.id}
+                    name={material.zh_name}
+                    handleDelete={handleDelete}
+                  />
+                )
+              })}
               {/* <Labels /> */}
             </div>
             {/* 組件Labels */}
