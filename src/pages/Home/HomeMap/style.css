@@ -9,7 +9,7 @@
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url(./imgs/home_map.png) center center no-repeat;
+    url(http://localhost:3000/images/home/map.png) center center no-repeat;
 }
 
 .map__card {
