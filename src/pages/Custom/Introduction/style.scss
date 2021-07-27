@@ -1,0 +1,238 @@
+// custom introduction
+// ------------------------
+
+@import '../../../styles/global.scss';
+
+.c-intro-wrapper {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.c-intro__close-btn {
+  width: 60px;
+  height: 60px;
+  background: $c-secondary;
+  border-radius: $br-b;
+  position: absolute;
+  top: 65px;
+  right: 125px;
+  cursor: pointer;
+}
+
+%pageBtn {
+  background: rgba(32, 178, 171, 0.377);
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50vh;
+  transform: translateY(-25px);
+  cursor: pointer;
+}
+.c-intro__previous-page-btn {
+  @extend %pageBtn;
+  left: 30px;
+}
+.c-intro__next-page-btn {
+  @extend %pageBtn;
+  right: 30px;
+}
+
+// drops
+.c-intro__drops-wrap {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+}
+.c-intro__drop {
+  // height: 16px;
+  height: 12px;
+  margin-right: 3px;
+  cursor: pointer;
+  stroke: $c-gray;
+  fill: $c-gray;
+  // transition: 0.3s;
+  animation: easeInOut 1s ease;
+  &.active {
+    height: 16px;
+    stroke: $c-white;
+    fill: $c-white;
+  }
+}
+@keyframes easeInOut {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.c-intro__skip-btn {
+  width: 150px;
+  height: 60px;
+  background: $c-primary;
+  border-radius: $br-s;
+  font-size: $fs-h3;
+  color: $c-white;
+  position: absolute;
+  right: 100px;
+  bottom: 75px;
+}
+
+// *************** blobs ***************
+@mixin blobGenerator($width, $height, $top, $left) {
+  width: $width;
+  height: $height;
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+// basis part
+.c-intro-basis__y-blob {
+  @include blobGenerator(941px, 977px, -352px, -124px);
+  background: $c-blob-yellow;
+  animation: blobMotion1 10s ease-in-out infinite;
+}
+
+.c-intro-basis__r-blob {
+  @include blobGenerator(403px, 301px, 879px, -14px);
+  background: $c-blob-red;
+  animation: blobMotion2 6s ease-in-out infinite;
+}
+
+.c-intro-basis__p-blob {
+  @include blobGenerator(455px, 432px, 213px, 1673px);
+  background: $c-blob-purple;
+  animation: blobMove 8s ease infinite;
+}
+
+// longevity part
+.c-intro-long__y-blob {
+  @include blobGenerator(643px, 557px, -180px, -113px);
+  background: $c-blob-yellow;
+  animation: blobMotion2 6s ease-in-out infinite;
+}
+.c-intro-long__r-blob {
+  @include blobGenerator(509px, 444px, 768px, -31px);
+  background: $c-blob-red;
+  animation: blobMotion2 6s ease-in-out infinite;
+}
+.c-intro-long__p-blob {
+  @include blobGenerator(453px, 501px, 703px, 1479px);
+  background: $c-blob-purple;
+  animation: blobMotion2 6s ease-in-out infinite;
+}
+.c-intro-long__o-blob {
+  @include blobGenerator(630px, 715px, -289px, 1388px);
+  background: $c-blob-orange;
+  animation: blobMotion2 6s ease-in-out infinite;
+}
+
+// notes part
+.c-intro-notes__y-blob {
+  @include blobGenerator(594px, 572px, -168px, 1244px);
+  background: $c-blob-yellow;
+  animation: blobMotion2 6s ease-in-out infinite;
+}
+.c-intro-notes__r-blob {
+  @include blobGenerator(403px, 351px, 813px, -57px);
+  background: $c-blob-red;
+  animation: blobMotion2 6s ease-in-out infinite;
+}
+.c-intro-notes__p-blob {
+  @include blobGenerator(995px, 1102px, -436px, 13px);
+  background: $c-blob-purple;
+  animation: blobMotion2 6s ease-in-out infinite;
+}
+.c-intro-notes__o-blob {
+  @include blobGenerator(462px, 523px, 851px, 1392px);
+  background: $c-blob-orange;
+  animation: blobMotion3 6s ease-in-out infinite;
+}
+
+// keyframes
+@keyframes blobMotion1 {
+  100%,
+  0% {
+    border-radius: 53% 47% 70% 30% / 65% 47% 53% 35%;
+  }
+  25% {
+    border-radius: 55% 45% 62% 38% / 76% 59% 41% 26%;
+  }
+  50% {
+    border-radius: 39% 61% 58% 42% / 61% 34% 39% 41%;
+  }
+  75% {
+    border-radius: 52% 48% 77% 23% / 45% 42% 58% 39%;
+  }
+}
+@keyframes blobMotion2 {
+  100%,
+  0% {
+    border-radius: 65% 35% 64% 36% / 60% 73% 27% 40%;
+    transform: none;
+  }
+  25% {
+    border-radius: 65% 35% 64% 36% / 54% 65% 35% 46%;
+    transform: scaleY(1.05);
+  }
+  50% {
+    border-radius: 59% 41% 53% 47% / 63% 58% 42% 37%;
+    transform: scaleY(1.1);
+  }
+  75% {
+    border-radius: 71% 29% 67% 33% / 55% 70% 30% 45%;
+    transform: scaleY(1.03);
+  }
+}
+@keyframes blobMotion3 {
+  100%,
+  0% {
+    border-radius: 40% 60% 38% 62% / 62% 46% 54% 38%;
+    transform: none;
+  }
+  25% {
+    border-radius: 35% 65% 26% 74% / 71% 28% 72% 19%;
+    transform: scaleX(1.05);
+  }
+  50% {
+    border-radius: 46% 58% 45% 55% / 58% 31% 39% 48%;
+    transform: scaleX(1.1);
+  }
+  75% {
+    border-radius: 41% 75% 50% 50% / 53% 61% 49% 47%;
+    transform: scaleX(1.03);
+  }
+}
+@keyframes blobMove {
+  100%,
+  0% {
+    border-radius: 65% 35% 54% 46% / 72% 63% 37% 28%;
+    transform: none;
+  }
+  25% {
+    border-radius: 65% 35% 64% 36% / 54% 65% 35% 46%;
+  }
+  50% {
+    border-radius: 59% 41% 53% 47% / 63% 58% 42% 37%;
+    transform: translateY(100px) scaleY(1.1);
+  }
+  75% {
+    border-radius: 71% 29% 67% 33% / 55% 70% 30% 45%;
+  }
+}
+
+// *************** styles shared by child components ***************
+// transition
+$ani-fadein: fadein 1s ease;
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

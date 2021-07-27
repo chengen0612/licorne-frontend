@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.around {
+  display: none;
+  color: var(--c-secondary) !important;
+  border-bottom: 1px solid var(--c-secondary);
+  width: 65px;
+}
+.Text:hover .around {
+  display: block;
+  color: var(--c-secondary) !important;
+}
+.center {
+  display: none;
+  color: #262d33 !important;
+  border-bottom: 1px solid #262d33;
+  width: 65px;
+}
+.Text:hover .center {
+  display: block;
+  color: #262d33 !important;
+}
+.course__home-bg-left {
+  background-size: cover;
+  height: calc(100vh - 128px);
+  transition: 0.5s;
+  background-image: url('http://localhost:3000/images/course/home-scent.jpg');
+}
+.course__home-bg-center {
+  background-size: cover;
+  height: calc(100vh - 128px);
+  transition: 0.5s;
+  background-image: url('http://localhost:3000/images/course/home-diffuser1.jpg');
+}
+.course__home-bg-right {
+  background-size: cover;
+  height: calc(100vh - 128px);
+  transition: 0.5s;
+  background-image: url('http://localhost:3000/images/course/course-perfume2.jpg');
+}
+.bg {
+  position: absolute;
+  margin-top: 150px;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.TextAll {
+  display: flex;
+  justify-content: space-around;
+  height: calc(100vh - 150px);
+  align-items: flex-end;
+  color: var(--c-secondary);
+}
+.TextAllGary {
+  display: flex;
+  justify-content: space-around;
+  height: calc(100vh - 150px);
+  align-items: flex-end;
+  color: #262d33;
+}
+.Text {
+  height: 300px;
+  opacity: 0.8;
+  text-shadow: 1px 1px 2px #262d33;
+}
+.Text:hover {
+  transition: 0.5s;
+  opacity: 1;
+}
+.article {
+  width: 300px;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+.Title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
