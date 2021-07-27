@@ -27,7 +27,6 @@ function Header(props) {
     <>
       {/* CJ：MyCart 原件，以及傳入兩個 prop */}
       <MyCart sidebarIsOpen={sidebarIsOpen} closeSidebar={closeSidebar} />
-      {/*  */}
       <div className="header__line col-md col-sm"></div>
       <header className="header col-md col-sm">
         {/* -- logo -- */}
@@ -37,26 +36,25 @@ function Header(props) {
           <div className="header__icon-border">
             <div className="icon">
               <div className="header__rwd-icon-1">
-                <Link to="/">
+                <div role="button">
                   <FiSearch data-feather="search" className="header-i" />
-                </Link>
+                </div>
                 <Link to="/member">
                   <FiUser data-feather="user" className="header-i" />
                 </Link>
               </div>
               <div className="header__rwd-icon-2">
-                <Link to="/">
+                <div role="button">
                   <FiHeart data-feather="heart" className="header-i" />
-                </Link>
+                </div>
                 {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
-                <Link to="/">
+                <div role="button">
                   <FiShoppingBag
                     onClick={openSidebar}
                     data-feather="shopping-bag"
                     className="header-i"
                   />
-                  {/*  */}
-                </Link>
+                </div>
               </div>
             </div>
           </div>
