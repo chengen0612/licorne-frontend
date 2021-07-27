@@ -1,0 +1,64 @@
+@import '../../../../styles/global.scss';
+@import '../style.scss';
+
+.c-intro-notes__description {
+  height: 330px;
+  display: flex;
+  // align-items: center;
+  position: absolute;
+  top: 130px;
+  left: 100px;
+  & h4 {
+    width: 200px;
+    margin-top: 80px; // fix position
+    margin-right: 40px; // fix position
+    text-align: center;
+    line-height: 2rem;
+  }
+  & p {
+    width: 600px;
+  }
+}
+
+@mixin card-status($y, $maxY: 420px) {
+  width: 240px;
+  // height: 280px;
+  position: absolute;
+  right: ($maxY - $y) * 2.2;
+  bottom: $y;
+  display: flex;
+  flex-direction: column;
+  & h5 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  & figure {
+    width: 180px;
+    height: 180px;
+    margin-top: 15px;
+    align-self: center;
+  }
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  &.active {
+    animation: $ani-fadein;
+  }
+}
+
+.c-intro-notes__card {
+  &0 {
+    // animation: $ani-fadein;
+    @include card-status(320px);
+  }
+  &1 {
+    // animation: $ani-fadein;
+    @include card-status(200px);
+  }
+  &2 {
+    // animation: $ani-fadein;
+    @include card-status(60px);
+  }
+}

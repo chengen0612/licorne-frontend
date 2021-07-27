@@ -66,11 +66,12 @@
   width: auto;
 }
 
-.popular__title{
+.popular__title {
   font-size: var(--fs-h2);
 }
 .popular__text {
   font-size: var(--fs-h4);
+  margin-bottom: 10px;
 }
 .popular__ranking {
   width: 1635px;
@@ -274,9 +275,11 @@
   font-size: 24px;
   color: #223843;
   text-decoration: none;
+  margin-right: 130px;
 }
 .popular__aArrow:hover {
   font-size: 24px;
   color: #223843;
   text-decoration: none;
+  margin-right: 130px;
 }

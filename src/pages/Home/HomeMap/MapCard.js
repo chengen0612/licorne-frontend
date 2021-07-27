@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { FiMapPin, FiSearch } from 'react-icons/fi'
 import MapListItem from './MapListItem'
-import shop_list from './shop_list.json'
+import shop_list from './data/shop_list.json'
 
 export default function MapCard() {
   const [shops, setShops] = useState([
