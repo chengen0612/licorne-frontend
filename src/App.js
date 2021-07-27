@@ -16,14 +16,14 @@ import MyCart from './components/MyCart'
 import Payment from './pages/Payment'
 
 // 分頁集合
-import SwitchMember from './routes/SwitchMember'
+// import SwitchMember from './routes/SwitchMember'
 // import SwitchOfficial from './routes/SwitchOfficial'
 // import SwitchCourse from './routes/SwitchCourse'
 
 function App() {
   return (
-    <Router>
-      <>
+    <>
+      <Router>
         <Switch>
           <Route path="/bestseller">
             <Header />
@@ -46,9 +46,9 @@ function App() {
           </Route>
 
           {/* switch member */}
-          <Route path="/member">
+          {/* <Route path="/member">
             <SwitchMember />
-          </Route>
+          </Route> */}
 
           {/* switch official */}
           {/* <Route path="/official">
@@ -70,8 +70,8 @@ function App() {
             <Home />
           </Route>
         </Switch>
-      </>
-    </Router>
+      </Router>
+    </>
   )
 }
 
