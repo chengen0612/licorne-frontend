@@ -49,7 +49,7 @@ function Header(props) {
                   <FiHeart data-feather="heart" className="header-i" />
                 </Link>
                 {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
-                <Link to="/">
+                <Link>
                   <FiShoppingBag
                     onClick={openSidebar}
                     data-feather="shopping-bag"
