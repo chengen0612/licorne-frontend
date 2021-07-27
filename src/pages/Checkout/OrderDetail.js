@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { FiEdit } from 'react-icons/fi'
 import AddressEditModal from './components/AddressEditModal'
 import Backdrop from './components/Backdrop'
+// import { OfficialTotalContext } from './OfficialOrder'
 
-function OrderDetail() {
-  // const [members, setMembers] = useState([])
+function OrderDetail({ officialTotal, customTotal, courseTotal }) {
+  const total = officialTotal + customTotal + courseTotal
   const [memberName, setMemberName] = useState([])
   const [memberPhone, setMemberPhone] = useState([])
   const [memberAddress, setMemberAddress] = useState([])
@@ -84,11 +85,7 @@ function OrderDetail() {
           </div>
           <div className="checkout__order-box-delivery-edit-bg d-flex flex-column p-3 mt-2 mb-2">
             <div className="checkout__order-box-delivery-edit-wrapper d-flex justify-content-between">
-              <span
-                className="checkout__order-box-recipient"
-                // defaultValue={memberName}
-                // disabled
-              >
+              <span className="checkout__order-box-recipient">
                 {/* 哭肉狗狗 */}
                 {memberName}
               </span>
@@ -151,7 +148,8 @@ function OrderDetail() {
           <div className="checkout__order-box-subtotal pt-2 pl-4 pr-4 pb-2">
             <span className="checkout__order-box-subtotal-text">商品總計</span>
             <span className="checkout__order-box-subtotal-price">
-              NT$ 26,190
+              {/* NT$ 26,190 */}
+              NT$ {total}
             </span>
           </div>
           <div className="checkout__order-box-delivery-fee pl-4 pr-4">
@@ -163,7 +161,10 @@ function OrderDetail() {
           <hr className="checkout__order-box-divider" />
           <div className="checkout__order-box-total pl-4 pr-4">
             <span className="checkout__order-box-total-text">結帳金額：</span>
-            <span className="checkout__order-box-total-price">NT$ 26,190</span>
+            <span className="checkout__order-box-total-price">
+              {' '}
+              NT$ {total}
+            </span>
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
