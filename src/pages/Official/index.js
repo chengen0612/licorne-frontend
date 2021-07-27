@@ -339,17 +339,18 @@ function Official() {
               <div className="product__material_filter">
                 <p>材料</p>
                 <div className="product__checkbox_group">
-                  {materials.map((material, i) => {
-                    return (
-                      <Materialfilter
-                        key={material.id}
-                        name_zh={material.name_zh}
-                        searchList={searchList}
-                        setSearchList={setSearchList}
-                        handleChangeBymaterial={handleChangeBymaterial}
-                      />
-                    )
-                  })}
+                  {materials &&
+                    materials.map((material, i) => {
+                      return (
+                        <Materialfilter
+                          key={material.id}
+                          name_zh={material.name_zh}
+                          searchList={searchList}
+                          setSearchList={setSearchList}
+                          handleChangeBymaterial={handleChangeBymaterial}
+                        />
+                      )
+                    })}
                 </div>
               </div>
             </div>
@@ -375,16 +376,17 @@ function Official() {
           </div> */}
             {/* 組件Labels */}
             <div className="product__labels__box d-flex">
-              {searchMaterial.map((material, i) => {
-                return (
-                  <Labels
-                    key={material.id}
-                    id={material.id}
-                    name={material.zh_name}
-                    handleDelete={handleDelete}
-                  />
-                )
-              })}
+              {searchMaterial &&
+                searchMaterial.map((material, i) => {
+                  return (
+                    <Labels
+                      key={material.id}
+                      id={material.id}
+                      name={material.zh_name}
+                      handleDelete={handleDelete}
+                    />
+                  )
+                })}
               {/* <Labels /> */}
             </div>
             {/* 組件Labels */}
