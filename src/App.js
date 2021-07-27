@@ -14,7 +14,7 @@ import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
 import Payment from './pages/Payment'
 import Member from './pages/Member'
-// import Official from './pages/Official'
+import Official from './pages/Official'
 
 // 分頁子路由器
 // import SwitchMember from './routes/SwitchMember'
@@ -32,10 +32,9 @@ function App() {
           </Route>
 
           {/* direct path */}
-          {/* <Route path="/official">
-            <Header />
+          <Route path="/official">
             <Official />
-          </Route> */}
+          </Route>
           <Route path="/bestseller">
             <Header />
             <Bestseller />
