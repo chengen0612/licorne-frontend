@@ -22,7 +22,7 @@
 .header__menu__list {
   display: flex;
   justify-content: center;
-  margin: 21px 0px 0px 0px;
+  margin: 20px 0px 0px 0px;
   list-style: none;
   font-size: var(--fs-h5);
 }
