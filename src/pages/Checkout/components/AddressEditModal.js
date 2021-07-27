@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { FiX } from 'react-icons/fi'
 
 function AddressEditModal(props) {
@@ -14,39 +14,41 @@ function AddressEditModal(props) {
     setRecipientAddress,
   } = props
 
-  const initialData = Object.freeze({
-    memberName: { memberName },
-    memberPhone: { memberPhone },
-    memberAddress: { memberAddress },
-    recipientName: { memberName },
-    recipientPhone: { memberPhone },
-    recipientAddress: { memberAddress },
-  })
+  const initialData = {
+    memberName: memberName,
+    memberPhone: memberPhone,
+    memberAddress: memberAddress,
+    recipientName: memberName,
+    recipientPhone: memberPhone,
+    recipientAddress: memberAddress,
+  }
 
   const [data, updateData] = useState(initialData)
 
   const updateMemberName = (e) => {
-    setMemberName(memberName)
+    // setMemberName(memberName)
     updateData({
       ...data,
 
       // Trimming any whitespace
       [e.target.name]: e.target.value.trim(),
     })
+    console.log('current memberName', Object.values(data)[0])
   }
 
   const updateMemberPhone = (e) => {
-    setMemberPhone(memberPhone)
+    // setMemberPhone(memberPhone)
     updateData({
       ...data,
 
       // Trimming any whitespace
       [e.target.name]: e.target.value.trim(),
     })
+    // console.log('current memberPhone', Object.values(data)[1])
   }
 
   const updateMemberAddress = (e) => {
-    setMemberAddress(memberAddress)
+    // setMemberAddress(memberAddress)
     updateData({
       ...data,
 
@@ -89,6 +91,10 @@ function AddressEditModal(props) {
     e.preventDefault()
     console.log('edited member info', data)
     closeHandler()
+    setMemberName(Object.values(data)[0])
+    setMemberPhone(Object.values(data)[1])
+    setMemberAddress(Object.values(data)[2])
+    // updateInfo()
     // ... submit to API or something
   }
 
@@ -115,7 +121,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberName"
             type="text"
-            defaultValue={memberName}
+            value={data.memberName}
             onChange={updateMemberName}
             required
           />
@@ -126,7 +132,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberPhone"
             type="text"
-            defaultValue={memberPhone}
+            value={data.memberPhone}
             onChange={updateMemberPhone}
             required
           />
@@ -137,7 +143,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberAddress"
             type="text"
-            defaultValue={memberAddress}
+            value={data.memberAddress}
             onChange={updateMemberAddress}
             required
           />
@@ -149,7 +155,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="recipientName"
             type="text"
-            defaultValue={memberName}
+            value={data.memberName}
             onChange={updateRecipientName}
             required
           />
@@ -160,7 +166,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="recipientPhone"
             type="text"
-            defaultValue={memberPhone}
+            value={data.memberPhone}
             onChange={updateRecipientPhone}
             required
           />
@@ -171,7 +177,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="recipientAddress"
             type="text"
-            defaultValue={memberAddress}
+            value={data.memberAddress}
             onChange={updateRecipientAddress}
             required
           />
