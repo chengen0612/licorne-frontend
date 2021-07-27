@@ -14,6 +14,8 @@ import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
 import MyCart from './components/MyCart'
 import Payment from './pages/Payment'
+import Member from './pages/Member'
+// import Official from './pages/Official'
 
 // 分頁集合
 // import SwitchMember from './routes/SwitchMember'
@@ -44,6 +46,14 @@ function App() {
             <Checkout />
             <SecondaryFooter />
           </Route>
+          <Route path="/member">
+            <Header />
+            <Member />
+          </Route>
+          {/* <Route path="/official">
+            <Header />
+            <Official />
+          </Route> */}
 
           {/* switch member */}
           {/* <Route path="/member">
