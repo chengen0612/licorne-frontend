@@ -88,6 +88,7 @@ function Introduction() {
           const number = i + 1
           return number <= page ? (
             <FiDroplet
+              key={i}
               className="c-intro__drop active"
               onClick={() => {
                 setPage(number)
@@ -95,6 +96,7 @@ function Introduction() {
             />
           ) : (
             <FiCircle
+              key={i}
               className="c-intro__drop"
               onClick={() => {
                 setPage(number)
