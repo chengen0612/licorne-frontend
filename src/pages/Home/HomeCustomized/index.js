@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import customImage from './image/customImage.jpg'
+import { imgPath } from '../../../config'
 
 function HomeCustomized() {
   return (
@@ -22,7 +22,7 @@ function HomeCustomized() {
         </h4>
         <img
           className="homeCustomWrapperImage mt-4"
-          src={customImage}
+          src={imgPath + '/images/home/customImage.jpg'}
           alt="customPerfume"
         />
       </div>

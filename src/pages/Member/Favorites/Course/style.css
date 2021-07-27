@@ -1,0 +1,86 @@
+.memberFavorites__rightCard {
+  width: 1500px;
+  height: 900px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  /* margin: 26px 20px 26px auto; */
+}
+#coursebtn {
+  border-bottom: 3px solid #223843;
+}
+.memberFavorites__favoritesBtn {
+  width: 200px;
+  margin: 0 auto;
+}
+.favoritesBtn {
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  font-size: 30px;
+  font-weight: normal;
+  color: #223843;
+  padding: 0;
+  margin: 34px 0 0 30px;
+}
+.memberFavorites__courseBox {
+  width: 1200px;
+  height: 680px;
+  margin: 30px auto 0 148px;
+  /* outline: 1px solid red; */
+}
+.memberFavorites__courseItem {
+  display: flex;
+  width: 1200px;
+  height: 200px;
+  /* outline: 1px solid red; */
+}
+.memberFavorites__courseImage {
+  width: 300px;
+  height: 200px;
+  /* outline: 1px solid blue; */
+}
+.memberFavorites__couresText {
+  width: 600px;
+  /* outline: 1px solid green; */
+  margin: 20px 0 auto 20px;
+}
+.memberFavorites__line {
+  margin: 20px 0 20px 0;
+  background-color: #707070;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16));
+}
+.memberFavorites__couresTitle {
+  font-size: 30px;
+  font-weight: normal;
+}
+.memberFavorites__couresInfo {
+  width: 600px;
+  font-size: 20px;
+}
+.memberFavorites__delAndSignup {
+  width: 180px;
+  height: 50px;
+  /* outline: 1px solid red; */
+  margin: 130px 20px auto auto;
+}
+.memberFavorites__signUp {
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: lighter;
+  color: #ffffff;
+  background-color: #223843;
+  border: 1px solid transparent;
+  margin: 0 0 0 30px;
+}
+.memberFavorites__delBtn {
+  font-size: 15px;
+  font-weight: lighter;
+  text-decoration: underline;
+  border: 1px solid transparent;
+  background-color: #ffffff;
+}
+.memberFavorites__signUp:disabled {
+  background-color: #efefef;
+}

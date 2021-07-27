@@ -1,36 +1,53 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import Home from './pages/Home'
-import Bestseller from './pages/Bestseller'
-import Course from './pages/Course'
-import Custom from './pages/Custom'
-import Checkout from './pages/Checkout'
-import Member from './pages/Member'
-import Official from './pages/Official'
-import LoginAndRegister from './pages/LoginAndRegister'
-
 // 共通元件
 import Header from './components/Header'
 import SecondaryFooter from './components/SecondaryFooter'
 
+// 獨立分頁
+import Home from './pages/Home'
+import Bestseller from './pages/Bestseller'
+import Custom from './pages/Custom'
+import Introduction from './pages/Custom/Introduction'
+import Checkout from './pages/Checkout'
+import LoginAndRegister from './pages/LoginAndRegister'
+import Payment from './pages/Payment'
+import Member from './pages/Member'
+import Official from './pages/Official'
+
+// 分頁子路由器
+// import SwitchMember from './routes/SwitchMember'
+// import SwitchOfficial from './routes/SwitchOfficial'
+import SwitchCourse from './routes/SwitchCourse'
+
 function App() {
   return (
-    <Router>
-      <>
+    <>
+      <Router>
         <Switch>
+          {/* middleware */}
+          <Route path="/course">
+            <SwitchCourse />
+          </Route>
+
+          {/* direct path */}
+          <Route path="/official">
+            <Official />
+          </Route>
           <Route path="/bestseller">
             <Header />
             <Bestseller />
             <SecondaryFooter />
           </Route>
-          <Route path="/course">
-            <Header />
-            <Course />
-            <SecondaryFooter />
+          <Route path="/custom/introduction">
+            <Introduction />
           </Route>
           <Route path="/custom">
             <Custom />
+          </Route>
+          <Route path="/checkout/payment">
+            <Payment />
           </Route>
           <Route path="/checkout">
             <Header />
@@ -40,12 +57,6 @@ function App() {
           <Route path="/member">
             <Header />
             <Member />
-            <SecondaryFooter />
-          </Route>
-          <Route path="/official">
-            <Header />
-            <Official />
-            <SecondaryFooter />
           </Route>
           <Route path="/login">
             <Header />
@@ -56,9 +67,19 @@ function App() {
             <Header />
             <Home />
           </Route>
+
+          {/* abandoned */}
+          {/* switch member */}
+          {/* <Route path="/member">
+            <SwitchMember />
+          </Route> */}
+          {/* switch official */}
+          {/* <Route path="/official">
+            <SwitchOfficial />
+          </Route> */}
         </Switch>
-      </>
-    </Router>
+      </Router>
+    </>
   )
 }
 
