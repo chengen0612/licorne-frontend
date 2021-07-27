@@ -7,8 +7,13 @@ import OfficialOrder from './OfficialOrder'
 import CustomOrder from './CustomOrder'
 import CourseOrder from './CourseOrder'
 import OrderDetail from './OrderDetail'
+import CreditCard from './components/CreditCard'
 
-function Checkout() {
+function Checkout(props) {
+  const [officialTotal, setOfficialTotal] = useState(0)
+  const [customTotal, setCustomTotal] = useState(0)
+  const [courseTotal, setCourseTotal] = useState(0)
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -27,17 +32,29 @@ function Checkout() {
             <div className="checkout__boxes d-flex justify-content-between">
               <div className="checkout__product-boxes">
                 <div className="checkout__official-box">
-                  <OfficialOrder />
+                  <OfficialOrder
+                    officialTotal={officialTotal}
+                    setOfficialTotal={setOfficialTotal}
+                  />
                 </div>
                 <div className="checkout__custom-box">
-                  <CustomOrder />
+                  <CustomOrder
+                    customTotal={customTotal}
+                    setCustomTotal={setCustomTotal}
+                  />
                 </div>
                 <div className="checkout__course-box">
-                  <CourseOrder />
+                  <CourseOrder
+                    courseTotal={courseTotal}
+                    setCourseTotal={setCourseTotal}
+                  />
                 </div>
               </div>
               <div className="checkout__order-box">
-                <OrderDetail />
+                <OrderDetail
+                  officialTotal={officialTotal}
+                  customTotal={customTotal}
+                />
               </div>
             </div>
           </form>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 
-function CourseOrder() {
+function CourseOrder({ courseTotal, setCourseTotal }) {
   const [courseItems, setCourseItems] = useState([])
   async function getCourseInfoFromServer() {
     const url = 'http://localhost:6005/checkout/course'
@@ -18,6 +18,10 @@ function CourseOrder() {
     const data = await response.json()
     console.log('courseProduct', data)
     setCourseItems(data)
+
+    const subtotal = data[0].course_price
+    console.log('subtotal', subtotal)
+    setCourseTotal(subtotal)
   }
 
   useEffect(() => {

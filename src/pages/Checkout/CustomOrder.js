@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
-function CustomOrder() {
+function CustomOrder({ customTotal, setCustomTotal }) {
   const [customItems, setCustomItems] = useState([])
   const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
@@ -46,6 +46,10 @@ function CustomOrder() {
     console.log('current customItems', newCustomItems)
     setCustomItems(newCustomItems)
   }
+  const cusTotal = subtotals.reduce(function (a, b) {
+    return a + b
+  }, 0)
+  setCustomTotal(cusTotal)
 
   return (
     <>
@@ -75,16 +79,12 @@ function CustomOrder() {
                 <img
                   className="checkout__custom-box-img"
                   // src={imgPath + '/images/custom/fragrance_flower.png'}
-                  key={customItem.id}
                   src={customItem.bottle_img}
                   alt=""
                 />
               </Link>
               <Link to="/" className="checkout__custom-box-details w-25 pl-4">
-                <span
-                  className="checkout__custom-box-name-zh"
-                  key={customItem.id}
-                >
+                <span className="checkout__custom-box-name-zh">
                   {/* MTLALM */}
                   {customItem.cust_id}
                 </span>
@@ -100,15 +100,12 @@ function CustomOrder() {
                   100ML
                 </span>
               </Link>
-              <span
-                className="checkout__custom-box-product-price"
-                key={customItem.id}
-              >
+              <span className="checkout__custom-box-product-price">
                 {/* NT $2000 */}
                 NT$ {customItem.price}
               </span>
               <input
-                className="box-quantity"
+                className="checkout__box-quantity"
                 type="number"
                 min="1"
                 defaultValue={quantities[i]}

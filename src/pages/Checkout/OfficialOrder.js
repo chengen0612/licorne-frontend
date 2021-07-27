@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
+// export const OfficialTotalContext = React.createContext()
+
 function Checkbox({ id, handleClick, isChecked }) {
   return (
     <>
@@ -15,7 +17,7 @@ function Checkbox({ id, handleClick, isChecked }) {
   )
 }
 
-function OfficialOrder() {
+function OfficialOrder({ officialTotal, setOfficialTotal }) {
   const [officialItems, setOfficialItems] = useState([])
   const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
@@ -79,8 +81,18 @@ function OfficialOrder() {
     return +item.price * quantities[i]
   })
 
+  const offTotal = subtotals.reduce(function (a, b) {
+    return a + b
+  }, 0)
+  // console.log('officialTotal', offTotal)
+  // const [total, setTotal] = useState(offTotal)
+  setOfficialTotal(offTotal)
+
   return (
     <>
+      {/* <OfficialTotalContext.Provider
+        value={total}
+      ></OfficialTotalContext.Provider> */}
       <div className="checkout__official-box-top pl-4 pt-3 pb-2">
         <label className="checkout__official-box-title">
           {/* <input
@@ -149,12 +161,11 @@ function OfficialOrder() {
                 NT$ {officialItem.price}
               </span>
               <input
-                className="box-quantity"
+                className="checkout__box-quantity"
                 type="number"
                 min="1"
-                max="9"
                 name="quantity"
-                defaultValue={quantities[i]}
+                value={quantities[i]}
                 onInput={(e) => {
                   const newQuantities = quantities.map((quantity, index) => {
                     if (i === index) {
