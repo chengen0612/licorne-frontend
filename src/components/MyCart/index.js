@@ -47,23 +47,23 @@ function MyCart(props) {
       }),
     })
     const responseCart = await fetch(requestCart)
-    const officialProduct = await responseCart.json() // data 是從伺服器抓回來的資料
+    const officialProduct = await responseCart.json()
     setOfficialProducts(officialProduct)
   }
 
-  // async function getOfficialProductFromServer() {
-  //   const urlCart = 'http://localhost:6005/sidebar/official'
-  //   const requestCart = new Request(urlCart, {
-  //     method: 'GET',
-  //     headers: new Headers({
-  //       Accept: 'application/json',
-  //       'Content-Type': 'appliaction/json',
-  //     }),
-  //   })
-  //   const responseCart = await fetch(requestCart)
-  //   const officialProduct = await responseCart.json() // data 是從伺服器抓回來的資料
-  //   setOfficialProducts(officialProduct)
-  // }
+  async function getCustomProductFromServer() {
+    const urlCart = 'http://localhost:6005/sidebar/custom'
+    const requestCart = new Request(urlCart, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCustom = await fetch(requestCart)
+    const customProduct = await responseCustom.json()
+    console.log(customProduct)
+  }
 
   useEffect(() => {
     calculateTotal()
@@ -72,6 +72,7 @@ function MyCart(props) {
   useEffect(() => {
     getOfficialProductFromServer()
     getOfficialCollectFromServer()
+    getCustomProductFromServer()
   }, [])
 
   //
