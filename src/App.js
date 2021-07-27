@@ -18,7 +18,7 @@ import Payment from './pages/Payment'
 // 分頁集合
 // import SwitchMember from './routes/SwitchMember'
 // import SwitchOfficial from './routes/SwitchOfficial'
-// import SwitchCourse from './routes/SwitchCourse'
+import SwitchCourse from './routes/SwitchCourse'
 
 function App() {
   return (
@@ -55,10 +55,11 @@ function App() {
             <SwitchOfficial />
           </Route> */}
 
-          {/* switch course */}
-          {/* <Route path="/course">
+          {/* middlewares start*/}
+          <Route path="/course">
             <SwitchCourse />
-          </Route> */}
+          </Route>
+          {/* middlewares end */}
 
           <Route path="/login">
             <Header />

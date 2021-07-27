@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import './style.css'
 import MyCart from '../MyCart'
 
 import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
 
-function Header() {
+function Header(props) {
+  console.log('header', props)
   // CJ：這個 state 是設定購物車側邊欄開關狀態
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
   // CJ：這個 function 是用來關上購物車側邊欄
@@ -84,4 +85,4 @@ function Header() {
     </>
   )
 }
-export default Header
+export default withRouter(Header)
