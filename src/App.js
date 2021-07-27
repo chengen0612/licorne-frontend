@@ -12,12 +12,11 @@ import Custom from './pages/Custom'
 import Introduction from './pages/Custom/Introduction'
 import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
-import MyCart from './components/MyCart'
 import Payment from './pages/Payment'
 import Member from './pages/Member'
 // import Official from './pages/Official'
 
-// 分頁集合
+// 分頁子路由器
 // import SwitchMember from './routes/SwitchMember'
 // import SwitchOfficial from './routes/SwitchOfficial'
 import SwitchCourse from './routes/SwitchCourse'
@@ -27,6 +26,16 @@ function App() {
     <>
       <Router>
         <Switch>
+          {/* middleware */}
+          <Route path="/course">
+            <SwitchCourse />
+          </Route>
+
+          {/* direct path */}
+          {/* <Route path="/official">
+            <Header />
+            <Official />
+          </Route> */}
           <Route path="/bestseller">
             <Header />
             <Bestseller />
@@ -50,27 +59,6 @@ function App() {
             <Header />
             <Member />
           </Route>
-          {/* <Route path="/official">
-            <Header />
-            <Official />
-          </Route> */}
-
-          {/* switch member */}
-          {/* <Route path="/member">
-            <SwitchMember />
-          </Route> */}
-
-          {/* switch official */}
-          {/* <Route path="/official">
-            <SwitchOfficial />
-          </Route> */}
-
-          {/* middlewares start*/}
-          <Route path="/course">
-            <SwitchCourse />
-          </Route>
-          {/* middlewares end */}
-
           <Route path="/login">
             <Header />
             <LoginAndRegister />
@@ -80,6 +68,16 @@ function App() {
             <Header />
             <Home />
           </Route>
+
+          {/* abandoned */}
+          {/* switch member */}
+          {/* <Route path="/member">
+            <SwitchMember />
+          </Route> */}
+          {/* switch official */}
+          {/* <Route path="/official">
+            <SwitchOfficial />
+          </Route> */}
         </Switch>
       </Router>
     </>
