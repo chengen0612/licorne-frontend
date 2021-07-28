@@ -1,65 +1,6 @@
-// import React, { useState } from 'react'
-// import Cards from 'react-credit-cards'
-// import 'react-credit-cards/es/styles-compiled.css'
-// import '../style.css'
-
-// const CreditCard = () => {
-//   const [data, setData] = useState({
-//     cvc: '',
-//     expiry: '',
-//     name: '',
-//     number: '',
-//   })
-//   const handleInputChange = (e) => {
-//     setData({
-//       ...data,
-//       [e.target.name]: e.target.value,
-//     })
-//   }
-
-//   return (
-//     <div id="PaymentForm">
-//       <Cards
-//         cvc={data.cvc}
-//         expiry={data.expiry}
-//         focus={data.focus}
-//         name={data.name}
-//         number={data.number}
-//       />
-//       <form action="">
-//         <input
-//           type="number"
-//           name="cvc"
-//           placeholder="CVC"
-//           onChange={handleInputChange}
-//         />
-//         <input
-//           type="date"
-//           name="expiry"
-//           placeholder="Expire Date"
-//           onChange={handleInputChange}
-//         />
-//         <input
-//           type="text"
-//           name="name"
-//           placeholder="Your Name"
-//           onChange={handleInputChange}
-//         />
-//         <input
-//           type="number"
-//           name="number"
-//           placeholder="Card Number"
-//           onChange={handleInputChange}
-//         />
-//       </form>
-//     </div>
-//   )
-// }
-
-// export default CreditCard
-
 import React from 'react'
 import Card from 'react-credit-cards'
+import { Link } from 'react-router-dom'
 
 import {
   formatCreditCardNumber,
@@ -69,7 +10,7 @@ import {
 } from './utils'
 
 import 'react-credit-cards/es/styles-compiled.css'
-import '../style.css'
+import './style.css'
 
 export default class App extends React.Component {
   state = {
@@ -134,8 +75,12 @@ export default class App extends React.Component {
             focused={focused}
             callback={this.handleCallback}
           />
-          <form ref={(c) => (this.form = c)} onSubmit={this.handleSubmit}>
-            <div className="form-group">
+          <form
+            className="form__credit-card"
+            ref={(c) => (this.form = c)}
+            onSubmit={this.handleSubmit}
+          >
+            <div className="form-group d-flex justify-content-center">
               <input
                 type="tel"
                 name="number"
@@ -186,9 +131,11 @@ export default class App extends React.Component {
               </div>
             </div>
             <input type="hidden" name="issuer" value={issuer} />
-            <div className="form-actions">
-              <button className="btn btn-primary btn-block">PAY</button>
-            </div>
+            <Link to="/member">
+              <div className="form-actions d-flex justify-content-center">
+                <button className="btn btn-primary btn-block">付款</button>
+              </div>
+            </Link>
           </form>
           {formData && (
             <div className="App-highlight">
@@ -202,3 +149,63 @@ export default class App extends React.Component {
     )
   }
 }
+
+// import React, { useState } from 'react'
+// import Cards from 'react-credit-cards'
+// import 'react-credit-cards/es/styles-compiled.css'
+// import './style.css'
+
+// const CreditCard = () => {
+//   const [data, setData] = useState({
+//     cvc: '',
+//     expiry: '',
+//     name: '',
+//     number: '',
+//   })
+//   const handleInputChange = (e) => {
+//     setData({
+//       ...data,
+//       [e.target.name]: e.target.value,
+//     })
+//   }
+
+//   return (
+//     <div id="PaymentForm">
+//       <Cards
+//         cvc={data.cvc}
+//         expiry={data.expiry}
+//         focus={data.focus}
+//         name={data.name}
+//         number={data.number}
+//       />
+//       <form action="">
+//         <input
+//           type="number"
+//           name="cvc"
+//           placeholder="CVC"
+//           onChange={handleInputChange}
+//         />
+//         <input
+//           type="date"
+//           name="expiry"
+//           placeholder="Expire Date"
+//           onChange={handleInputChange}
+//         />
+//         <input
+//           type="text"
+//           name="name"
+//           placeholder="Your Name"
+//           onChange={handleInputChange}
+//         />
+//         <input
+//           type="number"
+//           name="number"
+//           placeholder="Card Number"
+//           onChange={handleInputChange}
+//         />
+//       </form>
+//     </div>
+//   )
+// }
+
+// export default CreditCard
