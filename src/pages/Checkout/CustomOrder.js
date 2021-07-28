@@ -66,9 +66,10 @@ function CustomOrder({ setCustomTotal }) {
         </label>
       </div>
       {customItems.length === 0 && (
-        <p className="checkout__box-none d-flex justify-content-center pt-4 pb-4">
-          購物籃中沒有任何商品
-        </p>
+        <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
+          <span>購物籃中沒有任何商品</span>
+          <Link to="/custom">前往頁面製作商品</Link>
+        </div>
       )}
       {customItems.map((customItem, i) => {
         return (
@@ -78,6 +79,7 @@ function CustomOrder({ setCustomTotal }) {
                 className="checkout__custom-box-checkbox"
                 type="checkbox"
               /> */}
+              {/* TODO: add corresponding link to product */}
               <Link to="/" className="checkout__custom-box-img-wrapper">
                 <img
                   className="checkout__custom-box-img"

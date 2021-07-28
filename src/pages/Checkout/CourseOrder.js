@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 function CourseOrder({ setCourseTotal }) {
   const [courseItems, setCourseItems] = useState([])
@@ -57,9 +58,10 @@ function CourseOrder({ setCourseTotal }) {
         </label>
       </div>
       {courseItems.length === 0 && (
-        <p className="checkout__box-none d-flex justify-content-center pt-4 pb-4">
-          購物籃中沒有任何商品
-        </p>
+        <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
+          <span>購物籃中沒有任何商品</span>
+          <Link to="/course">前往頁面報名課程</Link>
+        </div>
       )}
       {courseItems.map((courseItem, i) => {
         return (

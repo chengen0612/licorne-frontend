@@ -103,9 +103,10 @@ function OfficialOrder({ setOfficialTotal }) {
         </label>
       </div>
       {officialItems.length === 0 && (
-        <p className="checkout__box-none d-flex justify-content-center pt-4 pb-4">
-          購物籃中沒有任何商品
-        </p>
+        <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
+          <span>購物籃中沒有任何商品</span>
+          <Link to="/official">前往頁面繼續購物</Link>
+        </div>
       )}
       {officialItems.map((officialItem, i) => {
         return (
@@ -122,6 +123,7 @@ function OfficialOrder({ setOfficialTotal }) {
                 handleClick={handleClick}
                 isChecked={isChecked.includes(officialItem.id)}
               /> */}
+              {/* TODO: add corresponding link to product */}
               <Link to="/" className="checkout__official-box-img-wrapper">
                 <img
                   className="checkout__official-box-img"
