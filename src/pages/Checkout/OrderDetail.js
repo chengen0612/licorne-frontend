@@ -1,29 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FiEdit } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import AddressEditModal from './components/AddressEditModal'
 import Backdrop from './components/Backdrop'
-// import { OfficialTotalContext } from './OfficialOrder'
 
 function OrderDetail({ officialTotal, customTotal, courseTotal }) {
-  const total = officialTotal + customTotal + courseTotal
   const [memberName, setMemberName] = useState([])
   const [memberPhone, setMemberPhone] = useState([])
   const [memberAddress, setMemberAddress] = useState([])
-  const [recipientName, setRecipientName] = useState([])
-  const [recipientPhone, setRecipientPhone] = useState([])
-  const [recipientAddress, setRecipientAddress] = useState([])
-
-  const [showModal, setShowModal] = useState()
-
-  function showModalHandler() {
-    setShowModal(true)
-    document.body.style.overflow = 'hidden'
-  }
-
-  function closeModalHandler() {
-    setShowModal(false)
-    document.body.style.overflow = 'visible'
-  }
 
   async function getMemberInfoFromServer() {
     // 連接的伺服器資料網址
@@ -41,24 +25,39 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
     const response = await fetch(request)
     const data = await response.json()
     console.log('member info', data)
-    // setMembers(data)
+
     const memberName = data[0].member_name
-    console.log('name', memberName)
+    console.log('member name', memberName)
     setMemberName(memberName)
-    setRecipientName(memberName)
+
     const memberPhone = data[0].member_phone
-    console.log('phone', memberPhone)
+    console.log('member phone', memberPhone)
     setMemberPhone(memberPhone)
-    setRecipientPhone(memberPhone)
+
     const memberAddress = data[0].member_address
-    console.log('address', memberAddress)
+    console.log('member address', memberAddress)
     setMemberAddress(memberAddress)
-    setRecipientAddress(memberAddress)
   }
 
   useEffect(() => {
     getMemberInfoFromServer()
   }, [])
+
+  const [showModal, setShowModal] = useState()
+
+  function showModalHandler() {
+    setShowModal(true)
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeModalHandler() {
+    setShowModal(false)
+    document.body.style.overflow = 'visible'
+  }
+
+  const productTotal = officialTotal + customTotal + courseTotal
+  const deliveryFee = 0
+  const total = productTotal + deliveryFee
 
   return (
     <>
@@ -119,9 +118,6 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
               setMemberName={setMemberName}
               setMemberPhone={setMemberPhone}
               setMemberAddress={setMemberAddress}
-              setRecipientName={setRecipientName}
-              setRecipientPhone={setRecipientPhone}
-              setRecipientAddress={setRecipientAddress}
             />
           )}
         </div>
@@ -149,13 +145,13 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
             <span className="checkout__order-box-subtotal-text">商品總計</span>
             <span className="checkout__order-box-subtotal-price">
               {/* NT$ 26,190 */}
-              NT$ {total}
+              NT$ {productTotal}
             </span>
           </div>
           <div className="checkout__order-box-delivery-fee pl-4 pr-4">
             <span className="checkout__order-box-delivery-fee-text">運費</span>
             <span className="checkout__order-box-delivery-fee-price">
-              NT$ 0
+              NT$ {deliveryFee}
             </span>
           </div>
           <hr className="checkout__order-box-divider" />
@@ -169,9 +165,11 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
         </div>
         <div className="d-flex justify-content-center pb-4">
           {/* TODO: disabled when cart is empty */}
-          <button className="checkout__checkoutBtn" type="submit">
-            確認結帳
-          </button>
+          <Link to="/checkout/payment">
+            <button className="checkout__checkoutBtn" type="submit">
+              確認結帳
+            </button>
+          </Link>
         </div>
       </div>
     </>
