@@ -125,21 +125,25 @@ function Introduction() {
     <>
       <div className="c-intro-wrapper">
         {page && renderBlobs()}
+        {page >= 1 && page <= 8 && (
+          <>
+            <FiArrowLeft
+              onClick={previousPageExecutor}
+              className="c-intro__previous-page-btn"
+            />
+            <FiArrowRight
+              onClick={nextPageExecutor}
+              className="c-intro__next-page-btn"
+            />
+            <Link to="/custom">
+              <button className="c-intro__skip-btn">跳過介紹</button>
+            </Link>
+          </>
+        )}
         <Link to="/">
           <FiX className="c-intro__close-btn" />
         </Link>
-        <FiArrowLeft
-          onClick={previousPageExecutor}
-          className="c-intro__previous-page-btn"
-        />
-        <FiArrowRight
-          onClick={nextPageExecutor}
-          className="c-intro__next-page-btn"
-        />
         {renderDrops()}
-        <Link to="/custom">
-          <button className="c-intro__skip-btn">跳過介紹</button>
-        </Link>
         {display}
       </div>
     </>
