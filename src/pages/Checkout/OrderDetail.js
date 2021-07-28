@@ -164,9 +164,12 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
-          {/* TODO: disabled when cart is empty */}
           <Link to="/checkout/payment">
-            <button className="checkout__checkoutBtn" type="submit">
+            <button
+              className="checkout__checkoutBtn"
+              type="submit"
+              disabled={total === 0}
+            >
               確認結帳
             </button>
           </Link>
