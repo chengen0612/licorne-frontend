@@ -8,6 +8,7 @@ import {
   FiCircle,
   FiDroplet,
 } from 'react-icons/fi'
+
 import './style.scss'
 
 // import components
@@ -27,8 +28,7 @@ function Introduction() {
         case 2:
         case 3:
         case 4:
-          // component = <h1>initial page</h1>
-          component = <Basis page={page} setPage={setPage} />
+          component = <Basis page={page} />
           break
         case 5:
           component = <Longevity />
@@ -120,29 +120,6 @@ function Introduction() {
   return (
     <>
       <div className="c-intro-wrapper">
-        {/* {page >= 1 && page <= 4 && (
-          <>
-            <div className="c-intro-basis__y-blob"></div>
-            <div className="c-intro-basis__r-blob"></div>
-            <div className="c-intro-basis__p-blob"></div>
-          </>
-        )}
-        {page === 5 && (
-          <>
-            <div className="c-intro-long__y-blob"></div>
-            <div className="c-intro-long__r-blob"></div>
-            <div className="c-intro-long__p-blob"></div>
-            <div className="c-intro-long__o-blob"></div>
-          </>
-        )}
-        {page > 5 && page <= 8 && (
-          <>
-            <div className="c-intro-notes__y-blob"></div>
-            <div className="c-intro-notes__r-blob"></div>
-            <div className="c-intro-notes__p-blob"></div>
-            <div className="c-intro-notes__o-blob"></div>
-          </>
-        )} */}
         {page && renderBlobs()}
         <Link to="/">
           <FiX className="c-intro__close-btn" />
