@@ -8,6 +8,7 @@ import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 
 function Header(props) {
   console.log('header', props)
+  const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
   // CJ：這個 state 是設定購物車側邊欄開關狀態
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
   // CJ：這個 function 是用來關上購物車側邊欄
@@ -16,8 +17,17 @@ function Header(props) {
     document.body.style.width = '100%'
   }
 
-  const openSidebar = () => {
+  const openSidebarFav = () => {
     setSidebarIsOpen(true)
+    setFavOrCart('Fav')
+    const scrollbarWidth = window.innerWidth - document.body.offsetWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.width = `calc(100% - ${scrollbarWidth}px)`
+  }
+
+  const openSidebarCart = () => {
+    setSidebarIsOpen(true)
+    setFavOrCart('Cart')
     const scrollbarWidth = window.innerWidth - document.body.offsetWidth
     document.body.style.overflow = 'hidden'
     document.body.style.width = `calc(100% - ${scrollbarWidth}px)`
@@ -26,7 +36,12 @@ function Header(props) {
   return (
     <>
       {/* CJ：MyCart 原件，以及傳入兩個 prop */}
-      <MyCart sidebarIsOpen={sidebarIsOpen} closeSidebar={closeSidebar} />
+      <MyCart
+        sidebarIsOpen={sidebarIsOpen}
+        closeSidebar={closeSidebar}
+        favOrCart={favOrCart}
+        setFavOrCart={setFavOrCart}
+      />
       {/*  */}
       <div className="header__line col-md col-sm"></div>
       <header className="header col-md col-sm">
@@ -46,12 +61,16 @@ function Header(props) {
               </div>
               <div className="header__rwd-icon-2">
                 <Link to="/">
-                  <FiHeart data-feather="heart" className="header-i" />
+                  <FiHeart
+                    onClick={openSidebarFav}
+                    data-feather="heart"
+                    className="header-i"
+                  />
                 </Link>
                 {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
                 <Link to="/">
                   <FiShoppingBag
-                    onClick={openSidebar}
+                    onClick={openSidebarCart}
                     data-feather="shopping-bag"
                     className="header-i"
                   />

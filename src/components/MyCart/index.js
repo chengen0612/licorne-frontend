@@ -5,9 +5,9 @@ import { FiX } from 'react-icons/fi'
 import MyCartCart from './childComponent/MyCartCart'
 import MyCartFav from './childComponent/MyCartFav'
 
-function MyCart(props) {
-  const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
-  const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
+function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
+  // const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
+  // const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
   //
   const [officialProducts, setOfficialProducts] = useState([]) // an array holding the data of official products
   const [totalAmountOfficial, setTotalAmountOfficial] = useState(0) // a number, sum of each (official product qty) x (official product price)
@@ -85,7 +85,7 @@ function MyCart(props) {
     <>
       <div
         className={
-          props.sidebarIsOpen
+          sidebarIsOpen
             ? 'cj-blackscreen'
             : 'cj-blackscreen cj-blackscreen--close'
         }
@@ -96,7 +96,7 @@ function MyCart(props) {
       ></div>
       <div
         className={
-          props.sidebarIsOpen ? 'cj-sidebar' : 'cj-sidebar cj-sidebar--close'
+          sidebarIsOpen ? 'cj-sidebar' : 'cj-sidebar cj-sidebar--close'
         }
       >
         <div className="cj-sidebar__x pr-4">
