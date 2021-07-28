@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 
-function CourseOrder({ courseTotal, setCourseTotal }) {
+function CourseOrder({ setCourseTotal }) {
   const [courseItems, setCourseItems] = useState([])
   async function getCourseInfoFromServer() {
     const url = 'http://localhost:6005/checkout/course'
@@ -16,13 +16,22 @@ function CourseOrder({ courseTotal, setCourseTotal }) {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log('courseProduct', data)
+    console.log('course info', data)
     setCourseItems(data)
-
-    const subtotal = data[0].course_price
-    console.log('subtotal', subtotal)
-    setCourseTotal(subtotal)
   }
+
+  // TODO: need to change 1 to +item.qty
+  const subtotal = courseItems.map((item, i) => {
+    return +item.course_price * 1
+  })
+
+  console.log('course subtotal', subtotal)
+
+  const courseTotal = subtotal.reduce(function (a, b) {
+    return a + b
+  }, 0)
+  setCourseTotal(courseTotal)
+  console.log('course total', courseTotal)
 
   useEffect(() => {
     getCourseInfoFromServer()
@@ -40,10 +49,10 @@ function CourseOrder({ courseTotal, setCourseTotal }) {
     <>
       <div className="checkout__course-box-top pl-4 pt-3 pb-2">
         <label className="checkout__course-box-title">
-          <input
+          {/* <input
             className="checkout__course-box-checkbox-all"
             type="checkbox"
-          />
+          /> */}
           工作坊課程 <span>({courseItems.length})</span>
         </label>
       </div>
@@ -56,10 +65,10 @@ function CourseOrder({ courseTotal, setCourseTotal }) {
         return (
           <React.Fragment key={i}>
             <div className="checkout__course-box-list p-4">
-              <input
+              {/* <input
                 className="checkout__course-box-checkbox"
                 type="checkbox"
-              />
+              /> */}
               <div className="checkout__course-box-img-wrapper">
                 <img
                   className="checkout__course-box-img"
@@ -96,12 +105,13 @@ function CourseOrder({ courseTotal, setCourseTotal }) {
               </span>
               <span className="checkout__course-box-product-quantity">
                 {/* 單人 */}
-                {courseItem.quantity}
+                {courseItem.people}
+                {/* TODO: need to change to courseItem.qty */}
+                <span> x 1</span>
               </span>
               <span className="checkout__course-box-product-subtotal">
-                NT $1200
+                NT$ {courseItem.course_price}
               </span>
-              {/* TODO: delete product detail */}
               <FiX
                 className="feather-s"
                 role="button"
