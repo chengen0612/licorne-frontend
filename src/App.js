@@ -13,6 +13,7 @@ import LoginAndRegister from './pages/LoginAndRegister'
 import Payment from './pages/Payment'
 import Member from './pages/Member'
 import Official from './pages/Official'
+import Quiz from './pages/Quiz'
 
 // 分頁子路由器
 // import SwitchMember from './routes/SwitchMember'
@@ -41,6 +42,10 @@ function App() {
             <Header />
             <Bestseller />
             <SecondaryFooter />
+          </Route>
+          <Route path="/quiz">
+            <Header />
+            <Quiz />
           </Route>
           <Route path="/checkout/payment">
             <Payment />
