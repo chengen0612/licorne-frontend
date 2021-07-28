@@ -8,8 +8,6 @@ import SecondaryFooter from './components/SecondaryFooter'
 // 獨立分頁
 import Home from './pages/Home'
 import Bestseller from './pages/Bestseller'
-import Custom from './pages/Custom'
-import Introduction from './pages/Custom/Introduction'
 import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
 import Payment from './pages/Payment'
@@ -20,6 +18,7 @@ import Official from './pages/Official'
 // import SwitchMember from './routes/SwitchMember'
 // import SwitchOfficial from './routes/SwitchOfficial'
 import SwitchCourse from './routes/SwitchCourse'
+import SwitchCustom from './routes/SwitchCustom'
 
 function App() {
   return (
@@ -30,6 +29,9 @@ function App() {
           <Route path="/course">
             <SwitchCourse />
           </Route>
+          <Route path="/custom">
+            <SwitchCustom />
+          </Route>
 
           {/* direct path */}
           <Route path="/official">
@@ -39,12 +41,6 @@ function App() {
             <Header />
             <Bestseller />
             <SecondaryFooter />
-          </Route>
-          <Route path="/custom/introduction">
-            <Introduction />
-          </Route>
-          <Route path="/custom">
-            <Custom />
           </Route>
           <Route path="/checkout/payment">
             <Payment />
