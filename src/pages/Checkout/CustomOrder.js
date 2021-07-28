@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
-function CustomOrder({ customTotal, setCustomTotal }) {
+function CustomOrder({ setCustomTotal }) {
   const [customItems, setCustomItems] = useState([])
   const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
@@ -20,14 +20,14 @@ function CustomOrder({ customTotal, setCustomTotal }) {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log('customProduct', data)
+    console.log('custom info', data)
     setCustomItems(data)
 
     const quantities = data.map((item) => {
       return item.quantity
     })
 
-    console.log('customQuantities', quantities)
+    console.log('custom quantities', quantities)
     setQuantities(quantities)
   }
 
@@ -39,6 +39,13 @@ function CustomOrder({ customTotal, setCustomTotal }) {
     return +item.price * quantities[i]
   })
 
+  const customTotal = subtotals.reduce(function (a, b) {
+    return a + b
+  }, 0)
+  setCustomTotal(customTotal)
+
+  const volume = '100ML'
+
   const handleDelete = (id) => {
     const newCustomItems = customItems.filter((v, i) => {
       return v.id !== id
@@ -46,19 +53,15 @@ function CustomOrder({ customTotal, setCustomTotal }) {
     console.log('current customItems', newCustomItems)
     setCustomItems(newCustomItems)
   }
-  const cusTotal = subtotals.reduce(function (a, b) {
-    return a + b
-  }, 0)
-  setCustomTotal(cusTotal)
 
   return (
     <>
       <div className="checkout__custom-box-top pl-4 pt-3 pb-2">
         <label className="checkout__custom-box-title">
-          <input
+          {/* <input
             className="checkout__custom-box-checkbox-all"
             type="checkbox"
-          />
+          /> */}
           客製商品 <span>({customItems.length})</span>
         </label>
       </div>
@@ -71,10 +74,10 @@ function CustomOrder({ customTotal, setCustomTotal }) {
         return (
           <React.Fragment key={customItem.id}>
             <div className="checkout__custom-box-list p-4">
-              <input
+              {/* <input
                 className="checkout__custom-box-checkbox"
                 type="checkbox"
-              />
+              /> */}
               <Link to="/" className="checkout__custom-box-img-wrapper">
                 <img
                   className="checkout__custom-box-img"
@@ -97,7 +100,8 @@ function CustomOrder({ customTotal, setCustomTotal }) {
                   {customItem.fragrance_name}
                 </span>
                 <span className="checkout__custom-box-product-volume">
-                  100ML
+                  {/* 100ML */}
+                  {volume}
                 </span>
               </Link>
               <span className="checkout__custom-box-product-price">
@@ -118,7 +122,7 @@ function CustomOrder({ customTotal, setCustomTotal }) {
                   })
                   // quantities[i] = +e.target.value
                   setQuantities(newQuantities)
-                  console.log('current customQuantities', quantities)
+                  console.log('current custom quantities', quantities)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
