@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Noto Sans TC', sans-serif;
+        margin: 0;
+      }
+      header {
+        height: 170px;
+      }
+
+      section {
+        display: flex;
+        justify-content: center;
+      }
+      .quizStart {
+        width: 600px;
+        height: 100vh;
+        background: #fcf9ee;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        /* text-align: center; */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      .quizStart img {
+        width: 100%;
+      }
+      .quizStart h3 {
+        color: #223843;
+        margin-top: 100px;
+      }
+      .text_quiz {
+        margin: 20px 0 40px 0;
+        max-width: 280px;
+        text-align: center;
+      }
+      .quizStart p {
+        color: #223843;
+      }
+      .quizStart_btn {
+        width: 320px;
+        height: 60px;
+        border-radius: 30px;
+        background: #223843;
+        color: #fff;
+        border: 1px solid #223843;
+        font-size: 1rem;
+      }
+      .title {
+        color: #223843;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      .textBox {
+        width: 320px;
+        text-align: center;
+      }
+      .textBox p {
+        color: #223843;
+      }
+      .btn {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .start {
+        border: 1px solid #223843;
+        background: #223843;
+        color: #fff;
+        width: 80px;
+        height: 25px;
+        font-size: 1rem;
+      }
+      .imgSection {
+        position: relative;
+        left: 0;
+      }
+      .imgBox {
+        margin: 68px 0;
+        background: #000;
+        width: 1920px;
+        height: 460px;
+        overflow: hidden;
+        position: relative;
+      }
+      .img {
+        margin-top: -450px;
+        width: 100%;
+      }
+      .info_down {
+        margin-bottom: 80px;
+        text-align: center;
+      }
+      .link {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+      }
+      .box {
+        width: 350px;
+        height: 350px;
+        background: #ccc;
+        overflow: hidden;
+      }
+      .line_box {
+        width: 2px;
+        height: 150px;
+        background: #c4c4c4;
+        align-self: center;
+        margin: 0 -400px;
+      }
+      .custom {
+        width: 150%;
+        margin: -10px 0 -10px -80px;
+      }
+      .course {
+        width: 150%;
+        margin-left: -60px;
+      }
+      .bestseller {
+        width: 230%;
+        margin: -130px 0 0 -220px;
+      }
+      .text {
+        display: flex;
+        justify-content: space-evenly;
+        color: #223843;
+        margin-bottom: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <section>
+      <div class="info">
+        <div class="quizStart">
+          <h3>氣味尋覓</h3>
+          <div class="text_quiz">
+            <p>
+              張愛玲曾經說過「到人心裡的路是通過嗅覺，
+              因為人類的靈魂是他們的氣味。」 你想知道你的靈魂的樣子嗎？
+              接下來的心理測驗會是單選題，
+              請閱讀完情境後，選擇一個最適合你的答案。
+              請依照直覺作答，不要思考太久。
+            </p>
+          </div>
+
+          <img src="./images/quiz-start.jpg" alt="" />
+          <button class="quizStart_btn">開始測驗</button>
+        </div>
+        <div class="title">
+          <h1>尋找你的專屬香氣</h1>
+        </div>
+        <div class="textBox">
+          <p>
+            外在形象是每個人一輩子都必須面對的課題，
+            人類對不同氣味會作出直接的反應， 很多人會在不知不覺中
+            利用嗅覺認知建立對人或事直觀且深刻的印象，
+            你是否了解你給人最主觀的印象呢?
+            藉由這個簡單的測驗，來尋找專屬於你的香味吧!
+          </p>
+        </div>
+        <div class="btn">
+          <button class="start">開始</button>
+        </div>
+      </div>
+    </section>
+    <section class="imgSection">
+      <div class="imgBox">
+        <img class="img" src="./images/home-quiz.jpg" alt="" />
+      </div>
+    </section>
+    <article>
+      <div class="info_down">
+        <p>前往其他頁面文字引導</p>
+      </div>
+      <div class="link">
+        <div class="box">
+          <img class="custom" src="/images/home-custom.jpg" alt="" />
+        </div>
+        <div class="line_box"></div>
+        <div class="box">
+          <img class="course" src="/images/home-course.jpg" alt="" />
+        </div>
+        <div class="line_box"></div>
+        <div class="box">
+          <img class="bestseller" src="/images/home-bestseller.jpg" alt="" />
+        </div>
+      </div>
+      <div class="text">
+        <h3>香水客製化</h3>
+        <h3>工作坊課程</h3>
+        <h3>熱銷排行榜</h3>
+      </div>
+    </article>
+  </body>
+</html>
