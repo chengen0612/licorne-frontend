@@ -8,8 +8,12 @@ import MyCartFav from './childComponent/MyCartFav'
 function MyCart(props) {
   const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
   const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
-  const [officialProducts, setOfficialProducts] = useState([])
-  const [totalAmountOfficial, setTotalAmountOfficial] = useState(0) //處理總金額
+  //
+  const [officialProducts, setOfficialProducts] = useState([]) // an array holding the data of official products
+  const [totalAmountOfficial, setTotalAmountOfficial] = useState(0) // a number, sum of each (official product qty) x (official product price)
+  const [customProducts, setCustomProducts] = useState([])
+  const [totalAmountCustom, setTotalAmountCustom] = useState(0)
+  //
   const [collectDatas, setCollectDatas] = useState([])
 
   function calculateTotal() {
@@ -62,7 +66,7 @@ function MyCart(props) {
     })
     const responseCustom = await fetch(requestCart)
     const customProduct = await responseCustom.json()
-    console.log(customProduct)
+    setCustomProducts(customProduct)
   }
 
   useEffect(() => {
@@ -140,11 +144,17 @@ function MyCart(props) {
         <div className="cj-sidebar__space"></div>
         <MyCartCart
           favOrCart={favOrCart}
+          //
           officialProducts={officialProducts}
           setOfficialProducts={setOfficialProducts}
           totalAmountOfficial={totalAmountOfficial}
-          setTotalAmountOfficial={setTotalAmountOfficial}
-          calculateTotal={calculateTotal}
+          //
+          customProducts={customProducts}
+          setCustomProducts={setCustomProducts}
+          totalAmountCustom={totalAmountCustom}
+          //
+          // setTotalAmountOfficial={setTotalAmountOfficial} maybe not nessaccery? Observe a while!
+          // calculateTotal={calculateTotal} maybe not nessaccery? Observe a while!
         />
         <MyCartFav
           favOrCart={favOrCart}

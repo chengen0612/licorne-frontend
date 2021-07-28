@@ -2,12 +2,18 @@ import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import MyCartOffcialItem from './MyCartOffcialItem'
+import MyCartCustomItem from './MyCartCustomItem'
 
 function MyCartCart({
   favOrCart,
+  //
   officialProducts,
   setOfficialProducts,
   totalAmountOfficial,
+  //
+  customProducts,
+  setCustomProducts,
+  totalAmountCustom,
 }) {
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
@@ -32,6 +38,25 @@ function MyCartCart({
             </div>
           )
         })}
+        {/*  */}
+        {customProducts.map((customProduct, key) => {
+          return (
+            <div key={customProduct.id} className="cj-sidebar__cart__item">
+              <MyCartCustomItem
+                customProducts={customProducts}
+                id={customProduct.id}
+                cust_id={customProduct.cust_id}
+                price={customProduct.price}
+                setCustomProducts={setCustomProducts}
+                custom_ingredient={customProduct.custom_ingredient}
+                fragrance_name={customProduct.fragrance_name}
+                quantity={customProduct.quantity}
+                bottle_img={customProduct.bottle_img}
+              />
+            </div>
+          )
+        })}
+        {/*  */}
       </div>
 
       <div className="cj-sidebar__cart__price">
