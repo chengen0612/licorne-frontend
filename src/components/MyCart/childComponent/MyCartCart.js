@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
-import MyCartCartItem from './MyCartCartItem'
+import MyCartOffcialItem from './MyCartOffcialItem'
 
 function MyCartCart({
   favOrCart,
@@ -17,7 +17,7 @@ function MyCartCart({
         {officialProducts.map((officialProduct, key) => {
           return (
             <div key={officialProduct.id} className="cj-sidebar__cart__item">
-              <MyCartCartItem
+              <MyCartOffcialItem
                 id={officialProduct.id}
                 officialProducts={officialProducts}
                 setOfficialProducts={setOfficialProducts}

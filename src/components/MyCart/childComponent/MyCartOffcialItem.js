@@ -3,7 +3,7 @@ import '../../../styles/global.css'
 import '../style.css'
 import { FiHeart } from 'react-icons/fi'
 
-function MyCartCartItem({
+function MyCartOffcialItem({
   id,
   officialProducts,
   setOfficialProducts,
@@ -94,4 +94,4 @@ function MyCartCartItem({
   )
 }
 
-export default MyCartCartItem
+export default MyCartOffcialItem
