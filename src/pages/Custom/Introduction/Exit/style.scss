@@ -13,6 +13,7 @@
 
 .c-intro-exit__greet {
   position: relative;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .c-intro-exit__ahead-btn {
@@ -20,10 +21,13 @@
   padding: 15px 30px;;
   background: $c-primary;
   border-radius: $br-s;
-  font-size: 24px;
+  font-size: $fs-h3;
+  color: $c-secondary !important;
   position: relative;
   cursor: pointer;
-  & a {
-    color: $c-secondary !important;
+  transition: 0.3s;
+  &:hover {
+    background: $c-secondary;
+    color: $c-primary !important;
   }
 }
