@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
-// export const OfficialTotalContext = React.createContext()
-
 function Checkbox({ id, handleClick, isChecked }) {
   return (
     <>
@@ -17,38 +15,10 @@ function Checkbox({ id, handleClick, isChecked }) {
   )
 }
 
-function OfficialOrder({ officialTotal, setOfficialTotal }) {
+function OfficialOrder({ setOfficialTotal }) {
   const [officialItems, setOfficialItems] = useState([])
   const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
-  const [isAllChecked, setIsAllChecked] = useState(false)
-  const [isChecked, setIsChecked] = useState([])
-
-  const handleSelectAll = (e) => {
-    setIsAllChecked(!isAllChecked)
-    setIsChecked(officialItems.map((officialItem) => officialItem.id))
-    if (isAllChecked) {
-      setIsChecked([])
-    }
-  }
-
-  // FIXME: single checkbox cannot be checked
-  const handleClick = (e) => {
-    const { id, checked } = e.target
-    setIsChecked([...isChecked, id])
-    if (!checked) {
-      setIsChecked(isChecked.filter((item) => item !== id))
-    }
-  }
-  console.log('isChecked', isChecked)
-
-  const handleDelete = (id) => {
-    const newOfficialItems = officialItems.filter((v, i) => {
-      return v.id !== id
-    })
-    console.log('current officialItems', newOfficialItems)
-    setOfficialItems(newOfficialItems)
-  }
 
   async function getOfficialInfoFromServer() {
     const url = 'http://localhost:6005/checkout/official'
@@ -62,14 +32,14 @@ function OfficialOrder({ officialTotal, setOfficialTotal }) {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log('officialProduct', data)
+    console.log('official info', data)
     setOfficialItems(data)
 
     const quantities = data.map((item) => {
       return item.quantity
     })
 
-    console.log('officialQuantities', quantities)
+    console.log('official quantities', quantities)
     setQuantities(quantities)
   }
 
@@ -81,30 +51,54 @@ function OfficialOrder({ officialTotal, setOfficialTotal }) {
     return +item.price * quantities[i]
   })
 
-  const offTotal = subtotals.reduce(function (a, b) {
+  const officialTotal = subtotals.reduce(function (a, b) {
     return a + b
   }, 0)
-  // console.log('officialTotal', offTotal)
-  // const [total, setTotal] = useState(offTotal)
-  setOfficialTotal(offTotal)
+  setOfficialTotal(officialTotal)
+
+  const handleDelete = (id) => {
+    const newOfficialItems = officialItems.filter((v, i) => {
+      return v.id !== id
+    })
+    console.log('current officialItems', newOfficialItems)
+    setOfficialItems(newOfficialItems)
+  }
+
+  // const [isAllChecked, setIsAllChecked] = useState(false)
+  // const [isChecked, setIsChecked] = useState([])
+
+  // const handleSelectAll = (e) => {
+  //   setIsAllChecked(!isAllChecked)
+  //   setIsChecked(officialItems.map((officialItem) => officialItem.id))
+  //   if (isAllChecked) {
+  //     setIsChecked([])
+  //   }
+  // }
+
+  // FIXME: single checkbox cannot be checked
+  // const handleClick = (e) => {
+  //   const { id, checked } = e.target
+  //   setIsChecked([...isChecked, id])
+  //   if (!checked) {
+  //     setIsChecked(isChecked.filter((item) => item !== id))
+  //   }
+  // }
+  // console.log('isChecked', isChecked)
 
   return (
     <>
-      {/* <OfficialTotalContext.Provider
-        value={total}
-      ></OfficialTotalContext.Provider> */}
       <div className="checkout__official-box-top pl-4 pt-3 pb-2">
         <label className="checkout__official-box-title">
           {/* <input
             className="checkout__official-box-checkbox-all"
             type="checkbox"
           /> */}
-          <Checkbox
+          {/* <Checkbox
             className="checkout__official-box-checkbox-all"
             id="selectAll"
             handleClick={handleSelectAll}
             isChecked={isAllChecked}
-          />
+          /> */}
           官方商品 <span>({officialItems.length})</span>
         </label>
       </div>
@@ -121,13 +115,13 @@ function OfficialOrder({ officialTotal, setOfficialTotal }) {
                 className="checkout__official-box-checkbox"
                 type="checkbox"
               /> */}
-              <Checkbox
+              {/* <Checkbox
                 className="checkout__official-box-checkbox"
                 key={officialItem.id}
                 id={officialItem.id}
                 handleClick={handleClick}
                 isChecked={isChecked.includes(officialItem.id)}
-              />
+              /> */}
               <Link to="/" className="checkout__official-box-img-wrapper">
                 <img
                   className="checkout__official-box-img"
@@ -175,7 +169,7 @@ function OfficialOrder({ officialTotal, setOfficialTotal }) {
                   })
                   // quantities[i] = +e.target.value
                   setQuantities(newQuantities)
-                  console.log('current officialQuantities', quantities)
+                  console.log('current official quantities', quantities)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
