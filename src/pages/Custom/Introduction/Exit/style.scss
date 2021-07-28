@@ -1,2 +1,29 @@
 @import '../../../../styles/global.scss';
-@import '../../style.scss';
+@import '../style.scss';
+
+.c-intro-exit {
+  height: 100vh;
+  background: $c-primary;
+  color: $c-secondary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-intro-exit__greet {
+  position: relative;
+}
+
+.c-intro-exit__ahead-btn {
+  margin-top: 10px;
+  padding: 15px 30px;;
+  background: $c-primary;
+  border-radius: $br-s;
+  font-size: 24px;
+  position: relative;
+  cursor: pointer;
+  & a {
+    color: $c-secondary !important;
+  }
+}

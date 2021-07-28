@@ -152,6 +152,13 @@
   animation: blobMotion3 6s ease-in-out infinite;
 }
 
+// exit part
+.c-intro-exit__r-blob {
+  @include blobGenerator(30vw, 60vh, 20vh, 35vw);
+  background: $c-blob-red;
+  animation: blobScale 6s ease-in-out infinite;
+}
+
 // keyframes
 @keyframes blobMotion1 {
   100%,
@@ -221,6 +228,19 @@
   }
   75% {
     border-radius: 71% 29% 67% 33% / 55% 70% 30% 45%;
+  }
+}
+
+@keyframes blobScale {
+  100%, 0%{
+    border-radius: 40% 60% 38% 62% / 62% 46% 54% 38%;
+  }
+  25% {
+
+  }
+  50%{
+    border-radius: 47% 54% 38% 62% / 52% 42% 54% 38%;
+    transform: scale(1.3);
   }
 }
 
