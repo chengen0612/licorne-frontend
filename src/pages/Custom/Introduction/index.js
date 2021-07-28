@@ -135,7 +135,7 @@ function Introduction() {
               onClick={nextPageExecutor}
               className="c-intro__next-page-btn"
             />
-            <Link to="/custom">
+            <Link to="/custom/process">
               <button className="c-intro__skip-btn">跳過介紹</button>
             </Link>
           </>

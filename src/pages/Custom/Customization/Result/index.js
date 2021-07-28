@@ -9,13 +9,13 @@ import {
   FiUpload,
 } from 'react-icons/fi'
 
-import { imgPath } from '../../../config'
+import { imgPath } from '../../../../config'
 
 import './style.scss'
 
 import CostList from './OfferList'
 
-function ShowProduct(props) {
+function Result(props) {
   const { productDetail, setProductDetail } = props
   // console.log(productDetail)
 
@@ -109,4 +109,4 @@ function ShowProduct(props) {
   )
 }
 
-export default ShowProduct
+export default Result

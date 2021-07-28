@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 // components
 import Entrance from '../pages/Custom/Entrance'
 import Introduction from '../pages/Custom/Introduction'
-import Custom from '../pages/Custom'
+import Customization from '../pages/Custom/Customization'
 
 function SwitchCustom(props) {
   const path = props.location.pathname
@@ -21,9 +21,12 @@ function SwitchCustom(props) {
       case 'introduction':
         result = <Introduction />
         break
-      case 'custom':
-        result = <Custom />
+      case 'process':
+        result = <Customization />
         break
+      // case 'result':
+      //   result = <></>
+      //   break
       default:
         break
     }

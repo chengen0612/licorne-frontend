@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 
 import './style.scss'
 
-import MakeProduct from './MakeProduct'
-import ShowProduct from './ShowProduct'
+import Process from './Process'
+import Result from './Result'
 
-function Custom() {
+function Customization() {
   const [productDetail, setProductDetail] = useState({})
   // console.log(Object.keys(productDetail))
 
   return (
     <>
       {Object.keys(productDetail).length === 0 ? (
-        <MakeProduct setProductDetail={setProductDetail} />
+        <Process setProductDetail={setProductDetail} />
       ) : (
-        <ShowProduct
+        <Result
           productDetail={productDetail}
           setProductDetail={setProductDetail}
         />
@@ -23,4 +23,4 @@ function Custom() {
   )
 }
 
-export default Custom
+export default Customization
