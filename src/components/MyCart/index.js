@@ -9,7 +9,7 @@ function MyCart(props) {
   const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
   const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
   const [officialProducts, setOfficialProducts] = useState([])
-  const [totalAmount, setTotalAmount] = useState(0) //處理總金額
+  const [totalAmountOfficial, setTotalAmountOfficial] = useState(0) //處理總金額
   const [collectDatas, setCollectDatas] = useState([])
 
   function calculateTotal() {
@@ -18,7 +18,7 @@ function MyCart(props) {
     for (let officialProduct of officialProducts) {
       total += officialProduct.quantity * officialProduct.price
     }
-    setTotalAmount(total)
+    setTotalAmountOfficial(total)
   }
 
   // 收藏清單 API
@@ -142,8 +142,8 @@ function MyCart(props) {
           favOrCart={favOrCart}
           officialProducts={officialProducts}
           setOfficialProducts={setOfficialProducts}
-          totalAmount={totalAmount}
-          setTotalAmount={setTotalAmount}
+          totalAmountOfficial={totalAmountOfficial}
+          setTotalAmountOfficial={setTotalAmountOfficial}
           calculateTotal={calculateTotal}
         />
         <MyCartFav

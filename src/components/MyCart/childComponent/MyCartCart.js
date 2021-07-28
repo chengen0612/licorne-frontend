@@ -7,7 +7,7 @@ function MyCartCart({
   favOrCart,
   officialProducts,
   setOfficialProducts,
-  totalAmount,
+  totalAmountOfficial,
 }) {
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
@@ -37,7 +37,7 @@ function MyCartCart({
       <div className="cj-sidebar__cart__price">
         <div>
           <p>總金額：</p>
-          <p>NT$ {totalAmount}</p>
+          <p>NT$ {totalAmountOfficial}</p>
         </div>
       </div>
       <div className="cj-sidebar__cart__checkout">
