@@ -1,9 +1,9 @@
-import React from 'react';
-import { imgPath } from '../../../config';
-import CourseDescription from './CourseDescription';
+import React from 'react'
+import { imgPath } from '../../../config'
+import CourseDescription from './CourseDescription'
 
 function CourseContent(props) {
-  const { infoBtn } = props;
+  const { infoBtn } = props
   return (
     <>
       <div className="copywriting_info">
@@ -30,6 +30,6 @@ function CourseContent(props) {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default CourseContent;
+export default CourseContent
