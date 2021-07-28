@@ -15,6 +15,7 @@ import './style.scss'
 import Basis from './Basis'
 import Longevity from './Longevity'
 import Notes from './Notes'
+import Exit from './Exit'
 
 function Introduction() {
   const [page, setPage] = useState(1)
@@ -37,6 +38,9 @@ function Introduction() {
         case 7:
         case 8:
           component = <Notes page={page} />
+          break
+        case 9:
+          component = <Exit />
           break
         default:
           break
@@ -67,7 +71,7 @@ function Introduction() {
           <div className="c-intro-long__o-blob"></div>
         </>
       )
-    } else {
+    } else if (page >= 6 && page <= 8) {
       result = (
         <>
           <div className="c-intro-notes__y-blob"></div>
@@ -81,7 +85,7 @@ function Introduction() {
   }
 
   const renderDrops = () => {
-    const symbol = Array(8).fill(0)
+    const symbol = Array(9).fill(0)
     return (
       <div className="c-intro__drops-wrap">
         {symbol.map((item, i) => {
@@ -114,7 +118,7 @@ function Introduction() {
   }
 
   const nextPageExecutor = () => {
-    if (page < 8) setPage(page + 1)
+    if (page < 9) setPage(page + 1)
   }
 
   return (
