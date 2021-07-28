@@ -8,12 +8,14 @@ import {
   FiCircle,
   FiDroplet,
 } from 'react-icons/fi'
+
 import './style.scss'
 
 // import components
 import Basis from './Basis'
 import Longevity from './Longevity'
 import Notes from './Notes'
+import Exit from './Exit'
 
 function Introduction() {
   const [page, setPage] = useState(1)
@@ -27,8 +29,7 @@ function Introduction() {
         case 2:
         case 3:
         case 4:
-          // component = <h1>initial page</h1>
-          component = <Basis page={page} setPage={setPage} />
+          component = <Basis page={page} />
           break
         case 5:
           component = <Longevity />
@@ -37,6 +38,9 @@ function Introduction() {
         case 7:
         case 8:
           component = <Notes page={page} />
+          break
+        case 9:
+          component = <Exit />
           break
         default:
           break
@@ -67,7 +71,7 @@ function Introduction() {
           <div className="c-intro-long__o-blob"></div>
         </>
       )
-    } else {
+    } else if (page >= 6 && page <= 8) {
       result = (
         <>
           <div className="c-intro-notes__y-blob"></div>
@@ -81,7 +85,7 @@ function Introduction() {
   }
 
   const renderDrops = () => {
-    const symbol = Array(8).fill(0)
+    const symbol = Array(9).fill(0)
     return (
       <div className="c-intro__drops-wrap">
         {symbol.map((item, i) => {
@@ -114,51 +118,32 @@ function Introduction() {
   }
 
   const nextPageExecutor = () => {
-    if (page < 8) setPage(page + 1)
+    if (page < 9) setPage(page + 1)
   }
 
   return (
     <>
       <div className="c-intro-wrapper">
-        {/* {page >= 1 && page <= 4 && (
-          <>
-            <div className="c-intro-basis__y-blob"></div>
-            <div className="c-intro-basis__r-blob"></div>
-            <div className="c-intro-basis__p-blob"></div>
-          </>
-        )}
-        {page === 5 && (
-          <>
-            <div className="c-intro-long__y-blob"></div>
-            <div className="c-intro-long__r-blob"></div>
-            <div className="c-intro-long__p-blob"></div>
-            <div className="c-intro-long__o-blob"></div>
-          </>
-        )}
-        {page > 5 && page <= 8 && (
-          <>
-            <div className="c-intro-notes__y-blob"></div>
-            <div className="c-intro-notes__r-blob"></div>
-            <div className="c-intro-notes__p-blob"></div>
-            <div className="c-intro-notes__o-blob"></div>
-          </>
-        )} */}
         {page && renderBlobs()}
+        {page >= 1 && page <= 8 && (
+          <>
+            <FiArrowLeft
+              onClick={previousPageExecutor}
+              className="c-intro__previous-page-btn"
+            />
+            <FiArrowRight
+              onClick={nextPageExecutor}
+              className="c-intro__next-page-btn"
+            />
+            <Link to="/custom/process">
+              <button className="c-intro__skip-btn">跳過介紹</button>
+            </Link>
+          </>
+        )}
         <Link to="/">
           <FiX className="c-intro__close-btn" />
         </Link>
-        <FiArrowLeft
-          onClick={previousPageExecutor}
-          className="c-intro__previous-page-btn"
-        />
-        <FiArrowRight
-          onClick={nextPageExecutor}
-          className="c-intro__next-page-btn"
-        />
         {renderDrops()}
-        <Link to="/custom">
-          <button className="c-intro__skip-btn">跳過介紹</button>
-        </Link>
         {display}
       </div>
     </>
