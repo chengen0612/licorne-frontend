@@ -1,1 +1,138 @@
-// @import '../../styles/global.scss';
+@import '../../styles/global.scss';
+
+.best-wrapper {
+  // background: #ccc;
+  max-width: 1520px;
+  margin: 100px auto 200px;
+  // set up for sidebar filter
+  position: relative;
+}
+
+.best__title {
+  margin-bottom: 60px;
+  font-weight: bold;
+}
+
+.best__sidebar {
+  position: absolute;
+}
+.best__sidebar-title {
+  line-height: 60px;
+  font-weight: 700;
+  & svg {
+    transform: translateY(-3px);
+  }
+}
+
+/****** dropdown menu ******/
+%option {
+  height: 60px;
+  padding: 15px 20px;
+  background: $c-white;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.best__dropdown-menu {
+  width: 220px;
+  // height: 60px; // value for toggle
+  border: 1px solid $c-primary;
+  border-radius: $br-s;
+  overflow: hidden;
+  &:nth-of-type(2) {
+    margin-top: 30px;
+  }
+}
+.best__dropdown-title {
+  @extend %option;
+  & svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+.best__checkbox-options,
+.best__select-options {
+  @extend %option;
+  &:first-child {
+    border-top: 1px solid $c-primary;
+  }
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+.best__checkbox-item [type='checkbox'] {
+  transform: translateY(-1px);
+}
+.best__select-options svg {
+  transform: translateY(5px);
+}
+/****** dropdown menu end ******/
+
+.best__display-wrap {
+  // outline: 1px solid sandybrown;
+  width: 100%;
+  height: 785px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 135px;
+  &:nth-of-type(3) {
+    height: auto;
+    padding-top: 60px;
+    justify-content: start;
+    row-gap: 120px;
+  }
+}
+
+/****** product card start ******/
+.best__prod-card {
+  // background: $c-secondary;
+  width: 415px;
+  height: 665px;
+  position: relative;
+}
+.best__prod-sequence {
+  position: absolute;
+  & img {
+    width: 90px;
+    height: 120px;
+  }
+}
+// product's details
+.best__prod-display {
+  width: 330px;
+  height: 530px;
+  background: $c-fruit;
+  border-radius: 168px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  & img {
+    width: 150px;
+    height: 310px;
+  }
+  // &-title {
+  // }
+  // &-price {
+  // }
+}
+.best__prod-btn {
+  width: 180px;
+  height: 60px;
+  background: $c-fruit;
+  border: none;
+  border-radius: $br-b;
+  position: absolute;
+  right: 75px;
+  bottom: 0;
+  &:hover {
+    filter: brightness(0.95);
+  }
+}
+/****** product card end ******/
