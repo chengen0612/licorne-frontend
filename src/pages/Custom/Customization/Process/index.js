@@ -11,7 +11,7 @@ import SidebarSeries from './SidebarSeries'
 import SidebarItems from './SidebarItems'
 import ProgressBar from './ProgressBar'
 
-function MakeProduct(props) {
+function Process(props) {
   // pass data of finished product
   const { setProductDetail } = props
 
@@ -183,4 +183,4 @@ function MakeProduct(props) {
   )
 }
 
-export default MakeProduct
+export default Process

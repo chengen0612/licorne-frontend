@@ -1,55 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import { imgPath } from '../../../../config'
 import './style.scss'
 
 function Basis(props) {
-  const { page, setPage } = props
-  const [displayImg, setDisplayImg] = useState(<></>)
-
-  // function chooseImage() {
-  //   let image = <></>
-  //   switch (page) {
-  //     case 1:
-  //       image = (
-  //         <figure>
-  //           <img
-  //             className="c-intro__img-alcohol"
-  //             src={imgPath + '/images/custom/intro/basis/alcohol.png'}
-  //             alt="alcohol"
-  //           />
-  //         </figure>
-  //       )
-  //       break
-  //     case 2:
-  //       image = (
-  //         <figure>
-  //           <img
-  //             className="c-intro__img-water"
-  //             src={imgPath + '/images/custom/intro/basis/water.png'}
-  //             alt="water"
-  //           />
-  //         </figure>
-  //       )
-  //       break
-  //     case 3:
-  //       break
-  //     case 4:
-  //       break
-  //     default:
-  //       break
-  //   }
-  //   return image
-  // }
-
-  useEffect(() => {
-    // const result = chooseImage()
-    // setDisplayImg(result)
-  }, [page])
+  const { page } = props
 
   return (
     <>
-      {/* blobs */}
       <section className="c-intro-basis-intro">
         <h5>香水組成與結構</h5>
         <p>
