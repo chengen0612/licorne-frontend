@@ -104,9 +104,6 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
               {memberAddress}
             </span>
             <span className="checkout__order-box-buyer">訂購人：同收件人</span>
-            {/* </React.Fragment>
-              )
-            })} */}
           </div>
           {showModal && <Backdrop onClick={closeModalHandler} />}
           {showModal && (
