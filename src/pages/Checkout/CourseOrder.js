@@ -21,9 +21,8 @@ function CourseOrder({ setCourseTotal }) {
     setCourseItems(data)
   }
 
-  // TODO: need to change 1 to +item.qty
   const subtotal = courseItems.map((item, i) => {
-    return +item.course_price * 1
+    return +item.course_price * +item.quantity
   })
 
   console.log('course subtotal', subtotal)
@@ -108,11 +107,10 @@ function CourseOrder({ setCourseTotal }) {
               <span className="checkout__course-box-product-quantity">
                 {/* 單人 */}
                 {courseItem.people}
-                {/* TODO: need to change to courseItem.qty */}
-                <span> x 1</span>
+                <span> x {courseItem.quantity}</span>
               </span>
               <span className="checkout__course-box-product-subtotal">
-                NT$ {courseItem.course_price}
+                NT$ {courseTotal}
               </span>
               <FiX
                 className="feather-s"
