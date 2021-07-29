@@ -11,36 +11,36 @@ function AddressEditModal(props) {
     setMemberAddress,
   } = props
 
-  const initialMemberData = {
+  const initialData = {
     memberName: memberName,
     memberPhone: memberPhone,
     memberAddress: memberAddress,
   }
 
-  const [memberData, updateMemberData] = useState(initialMemberData)
+  const [data, updateData] = useState(initialData)
 
   const updateMemberName = (e) => {
-    updateMemberData({
-      ...memberData,
+    updateData({
+      ...data,
       [e.target.name]: e.target.value.trim(),
     })
-    // console.log('current memberName', Object.values(memberData)[0])
+    console.log('current memberName', Object.values(data)[0])
   }
 
   const updateMemberPhone = (e) => {
-    updateMemberData({
-      ...memberData,
+    updateData({
+      ...data,
       [e.target.name]: e.target.value.trim(),
     })
-    // console.log('current memberPhone', Object.values(data)[1])
+    console.log('current memberPhone', Object.values(data)[1])
   }
 
   const updateMemberAddress = (e) => {
-    updateMemberData({
-      ...memberData,
+    updateData({
+      ...data,
       [e.target.name]: e.target.value.trim(),
     })
-    // console.log('current memberAddress', Object.values(memberData)[2])
+    console.log('current memberAddress', Object.values(data)[2])
   }
 
   const [fields, setFields] = useState({
@@ -49,21 +49,21 @@ function AddressEditModal(props) {
     recipientAddress: memberAddress,
   })
 
-  console.log('recipient name', fields.recipientName)
-  console.log('recipient phone', fields.recipientPhone)
-  console.log('recipient address', fields.recipientAddress)
+  // console.log('recipient name', fields.recipientName)
+  // console.log('recipient phone', fields.recipientPhone)
+  // console.log('recipient address', fields.recipientAddress)
 
   // 處理每個欄位的變動
   const handleFieldChange = (e) => {
     // 更新輸入欄位的變動
     // 用新輸入的屬性值和原物件作合併
-    const updatedFields = {
+    const updateFields = {
       ...fields,
       [e.target.name]: e.target.value,
     }
 
-    setFields(updatedFields)
-    console.log('what is this', updatedFields)
+    setFields(updateFields)
+    console.log('current recipient info', updateFields)
   }
 
   // const [recipientName, setRecipientName] = useState(memberName)
@@ -102,11 +102,11 @@ function AddressEditModal(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('edited member info', memberData)
+    console.log('edited member info', data)
+    setMemberName(Object.values(data)[0])
+    setMemberPhone(Object.values(data)[1])
+    setMemberAddress(Object.values(data)[2])
     closeHandler()
-    setMemberName(Object.values(memberData)[0])
-    setMemberPhone(Object.values(memberData)[1])
-    setMemberAddress(Object.values(memberData)[2])
     // ... submit to API or something
   }
 
@@ -133,7 +133,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberName"
             type="text"
-            value={memberData.memberName}
+            value={data.memberName}
             onChange={updateMemberName}
             required
           />
@@ -144,7 +144,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberPhone"
             type="text"
-            value={memberData.memberPhone}
+            value={data.memberPhone}
             onChange={updateMemberPhone}
             required
           />
@@ -155,7 +155,7 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberAddress"
             type="text"
-            value={memberData.memberAddress}
+            value={data.memberAddress}
             onChange={updateMemberAddress}
             required
           />
@@ -168,8 +168,7 @@ function AddressEditModal(props) {
             name="recipientName"
             type="text"
             value={fields.recipientName}
-            state={fields.recipientName}
-            setState={handleFieldChange}
+            onChange={handleFieldChange}
             // onChange={updateRecipientName}
             required
           />
@@ -181,8 +180,7 @@ function AddressEditModal(props) {
             name="recipientPhone"
             type="text"
             value={fields.recipientPhone}
-            state={fields.recipientPhone}
-            setState={handleFieldChange}
+            onChange={handleFieldChange}
             // onChange={updateRecipientPhone}
             required
           />
@@ -193,9 +191,8 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="recipientAddress"
             type="text"
-            value={fields.recipientPhone}
-            state={fields.recipientAddress}
-            setState={handleFieldChange}
+            value={fields.recipientAddress}
+            onChange={handleFieldChange}
             // onChange={updateRecipientAddress}
             required
           />
