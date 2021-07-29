@@ -42,7 +42,6 @@ function Header(props) {
         favOrCart={favOrCart}
         setFavOrCart={setFavOrCart}
       />
-      {/*  */}
       <div className="header__line col-md col-sm"></div>
       <header className="header col-md col-sm">
         {/* -- logo -- */}
@@ -52,30 +51,24 @@ function Header(props) {
           <div className="header__icon-border">
             <div className="icon">
               <div className="header__rwd-icon-1">
-                <Link to="/">
-                  <FiSearch data-feather="search" className="header-i" />
-                </Link>
+                <div role="button">
+                  <FiSearch className="header-i" />
+                </div>
                 <Link to="/member">
-                  <FiUser data-feather="user" className="header-i" />
+                  <FiUser className="header-i" />
                 </Link>
               </div>
               <div className="header__rwd-icon-2">
-                <Link to="/">
-                  <FiHeart
-                    onClick={openSidebarFav}
-                    data-feather="heart"
-                    className="header-i"
-                  />
-                </Link>
+                <div role="button">
+                  <FiHeart onClick={openSidebarFav} className="header-i" />
+                </div>
                 {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
-                <Link to="/">
+                <div role="button">
                   <FiShoppingBag
                     onClick={openSidebarCart}
-                    data-feather="shopping-bag"
                     className="header-i"
                   />
-                  {/*  */}
-                </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -84,7 +77,7 @@ function Header(props) {
         <div className="header__menu">
           <ul className="header__menu__list">
             <li>
-              <Link to="/custom">客製香水</Link>
+              <Link to="/custom/entrance">客製香水</Link>
             </li>
             <li>
               <Link to="/course">課程體驗</Link>
@@ -96,7 +89,7 @@ function Header(props) {
               <Link to="/official">官方經典</Link>
             </li>
             <li>
-              <Link to="/">專屬香氣</Link>
+              <Link to="/bestseller">專屬香氣</Link>
             </li>
           </ul>
         </div>
