@@ -7,12 +7,14 @@ import validate from './validateInfo'
 import validateLogin from './validateInfoLogin'
 import { FiEyeOff, FiEye } from 'react-icons/fi'
 import './style.css'
+import { Link } from 'react-router-dom'
 
 // 密碼顯示/隱藏 icon
 const eyeOn = <FiEye size={25} />
 const eyeOff = <FiEyeOff size={25} />
 
 function LoginAndRegister() {
+  const [isLoading, setIsLoading] = useState(false)
   const { handleChange, handleSubmit, values, errors } = useForm(validate)
   const { handleLoginChange, handleLoginSubmit, loginValues, loginErrors } =
     useFormLogin(validateLogin)
@@ -59,6 +61,7 @@ function LoginAndRegister() {
     if (values.passwordReg === '') return
     if (values.passwordReg.length < 6) return
     // console.log(values)
+    setIsLoading(true)
 
     const regData = { values }
     // 連接的伺服器資料網址
@@ -80,9 +83,23 @@ function LoginAndRegister() {
     const data = await response.json()
 
     console.log('伺服器回傳的json資料', data)
+    setTimeout(() => {
+      setIsLoading(false)
+      alert('註冊成功')
+    }, 500)
   }
-
-  return (
+  const loading = (
+    <>
+      <div className="loginAndRegister__loadingBox">
+        <div className="d-flex justify-content-center loginAndRegister__loading">
+          <div className="spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+  const display = (
     <>
       <div className="loginAndRegister">
         <div className="loginAndRegister__card">
@@ -178,24 +195,27 @@ function LoginAndRegister() {
                 </button>
               </div>
               <div className="loginAndRegister__forgetPassword">
-                <a href="/#">忘記密碼</a>
+                <Link to="/login" href="/#">
+                  忘記密碼
+                </Link>
               </div>
               <button className="loginAndRegister__rightButton">登入</button>
               {/* <button
-                type="button"
-                onClick={() => {
-                  checkLogin()
-                }}
-                className="btn btn-primary"
-              >
-                檢查登入狀態
-              </button> */}
+          type="button"
+          onClick={() => {
+            checkLogin()
+          }}
+          className="btn btn-primary"
+        >
+          檢查登入狀態
+        </button> */}
             </div>
           </form>
         </div>
       </div>
     </>
   )
+  return <>{isLoading ? loading : display}</>
 }
 
 export default LoginAndRegister

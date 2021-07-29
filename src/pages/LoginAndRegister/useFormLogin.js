@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const useForm = (validate) => {
   const [loginValues, setLoginValues] = useState({
@@ -6,7 +7,7 @@ const useForm = (validate) => {
     loginPassword: '',
   })
   const [loginErrors, setLoginErrors] = useState({})
-
+  const history = useHistory()
   const handleLoginChange = (e) => {
     const { name, value } = e.target
     setLoginValues({
@@ -30,7 +31,6 @@ const useForm = (validate) => {
         loginPhone: loginValues.loginPhone,
         loginPassword: loginValues.loginPassword,
       }
-
       // 連接的伺服器資料網址
       const url = 'http://localhost:6005/loginAndRegister/login'
 
@@ -53,7 +53,10 @@ const useForm = (validate) => {
       console.log('伺服器回傳的json資料', data)
       // 要等驗証過，再設定資料(簡單的直接設定)
       if (data.code === 0) {
-        alert('登入完成')
+        setTimeout(() => {
+          alert('登入成功')
+          history.push('/')
+        }, 500)
         localStorage.setItem('jwt', data.token)
       } else alert('登入失敗')
     }

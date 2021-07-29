@@ -5918,11 +5918,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-<<<<<<< HEAD
-hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.1.0:
-=======
 hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.2:
->>>>>>> develop
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -9696,6 +9692,16 @@ react-app-polyfill@^2.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
+
+react-avatar-uploader@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-avatar-uploader/-/react-avatar-uploader-1.0.3.tgz#b520dcb91447008fc8a1415b2ff4714077276e98"
+  integrity sha512-f7YVT7gHcllj7ok0XlUM08Z843N9tEKoGj4pvD5E0MHgxHNDPEdSzORqwewApKJBSC+YU5T8McTzqSlES/Dq3Q==
+
+react-bootstrap-sweetalert@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-sweetalert/-/react-bootstrap-sweetalert-5.2.0.tgz#a58bc9fa863eaf518a78b6d0716a25f32182d570"
+  integrity sha512-7eaKHgDcYfoRUxiYPZuHjygeLa3yDycGWB+Xwr+PWo6h0HDixwfgGXqWBmDYXI4ZQ453BcY77iBWBZhRbnH/6g==
 
 react-bootstrap@^1.6.1:
   version "1.6.1"

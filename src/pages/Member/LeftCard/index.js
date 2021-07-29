@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import './style.css'
@@ -36,39 +36,80 @@ const types = [
 ]
 
 function MemberLeftCard() {
-  const [active, setActive] = useState(types[0])
+  const [values, setValues] = useState({
+    member_profiles: '',
+    member_account: '',
+    member_name: '',
+    nickname: '',
+    member_birth: '',
+    member_password: '',
+    member_email: '',
+    member_phone: '',
+    member_address: '',
+    member_receive: '',
+    member_pic: '',
+  })
+
+  async function getUserFromServer() {
+    // 連接的伺服器資料網址
+    const url = 'http://localhost:6005/member/profile'
+
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log('會員資訊：', data)
+    setValues(data)
+    // 設定資料
+
+    // 如果從伺服器回傳的資料沒有id值
+    // if (!data.id) {
+    //   setUserDataIsExist(false)
+    //   return
+    // }
+  }
+  useEffect(() => {
+    getUserFromServer()
+  }, [])
+
+  const [active, setActive] = useState(types[0].name)
+
   return (
     <>
       <div className="memberHomePage__leftCard">
         <div className="memberHomePage__photoBox">
           <img
             className="memberHomePage__photo"
-            src={imgPath + '/images/member/dog.png'}
+            // src={imgPath + '/images/member/dog.png'}
+            src={
+              values.member_pic
+                ? `http://localhost:6005/images/avatar/${values.member_pic}`
+                : 'http://localhost:6005/images/avatar/default.jpg'
+            }
             alt=""
           />
-          <div
-            className="memberHomePage__photoEditIcon"
-            style={{ color: '#223843' }}
-          >
-            <button className="memberHomePage__photoEditBtn">
-              <FiEdit size={25} />
-            </button>
-          </div>
         </div>
         <div className="memberHomePage__textBox">
           <div className="memberHomePage__nickName">
-            <h3>哭肉狗狗</h3>
+            <h3>{values.member_name}</h3>
           </div>
           <div className="memberHomePage__account">
-            <h3>testaccount</h3>
+            <h3>{values.member_account}</h3>
           </div>
           <div className="memberHomePage__memberLevel">
             <h4>一般會員</h4>
           </div>
         </div>
         <div className="memberHomePage__menuBox">
-          {types.map((item) => (
-            <Link to={item.link}>
+          {types.map((item, index) => (
+            <Link to={item.link} key={index}>
               <ButtonToggle
                 active={active === item.name}
                 onClick={() => setActive(item.name)}
