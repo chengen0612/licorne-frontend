@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { FiFilter, FiChevronDown } from 'react-icons/fi'
-// import { IoSquareOutline, IoCheckboxOutline } from 'react-icons/io5'
 import { GiWaterDrop } from 'react-icons/gi'
 
 function Filters(props) {
@@ -31,9 +30,7 @@ function Filters(props) {
         </h5>
         {/* select serie */}
         <section className="best__dropdown-menu">
-          <div className="best__dropdown-title">
-            香調篩選 <FiChevronDown />
-          </div>
+          <div className="best__dropdown-title">香調篩選</div>
           <div className="best__dropdown-content">
             {series.map((value, i) => {
               return (
@@ -56,9 +53,7 @@ function Filters(props) {
         </section>
         {/* sortby condition */}
         <section className="best__dropdown-menu">
-          <div className="best__dropdown-title">
-            排序依照 <FiChevronDown />
-          </div>
+          <div className="best__dropdown-title">排序依照</div>
           <div className="best__dropdown-content">
             {conditions.map((value, i) => {
               return (

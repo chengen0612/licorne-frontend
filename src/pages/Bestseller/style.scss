@@ -46,6 +46,8 @@
 }
 .best__dropdown-title {
   @extend %option;
+  background: $c-primary;
+  color: $c-secondary;
   & svg {
     width: 30px;
     height: 30px;
