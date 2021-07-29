@@ -521,3 +521,134 @@
   font-weight: var(--fw-medium);
   margin: 0 10px;
 }
+
+/* course products */
+/* course products */
+/* course products */
+/* course products */
+/* course products */
+
+.cj-sidebar__cart__item__course-img {
+  /* border: 1px solid blue; */
+  width: 150px;
+  position: relative;
+}
+
+.cj-sidebar__cart__item__course-img img {
+  object-fit: contain;
+  width: 150px;
+  height: 200px;
+  filter: var(--ds-product);
+}
+
+.cj-sidebar__cart__item__course-img div {
+  /* border: 2px solid red; */
+  position: absolute;
+  top: 0px;
+  left: 120px;
+}
+
+.cj-sidebar__cart__item__course-desc {
+  /* border: 1px solid green; */
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cj-sidebar__cart__item__course-desc p:nth-child(1) {
+  /* 名稱或編號 */
+  font-family: 'Noto Sans', sans-serif;
+  font-size: var(--fs-span);
+  font-weight: var(--fw-medium);
+}
+
+.cj-sidebar__cart__item__course-desc p:nth-child(2) {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  font-weight: var(--fw-light);
+}
+
+.cj-sidebar__cart__item__course-desc div {
+  display: flex;
+  margin: 5px 0 5px 0;
+  border: 1px solid var(--c-primary);
+  width: 120px;
+  height: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.cj-sidebar__cart__item__course-desc select {
+  width: 120px;
+  border: none;
+  background-color: transparent;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: var(--fw-light);
+  color: var(--c-primary);
+  cursor: pointer;
+  /* -webkit-appearance: none;
+  -moz-appearance: none; */
+}
+
+.cj-sidebar__cart__item__course-desc option {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: var(--fw-light);
+  box-shadow: none;
+}
+
+.cj-sidebar__cart__item__course-desc select:focus {
+  outline: none;
+}
+
+.cj-sidebar__cart__item__course-desc p:nth-child(4) {
+  /* 數量：深藍、粗體 */
+  font-family: 'Noto Sans', sans-serif;
+  font-size: var(--fs-span);
+  font-weight: var(--fw-medium);
+  margin: 8px 0;
+}
+
+.cj-sidebar__cart__item__course-desc p:nth-child(5) {
+  /* 刪除： 淺灰，底線*/
+  font-family: 'Noto Sans', sans-serif;
+  font-size: var(--fs-span);
+  font-weight: var(--fw-light);
+  text-decoration: underline;
+}
+
+.cj-sidebar__cart__item__course-btn {
+  /* border: 1px solid orange; */
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cj-sidebar__cart__item__course-btn div {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  text-align: center;
+  line-height: 20px;
+  font-family: 'Noto Sans', sans-serif;
+  background-color: var(--c-primary);
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.cj-sidebar__cart__item__course-btn div:hover {
+  background-color: #efefef;
+}
+
+.cj-sidebar__cart__item__course-btn p {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-medium);
+  margin: 0 10px;
+}

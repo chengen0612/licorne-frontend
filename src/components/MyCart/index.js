@@ -13,6 +13,8 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
   const [totalAmountOfficial, setTotalAmountOfficial] = useState(0) // a number, sum of each (official product qty) x (official product price)
   const [customProducts, setCustomProducts] = useState([])
   const [totalAmountCustom, setTotalAmountCustom] = useState(0)
+  const [courseProducts, setCourseProducts] = useState([])
+  const [totalAmountCourse, setTotalAmountCourse] = useState(0)
   //
   const [collectDatas, setCollectDatas] = useState([])
 
@@ -61,6 +63,7 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
     setOfficialProducts(officialProduct)
   }
 
+  //客製化產品 API
   async function getCustomProductFromServer() {
     const urlCart = 'http://localhost:6005/sidebar/custom'
     const requestCart = new Request(urlCart, {
@@ -75,6 +78,21 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
     setCustomProducts(customProduct)
   }
 
+  // 課程 API
+  async function getCourseProductsFromServer() {
+    const urlCourse = 'http://localhost:6005/sidebar/course'
+    const requestCourse = new Request(urlCourse, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCourse = await fetch(requestCourse)
+    const courseProduct = await responseCourse.json()
+    setCourseProducts(courseProduct)
+  }
+
   useEffect(() => {
     calculateTotal()
   }, [officialProducts, customProducts])
@@ -83,6 +101,7 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
     getOfficialProductFromServer()
     getOfficialCollectFromServer()
     getCustomProductFromServer()
+    getCourseProductsFromServer()
   }, [])
 
   //
@@ -158,6 +177,10 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
           customProducts={customProducts}
           setCustomProducts={setCustomProducts}
           totalAmountCustom={totalAmountCustom}
+          //
+          courseProducts={courseProducts}
+          setCourseProducts={setCourseProducts}
+          totalAmountCourse={totalAmountCourse}
           //
           // setTotalAmountOfficial={setTotalAmountOfficial} maybe not nessaccery? Observe a while!
           // calculateTotal={calculateTotal} maybe not nessaccery? Observe a while!

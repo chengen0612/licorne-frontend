@@ -3,6 +3,7 @@ import '../../../styles/global.css'
 import '../style.css'
 import MyCartOffcialItem from './MyCartOffcialItem'
 import MyCartCustomItem from './MyCartCustomItem'
+import MyCartCourseItem from './MyCartCourseItem'
 
 function MyCartCart({
   favOrCart,
@@ -14,6 +15,10 @@ function MyCartCart({
   customProducts,
   setCustomProducts,
   totalAmountCustom,
+  //
+  courseProducts,
+  setCourseProducts,
+  totalAmountCourse,
 }) {
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
@@ -63,6 +68,19 @@ function MyCartCart({
           )
         })}
         {/*  */}
+        {courseProducts.map((courseProduct, key) => {
+          return (
+            <div
+              key={courseProduct.course_id}
+              className="cj-sidebar__cart__item"
+            >
+              <MyCartCourseItem
+                courseProducts={courseProducts}
+                courseProduct={courseProduct}
+              />
+            </div>
+          )
+        })}
       </div>
 
       <div className="cj-sidebar__cart__price">
