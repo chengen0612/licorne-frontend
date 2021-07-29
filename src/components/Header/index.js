@@ -37,23 +37,19 @@ function Header(props) {
             <div className="icon">
               <div className="header__rwd-icon-1">
                 <div role="button">
-                  <FiSearch data-feather="search" className="header-i" />
+                  <FiSearch className="header-i" />
                 </div>
                 <Link to="/member">
-                  <FiUser data-feather="user" className="header-i" />
+                  <FiUser className="header-i" />
                 </Link>
               </div>
               <div className="header__rwd-icon-2">
                 <div role="button">
-                  <FiHeart data-feather="heart" className="header-i" />
+                  <FiHeart onClick={openSidebar} className="header-i" />
                 </div>
                 {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
                 <div role="button">
-                  <FiShoppingBag
-                    onClick={openSidebar}
-                    data-feather="shopping-bag"
-                    className="header-i"
-                  />
+                  <FiShoppingBag onClick={openSidebar} className="header-i" />
                 </div>
               </div>
             </div>
@@ -63,7 +59,7 @@ function Header(props) {
         <div className="header__menu">
           <ul className="header__menu__list">
             <li>
-              <Link to="/custom">客製香水</Link>
+              <Link to="/custom/entrance">客製香水</Link>
             </li>
             <li>
               <Link to="/course">課程體驗</Link>
@@ -75,7 +71,7 @@ function Header(props) {
               <Link to="/official">官方經典</Link>
             </li>
             <li>
-              <Link to="/">專屬香氣</Link>
+              <Link to="/bestseller">專屬香氣</Link>
             </li>
           </ul>
         </div>
