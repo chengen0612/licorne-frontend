@@ -4,9 +4,23 @@ import { FiFilter, FiChevronDown } from 'react-icons/fi'
 // import { IoSquareOutline, IoCheckboxOutline } from 'react-icons/io5'
 import { GiWaterDrop } from 'react-icons/gi'
 
-function Filters() {
+function Filters(props) {
   const series = ['果香調', '花香調', '草本調']
-  const conditions = ['每月人氣銷售', '價格由低至高', '價格由高至低']
+  const conditions = ['每月人氣銷售', '價格由高至低', '價格由低至高']
+
+  const { checkedSerie, setCheckedSerie, sortBy, setSortBy } = props
+
+  const checkboxHandler = (e) => {
+    const option = e.currentTarget.firstChild
+    const value = option.innerText
+    setCheckedSerie(value)
+  }
+
+  const conditionHandler = (e) => {
+    const option = e.currentTarget.firstChild
+    const value = option.innerText
+    setSortBy(value)
+  }
 
   return (
     <>
@@ -16,39 +30,50 @@ function Filters() {
           &nbsp;&nbsp;篩選
         </h5>
         {/* select serie */}
-        <div className="best__dropdown-menu">
+        <section className="best__dropdown-menu">
           <div className="best__dropdown-title">
             香調篩選 <FiChevronDown />
           </div>
           <div className="best__dropdown-content">
             {series.map((value, i) => {
               return (
-                <div key={i} className="best__checkbox-options">
+                <div
+                  key={i}
+                  className="best__checkbox-options"
+                  onClick={checkboxHandler}
+                >
                   <span className="best__checkbox-item">
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      checked={checkedSerie === value && true}
+                    />
                     {value}
                   </span>
                 </div>
               )
             })}
           </div>
-        </div>
-        {/* align sort */}
-        <div className="best__dropdown-menu">
+        </section>
+        {/* sortby condition */}
+        <section className="best__dropdown-menu">
           <div className="best__dropdown-title">
             排序依照 <FiChevronDown />
           </div>
           <div className="best__dropdown-content">
             {conditions.map((value, i) => {
               return (
-                <div key={i} className="best__select-options">
-                  {value}
-                  <GiWaterDrop />
+                <div
+                  key={i}
+                  className="best__select-options"
+                  onClick={conditionHandler}
+                >
+                  <span>{value}</span>
+                  {value === sortBy && <GiWaterDrop />}
                 </div>
               )
             })}
           </div>
-        </div>
+        </section>
       </sidebar>
     </>
   )
