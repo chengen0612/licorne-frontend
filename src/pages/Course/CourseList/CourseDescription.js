@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function Description() {
   return (
@@ -46,7 +46,7 @@ function Description() {
         </p>
       </div>
     </>
-  );
+  )
 }
 function NotesRegistration() {
   return (
@@ -81,15 +81,15 @@ function NotesRegistration() {
         </li>
       </ul>
     </>
-  );
+  )
 }
 
 function CourseDescription(props) {
-  const { infoBtn } = props;
+  const { infoBtn } = props
   if (infoBtn) {
-    return <Description />;
+    return <Description />
   } else {
-    return <NotesRegistration />;
+    return <NotesRegistration />
   }
 }
-export default CourseDescription;
+export default CourseDescription

@@ -8,18 +8,18 @@ import SecondaryFooter from './components/SecondaryFooter'
 // 獨立分頁
 import Home from './pages/Home'
 import Bestseller from './pages/Bestseller'
-import Custom from './pages/Custom'
-import Introduction from './pages/Custom/Introduction'
 import Checkout from './pages/Checkout'
 import LoginAndRegister from './pages/LoginAndRegister'
 import Payment from './pages/Payment'
 import Member from './pages/Member'
 import Official from './pages/Official'
+import Quiz from './pages/Quiz'
 
 // 分頁子路由器
 // import SwitchMember from './routes/SwitchMember'
 // import SwitchOfficial from './routes/SwitchOfficial'
 import SwitchCourse from './routes/SwitchCourse'
+import SwitchCustom from './routes/SwitchCustom'
 
 function App() {
   return (
@@ -29,6 +29,9 @@ function App() {
           {/* middleware */}
           <Route path="/course">
             <SwitchCourse />
+          </Route>
+          <Route path="/custom">
+            <SwitchCustom />
           </Route>
 
           {/* direct path */}
@@ -40,11 +43,9 @@ function App() {
             <Bestseller />
             <SecondaryFooter />
           </Route>
-          <Route path="/custom/introduction">
-            <Introduction />
-          </Route>
-          <Route path="/custom">
-            <Custom />
+          <Route path="/quiz">
+            <Header />
+            <Quiz />
           </Route>
           <Route path="/checkout/payment">
             <Payment />
