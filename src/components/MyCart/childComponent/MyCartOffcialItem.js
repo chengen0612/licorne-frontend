@@ -39,13 +39,13 @@ function MyCartOffcialItem({
 
   return (
     <>
-      <div className="cj-sidebar__cart__item__img">
+      <div className="cj-sidebar__cart__item__official-img">
         <img src={img_id} alt="" />
         <div>
           <FiHeart className="feather-s" role="button" />
         </div>
       </div>
-      <div className="cj-sidebar__cart__item__desc">
+      <div className="cj-sidebar__cart__item__official-desc">
         <p>{name_zh}</p>
         <p>
           {name_en}
@@ -71,7 +71,7 @@ function MyCartOffcialItem({
           刪除{' '}
         </p>
       </div>
-      <div className="cj-sidebar__cart__item__btn">
+      <div className="cj-sidebar__cart__item__official-btn">
         <div
           role="button"
           onClick={() => {

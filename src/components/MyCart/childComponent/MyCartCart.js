@@ -18,7 +18,13 @@ function MyCartCart({
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
       <div className="cj-sidebar__cart">
-        {officialProducts.length > 0 ? '' : <h1>NO DATA</h1>}
+        {officialProducts.length + customProducts.length > 0 ? (
+          ''
+        ) : (
+          <p className="cj-sidebar__cart__no-item-message">
+            購物籃中沒有任何商品
+          </p>
+        )}
         {/*  */}
         {officialProducts.map((officialProduct, key) => {
           return (

@@ -18,11 +18,17 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
 
   function calculateTotal() {
     //計算總金額函式
-    let total = 0
+    let officialTotal = 0
+    let customTotal = 0
+    let sumOfTotals = 0
     for (let officialProduct of officialProducts) {
-      total += officialProduct.quantity * officialProduct.price
+      officialTotal += officialProduct.quantity * officialProduct.price
     }
-    setTotalAmountOfficial(total)
+    for (let customProduct of customProducts) {
+      customTotal += customProduct.quantity * customProduct.price
+    }
+    sumOfTotals = officialTotal + customTotal
+    setTotalAmountOfficial(sumOfTotals)
   }
 
   // 收藏清單 API
@@ -71,7 +77,7 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
 
   useEffect(() => {
     calculateTotal()
-  }, [officialProducts])
+  }, [officialProducts, customProducts])
 
   useEffect(() => {
     getOfficialProductFromServer()

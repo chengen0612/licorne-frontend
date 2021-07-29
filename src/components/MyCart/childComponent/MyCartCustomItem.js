@@ -14,68 +14,72 @@ function MyCartCustomItem({
   quantity,
   bottle_img,
 }) {
-  // function removeQTY() {
-  //   const newOfficialProducts = [...officialProducts]
-  //   const index = newOfficialProducts.findIndex((v, i) => {
-  //     return v.id === id
-  //   })
-  //   if (index > -1 && quantity > 1) {
-  //     newOfficialProducts[index].quantity--
-  //   }
-  //   setOfficialProducts(newOfficialProducts)
-  // }
+  function removeQTY() {
+    const newCustomProducts = [...customProducts]
+    const index = newCustomProducts.findIndex((v, i) => {
+      return v.id === id
+    })
+    if (index > -1 && quantity > 1) {
+      newCustomProducts[index].quantity--
+    }
+    setCustomProducts(newCustomProducts)
+  }
 
-  // function addQTY() {
-  //   const newOfficialProducts = [...officialProducts]
-  //   const index = newOfficialProducts.findIndex((v, i) => {
-  //     return v.id === id
-  //   })
-  //   if (index > -1) {
-  //     newOfficialProducts[index].quantity++
-  //   }
-  //   setOfficialProducts(newOfficialProducts)
-  // }
+  function addQTY() {
+    const newCustomProducts = [...customProducts]
+    const index = newCustomProducts.findIndex((v, i) => {
+      return v.id === id
+    })
+    if (index > -1) {
+      newCustomProducts[index].quantity++
+    }
+    setCustomProducts(newCustomProducts)
+  }
 
   return (
     <>
-      <div className="cj-sidebar__cart__item__img">
+      <div className="cj-sidebar__cart__item__custom-img">
         <img src={bottle_img} alt="" />
         <div>
           <FiHeart className="feather-s" role="button" />
         </div>
       </div>
-      <div className="cj-sidebar__cart__item__desc">
+      <div className="cj-sidebar__cart__item__custom-desc">
         <p>{cust_id}</p>
-        <p>{custom_ingredient}</p>
-        <p>{fragrance_name}</p>
+        <p>
+          {custom_ingredient}
+          <br />
+          {fragrance_name}
+        </p>
+        <p></p>
         <p>NT$ {price}</p>
-        {/* <p
+        <p
           role="button"
           onClick={() => {
-            const newOfficialProducts = officialProducts.filter((v, i) => {
+            const newCustomProducts = customProducts.filter((v, i) => {
               return v.id !== id
             })
-            setOfficialProducts(newOfficialProducts)
+            setCustomProducts(newCustomProducts)
           }}
         >
           刪除{' '}
-        </p> */}
+        </p>
       </div>
-      <div className="cj-sidebar__cart__item__btn">
+      <div className="cj-sidebar__cart__item__custom-btn">
         <div
           role="button"
-          // onClick={() => {
-          //   removeQTY()
-          // }}
+          onClick={() => {
+            removeQTY()
+          }}
         >
           -
         </div>
         <p>{quantity}</p>
         <div
           role="button"
-          // onClick={() => {
-          //   addQTY()
-          // }}
+          onClick={() => {
+            addQTY()
+          }}
         >
           +
         </div>

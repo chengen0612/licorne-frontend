@@ -10,7 +10,13 @@ function MyCartFav({ favOrCart, collectDatas, setCollectDatas }) {
         className="cj-sidebar__fav"
         style={{ display: favOrCart === 'Fav' ? 'block' : 'none' }}
       >
-        {collectDatas.length > 0 ? '' : <h1>NO DATA</h1>}
+        {collectDatas.length > 0 ? (
+          ''
+        ) : (
+          <p className="cj-sidebar__cart__no-item-message">
+            收藏清單中沒有任何商品
+          </p>
+        )}
 
         {collectDatas.map((collectData, key) => {
           return (
