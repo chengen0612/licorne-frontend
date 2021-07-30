@@ -13,6 +13,7 @@ function ProductCard(props) {
     mid_zh,
     top_zh,
     bottle_img,
+    color,
     price,
     sequence,
   } = data
@@ -23,12 +24,14 @@ function ProductCard(props) {
         <figure className="best__prod-sequence">
           <img src={imgPath + `/images/bestseller/${sequence}.svg`} alt="" />
         </figure>
-        <div className="best__prod-display">
+        <div className="best__prod-display" style={{ background: color }}>
           <img src={imgPath + bottle_img} alt={cust_id} />
           <h3 className="best__prod-title">{cust_id}</h3>
           <span className="best__prod-price">NT ${price}</span>
         </div>
-        <button className="best__prod-btn">訂購</button>
+        <button className="best__prod-btn" style={{ background: color }}>
+          訂購
+        </button>
       </div>
     </>
   )
