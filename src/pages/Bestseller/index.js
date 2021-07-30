@@ -8,28 +8,29 @@ import ProductCard from './ProductCard'
 import Filters from './Filters'
 
 function Bestseller() {
-  const [checkedSerie, setCheckedSerie] = useState('')
+  const [checkedSeries, setCheckedSeries] = useState([])
   const [sortBy, setSortBy] = useState('每月人氣銷售')
 
   const getDataFromServer = async () => {
-    const params = { sortBy: sortBy, checkedSerie: checkedSerie }
-    // console.log('params', params)
+    const params = { params: { sortBy: sortBy, checkedSeries: checkedSeries } }
     const url = 'http://localhost:6005/bestseller'
     const response = await axios.get(url, params)
     console.log(response)
   }
 
+  /* eslint-disable */
   useEffect(() => {
     getDataFromServer()
-  }, [checkedSerie, sortBy])
+  }, [checkedSeries, sortBy])
+  /* eslint-enable */
 
   return (
     <>
       <div className="best-wrapper">
         <h3 className="best__title">人氣熱銷排行榜</h3>
         <Filters
-          checkedSerie={checkedSerie}
-          setCheckedSerie={setCheckedSerie}
+          checkedSeries={checkedSeries}
+          setCheckedSeries={setCheckedSeries}
           sortBy={sortBy}
           setSortBy={setSortBy}
         />
