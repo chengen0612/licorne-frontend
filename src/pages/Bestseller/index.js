@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import './style.scss'
 
@@ -7,8 +8,20 @@ import ProductCard from './ProductCard'
 import Filters from './Filters'
 
 function Bestseller() {
-  const [checkedSerie, setCheckedSerie] = useState('果香調')
+  const [checkedSerie, setCheckedSerie] = useState('')
   const [sortBy, setSortBy] = useState('每月人氣銷售')
+
+  const getDataFromServer = async () => {
+    const params = { sortBy: sortBy, checkedSerie: checkedSerie }
+    // console.log('params', params)
+    const url = 'http://localhost:6005/bestseller'
+    const response = await axios.get(url, params)
+    console.log(response)
+  }
+
+  useEffect(() => {
+    getDataFromServer()
+  }, [checkedSerie, sortBy])
 
   return (
     <>
