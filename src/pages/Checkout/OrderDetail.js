@@ -52,7 +52,7 @@ const DeliveryMethod = ({
   storePhone,
   placeLatLng,
 }) => {
-  const [showModal, setShowModal] = useState()
+  const [showModal, setShowModal] = useState('')
 
   //預設顯示資訊
   const [stores, setStores] = useState([
@@ -63,13 +63,13 @@ const DeliveryMethod = ({
     },
   ])
 
-  function showModalHandler() {
-    setShowModal(true)
+  function showModalHandler(option) {
+    setShowModal(option)
     document.body.style.overflow = 'hidden'
   }
 
   function closeModalHandler() {
-    setShowModal(false)
+    setShowModal('')
     document.body.style.overflow = 'visible'
   }
 
@@ -103,30 +103,72 @@ const DeliveryMethod = ({
         />
       </div>
       {/* 地址 */}
-      <div className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2">
-        <div className="checkout__order-box-delivery-edit-wrapper">
-          <span className="checkout__order-box-recipient">
-            {/* 哭肉狗狗 */}
-            {memberName}
+      {checkedValue === '指定地址' && (
+        <div className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2">
+          <div className="checkout__order-box-delivery-edit-wrapper">
+            <span className="checkout__order-box-recipient">
+              {/* 哭肉狗狗 */}
+              {memberName}
+            </span>
+            <FiEdit
+              className="feather-s"
+              role="button"
+              onClick={() => showModalHandler('指定地址')}
+            />
+          </div>
+          <span className="checkout__order-box-recipient-phone">
+            {/* 0912345678 */}
+            {memberPhone}
           </span>
-          <FiEdit
-            className="feather-s"
-            role="button"
-            onClick={showModalHandler}
-          />
+          <span className="checkout__order-box-recipient-address">
+            {/* 29850桃園市桃園區中正路100巷100號 */}
+            {memberAddress}
+          </span>
+          <span className="checkout__order-box-buyer">訂購人：同收件人</span>
         </div>
-        <span className="checkout__order-box-recipient-phone">
-          {/* 0912345678 */}
-          {memberPhone}
-        </span>
-        <span className="checkout__order-box-recipient-address">
-          {/* 29850桃園市桃園區中正路100巷100號 */}
-          {memberAddress}
-        </span>
-        <span className="checkout__order-box-buyer">訂購人：同收件人</span>
-      </div>
-      {showModal && <Backdrop onClick={closeModalHandler} />}
-      {showModal && (
+      )}
+      {/* 店鋪 */}
+      {checkedValue === '店鋪自取' && (
+        <>
+          {stores.map((store, index) => {
+            return (
+              <>
+                <div
+                  className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
+                  key={index}
+                >
+                  <div className="checkout__order-box-delivery-edit-wrapper">
+                    <span className="checkout__order-box-recipient">
+                      高雄民益店
+                      {store.course_place_name}
+                    </span>
+                    <FiEdit
+                      className="feather-s"
+                      role="button"
+                      onClick={() => {
+                        showModalHandler('店鋪自取')
+                      }}
+                    />
+                  </div>
+                  <span className="checkout__order-box-recipient-phone">
+                    07-8012255
+                    {store.course_place_phone}
+                  </span>
+                  <span className="checkout__order-box-recipient-address">
+                    高雄市小港區民益路13號
+                    {store.course_place_address}
+                  </span>
+                  <span className="checkout__order-box-buyer">
+                    訂購人：{memberName}
+                  </span>
+                </div>
+              </>
+            )
+          })}
+        </>
+      )}
+      {showModal.length > 0 && <Backdrop onClick={closeModalHandler} />}
+      {showModal === '指定地址' && (
         <AddressEditModal
           onClose={closeModalHandler}
           memberName={memberName}
@@ -137,42 +179,7 @@ const DeliveryMethod = ({
           setMemberAddress={setMemberAddress}
         />
       )}
-      {/* 店鋪 */}
-      {stores.map((store, index) => {
-        return (
-          <>
-            <div
-              className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
-              key={index}
-            >
-              <div className="checkout__order-box-delivery-edit-wrapper">
-                <span className="checkout__order-box-recipient">
-                  高雄民益店
-                  {store.course_place_name}
-                </span>
-                <FiEdit
-                  className="feather-s"
-                  role="button"
-                  onClick={showModalHandler}
-                />
-              </div>
-              <span className="checkout__order-box-recipient-phone">
-                07-8012255
-                {store.course_place_phone}
-              </span>
-              <span className="checkout__order-box-recipient-address">
-                高雄市小港區民益路13號
-                {store.course_place_address}
-              </span>
-              <span className="checkout__order-box-buyer">
-                訂購人：{memberName}
-              </span>
-            </div>
-          </>
-        )
-      })}
-      {showModal && <Backdrop onClick={closeModalHandler} />}
-      {showModal && (
+      {showModal === '店鋪自取' && (
         <StoreMapModal
           closeModalHandler={closeModalHandler}
           // setSelectForm={setPlace}
