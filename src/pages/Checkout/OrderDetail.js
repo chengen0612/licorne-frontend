@@ -4,11 +4,193 @@ import { FiEdit } from 'react-icons/fi'
 import Backdrop from './components/Backdrop'
 import AddressEditModal from './components/AddressEditModal'
 import StoreMapModal from './components/StoreMapModal'
+import DeliveryRadio from './components/unused/DeliveryRadio'
+
+// const DeliveryDisplay = ({
+//   memberName,
+//   memberPhone,
+//   memberAddress,
+//   showModalHandler,
+// }) => {
+//   return (
+//     <>
+//       <div className="checkout__order-box-delivery-edit-bg d-flex flex-column p-3 mt-2 mb-2">
+//         <div className="checkout__order-box-delivery-edit-wrapper d-flex justify-content-between">
+//           <span className="checkout__order-box-recipient">
+//             {/* 哭肉狗狗 */}
+//             {memberName}
+//           </span>
+//           <FiEdit
+//             className="feather-s"
+//             role="button"
+//             onClick={showModalHandler}
+//           />
+//         </div>
+//         <span className="checkout__order-box-recipient-phone">
+//           {/* (+886) 912 345 678 */}
+//           {memberPhone}
+//         </span>
+//         <span className="checkout__order-box-recipient-address">
+//           {/* 29850桃園市桃園區中正路100巷100號 */}
+//           {memberAddress}
+//         </span>
+//         <span className="checkout__order-box-buyer">訂購人：同收件人</span>
+//       </div>
+//     </>
+//   )
+// }
+
+const DeliveryMethod = ({
+  memberName,
+  memberPhone,
+  memberAddress,
+  setMemberName,
+  setMemberPhone,
+  setMemberAddress,
+  storeName,
+  storeAddress,
+  storePhone,
+  placeLatLng,
+}) => {
+  const [showModal, setShowModal] = useState()
+
+  //預設顯示資訊
+  const [stores, setStores] = useState([
+    {
+      course_place_name: '高雄民益店',
+      course_place_address: '高雄市小港區民益路13號',
+      course_place_phone: '07-8012255',
+    },
+  ])
+
+  function showModalHandler() {
+    setShowModal(true)
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeModalHandler() {
+    setShowModal(false)
+    document.body.style.overflow = 'visible'
+  }
+
+  const deliveryMethod = ['指定地址', '店鋪自取']
+  const [checkedValue, setCheckedValue] = useState(deliveryMethod[0])
+
+  return (
+    <>
+      {/* <div className="checkout__order-box-delivery-labels">
+        <DeliveryRadio method={method[0]} />
+        <label htmlFor="" className="checkout__order-box-delivery-address">
+          <input
+            className="radio"
+            type="radio"
+            name="delivery"
+            defaultChecked="checked"
+          />
+          指定地址
+        </label>
+        <label htmlFor="" className="checkout__order-box-delivery-store">
+          <input className="radio" type="radio" name="delivery" />
+          店鋪自取
+        </label>
+      </div> */}
+      <div className="checkout__order-box-delivery-labels">
+        <DeliveryRadio
+          deliveryMethod={deliveryMethod}
+          value={deliveryMethod[0]}
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+        />
+      </div>
+      {/* 地址 */}
+      <div className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2">
+        <div className="checkout__order-box-delivery-edit-wrapper">
+          <span className="checkout__order-box-recipient">
+            {/* 哭肉狗狗 */}
+            {memberName}
+          </span>
+          <FiEdit
+            className="feather-s"
+            role="button"
+            onClick={showModalHandler}
+          />
+        </div>
+        <span className="checkout__order-box-recipient-phone">
+          {/* 0912345678 */}
+          {memberPhone}
+        </span>
+        <span className="checkout__order-box-recipient-address">
+          {/* 29850桃園市桃園區中正路100巷100號 */}
+          {memberAddress}
+        </span>
+        <span className="checkout__order-box-buyer">訂購人：同收件人</span>
+      </div>
+      {showModal && <Backdrop onClick={closeModalHandler} />}
+      {showModal && (
+        <AddressEditModal
+          onClose={closeModalHandler}
+          memberName={memberName}
+          memberPhone={memberPhone}
+          memberAddress={memberAddress}
+          setMemberName={setMemberName}
+          setMemberPhone={setMemberPhone}
+          setMemberAddress={setMemberAddress}
+        />
+      )}
+      {/* 店鋪 */}
+      {stores.map((store, index) => {
+        return (
+          <>
+            <div
+              className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
+              key={index}
+            >
+              <div className="checkout__order-box-delivery-edit-wrapper">
+                <span className="checkout__order-box-recipient">
+                  高雄民益店
+                  {store.course_place_name}
+                </span>
+                <FiEdit
+                  className="feather-s"
+                  role="button"
+                  onClick={showModalHandler}
+                />
+              </div>
+              <span className="checkout__order-box-recipient-phone">
+                07-8012255
+                {store.course_place_phone}
+              </span>
+              <span className="checkout__order-box-recipient-address">
+                高雄市小港區民益路13號
+                {store.course_place_address}
+              </span>
+              <span className="checkout__order-box-buyer">
+                訂購人：{memberName}
+              </span>
+            </div>
+          </>
+        )
+      })}
+      {showModal && <Backdrop onClick={closeModalHandler} />}
+      {showModal && (
+        <StoreMapModal
+          closeModalHandler={closeModalHandler}
+          // setSelectForm={setPlace}
+          // setSelectForm={onPlaceChange}
+          placeLatLng={placeLatLng}
+        />
+      )}
+    </>
+  )
+}
 
 function OrderDetail({ officialTotal, customTotal, courseTotal }) {
   const [memberName, setMemberName] = useState([])
   const [memberPhone, setMemberPhone] = useState([])
   const [memberAddress, setMemberAddress] = useState([])
+
+  const deliveryMethod = ['指定地址', '店鋪自取']
+  console.log('method 1', deliveryMethod[0])
 
   // 會員資料
   async function getMemberInfoFromServer() {
@@ -44,6 +226,9 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
 
   // 店鋪資料
   const [placeLatLng, setPlaceLatLng] = useState([])
+  const [storeName, setStoreName] = useState([])
+  const [storeAddress, setStoreAddress] = useState([])
+  const [storePhone, setStorePhone] = useState([])
 
   async function getStoreInfoFromServer() {
     const url = `http://localhost:6005/checkout/store`
@@ -56,25 +241,29 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    console.log('data.place', data.place)
-    setPlaceLatLng(data.place)
+    const stores = data.place
+    const storeName = stores.map((item) => {
+      return item.course_place_name
+    })
+    const storeAddress = stores.map((item) => {
+      return item.course_place_address
+    })
+    const storePhone = stores.map((item) => {
+      return item.course_place_phone
+    })
+    console.log('store info', stores)
+    console.log('store name', storeName)
+    console.log('store address', storeAddress)
+    console.log('store phone', storePhone)
+    setPlaceLatLng(stores)
+    setStoreName(storeName)
+    setStoreAddress(storeAddress)
+    setStorePhone(storePhone)
   }
 
   useEffect(() => {
     getStoreInfoFromServer()
   }, [])
-
-  const [showModal, setShowModal] = useState()
-
-  function showModalHandler() {
-    setShowModal(true)
-    document.body.style.overflow = 'hidden'
-  }
-
-  function closeModalHandler() {
-    setShowModal(false)
-    document.body.style.overflow = 'visible'
-  }
 
   const productTotal = officialTotal + customTotal + courseTotal
   const deliveryFee = 0
@@ -88,70 +277,24 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
       <div className="checkout__order-box-details">
         <div className="checkout__order-box-delivery pr-4 pl-4 pt-3 pb-4">
           <span className="checkout__order-box-delivery-title">運送方式</span>
-          <div className="checkout__order-box-delivery-labels">
-            <label htmlFor="" className="checkout__order-box-delivery-address">
-              <input
-                className="radio"
-                type="radio"
-                name="delivery"
-                defaultChecked="checked"
+          {/* <div className="checkout__order-box-delivery-labels">
+            {
+              <DeliveryRadio
+                deliveryMethod={deliveryMethod}
+                value={deliveryMethod[0]}
               />
-              指定地址
-            </label>
-            <label htmlFor="" className="checkout__order-box-delivery-store">
-              <input
-                className="radio"
-                type="radio"
-                name="delivery"
-                onClick={showModalHandler}
-              />
-              店鋪自取
-            </label>
-          </div>
-          <div className="checkout__order-box-delivery-edit-bg d-flex flex-column p-3 mt-2 mb-2">
-            <div className="checkout__order-box-delivery-edit-wrapper d-flex justify-content-between">
-              <span className="checkout__order-box-recipient">
-                {/* 哭肉狗狗 */}
-                {memberName}
-              </span>
-              <FiEdit
-                className="feather-s"
-                role="button"
-                onClick={showModalHandler}
-              />
-            </div>
-
-            <span className="checkout__order-box-recipient-phone">
-              {/* (+886) 912 345 678 */}
-              {memberPhone}
-            </span>
-            <span className="checkout__order-box-recipient-address">
-              {/* 29850桃園市桃園區中正路100巷100號 */}
-              {memberAddress}
-            </span>
-            <span className="checkout__order-box-buyer">訂購人：同收件人</span>
-          </div>
-          {showModal && <Backdrop onClick={closeModalHandler} />}
-          {showModal && (
-            <AddressEditModal
-              onClose={closeModalHandler}
-              memberName={memberName}
-              memberPhone={memberPhone}
-              memberAddress={memberAddress}
-              setMemberName={setMemberName}
-              setMemberPhone={setMemberPhone}
-              setMemberAddress={setMemberAddress}
-            />
-          )}
-          {showModal && <Backdrop onClick={closeModalHandler} />}
-          {showModal && (
-            <StoreMapModal
-              closeModalHandler={closeModalHandler}
-              // setSelectForm={setPlace}
-              // setSelectForm={onPlaceChange}
-              placeLatLng={placeLatLng}
-            />
-          )}
+            }
+          </div> */}
+          <DeliveryMethod
+            memberName={memberName}
+            memberPhone={memberPhone}
+            memberAddress={memberAddress}
+            // {checkedValue}
+            // placeLatLng={placeLatLng}
+            // storeName={storeName}
+            // storeAddress={storeAddress}
+            // storePhone={storePhone}
+          />
         </div>
         <div className="checkout__order-box-payment pr-4 pl-4 pb-4">
           <span className="checkout__order-box-payment-title">付款方式</span>

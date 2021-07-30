@@ -198,7 +198,7 @@ function AddressEditModal(props) {
           />
         </label>
         <label className="checkbox-label" htmlFor="">
-          <input type="checkbox" />
+          <input type="checkbox" checked="checked" />
           收件資訊同上
         </label>
         {/* input type="button" 如果跟modal衝到 */}
