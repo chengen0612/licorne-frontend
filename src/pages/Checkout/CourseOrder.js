@@ -22,7 +22,7 @@ function CourseOrder({ setCourseTotal }) {
   }
 
   const subtotal = courseItems.map((item, i) => {
-    return +item.course_price * +item.quantity
+    return +item.price * +item.quantity
   })
 
   console.log('course subtotal', subtotal)
@@ -89,11 +89,11 @@ function CourseOrder({ setCourseTotal }) {
                 </span>
                 <span className="checkout__course-box-product-date">
                   {/* 2021/06/22 */}
-                  {courseItem.course_date}
+                  {courseItem.date}
                 </span>
                 <span className="checkout__course-box-product-time">
                   {/* 09:00 - 17:00 */}
-                  {courseItem.course_time_period}
+                  {courseItem.period}
                 </span>
                 <span className="checkout__course-box-product-place">
                   {/* 高雄小港店 */}
@@ -102,7 +102,7 @@ function CourseOrder({ setCourseTotal }) {
               </div>
               <span className="checkout__course-box-product-price">
                 {/* NT $1200 */}
-                NT$ {courseItem.course_price}
+                NT$ {courseItem.price}
               </span>
               <span className="checkout__course-box-product-quantity">
                 {/* 單人 */}
