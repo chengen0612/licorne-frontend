@@ -39,7 +39,7 @@ function Process(props) {
 
     const reponse = await fetch(url, request)
     const data = await reponse.json()
-    // console.log(data)
+    console.log(data)
 
     setItemsData(data.ingredientData)
     setSeriesData(data.fragranceData)
@@ -115,6 +115,7 @@ function Process(props) {
       serieDescription: serie.description_zh,
       productCode: productCode,
       productImage: serie.bottle_img,
+      color: serie.color,
     }
 
     setProductDetail(result)
