@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { FiEdit } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
-import AddressEditModal from './components/AddressEditModal'
+import { FiEdit } from 'react-icons/fi'
 import Backdrop from './components/Backdrop'
+import AddressEditModal from './components/AddressEditModal'
+import StoreMapModal from './components/StoreMapModal'
 
 function OrderDetail({ officialTotal, customTotal, courseTotal }) {
   const [memberName, setMemberName] = useState([])
   const [memberPhone, setMemberPhone] = useState([])
   const [memberAddress, setMemberAddress] = useState([])
 
+  // 會員資料
   async function getMemberInfoFromServer() {
-    // 連接的伺服器資料網址
     const url = 'http://localhost:6005/checkout/member'
-
-    // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
@@ -41,6 +40,28 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
 
   useEffect(() => {
     getMemberInfoFromServer()
+  }, [])
+
+  // 店鋪資料
+  const [placeLatLng, setPlaceLatLng] = useState([])
+
+  async function getStoreInfoFromServer() {
+    const url = `http://localhost:6005/checkout/store`
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log('data.place', data.place)
+    setPlaceLatLng(data.place)
+  }
+
+  useEffect(() => {
+    getStoreInfoFromServer()
   }, [])
 
   const [showModal, setShowModal] = useState()
@@ -78,7 +99,12 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
               指定地址
             </label>
             <label htmlFor="" className="checkout__order-box-delivery-store">
-              <input className="radio" type="radio" name="delivery" />
+              <input
+                className="radio"
+                type="radio"
+                name="delivery"
+                onClick={showModalHandler}
+              />
               店鋪自取
             </label>
           </div>
@@ -115,6 +141,15 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
               setMemberName={setMemberName}
               setMemberPhone={setMemberPhone}
               setMemberAddress={setMemberAddress}
+            />
+          )}
+          {showModal && <Backdrop onClick={closeModalHandler} />}
+          {showModal && (
+            <StoreMapModal
+              closeModalHandler={closeModalHandler}
+              // setSelectForm={setPlace}
+              // setSelectForm={onPlaceChange}
+              placeLatLng={placeLatLng}
             />
           )}
         </div>
