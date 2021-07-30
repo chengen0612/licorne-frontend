@@ -13,6 +13,7 @@ import LoginAndRegister from './pages/LoginAndRegister'
 import Payment from './pages/Payment'
 import Member from './pages/Member'
 import Official from './pages/Official'
+import OfficialGood from './pages/OfficialGood'
 import Quiz from './pages/Quiz'
 
 // 分頁子路由器
@@ -35,6 +36,11 @@ function App() {
           </Route>
 
           {/* direct path */}
+          <Route path="/official/:id">
+            <Header />
+            <OfficialGood />
+            <SecondaryFooter />
+          </Route>
           <Route path="/official">
             <Official />
           </Route>
