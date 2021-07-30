@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 
-function OfficialGood(props) {
+import './style.scss'
+
+function OfficialProd(props) {
   const params = props.match.params
+  // this would be the path in the browser
+  // http://localhost:3000/official/1
   const productId = params.id
 
   useEffect(() => {
@@ -13,4 +17,4 @@ function OfficialGood(props) {
   return <></>
 }
 
-export default withRouter(OfficialGood)
+export default withRouter(OfficialProd)
