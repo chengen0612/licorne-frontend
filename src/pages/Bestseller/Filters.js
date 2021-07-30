@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FiFilter, FiChevronDown } from 'react-icons/fi'
+import { FiFilter } from 'react-icons/fi'
 import { GiWaterDrop } from 'react-icons/gi'
 
 function Filters(props) {
