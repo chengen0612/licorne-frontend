@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react'
-import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css'
-import { FiHeart, FiRotateCcw } from 'react-icons/fi'
-import CourseMapModal from './CourseMapModal'
-import Backdrop from './Backdrop'
+import React, { useState, useRef } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { FiHeart, FiRotateCcw } from 'react-icons/fi';
+import CourseMapModal from './CourseMapModal';
+import Backdrop from './Backdrop';
 
 const selectPrograms = [
   {
@@ -16,21 +16,21 @@ const selectPrograms = [
     price: ['單人 NT$ 2,000', '雙人 NT$ 3,600', '四人 NT$ 5,500'],
     time: ['09:00 - 17:00'],
   },
-]
+];
 
 function formatDate(d) {
   var month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),
-    year = d.getFullYear()
+    year = d.getFullYear();
 
-  if (month.length < 2) month = '0' + month
-  if (day.length < 2) day = '0' + day
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
 
-  return [year, month, day].join('-')
+  return [year, month, day].join('-');
 }
 
-const defaultDate = new Date()
-const defaultPlace = '請選擇店鋪'
+const defaultDate = new Date();
+const defaultPlace = '請選擇店鋪';
 
 const initialFormData = Object.freeze({
   form__place: defaultPlace,
@@ -38,32 +38,32 @@ const initialFormData = Object.freeze({
   form__calendar: defaultDate,
   form__time: selectPrograms[0].time[0],
   form__price: selectPrograms[0].price[0],
-})
+});
 
 function CourseForm(props) {
-  const { placeLatLng } = props
+  const { placeLatLng } = props;
   // 預設值
-  const [place, setPlace] = useState(defaultPlace)
-  const [dateValue, setDateValue] = useState(defaultDate)
+  const [place, setPlace] = useState(defaultPlace);
+  const [dateValue, setDateValue] = useState(defaultDate);
 
   const defaultProgram = {
     selectProgram: selectPrograms[0].program,
     selectPrice: selectPrograms[0].price[0],
     selectTime: selectPrograms[0].time[0],
-  }
+  };
 
   // Modal開關
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
   // 連動下拉式選單
   const [doSelect, setDoSelect] = useState({
     selectProgram: selectPrograms[0].program,
     selectPrice: selectPrograms[0].price[0],
     selectTime: selectPrograms[0].time[0],
-  })
+  });
 
   // 送出表單
-  const form = useRef(null)
-  const [formData, updateFormData] = useState(initialFormData)
+  const form = useRef(null);
+  const [formData, updateFormData] = useState(initialFormData);
   // 將更改表單內容存進formData
   // const handleChange = (e) => {
   //   updateFormData({
@@ -74,13 +74,13 @@ function CourseForm(props) {
 
   //-------------------------將表單資料送至資料庫
   async function sentCourseFromServer() {
-    const url = `http://localhost:6005/getCourseForm`
+    const url = `http://localhost:6005/getCourseForm`;
     // 被用來複製一個或多個物件自身所有可數的屬性到另一個目標物件
-    const formDataInfo = { ...formData }
+    const formDataInfo = { ...formData };
     //處理日期格式
-    formDataInfo.form__calendar = formatDate(formDataInfo.form__calendar)
+    formDataInfo.form__calendar = formatDate(formDataInfo.form__calendar);
 
-    console.log(JSON.stringify(formDataInfo))
+    console.log(JSON.stringify(formDataInfo));
     const request = new Request(url, {
       method: 'POST',
       body: JSON.stringify(formDataInfo),
@@ -88,19 +88,19 @@ function CourseForm(props) {
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
       }),
-    })
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('報名成功!', data)
+    });
+    const response = await fetch(request);
+    const data = await response.json();
+    console.log('報名成功!', data);
   }
   //-------------------------------------------------
   //點選報名按鈕
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // console.log(JSON.stringify(formData));
     // ... submit to API or something
-    sentCourseFromServer()
-  }
+    sentCourseFromServer();
+  };
 
   // 連動下拉式選單 onChange + 更新formData
   const changeProgram = (e) => {
@@ -110,90 +110,93 @@ function CourseForm(props) {
           selectProgram: e.target.value,
           selectPrice: v.price[0],
           selectTime: v.time[0],
-        })
+        });
+
+        updateFormData({
+          ...formData,
+          [e.target.name]: e.target.value.trim(),
+          form__price: v.price[0],
+          form__time: v.time[0],
+        });
       }
-      return true
-    })
-    updateFormData({
-      ...formData,
-      [e.target.name]: e.target.value.trim(),
-    })
-  }
+      return true;
+    });
+  };
   const changeTime = (e) => {
     setDoSelect({
       selectProgram: doSelect.selectProgram,
       selectPrice: e.target.value,
       selectTime: e.target.value,
-    })
+    });
     updateFormData({
       ...formData,
       [e.target.name]: e.target.value.trim(),
-    })
-  }
+    });
+  };
   const changePrice = (e) => {
     setDoSelect({
       selectProgram: doSelect.selectProgram,
       selectPrice: e.target.value,
       selectTime: e.target.value,
-    })
+    });
     updateFormData({
       ...formData,
       [e.target.name]: e.target.value.trim(),
-    })
-  }
+    });
+  };
 
   const programs = selectPrograms.map((v, i) => {
-    return <option key={i}>{v.program}</option>
-  })
+    return <option key={i}>{v.program}</option>;
+  });
 
   const times = selectPrograms.map((v, i) => {
     if (doSelect.selectProgram === v.program) {
-      return v.time.map((v, i) => <option key={i}>{v}</option>)
+      return v.time.map((v, i) => <option key={i}>{v}</option>);
     }
-    return true
-  })
+    return true;
+  });
 
   const prices = selectPrograms.map((v, i) => {
     if (doSelect.selectProgram === v.program) {
-      return v.price.map((v, i) => <option key={i}>{v}</option>)
+      return v.price.map((v, i) => <option key={i}>{v}</option>);
     }
-    return true
-  })
+    return true;
+  });
 
   // Modal開關
 
   function showModalHandler() {
-    setShowModal(true)
-    document.body.style.overflow = 'hidden'
+    setShowModal(true);
+    document.body.style.overflow = 'hidden';
   }
   function closeModalHandler() {
-    setShowModal(false)
-    document.body.style.overflow = 'visible'
+    setShowModal(false);
+    document.body.style.overflow = 'visible';
   }
 
   // setDateValue + handleChange 日曆
   function onCalendarChange(newDate) {
-    setDateValue(newDate)
+    setDateValue(newDate);
 
     updateFormData({
       ...formData,
       form__calendar: newDate,
-    })
+    });
   }
   // setPlace + handleChange 地點
   function onPlaceChange(newPlace) {
-    setPlace(newPlace)
+    setPlace(newPlace);
     updateFormData({
       ...formData,
       form__place: newPlace,
-    })
+    });
   }
 
   // 重設表單
   function resetForm() {
-    setPlace(defaultPlace)
-    setDateValue(defaultDate)
-    setDoSelect(defaultProgram)
+    setPlace(defaultPlace);
+    setDateValue(defaultDate);
+    setDoSelect(defaultProgram);
   }
 
   return (
@@ -293,6 +296,6 @@ function CourseForm(props) {
         )}
       </form>
     </>
-  )
+  );
 }
-export default CourseForm
+export default CourseForm;

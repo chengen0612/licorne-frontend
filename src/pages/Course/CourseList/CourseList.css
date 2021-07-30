@@ -389,3 +389,6 @@ header {
   top: 0;
   left: 0;
 }
+.map__search-icon {
+  stroke: #fff;
+}
