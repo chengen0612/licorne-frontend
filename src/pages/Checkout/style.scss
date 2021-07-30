@@ -187,8 +187,12 @@
   border-radius: $br-s;
   font-size: $fs-p;
   font-weight: $fw-medium;
+  display: flex;
+  flex-direction: column;
 }
 .checkout__order-box-delivery-edit-wrapper {
+  display: flex;
+  justify-content: space-between;
   // border: 1px solid gold;
 }
 
