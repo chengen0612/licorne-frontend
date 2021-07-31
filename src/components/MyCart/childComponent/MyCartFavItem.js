@@ -11,6 +11,7 @@ function MyCartFavItem({
   name_en,
   price,
   img_id,
+  series_name,
 }) {
   return (
     <>
@@ -22,7 +23,7 @@ function MyCartFavItem({
         <p>
           {name_en}
           <br />
-          XXXX系列
+          {series_name}系列
         </p>
         <p>NT$ {price}</p>
         <p

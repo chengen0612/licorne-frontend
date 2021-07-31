@@ -29,6 +29,7 @@ function MyCartFav({ favOrCart, collectDatas, setCollectDatas }) {
                 name_en={collectData.name_en}
                 price={collectData.price}
                 img_id={collectData.img_id}
+                series_name={collectData.series_name}
               />
             </div>
           )

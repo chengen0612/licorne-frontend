@@ -33,7 +33,7 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
     setTotalAmountOfficial(sumOfTotals)
   }
 
-  // 收藏清單 API
+  // 收藏官方 API
   async function getOfficialCollectFromServer() {
     const urlCollect = 'http://localhost:6005/sidebar/officialCollect'
     const requestCollect = new Request(urlCollect, {
