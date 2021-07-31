@@ -17,30 +17,56 @@ const DeliveryMethod = ({
   setRecipientPhone,
   setRecipientAddress,
   placeLatLng,
-  // storeName,
-  // storeAddress,
-  // storePhone,
+  storeName,
+  storeAddress,
+  storePhone,
+  storeLat,
+  storeLng,
+  setStoreLng,
+  setStoreLat,
+  setStoreName,
+  setStorePhone,
+  setStoreAddress,
 }) => {
-  const [showModal, setShowModal] = useState('')
+  const deliveryMethod = ['指定地址', '店鋪自取']
+  const [checkedValue, setCheckedValue] = useState(deliveryMethod[0])
+
+  console.log('what is this', storeName[10])
 
   //預設顯示資訊
-  // const [stores, setStores] = useState([
-  //   {
-  //     course_place_name: '高雄民益店',
-  //     course_place_address: '高雄市小港區民益路13號',
-  //     course_place_phone: '07-8012255',
-  //     // course_place_lat: '22.5662669501168',
-  //     // course_place_lng: '120.34782427919656',
-  //   },
-  // ])
-
-  const defaultStore = [
+  const [stores, setStores] = useState([
     {
-      name: '高雄民益店',
-      address: '高雄市小港區民益路13號',
-      phone: '07-8012255',
+      course_place_name: '高雄民益店',
+      course_place_address: '高雄市小港區民益路13號',
+      course_place_phone: '07-8012255',
+      course_place_lat: '22.5662669501168',
+      course_place_lng: '120.34782427919656',
     },
-  ]
+  ])
+
+  const initialData = {
+    course_place_name: storeName[10],
+    course_place_address: storeAddress[10],
+    course_place_phone: storePhone[10],
+    course_place_lat: storeLat[10],
+    course_place_lng: storeLng[10],
+  }
+
+  const [data, updateData] = useState(initialData)
+
+  function onPlaceChange(newStoreName, newStorePhone, newStoreAddress) {
+    setStoreName(newStoreName)
+    setStorePhone(newStorePhone)
+    setStoreAddress(newStoreAddress)
+    updateData({
+      ...data,
+      course_place_name: newStoreName,
+      course_place_phone: newStorePhone,
+      course_place_address: newStoreAddress,
+    })
+  }
+
+  const [showModal, setShowModal] = useState('')
 
   function showModalHandler(option) {
     setShowModal(option)
@@ -52,9 +78,6 @@ const DeliveryMethod = ({
     document.body.style.overflow = 'visible'
   }
 
-  const deliveryMethod = ['指定地址', '店鋪自取']
-  const [checkedValue, setCheckedValue] = useState(deliveryMethod[0])
-
   return (
     <>
       <div className="checkout__order-box-delivery-labels">
@@ -64,8 +87,8 @@ const DeliveryMethod = ({
           setCheckedValue={setCheckedValue}
         />
       </div>
-      {/* 地址 */}
-      {checkedValue === '指定地址' && (
+      {/* 指定地址 */}
+      {checkedValue === deliveryMethod[0] && (
         <div className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2">
           <div className="checkout__order-box-delivery-edit-wrapper">
             <span className="checkout__order-box-recipient">
@@ -75,7 +98,7 @@ const DeliveryMethod = ({
             <FiEdit
               className="feather-s"
               role="button"
-              onClick={() => showModalHandler('指定地址')}
+              onClick={() => showModalHandler(deliveryMethod[0])}
             />
           </div>
           <span className="checkout__order-box-recipient-phone">
@@ -91,48 +114,51 @@ const DeliveryMethod = ({
           </span>
         </div>
       )}
-      {/* 店鋪 */}
-      {checkedValue === '店鋪自取' && (
+      {/* 店鋪自取 */}
+      {checkedValue === deliveryMethod[1] && (
         <>
-          {defaultStore.map((store, index) => {
+          {/* {stores.map((store, index) => {
             return (
-              <>
-                <div
-                  className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
-                  key={index}
-                >
-                  <div className="checkout__order-box-delivery-edit-wrapper">
-                    <span className="checkout__order-box-recipient">
-                      {/* 高雄民益店 */}
-                      {store.name}
-                    </span>
-                    <FiEdit
-                      className="feather-s"
-                      role="button"
-                      onClick={() => {
-                        showModalHandler('店鋪自取')
-                      }}
-                    />
-                  </div>
-                  <span className="checkout__order-box-recipient-phone">
-                    {/* 07-8012255 */}
-                    {store.phone}
-                  </span>
-                  <span className="checkout__order-box-recipient-address">
-                    {/* 高雄市小港區民益路13號 */}
-                    {store.address}
-                  </span>
-                  <span className="checkout__order-box-buyer">
-                    訂購人：{memberName}
-                  </span>
-                </div>
-              </>
+              <> */}
+          <div
+            className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
+            // key={index}
+          >
+            <div className="checkout__order-box-delivery-edit-wrapper">
+              <span className="checkout__order-box-recipient">
+                {/* 高雄民益店 */}
+                {/* {store.course_place_name} */}
+                {data.course_place_name}
+              </span>
+              <FiEdit
+                className="feather-s"
+                role="button"
+                onClick={() => {
+                  showModalHandler(deliveryMethod[1])
+                }}
+              />
+            </div>
+            <span className="checkout__order-box-recipient-phone">
+              {/* 07-8012255 */}
+              {/* {store.course_place_phone} */}
+              {data.course_place_phone}
+            </span>
+            <span className="checkout__order-box-recipient-address">
+              {/* 高雄市小港區民益路13號 */}
+              {/* {store.course_place_address} */}
+              {data.course_place_address}
+            </span>
+            <span className="checkout__order-box-buyer">
+              訂購人：{memberName}
+            </span>
+          </div>
+          {/* </>
             )
-          })}
+          })} */}
         </>
       )}
       {showModal.length > 0 && <Backdrop onClick={closeModalHandler} />}
-      {showModal === '指定地址' && (
+      {showModal === deliveryMethod[0] && (
         <AddressEditModal
           onClose={closeModalHandler}
           memberName={memberName}
@@ -146,11 +172,11 @@ const DeliveryMethod = ({
           setRecipientAddress={setRecipientAddress}
         />
       )}
-      {showModal === '店鋪自取' && (
+      {showModal === deliveryMethod[1] && (
         <StoreMapModal
           closeModalHandler={closeModalHandler}
           // setSelectForm={setPlace}
-          // setSelectForm={onPlaceChange}
+          onPlaceChange={onPlaceChange}
           // storeName={storeName}
           // storeAddress={storeAddress}
           // storePhone={storePhone}
@@ -209,6 +235,8 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
   const [storeName, setStoreName] = useState([])
   const [storeAddress, setStoreAddress] = useState([])
   const [storePhone, setStorePhone] = useState([])
+  const [storeLat, setStoreLat] = useState([])
+  const [storeLng, setStoreLng] = useState([])
 
   async function getStoreInfoFromServer() {
     const url = `http://localhost:6005/checkout/store`
@@ -231,14 +259,24 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
     const storePhone = stores.map((item) => {
       return item.course_place_phone
     })
-    console.log('store info', stores)
+    const storeLat = stores.map((item) => {
+      return item.course_place_lat
+    })
+    const storeLng = stores.map((item) => {
+      return item.course_place_lng
+    })
+    console.log('store data', stores)
     console.log('store name', storeName)
     console.log('store address', storeAddress)
     console.log('store phone', storePhone)
+    console.log('store lat', storeLat)
+    console.log('store lng', storeLng)
     setPlaceLatLng(stores)
     setStoreName(storeName)
     setStoreAddress(storeAddress)
     setStorePhone(storePhone)
+    setStoreLat(storeLat)
+    setStoreLng(storeLng)
   }
 
   useEffect(() => {
@@ -268,9 +306,16 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
             setRecipientPhone={setRecipientPhone}
             setRecipientAddress={setRecipientAddress}
             placeLatLng={placeLatLng}
-            // storeName={storeName}
-            // storeAddress={storeAddress}
-            // storePhone={storePhone}
+            storeName={storeName}
+            storeAddress={storeAddress}
+            storePhone={storePhone}
+            storeLat={storeLat}
+            storeLng={storeLng}
+            setStoreName={setStoreName}
+            setStorePhone={setStorePhone}
+            setStoreAddress={setStoreAddress}
+            setStoreLng={setStoreLng}
+            setStoreLat={setStoreLat}
           />
         </div>
         <div className="checkout__order-box-payment pr-4 pl-4 pb-4">
@@ -281,12 +326,18 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
                 className="radio"
                 type="radio"
                 name="payment"
+                value="信用卡"
                 defaultChecked="checked"
               />
               信用卡
             </label>
             <label className="checkout__order-box-payment-cash">
-              <input className="radio" type="radio" name="payment" />
+              <input
+                className="radio"
+                type="radio"
+                name="payment"
+                value="貨到付款"
+              />
               貨到付款
             </label>
           </div>
@@ -316,15 +367,20 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
-          <Link to="/checkout/payment">
-            <button
-              className="checkout__checkoutBtn"
-              type="submit"
-              disabled={total === 0}
-            >
-              確認結帳
-            </button>
-          </Link>
+          <button
+            className="checkout__checkoutBtn"
+            type="submit"
+            disabled={total === 0}
+            // onClick={
+            //   value === '信用卡' ? (
+            //     <Link to="/checkout/payment" />
+            //   ) : (
+            //     <Link to="/member" />
+            //   )
+            // }
+          >
+            確認結帳
+          </button>
         </div>
       </div>
     </>

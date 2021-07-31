@@ -4,7 +4,7 @@ function StoreList(props) {
   const { name, address, phone, clickLatLng } = props
 
   function clickSetPlace() {
-    props.setSelectForm(name)
+    props.onChangePlace(name, phone, address)
     clickLatLng()
   }
   const routeLinkHandler = (e) => {

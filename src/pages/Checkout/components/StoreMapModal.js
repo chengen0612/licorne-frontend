@@ -26,7 +26,7 @@ const MarkerIcon = () => {
 
 function StoreMapModal(props) {
   //設定選擇店鋪
-  const { closeModalHandler, setSelectForm, placeLatLng } = props
+  const { closeModalHandler, onChangePlace, placeLatLng } = props
 
   //const [select, setSelect] = useState('');
 
@@ -41,7 +41,7 @@ function StoreMapModal(props) {
   //console.log(JSON.stringify(defaultLatLng));
 
   //預設顯示資訊
-  const [shops, setShops] = useState([
+  const [stores, setStores] = useState([
     {
       course_place_name: '高雄民益店',
       course_place_address: '高雄市小港區民益路13號',
@@ -60,7 +60,7 @@ function StoreMapModal(props) {
     const results = placeLatLng.filter((item) => {
       return item.course_place_address.includes(keyword)
     })
-    setShops(results)
+    setStores(results)
   }
   // 顯示鄰近店鋪
   const [show, setShow] = useState(false)
@@ -69,7 +69,7 @@ function StoreMapModal(props) {
     const results = placeLatLng.filter((item) => {
       return item.course_place_address
     })
-    setShops(results)
+    setStores(results)
   }
 
   //自動定位目前位置
@@ -166,18 +166,18 @@ function StoreMapModal(props) {
 
         <div className="modal__con__map d-flex justify-content-center">
           <div className="modal__content">
-            {shops.map((shop, i) => {
+            {stores.map((store, i) => {
               return (
                 <StoreList
                   key={i}
-                  name={shop.course_place_name}
-                  address={shop.course_place_address}
-                  phone={shop.course_place_phone}
-                  setSelectForm={setSelectForm}
+                  name={store.course_place_name}
+                  address={store.course_place_address}
+                  phone={store.course_place_phone}
+                  onChangePlace={onChangePlace}
                   clickLatLng={() => {
                     setDefaultLatLng({
-                      lat: shop.course_place_lat,
-                      lng: shop.course_place_lng,
+                      lat: store.course_place_lat,
+                      lng: store.course_place_lng,
                     })
                   }}
                 />

@@ -14,7 +14,7 @@ function AddressEditModal(props) {
     setRecipientAddress,
   } = props
 
-  let initialData = {
+  const initialData = {
     recipientName: recipientName,
     recipientPhone: recipientPhone,
     recipientAddress: recipientAddress,
@@ -29,7 +29,7 @@ function AddressEditModal(props) {
   const updateRecipientName = (e) => {
     updateData({
       ...data,
-      [e.target.name]: e.target.value.trim(),
+      [e.target.name]: e.target.value.trimStart(),
     })
     // console.log('current recipientName', Object.values(data)[0])
   }
@@ -74,9 +74,17 @@ function AddressEditModal(props) {
   }
 
   function inputField() {
-    data.recipientName = recipientName
-    data.recipientPhone = recipientPhone
-    data.recipientAddress = recipientAddress
+    data.recipientName = memberName
+    data.recipientPhone = memberPhone
+    data.recipientAddress = memberAddress
+  }
+
+  if (
+    memberName === recipientName &&
+    memberPhone === recipientPhone &&
+    memberAddress === recipientAddress
+  ) {
+    setChecked(true)
   }
 
   return (
