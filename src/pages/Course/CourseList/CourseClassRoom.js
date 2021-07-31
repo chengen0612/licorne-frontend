@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 function CourseClassRoom(props) {
-  const { name, address, phone, clickLatLng } = props;
+  const { name, address, phone, clickLatLng } = props
 
   function clickSetPlace() {
-    props.setSelectForm(name);
-    clickLatLng();
+    props.setSelectForm(name)
+    clickLatLng()
   }
 
   return (
@@ -28,6 +28,6 @@ function CourseClassRoom(props) {
         />
       </div>
     </>
-  );
+  )
 }
-export default CourseClassRoom;
+export default CourseClassRoom
