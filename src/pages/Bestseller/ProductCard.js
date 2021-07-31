@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import { imgPath } from '../../config'
 
@@ -25,6 +26,13 @@ function ProductCard(props) {
   useEffect(() => {
     setShowDetail(false)
   }, [data])
+
+  const purchaseHandler = async () => {
+    const url = 'http://localhost:6005/bestseller/addcart'
+    const response = await axios.post(url, { data: data })
+    const result = response.data
+    // console.log(result.message)
+  }
 
   return (
     <>
@@ -54,7 +62,11 @@ function ProductCard(props) {
             </>
           )}
         </div>
-        <button className="best__prod-btn" style={{ background: color }}>
+        <button
+          className="best__prod-btn"
+          style={{ background: color }}
+          onClick={purchaseHandler}
+        >
           訂購
         </button>
       </div>
