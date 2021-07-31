@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 
 function DeliveryRadio({ checkedValue, setCheckedValue, deliveryMethod }) {
   return deliveryMethod.map((value, index) => {
@@ -13,7 +12,7 @@ function DeliveryRadio({ checkedValue, setCheckedValue, deliveryMethod }) {
             checked={checkedValue === value}
             onChange={(e) => {
               setCheckedValue(e.target.value)
-              console.log('current delivery method', e.target.value)
+              // console.log('current delivery method', e.target.value)
             }}
           />
           <label className="checkout__order-box-delivery-label">{value}</label>
