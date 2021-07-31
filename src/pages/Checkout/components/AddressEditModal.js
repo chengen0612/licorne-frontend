@@ -6,113 +6,77 @@ function AddressEditModal(props) {
     memberName,
     memberPhone,
     memberAddress,
-    setMemberName,
-    setMemberPhone,
-    setMemberAddress,
+    recipientName,
+    recipientPhone,
+    recipientAddress,
+    setRecipientName,
+    setRecipientPhone,
+    setRecipientAddress,
   } = props
 
-  const initialData = {
-    memberName: memberName,
-    memberPhone: memberPhone,
-    memberAddress: memberAddress,
+  let initialData = {
+    recipientName: recipientName,
+    recipientPhone: recipientPhone,
+    recipientAddress: recipientAddress,
   }
 
   const [data, updateData] = useState(initialData)
 
-  const updateMemberName = (e) => {
+  console.log('recipient name', data.recipientName)
+  console.log('recipient phone', data.recipientPhone)
+  console.log('recipient address', data.recipientAddress)
+
+  const updateRecipientName = (e) => {
     updateData({
       ...data,
       [e.target.name]: e.target.value.trim(),
     })
-    console.log('current memberName', Object.values(data)[0])
+    // console.log('current recipientName', Object.values(data)[0])
   }
 
-  const updateMemberPhone = (e) => {
+  const updateRecipientPhone = (e) => {
     updateData({
       ...data,
       [e.target.name]: e.target.value.trim(),
     })
-    console.log('current memberPhone', Object.values(data)[1])
+    // console.log('current recipientPhone', Object.values(data)[1])
   }
 
-  const updateMemberAddress = (e) => {
+  const updateRecipientAddress = (e) => {
     updateData({
       ...data,
       [e.target.name]: e.target.value.trim(),
     })
-    console.log('current memberAddress', Object.values(data)[2])
+    // console.log('current recipientAddress', Object.values(data)[2])
   }
-
-  const [fields, setFields] = useState({
-    recipientName: memberName,
-    recipientPhone: memberPhone,
-    recipientAddress: memberAddress,
-  })
-
-  // console.log('recipient name', fields.recipientName)
-  // console.log('recipient phone', fields.recipientPhone)
-  // console.log('recipient address', fields.recipientAddress)
-
-  // 處理每個欄位的變動
-  const handleFieldChange = (e) => {
-    // 更新輸入欄位的變動
-    // 用新輸入的屬性值和原物件作合併
-    const updateFields = {
-      ...fields,
-      [e.target.name]: e.target.value,
-    }
-
-    setFields(updateFields)
-    console.log('current recipient info', updateFields)
-  }
-
-  // const [recipientName, setRecipientName] = useState(memberName)
-  // const [recipientPhone, setRecipientPhone] = useState(memberPhone)
-  // const [recipientAddress, setRecipientAddress] = useState(memberAddress)
-
-  // const updateRecipientName = (e) => {
-  //   // setRecipientName()
-  //   updateData({
-  //     ...data,
-
-  //     // Trimming any whitespace
-  //     [e.target.name]: e.target.value.trim(),
-  //   })
-  // }
-
-  // const updateRecipientPhone = (e) => {
-  //   // setRecipientPhone()
-  //   updateData({
-  //     ...data,
-
-  //     // Trimming any whitespace
-  //     [e.target.name]: e.target.value.trim(),
-  //   })
-  // }
-
-  // const updateRecipientAddress = (e) => {
-  //   // setRecipientAddress()
-  //   updateData({
-  //     ...data,
-
-  //     // Trimming any whitespace
-  //     [e.target.name]: e.target.value.trim(),
-  //   })
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('edited member info', data)
-    setMemberName(Object.values(data)[0])
-    setMemberPhone(Object.values(data)[1])
-    setMemberAddress(Object.values(data)[2])
+    console.log('edited recipient info', data)
+    setRecipientName(Object.values(data)[0])
+    setRecipientPhone(Object.values(data)[1])
+    setRecipientAddress(Object.values(data)[2])
     closeHandler()
     // ... submit to API or something
   }
 
+  const [checked, setChecked] = useState(true)
+
   function closeHandler() {
     props.onClose()
     document.body.style.overflow = 'visible'
+  }
+
+  function clearField() {
+    data.recipientName = ''
+    data.recipientPhone = ''
+    data.recipientAddress = ''
+  }
+
+  function inputField() {
+    data.recipientName = recipientName
+    data.recipientPhone = recipientPhone
+    data.recipientAddress = recipientAddress
   }
 
   return (
@@ -125,6 +89,7 @@ function AddressEditModal(props) {
       <span className="checkout__address-edit-modal-title align-self-center">
         編輯收件資訊
       </span>
+      {/* 訂購人 */}
       <div className="d-flex flex-column p-4">
         <span className="checkout__address-edit-modal-title pb-2">訂購人</span>
         <label className="checkout__address-edit-modal-label" htmlFor="">
@@ -133,9 +98,8 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberName"
             type="text"
-            value={data.memberName}
-            onChange={updateMemberName}
-            required
+            defaultValue={memberName}
+            disabled
           />
         </label>
         <label className="checkout__address-edit-modal-label" htmlFor="">
@@ -144,9 +108,8 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberPhone"
             type="text"
-            value={data.memberPhone}
-            onChange={updateMemberPhone}
-            required
+            defaultValue={memberPhone}
+            disabled
           />
         </label>
         <label className="checkout__address-edit-modal-label" htmlFor="">
@@ -155,11 +118,12 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="memberAddress"
             type="text"
-            value={data.memberAddress}
-            onChange={updateMemberAddress}
-            required
+            defaultValue={memberAddress}
+            disabled
           />
         </label>
+        {/* 收件人 */}
+        {/* TODO: html5 validation for each input field */}
         <span className="checkout__address-edit-modal-title">收件人</span>
         <label className="checkout__address-edit-modal-label" htmlFor="">
           姓名
@@ -167,9 +131,9 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="recipientName"
             type="text"
-            value={fields.recipientName}
-            onChange={handleFieldChange}
-            // onChange={updateRecipientName}
+            value={data.recipientName}
+            onInput={updateRecipientName}
+            disabled={checked && memberName === data.recipientName}
             required
           />
         </label>
@@ -179,9 +143,9 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="recipientPhone"
             type="text"
-            value={fields.recipientPhone}
-            onChange={handleFieldChange}
-            // onChange={updateRecipientPhone}
+            value={data.recipientPhone}
+            onChange={updateRecipientPhone}
+            disabled={checked && memberPhone === data.recipientPhone}
             required
           />
         </label>
@@ -191,17 +155,27 @@ function AddressEditModal(props) {
             className="checkout__input-text"
             name="recipientAddress"
             type="text"
-            value={fields.recipientAddress}
-            onChange={handleFieldChange}
-            // onChange={updateRecipientAddress}
+            value={data.recipientAddress}
+            onChange={updateRecipientAddress}
+            disabled={checked && memberAddress === data.recipientAddress}
             required
           />
         </label>
+        {/* FIXME: checkbox should not be checked when member info don't match with recipient info */}
         <label className="checkbox-label" htmlFor="">
-          <input type="checkbox" checked="checked" />
+          <input
+            type="checkbox"
+            checked={checked}
+            onChange={(e) => {
+              setChecked(e.target.checked)
+            }}
+            onClick={(e) => {
+              e.target.checked ? inputField() : clearField()
+            }}
+          />
           收件資訊同上
         </label>
-        {/* input type="button" 如果跟modal衝到 */}
+        {/* TODO: validation for when input field is empty */}
         <button
           className="checkout__address-edit-modal-btn align-self-end"
           type="submit"
