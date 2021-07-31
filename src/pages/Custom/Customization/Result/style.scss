@@ -67,28 +67,45 @@
     box-shadow: none;
   }
 }
+%btn-light {
+  background: $c-secondary;
+  &:hover {
+    background: #2e6e90;
+    color: $c-white;
+    transition: 0.3s;
+  }
+}
+%btn-dark {
+  background: $c-primary;
+  color: $c-secondary;
+  &:hover {
+    background: #2e6e90;
+    color: $c-white;
+    transition: 0.3s;
+  }
+}
 .product {
   &__btn-reset {
     @extend %btn;
+    @extend %btn-light;
     bottom: 50px;
     left: 100px;
   }
   &__btn-favorite {
     @extend %btn;
-    background: $c-primary;
-    color: $c-secondary;
+    @extend %btn-dark;
     bottom: 50px;
     right: 480px;
   }
   &__btn-purchase {
     @extend %btn;
-    background: $c-primary;
-    color: $c-secondary;
+    @extend %btn-dark;
     bottom: 50px;
     right: 290px;
   }
   &__btn-share {
     @extend %btn;
+    @extend %btn-light;
     bottom: 50px;
     right: 100px;
   }
