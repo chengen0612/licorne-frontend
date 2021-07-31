@@ -5,65 +5,93 @@ import { FiX } from 'react-icons/fi'
 import MyCartCart from './childComponent/MyCartCart'
 import MyCartFav from './childComponent/MyCartFav'
 
-function MyCart(props) {
-  // 接住從 Header 傳來的資料
-  const closeSidebar = props.closeSidebar
-  // 切換側邊欄購物車及收藏清單
-  const [favOrCart, setFavOrCart] = useState('Fav')
-  // 處理產品資料
-  const [productDatas, setProductDatas] = useState([])
-  //處理總金額的
-  const [totalAmount, setTotalAmount] = useState(0)
-  //計算總金額函式
+function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
+  // const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
+  // const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
+  //
+  const [officialProducts, setOfficialProducts] = useState([]) // an array holding the data of official products
+  const [totalAmountOfficial, setTotalAmountOfficial] = useState(0) // a number, sum of each (official product qty) x (official product price)
+  const [customProducts, setCustomProducts] = useState([])
+  const [totalAmountCustom, setTotalAmountCustom] = useState(0)
+  //
+  const [collectDatas, setCollectDatas] = useState([])
+
   function calculateTotal() {
-    let total = 0
-    for (let obj of productDatas) {
-      total += obj.productQuantity * obj.price
+    //計算總金額函式
+    let officialTotal = 0
+    let customTotal = 0
+    let sumOfTotals = 0
+    for (let officialProduct of officialProducts) {
+      officialTotal += officialProduct.quantity * officialProduct.price
     }
-    setTotalAmount(total)
+    for (let customProduct of customProducts) {
+      customTotal += customProduct.quantity * customProduct.price
+    }
+    sumOfTotals = officialTotal + customTotal
+    setTotalAmountOfficial(sumOfTotals)
   }
 
-  // 以下是組長提供的跟伺服器抓資料的程式碼
-  async function getSidebarFromServer() {
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/sidebar'
-    // 注意header資料格式要設定，伺服器才知道是json格式
-    const request = new Request(url, {
+  // 收藏清單 API
+  async function getOfficialCollectFromServer() {
+    const urlCollect = 'http://localhost:6005/sidebar/officialCollect'
+    const requestCollect = new Request(urlCollect, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
       }),
     })
-    const response = await fetch(request)
-    const data = await response.json()
-
-    const dataProduct = [...data.product]
-    const dataQTY = data.productQuantity.split(',')
-    for (let i = 0; i < dataProduct.length; i++) {
-      dataProduct[i]['productQuantity'] = dataQTY[i]
-    }
-    setProductDatas(dataProduct)
-    // console.log('asdfasdf', dataProduct)
+    const responseCollect = await fetch(requestCollect)
+    const collectDatas = await responseCollect.json()
+    setCollectDatas(collectDatas)
   }
-  useEffect(() => {
-    console.log(productDatas)
-    calculateTotal()
-  }, [productDatas])
+
+  // 官方產品 API
+  async function getOfficialProductFromServer() {
+    const urlCart = 'http://localhost:6005/sidebar/official'
+    const requestCart = new Request(urlCart, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCart = await fetch(requestCart)
+    const officialProduct = await responseCart.json()
+    setOfficialProducts(officialProduct)
+  }
+
+  async function getCustomProductFromServer() {
+    const urlCart = 'http://localhost:6005/sidebar/custom'
+    const requestCart = new Request(urlCart, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCustom = await fetch(requestCart)
+    const customProduct = await responseCustom.json()
+    setCustomProducts(customProduct)
+  }
 
   useEffect(() => {
-    getSidebarFromServer()
+    calculateTotal()
+  }, [officialProducts, customProducts])
+
+  useEffect(() => {
+    getOfficialProductFromServer()
+    getOfficialCollectFromServer()
+    getCustomProductFromServer()
   }, [])
 
-  //
-  //
   //
 
   return (
     <>
       <div
         className={
-          props.sidebarIsOpen
+          sidebarIsOpen
             ? 'cj-blackscreen'
             : 'cj-blackscreen cj-blackscreen--close'
         }
@@ -74,7 +102,7 @@ function MyCart(props) {
       ></div>
       <div
         className={
-          props.sidebarIsOpen ? 'cj-sidebar' : 'cj-sidebar cj-sidebar--close'
+          sidebarIsOpen ? 'cj-sidebar' : 'cj-sidebar cj-sidebar--close'
         }
       >
         <div className="cj-sidebar__x pr-4">
@@ -122,13 +150,23 @@ function MyCart(props) {
         <div className="cj-sidebar__space"></div>
         <MyCartCart
           favOrCart={favOrCart}
-          productDatas={productDatas}
-          setProductDatas={setProductDatas}
-          totalAmount={totalAmount}
-          setTotalAmount={setTotalAmount}
-          calculateTotal={calculateTotal}
+          //
+          officialProducts={officialProducts}
+          setOfficialProducts={setOfficialProducts}
+          totalAmountOfficial={totalAmountOfficial}
+          //
+          customProducts={customProducts}
+          setCustomProducts={setCustomProducts}
+          totalAmountCustom={totalAmountCustom}
+          //
+          // setTotalAmountOfficial={setTotalAmountOfficial} maybe not nessaccery? Observe a while!
+          // calculateTotal={calculateTotal} maybe not nessaccery? Observe a while!
         />
-        <MyCartFav favOrCart={favOrCart} />
+        <MyCartFav
+          favOrCart={favOrCart}
+          collectDatas={collectDatas}
+          setCollectDatas={setCollectDatas}
+        />
       </div>
     </>
   )

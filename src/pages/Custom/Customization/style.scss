@@ -1,0 +1,121 @@
+@import '../../../styles/global.scss';
+
+// wrapper on the top
+.custom,
+.product {
+  height: 100vh;
+  background: $c-white;
+  position: relative;
+  overflow: hidden;
+}
+
+.close-btn {
+  width: 60px;
+  height: 60px;
+  background: $c-secondary;
+  border-radius: $br-b;
+  position: absolute;
+  top: 65px;
+  right: 125px;
+  cursor: pointer;
+}
+
+// description
+.description {
+  width: 570px;
+  height: 700px;
+  padding: 130px 90px;
+  // background: $c-blob-orange;
+  // border-radius: 60%;
+  position: relative;
+  top: 150px;
+  left: 25px;
+  &__title {
+    padding: 20px 30px;
+    font-size: $fs-h4;
+    text-align: center;
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  }
+  &__content {
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.orange-blob {
+  width: 596px;
+  height: 713px;
+  background: $c-blob-orange;
+  position: absolute;
+  top: 150px;
+  left: 10px;
+  animation: oblob 6s ease-in-out infinite;
+}
+@keyframes oblob {
+  0%,
+  100% {
+    border-radius: 52% 48% 57% 43% / 52% 50% 50% 48%;
+  }
+  25% {
+    border-radius: 47% 53% 39% 61% / 59% 50% 50% 41%;
+  }
+  50% {
+    border-radius: 46% 54% 40% 60% / 58% 39% 61% 42%;
+  }
+  75% {
+    border-radius: 47% 53% 42% 58% / 54% 56% 44% 46%;
+  }
+}
+
+.pink-blob {
+  width: 613px;
+  // height: 543px;
+  background: $c-blob-red;
+  position: absolute;
+  top: -300px;
+  right: -100px;
+  animation: pblob 6s ease-in-out infinite;
+}
+@keyframes pblob {
+  0%,
+  100% {
+    height: 551px;
+    border-radius: 62% 38% 36% 64% / 45% 75% 25% 55%;
+  }
+  25% {
+    height: 548px;
+    border-radius: 62% 38% 61% 39% / 37% 73% 27% 63%;
+  }
+  50% {
+    height: 541px;
+    border-radius: 57% 43% 41% 59% / 50% 57% 43% 50%;
+  }
+  75% {
+    height: 552px;
+    border-radius: 62% 38% 41% 59% / 59% 42% 58% 41%;
+  }
+}
+
+.yellow-blob {
+  width: 563px;
+  height: 404px;
+  background: $c-blob-yellow;
+  position: absolute;
+  right: 0;
+  bottom: -160px;
+  animation: yblob 6s ease-in-out infinite;
+}
+@keyframes yblob {
+  0%,
+  100% {
+    border-radius: 62% 38% 36% 64% / 45% 75% 25% 55%;
+  }
+  25% {
+    border-radius: 62% 38% 61% 39% / 37% 73% 27% 63%;
+  }
+  50% {
+    border-radius: 57% 43% 41% 59% / 50% 57% 43% 50%;
+  }
+  75% {
+    border-radius: 62% 38% 41% 59% / 59% 42% 58% 41%;
+  }
+}

@@ -1,0 +1,78 @@
+@import '../../../styles/global.scss';
+
+.c-entrance {
+  height: 100vh;
+  background: $c-primary;
+  color: $c-secondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+// greeeting messege
+.c-entrance__greet {
+  word-break: keep-all;
+  // text-align: center;
+  letter-spacing: 2px;
+  position: relative;
+  right: 0;
+  top: 45vh;
+  overflow: hidden;
+  animation: typing 2.5s steps(13);
+  &::after {
+    content: '？';
+    width: 100%;
+    position: relative;
+    right: 0;
+    animation: blink 1s infinite;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 13 * 1.85rem;
+  }
+}
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: $c-secondary;
+  }
+}
+
+// yes-no buttons
+.c-entrance__btn-wrap {
+  text-align: center;
+  position: relative;
+  top: 48vh;
+}
+.c-entrance__btn {
+  margin: 25px;
+  padding: 10px 40px;
+  border: 1px solid $c-secondary;
+  border-radius: $br-s;
+  font-size: $fs-h4;
+  color: $c-secondary !important;
+  transition: 0.3s;
+  &:hover {
+    background: $c-secondary;
+    color: $c-primary !important;
+  }
+}
+
+.c-entrance__close-btn {
+  width: 60px;
+  height: 60px;
+  background: $c-secondary;
+  border-radius: $br-b;
+  position: absolute;
+  top: 65px;
+  right: 125px;
+  cursor: pointer;
+}

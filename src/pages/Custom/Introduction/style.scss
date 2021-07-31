@@ -152,6 +152,14 @@
   animation: blobMotion3 6s ease-in-out infinite;
 }
 
+// exit part
+.c-intro-exit__r-blob {
+  @include blobGenerator(30vw, 60vh, 20vh, 35vw);
+  box-shadow: 0 0 5px rgba(190, 43, 82, 0.5);
+  background: rgba(206, 60, 100, 80%);
+  animation: blobScale 6s ease-in-out infinite;
+}
+
 // keyframes
 @keyframes blobMotion1 {
   100%,
@@ -221,6 +229,16 @@
   }
   75% {
     border-radius: 71% 29% 67% 33% / 55% 70% 30% 45%;
+  }
+}
+
+@keyframes blobScale {
+  100%, 0%{
+    border-radius: 40% 60% 38% 62% / 62% 46% 54% 38%;
+  }
+  50%{
+    border-radius: 51% 49% 34% 66% / 57% 55% 45% 43% ;
+    transform: scale(1.3);
   }
 }
 
