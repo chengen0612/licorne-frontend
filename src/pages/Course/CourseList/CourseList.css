@@ -392,3 +392,11 @@ header {
 .map__search-icon.map__search-icon {
   stroke: #fff;
 }
+
+.modal__marker-name {
+  writing-mode: horizontal-tb;
+  font-size: 18px;
+  width: 200px;
+  margin-left: -30px;
+  color: #880000;
+}

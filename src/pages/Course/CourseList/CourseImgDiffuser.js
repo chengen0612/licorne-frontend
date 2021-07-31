@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { imgPath } from '../../../config'
+import React, { useState, useEffect } from 'react';
+import { imgPath } from '../../../config';
 
 function CourseDiffuser() {
   // 接收資料庫傳來的資料，並讓資料可以設定
-  const [title, setTitle] = useState('')
-  const [titleInfo, setTitleInfo] = useState('')
-  const [courseDescription, setCourseDescription] = useState('')
-  const [img, setImg] = useState()
+  const [title, setTitle] = useState('');
+  const [titleInfo, setTitleInfo] = useState('');
+  const [courseDescription, setCourseDescription] = useState('');
+  const [img, setImg] = useState();
   //-------------------------接收title
   async function getCourseFromServer() {
-    const url = `http://localhost:6005/course`
+    const url = `http://localhost:6005/course`;
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
       }),
-    })
-    const response = await fetch(request)
-    const data = await response.json()
+    });
+    const response = await fetch(request);
+    const data = await response.json();
 
-    setTitle(data.name[1].course_name_ch)
-    setTitleInfo(data.name[1].course_title_ch)
-    setCourseDescription(data.name[1].course_description_ch)
-    setImg(data.name[1].course_img)
+    setTitle(data.name[1].course_name_ch);
+    setTitleInfo(data.name[1].course_title_ch);
+    setCourseDescription(data.name[1].course_description_ch);
+    setImg(data.name[1].course_img);
   }
 
   useEffect(() => {
-    getCourseFromServer()
-  }, [])
+    getCourseFromServer();
+  }, []);
   return (
     <>
       <div className="diffuser__content">
@@ -43,6 +43,6 @@ function CourseDiffuser() {
         </aside>
       </div>
     </>
-  )
+  );
 }
-export default CourseDiffuser
+export default CourseDiffuser;

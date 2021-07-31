@@ -1,15 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 function CourseClassRoom(props) {
-  const { name, address, phone, clickLatLng } = props
+  const { name, address, phone, clickLatLng } = props;
 
   function clickSetPlace() {
-    props.setSelectForm(name)
-    clickLatLng()
+    props.setSelectForm(name);
+    clickLatLng();
   }
-  const routeLinkHandler = (e) => {
-    e.preventDefault()
-  }
+
   return (
     <>
       <div className="modal__map__item">
@@ -21,9 +19,7 @@ function CourseClassRoom(props) {
           <br />
           營業時間：週二至週日 10:00 - 20:00
         </span>
-        <a href="/" className="modal__route-link" onClick={routeLinkHandler}>
-          前往路線
-        </a>
+
         <input
           type="button"
           className="modal__store-btn"
@@ -32,6 +28,6 @@ function CourseClassRoom(props) {
         />
       </div>
     </>
-  )
+  );
 }
-export default CourseClassRoom
+export default CourseClassRoom;
