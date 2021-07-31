@@ -1,7 +1,6 @@
 @import '../../styles/global.scss';
 
 .best-wrapper {
-  // background: #ccc;
   max-width: 1520px;
   margin: 100px auto 200px;
   // set up for sidebar filter
@@ -75,7 +74,6 @@
 /****** dropdown menu end ******/
 
 .best__display-wrap {
-  // outline: 1px solid sandybrown;
   width: 100%;
   height: 785px;
   display: flex;
@@ -93,12 +91,21 @@
 
 /****** product card start ******/
 .best__prod-card {
-  // background: $c-secondary;
   width: 415px;
   height: 665px;
   position: relative;
   user-select: none;
+  // &.animate {
+  //   animation: fadein 2s ease;
+  // }
 }
+// @keyframes fadein {
+//   from {
+//     opacity: 0;
+//   } to {
+//     opacity: 1;
+//   }
+// }
 .best__prod-sequence {
   position: absolute;
   & img {
@@ -110,7 +117,6 @@
 .best__prod-display {
   width: 330px;
   height: 530px;
-  // background: $c-fruit;
   border-radius: 168px;
   display: flex;
   flex-direction: column;
@@ -124,15 +130,19 @@
   & img {
     width: 150px;
     height: 310px;
+    margin-bottom: 5px;
   }
-  // &-title {
+  // &:hover .best__prod-detail {
+  //   opacity: 0.85;
   // }
-  // &-price {
-  // }
-  // &.shadow {
-  //   background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3));
+  // &:hover .best__prod-shadow {
+  //   opacity: 1;
   // }
 }
+// %fadein {
+//   opacity: 0;
+//   transition: 0.5s;
+// }
 .best__prod-detail {
   width: 200px;
   height: 200px;
@@ -145,11 +155,10 @@
   justify-content: center;
   position: absolute;
   right: 65px;
-  cursor: pointer;
   opacity: 0.85;
+  cursor: pointer;
   & span {
     padding: 5px 0;
-    // font-family: "Noto Sans";
     font-size: 20px;
     display: inline-block;
   }
@@ -163,7 +172,6 @@
 .best__prod-btn {
   width: 180px;
   height: 60px;
-  // background: $c-fruit;
   border: none;
   border-radius: $br-b;
   position: absolute;

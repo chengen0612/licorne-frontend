@@ -29,7 +29,7 @@ function Filters(props) {
 
   return (
     <>
-      <sidebar className="best__sidebar">
+      <aside className="best__sidebar">
         <h5 className="best__sidebar-title">
           <FiFilter />
           &nbsp;&nbsp;篩選
@@ -75,7 +75,7 @@ function Filters(props) {
             })}
           </div>
         </section>
-      </sidebar>
+      </aside>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { imgPath } from '../../config'
 
@@ -20,6 +20,11 @@ function ProductCard(props) {
     price,
     sequence,
   } = data
+
+  // reset related elements state
+  useEffect(() => {
+    setShowDetail(false)
+  }, [data])
 
   return (
     <>
