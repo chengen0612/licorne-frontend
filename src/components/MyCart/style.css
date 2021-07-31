@@ -294,20 +294,20 @@
   justify-content: center;
 }
 
-.cj-sidebar__cart__item__official-desc p:nth-child(1) {
+.cj-sidebar__cart__item__official-desc > p:nth-child(1) {
   /* 名稱或編號 */
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);
   font-weight: var(--fw-medium);
 }
 
-.cj-sidebar__cart__item__official-desc p:nth-child(2) {
+.cj-sidebar__cart__item__official-desc > p:nth-child(2) {
   font-family: 'Noto Sans', sans-serif;
   font-size: 14px;
   font-weight: var(--fw-light);
 }
 
-.cj-sidebar__cart__item__official-desc div {
+.cj-sidebar__cart__item__official-desc > div {
   display: flex;
   margin: 5px 0 5px 0;
   border: 1px solid var(--c-primary);
@@ -318,31 +318,16 @@
   background-color: #fff;
 }
 
-.cj-sidebar__cart__item__official-desc select {
-  width: 120px;
-  border: none;
+.cj-sidebar__cart__item__official-desc > div > p {
+  padding-left: 10px;
   background-color: transparent;
   font-family: 'Noto Sans', sans-serif;
   font-size: 15px;
   font-weight: var(--fw-light);
   color: var(--c-primary);
-  cursor: pointer;
-  /* -webkit-appearance: none;
-  -moz-appearance: none; */
 }
 
-.cj-sidebar__cart__item__official-desc option {
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
-  font-weight: var(--fw-light);
-  box-shadow: none;
-}
-
-.cj-sidebar__cart__item__official-desc select:focus {
-  outline: none;
-}
-
-.cj-sidebar__cart__item__official-desc p:nth-child(4) {
+.cj-sidebar__cart__item__official-desc > p:nth-child(4) {
   /* 數量：深藍、粗體 */
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);
@@ -350,7 +335,7 @@
   margin: 8px 0;
 }
 
-.cj-sidebar__cart__item__official-desc p:nth-child(5) {
+.cj-sidebar__cart__item__official-desc > p:nth-child(5) {
   /* 刪除： 淺灰，底線*/
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);

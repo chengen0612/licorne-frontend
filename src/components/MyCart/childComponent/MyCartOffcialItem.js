@@ -53,10 +53,13 @@ function MyCartOffcialItem({
           {series_name}系列
         </p>
         <div>
-          <select name="" id="" value={volume} disabled>
-            <option value="100ml">瓶裝 100ML</option>
-            <option value="50ml">瓶裝 50ML</option>
-          </select>
+          {volume === '100ml' ? (
+            <p>瓶裝 100ML</p>
+          ) : volume === '50ml' ? (
+            <p>瓶裝 50ML</p>
+          ) : (
+            <p>資料不符合</p>
+          )}
         </div>
         <p>NT$ {price}</p>
         <p
