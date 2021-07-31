@@ -121,6 +121,9 @@ function Process(props) {
     setProductDetail(result)
   }
 
+  // from here
+  const getBottleOnLoad = (e) => {}
+
   return (
     <>
       <div className="custom">
@@ -141,7 +144,7 @@ function Process(props) {
             </>
           )}
         </article>
-        <div className="custom__bottle"></div>
+        <div className="custom__bottle" onLoad={getBottleOnLoad}></div>
         <aside className="custom__sidebar-wrapper">
           {displaySeries && (
             <SidebarItems
