@@ -109,8 +109,8 @@
 .best__prod-sequence {
   position: absolute;
   & img {
-    width: 90px;
     height: 120px;
+    filter: drop-shadow(5px 5px 1px rgba(0,0,0,0.3));
   }
 }
 // product's introduction
@@ -127,6 +127,7 @@
   right: 0;
   overflow: hidden;
   cursor: pointer;
+  z-index: -1;
   & img {
     width: 150px;
     height: 310px;
