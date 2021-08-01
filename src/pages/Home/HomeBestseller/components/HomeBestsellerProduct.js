@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { imgPath } from '../../../../config/index'
 
 function HomeBestsellerProduct(props) {
@@ -16,6 +17,12 @@ function HomeBestsellerProduct(props) {
     price,
     sequence,
   } = data
+
+  const purchaseHandler = async () => {
+    const url = 'http://localhost:6005/bestseller/addcart'
+    const response = await axios.post(url, { data: data })
+    const result = response.data
+  }
 
   return (
     <div className="popular__oneProduct">
@@ -53,7 +60,11 @@ function HomeBestsellerProduct(props) {
           </div>
         </div>
       </div>
-      <button className="popular__buyBtn" style={{ background: color }}>
+      <button
+        className="popular__buyBtn"
+        style={{ background: color }}
+        onClick={purchaseHandler}
+      >
         訂購
       </button>
     </div>
