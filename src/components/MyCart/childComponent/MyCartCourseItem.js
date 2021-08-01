@@ -3,29 +3,11 @@ import '../../../styles/global.css'
 import '../style.css'
 import { FiHeart } from 'react-icons/fi'
 
-function MyCartCourseItem({ courseProducts, courseProduct }) {
-  // function removeQTY() {
-  //   const newCustomProducts = [...customProducts]
-  //   const index = newCustomProducts.findIndex((v, i) => {
-  //     return v.id === id
-  //   })
-  //   if (index > -1 && quantity > 1) {
-  //     newCustomProducts[index].quantity--
-  //   }
-  //   setCustomProducts(newCustomProducts)
-  // }
-
-  // function addQTY() {
-  //   const newCustomProducts = [...customProducts]
-  //   const index = newCustomProducts.findIndex((v, i) => {
-  //     return v.id === id
-  //   })
-  //   if (index > -1) {
-  //     newCustomProducts[index].quantity++
-  //   }
-  //   setCustomProducts(newCustomProducts)
-  // }
-
+function MyCartCourseItem({
+  courseProducts,
+  courseProduct,
+  setCourseProducts,
+}) {
   return (
     <>
       <div className="cj-sidebar__cart__item__course-img">
@@ -38,47 +20,32 @@ function MyCartCourseItem({ courseProducts, courseProduct }) {
         <p>{courseProduct.course_name_ch}</p>
         <p>
           {courseProduct.package}
-          <br />
+          <span> </span>
+          {courseProduct.people}
+        </p>
+        <p>
           {courseProduct.date}
           <br />
           {courseProduct.period}
-          <br />
-          {courseProduct.place}
-          <br />
-          {courseProduct.people}
         </p>
-        <p></p>
+        <p>{courseProduct.place}</p>
         <p>NT$ {courseProduct.price}</p>
         <p
-        // role="button"
-        // onClick={() => {
-        //   const newCustomProducts = customProducts.filter((v, i) => {
-        //     return v.id !== id
-        //   })
-        //   setCustomProducts(newCustomProducts)
-        // }}
+          role="button"
+          onClick={() => {
+            const newCourseProducts = courseProducts.filter((v, i) => {
+              return v.course_id !== courseProduct.course_id
+            })
+            setCourseProducts(newCourseProducts)
+          }}
         >
           刪除{' '}
         </p>
       </div>
       <div className="cj-sidebar__cart__item__course-btn">
-        <div
-        // role="button"
-        // onClick={() => {
-        //   removeQTY()
-        // }}
-        >
-          -
-        </div>
+        <div>-</div>
         <p>{courseProduct.quantity}</p>
-        <div
-        // role="button"
-        // onClick={() => {
-        //   addQTY()
-        // }}
-        >
-          +
-        </div>
+        <div>+</div>
       </div>
     </>
   )

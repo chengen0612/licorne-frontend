@@ -22,6 +22,7 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
     //計算總金額函式
     let officialTotal = 0
     let customTotal = 0
+    let courseTotal = 0
     let sumOfTotals = 0
     for (let officialProduct of officialProducts) {
       officialTotal += officialProduct.quantity * officialProduct.price
@@ -29,7 +30,12 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
     for (let customProduct of customProducts) {
       customTotal += customProduct.quantity * customProduct.price
     }
-    sumOfTotals = officialTotal + customTotal
+
+    for (let courseProduct of courseProducts) {
+      courseTotal += courseProduct.quantity * courseProduct.price
+    }
+
+    sumOfTotals = officialTotal + customTotal + courseTotal
     setTotalAmountOfficial(sumOfTotals)
   }
 
@@ -95,7 +101,7 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
 
   useEffect(() => {
     calculateTotal()
-  }, [officialProducts, customProducts])
+  }, [officialProducts, customProducts, courseProducts])
 
   useEffect(() => {
     getOfficialProductFromServer()

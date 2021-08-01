@@ -18,12 +18,14 @@ function MyCartCart({
   //
   courseProducts,
   setCourseProducts,
-  totalAmountCourse,
 }) {
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
       <div className="cj-sidebar__cart">
-        {officialProducts.length + customProducts.length > 0 ? (
+        {officialProducts.length +
+          customProducts.length +
+          courseProducts.length >
+        0 ? (
           ''
         ) : (
           <p className="cj-sidebar__cart__no-item-message">
@@ -77,6 +79,7 @@ function MyCartCart({
               <MyCartCourseItem
                 courseProducts={courseProducts}
                 courseProduct={courseProduct}
+                setCourseProducts={setCourseProducts}
               />
             </div>
           )
