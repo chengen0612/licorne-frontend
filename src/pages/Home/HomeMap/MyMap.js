@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
-// import { FiSearch, FiMapPin, FiX } from 'react-icons/fi'
+import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react'
-// import CourseClassRoom from '../../Course/CourseList/CourseClassRoom'
 import { imgPath } from '../../../config/index'
 
 const MarkerIcon = () => {
   return (
     <>
       <div
-        className="modal__marker-box"
+        // className="modal__marker-box"
         style={{ transform: 'translate(-50%, -100%)' }}
       >
         <img
@@ -17,15 +15,15 @@ const MarkerIcon = () => {
           className="modal__marker"
         />
       </div>
-      {/* <FiMapPin className="modal__marker" /> */}
     </>
   )
 }
 
 export default function MyMap(props) {
   //設定選擇店鋪
-  // const { setSelectForm, placeLatLng } = props
-  const { placeLatLng } = props
+  // const { setSelectForm, displayShops } = props
+  const { displayShops } = props
+  console.log('displayShops', displayShops)
 
   //const [select, setSelect] = useState('');
 
@@ -33,11 +31,9 @@ export default function MyMap(props) {
   const [jsonArrayLatLng, setJsonArrayLatLng] = useState([])
 
   // 經緯度預設值
-  // const [lat, setLat] = useState(0);
-  // const [lng, setLng] = useState(0);
-  const [defaultLatLng, setDefaultLatLng] = useState({ lat: 0, lng: 0 })
+  const [userLatLng, setUserLatLng] = useState({ lat: 0, lng: 0 })
 
-  //console.log(JSON.stringify(defaultLatLng));
+  //console.log(JSON.stringify(userLatLng));
 
   //預設顯示資訊
   // const [shops, setShops] = useState([
@@ -51,12 +47,12 @@ export default function MyMap(props) {
   // ])
 
   //搜尋功能
-  const queryString = useRef(null)
+  // const queryString = useRef(null)
 
   // const queryHandler = () => {
   //   const keyword = queryString.current.value
   //   if (keyword.length === 0) return
-  //   const results = placeLatLng.filter((item) => {
+  //   const results = displayShops.filter((item) => {
   //     return item.course_place_address.includes(keyword)
   //   })
   //   setShops(results)
@@ -66,13 +62,13 @@ export default function MyMap(props) {
   // const [show, setShow] = useState(false)
   // const clickShow = (e) => {
   //   setShow(true)
-  //   const results = placeLatLng.filter((item) => {
+  //   const results = displayShops.filter((item) => {
   //     return item.course_place_address
   //   })
   //   setShops(results)
   // }
 
-  //自動定位目前位置
+  // 自動定位目前位置
   const defaultProps = {
     center: {
       lat: 0,
@@ -81,7 +77,7 @@ export default function MyMap(props) {
     zoom: 16,
   }
 
-  // 抓取經緯度
+  // handle user's position
   useEffect(() => {
     if (navigator.geolocation) {
       // 執行要權限的function
@@ -91,9 +87,7 @@ export default function MyMap(props) {
 
       // 使用者允許抓目前位置，回傳經緯度
       function success(position) {
-        // setLat(position.coords.latitude);
-        // setLng(position.coords.longitude);
-        setDefaultLatLng({
+        setUserLatLng({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         })
@@ -104,15 +98,19 @@ export default function MyMap(props) {
     } else {
       alert('Sorry, 你的裝置不支援地理位置功能。')
     }
+  }, [])
 
-    const latlngList = placeLatLng.map((v, i) => {
+  // store data get from search result
+  useEffect(() => {
+    const latlngList = displayShops.map((v, i) => {
       return {
         course_place_lat: v.course_place_lat,
         course_place_lng: v.course_place_lng,
       }
     })
     setJsonArrayLatLng(latlngList)
-  }, [])
+  }, [displayShops])
+
   // 計算經緯度距離
   // function calcCrow(lat1, lon1, lat2, lon2) {
   //   var R = 6371 // km
@@ -139,20 +137,19 @@ export default function MyMap(props) {
         <GoogleMapReact
           bootstrapURLKeys={{ key: '' }}
           defaultCenter={defaultProps.center}
-          center={defaultLatLng}
+          center={userLatLng}
           defaultZoom={defaultProps.zoom}
         >
-          <MarkerIcon lat={defaultLatLng.lat} lng={defaultLatLng.lng} />
-          {/* {show &&
-            jsonArrayLatLng.map((value, index) => {
-              return (
-                <MarkerIcon
-                  key={index}
-                  lat={value.course_place_lat}
-                  lng={value.course_place_lng}
-                />
-              )
-            })} */}
+          <MarkerIcon lat={userLatLng.lat} lng={userLatLng.lng} />
+          {jsonArrayLatLng.map((value, index) => {
+            return (
+              <MarkerIcon
+                key={index}
+                lat={value.course_place_lat}
+                lng={value.course_place_lng}
+              />
+            )
+          })}
         </GoogleMapReact>
       </div>
     </>

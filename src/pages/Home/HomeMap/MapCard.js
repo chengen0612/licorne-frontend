@@ -1,26 +1,19 @@
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import { FiMapPin, FiSearch } from 'react-icons/fi'
 import MapListItem from './MapListItem'
-import shop_list from './data/shop_list.json'
 
-export default function MapCard() {
-  const [shops, setShops] = useState([
-    {
-      course_place_name: '台北店',
-      course_place_address: '台北市松山區龍人北路七段55號',
-      course_place_phone: '02-58851234',
-    },
-  ])
+export default function MapCard(props) {
+  const { shopList, displayShops, setDisplayShops } = props
 
   const queryString = useRef(null)
 
   const queryHandler = () => {
     const keyword = queryString.current.value
     if (keyword.length === 0) return
-    const results = shop_list.filter((item) => {
+    const results = shopList.filter((item) => {
       return item.course_place_address.includes(keyword)
     })
-    setShops(results)
+    setDisplayShops(results)
   }
 
   return (
@@ -45,7 +38,7 @@ export default function MapCard() {
           </div>
         </div>
         <div className="map__content">
-          {shops.map((shop, i) => {
+          {displayShops.map((shop, i) => {
             return (
               <MapListItem
                 key={i}

@@ -4,7 +4,16 @@ import MyMap from './MyMap'
 import MapCard from './MapCard'
 
 function HomeMap() {
-  const [placeLatLng, setPlaceLatLng] = useState([])
+  const [shopList, setShopList] = useState([])
+  const [displayShops, setDisplayShops] = useState([
+    {
+      course_place_name: '台北店',
+      course_place_address: '台北市松山區龍人北路七段55號',
+      course_place_phone: '02-58851234',
+      // course_place_lat: '22.5662669501168',
+      // course_place_lng: '120.34782427919656',
+    },
+  ])
 
   useEffect(() => {
     getCourseFromServer()
@@ -21,14 +30,19 @@ function HomeMap() {
     })
     const response = await fetch(request)
     const data = await response.json()
-
-    setPlaceLatLng(data.place)
+    // console.log(data.place)
+    setShopList(data.place)
   }
+
   return (
     <>
       <div className="map">
-        <MyMap placeLatLng={placeLatLng} />
-        <MapCard />
+        <MyMap displayShops={displayShops} />
+        <MapCard
+          shopList={shopList}
+          displayShops={displayShops}
+          setDisplayShops={setDisplayShops}
+        />
       </div>
     </>
   )
