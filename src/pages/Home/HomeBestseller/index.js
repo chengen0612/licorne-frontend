@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { FiArrowRight } from 'react-icons/fi'
+
 import './style.css'
-import { data } from './data'
 import HomeBestsellerProduct from './components/HomeBestsellerProduct'
 
 function HomeBestseller() {
   const [productData, setProductData] = useState([])
+
   useEffect(() => {
-    setProductData(data)
+    getDataFromServer()
   }, [])
+
+  const getDataFromServer = async () => {
+    const url = 'http://localhost:6005/home/bestseller'
+    const response = await axios.get(url)
+    const data = response.data
+    // pick up top 4 to display on the screen
+    let output = []
+    for (let i = 0; i <= 3; i++) {
+      output.push(data[i])
+    }
+    setProductData(output)
+  }
+
   return (
     <>
       <article className="total">
@@ -23,15 +38,7 @@ function HomeBestseller() {
         {/* <!-- 商品區塊 --> */}
         <div className="popular__ranking">
           {productData.map((product, i) => {
-            return (
-              <HomeBestsellerProduct
-                key={i}
-                Nopicture={product.Nopicture}
-                picture={product.picture}
-                code={product.code}
-                price={product.price}
-              />
-            )
+            return <HomeBestsellerProduct key={i} data={product} />
           })}
         </div>
         {/* <!-- 商品區塊 --> */}
