@@ -400,3 +400,9 @@ header {
   margin-left: -30px;
   color: #880000;
 }
+.NoPalce {
+  font-size: 30px;
+  color: var(--c-primary);
+  text-align: center;
+  margin-top: 100px;
+}
