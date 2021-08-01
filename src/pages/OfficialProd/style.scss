@@ -1,0 +1,193 @@
+@import '../../styles/global.scss';
+
+.official {
+  display: flex;
+  height: 100vh;
+  border: 1px solid orange;
+}
+
+.official__img-wrapper {
+  width: 800px;
+  height: 750px;
+  // border: 1px solid palevioletred;
+}
+
+.official__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: $ds-product;
+}
+
+.official__info {
+  margin-top: 20px;
+  //   border: 1px solid seagreen;
+}
+
+.official__title {
+  font-size: $fs-h3;
+}
+
+.official__subtitle {
+  font-size: $fs-p;
+}
+
+// code from chengen
+/****** dropdown menu ******/
+%option {
+  height: 60px;
+  padding: 15px 20px;
+  background: $c-white;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.official__dropdown-menu {
+  width: 500px;
+  // height: 60px; // value for toggle
+  border: 1px solid $c-primary;
+  border-radius: $br-s;
+  overflow: hidden;
+  margin-top: 30px;
+  &:nth-of-type(2) {
+    margin-top: 30px;
+  }
+}
+.official__dropdown-title {
+  @extend %option;
+  & svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.official__select-options {
+  @extend %option;
+  &:first-child {
+    border-top: 1px solid $c-primary;
+  }
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.official__select-options svg {
+  transform: translateY(5px);
+}
+/****** dropdown menu end ******/
+
+.official__accordion {
+  width: 500px;
+  display: block;
+  margin-top: 40px;
+}
+
+.official__accordion-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.official__btn-group {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 40px;
+}
+
+.official__order-btn {
+  width: 400px;
+  height: 60px;
+  background-color: $c-primary;
+  border-radius: $br-b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: var(--fs-h5);
+  border: none;
+  &:hover {
+    transition: 0.2s;
+    border: 1px solid #506a77;
+    background: #506a77;
+  }
+}
+
+.official__fav {
+  width: 60px;
+  height: 60px;
+  background: $c-secondary;
+  border-radius: 50%;
+  position: relative;
+}
+
+.official__fav-btn {
+  color: $c-primary;
+  font-size: 25px;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+
+/* recommendation */
+.official__recommendation {
+  // display: flex;
+  // justify-content: center;
+  height: 100vh;
+  border: 1px solid palevioletred;
+  &-title {
+    // display: flex;
+    // justify-content: center;
+  }
+}
+
+.official__recommendation-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid purple;
+}
+
+/* recommendation product */
+.official__product-wrapper {
+  border: 1px solid darkcyan;
+}
+
+.official__product-img-wrapper {
+  width: 235px;
+  height: 280px;
+  border: 1px solid gold;
+}
+
+.official__product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: $ds-product;
+}
+
+.official__product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: $fs-h5;
+  border: 1px solid lightblue;
+  &-zh{
+    margin-top: 20px;
+  }
+  &-en {
+    font-weight: lighter;
+  }
+  &-fragrance {
+    font-weight: lighter;
+    font-size: $fs-span;
+  }
+  &-price {
+    margin-top: 10px;
+  }
+  &-view-more {
+    font-size: $fs-p;
+    margin-left: 8px;
+  }
+}
