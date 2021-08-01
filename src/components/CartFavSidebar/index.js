@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react'
 import '../../styles/global.css'
 import './style.css'
 import { FiX } from 'react-icons/fi'
-import MyCartCart from './childComponent/MyCartCart'
-import MyCartFav from './childComponent/MyCartFav'
+import MyCart from './childComponent/MyCart'
+import MyFav from './childComponent/MyFav'
 
-function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
+function CartFavSidebar({
+  sidebarIsOpen,
+  closeSidebar,
+  favOrCart,
+  setFavOrCart,
+}) {
   // const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
   // const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
   //
@@ -16,7 +21,7 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
   const [courseProducts, setCourseProducts] = useState([])
   const [totalAmountCourse, setTotalAmountCourse] = useState(0)
   //
-  const [collectDatas, setCollectDatas] = useState([])
+  const [officialFavorites, setOfficialFavorites] = useState([])
 
   function calculateTotal() {
     //計算總金額函式
@@ -50,8 +55,8 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
       }),
     })
     const responseCollect = await fetch(requestCollect)
-    const collectDatas = await responseCollect.json()
-    setCollectDatas(collectDatas)
+    const officialFavorites = await responseCollect.json()
+    setOfficialFavorites(officialFavorites)
   }
 
   // 官方產品 API
@@ -173,7 +178,7 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
         </div>
 
         <div className="cj-sidebar__space"></div>
-        <MyCartCart
+        <MyCart
           favOrCart={favOrCart}
           //
           officialProducts={officialProducts}
@@ -191,14 +196,14 @@ function MyCart({ sidebarIsOpen, closeSidebar, favOrCart, setFavOrCart }) {
           // setTotalAmountOfficial={setTotalAmountOfficial} maybe not nessaccery? Observe a while!
           // calculateTotal={calculateTotal} maybe not nessaccery? Observe a while!
         />
-        <MyCartFav
+        <MyFav
           favOrCart={favOrCart}
-          collectDatas={collectDatas}
-          setCollectDatas={setCollectDatas}
+          officialFavorites={officialFavorites}
+          setOfficialFavorites={setOfficialFavorites}
         />
       </div>
     </>
   )
 }
 
-export default MyCart
+export default CartFavSidebar

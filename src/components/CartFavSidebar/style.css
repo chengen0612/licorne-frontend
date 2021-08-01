@@ -100,9 +100,9 @@
   color: #000000;
 }
 
-/* 
----------- Favorite Items ---------
-*/
+/* ------------------------------ Favorite ------------------------------ */
+/* ------------------------------ Favorite ------------------------------ */
+/* ------------------------------ Favorite ------------------------------ */
 
 .cj-sidebar__fav {
   /* border: 1px solid red; */
@@ -120,20 +120,22 @@
   margin-bottom: 40px;
 }
 
-.cj-sidebar__fav__item__img {
+/* --------------- favorite official --------------- */
+
+.cj-sidebar__fav__item__official-img {
   /* border: 1px solid blue; */
   width: 150px;
   position: relative;
 }
 
-.cj-sidebar__fav__item__img img {
+.cj-sidebar__fav__item__official-img img {
   object-fit: contain;
   width: 150px;
   height: 200px;
   filter: var(--ds-product);
 }
 
-.cj-sidebar__fav__item__desc {
+.cj-sidebar__fav__item__official-desc {
   /* border: 1px solid green; */
   width: 180px;
   display: flex;
@@ -141,26 +143,46 @@
   justify-content: center;
 }
 
-.cj-sidebar__fav__item__desc p:nth-child(1) {
+.cj-sidebar__fav__item__official-desc > p:nth-child(1) {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);
   font-weight: var(--fw-medium);
 }
 
-.cj-sidebar__fav__item__desc p:nth-child(2) {
+.cj-sidebar__fav__item__official-desc > p:nth-child(2) {
   font-family: 'Noto Sans', sans-serif;
   font-size: 14px;
   font-weight: var(--fw-light);
 }
 
-.cj-sidebar__fav__item__desc p:nth-child(3) {
+.cj-sidebar__fav__item__official-desc > div {
+  display: flex;
+  margin: 5px 0 5px 0;
+  border: 1px solid var(--c-primary);
+  width: 120px;
+  height: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.cj-sidebar__fav__item__official-desc > div > p {
+  padding-left: 10px;
+  background-color: transparent;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: var(--fw-light);
+  color: var(--c-primary);
+}
+
+.cj-sidebar__fav__item__official-desc > p:nth-child(4) {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);
   font-weight: var(--fw-medium);
   margin: 10px 0 10px 0;
 }
 
-.cj-sidebar__fav__item__desc p:nth-child(4) {
+.cj-sidebar__fav__item__official-desc > p:nth-child(5) {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);
   font-weight: var(--fw-light);
@@ -168,7 +190,7 @@
   cursor: pointer;
 }
 
-.cj-sidebar__fav__item__btn {
+.cj-sidebar__fav__item__official-btn {
   /* border: 1px solid orange; */
   width: 100px;
   display: flex;
@@ -176,7 +198,7 @@
   justify-content: center;
 }
 
-.cj-sidebar__fav__item__btn div {
+.cj-sidebar__fav__item__official-btn div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -186,14 +208,14 @@
   border-radius: 50%;
 }
 
-.cj-sidebar__fav__item__btn div:first-child {
+.cj-sidebar__fav__item__official-btn div:first-child {
   color: white;
   cursor: pointer;
 }
 
-/* cart */
-/* cart */
-/* cart */
+/* ------------------------------ CART ------------------------------ */
+/* ------------------------------ CART ------------------------------ */
+/* ------------------------------ CART ------------------------------ */
 
 .cj-sidebar__cart {
   /* border: 1px solid red; */
@@ -261,10 +283,9 @@
   text-align: center;
 }
 
-/* official products */
-/* official products */
-/* official products */
-/* official products */
+/* --------------- official products --------------- */
+/* --------------- official products --------------- */
+/* --------------- official products --------------- */
 
 .cj-sidebar__cart__item__official-img {
   /* border: 1px solid blue; */
@@ -376,11 +397,9 @@
   margin: 0 10px;
 }
 
-/* custom products */
-/* custom products */
-/* custom products */
-/* custom products */
-/* custom products */
+/* --------------- custom products --------------- */
+/* --------------- custom products --------------- */
+/* --------------- custom products --------------- */
 
 .cj-sidebar__cart__item__custom-img {
   /* border: 1px solid blue; */
@@ -492,11 +511,9 @@
   margin: 0 10px;
 }
 
-/* course products */
-/* course products */
-/* course products */
-/* course products */
-/* course products */
+/* --------------- course products --------------- */
+/* --------------- course products --------------- */
+/* --------------- course products --------------- */
 
 .cj-sidebar__cart__item__course-img {
   /* border: 1px solid blue; */

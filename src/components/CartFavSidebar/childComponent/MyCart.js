@@ -5,7 +5,7 @@ import MyCartOffcialItem from './MyCartOffcialItem'
 import MyCartCustomItem from './MyCartCustomItem'
 import MyCartCourseItem from './MyCartCourseItem'
 
-function MyCartCart({
+function MyCart({
   favOrCart,
   //
   officialProducts,
@@ -103,4 +103,4 @@ function MyCartCart({
   )
 }
 
-export default MyCartCart
+export default MyCart

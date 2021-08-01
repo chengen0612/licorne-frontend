@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import './style.css'
-import MyCart from '../MyCart'
+import CartFavSidebar from '../CartFavSidebar'
 
 import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
@@ -36,7 +36,7 @@ function Header(props) {
   return (
     <>
       {/* CJ：MyCart 原件，以及傳入兩個 prop */}
-      <MyCart
+      <CartFavSidebar
         sidebarIsOpen={sidebarIsOpen}
         closeSidebar={closeSidebar}
         favOrCart={favOrCart}
