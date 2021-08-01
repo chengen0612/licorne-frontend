@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { FiHeart } from 'react-icons/fi'
 function Products(props) {
-  const { id, img, name_zh, price, top, middle, base } = props
+  const {
+    id,
+    img,
+    name_zh,
+    price,
+    top,
+    middle,
+    base,
+    handleBuy,
+    handleCollect,
+  } = props
   const imgURL = ` http://localhost:6005/${img} `
   return (
     <>
@@ -12,7 +22,12 @@ function Products(props) {
               <img className="product__img" src={imgURL} alt="" />
             </figure>
             <div className="product__heart__box">
-              <button className="product__FiHear">
+              <button
+                className="product__FiHear"
+                onClick={() => {
+                  handleCollect(id)
+                }}
+              >
                 <FiHeart size={27} />
               </button>
             </div>
@@ -31,7 +46,14 @@ function Products(props) {
           </div>
         </div>
         <div className="">
-          <button className="product__buybutton">訂購</button>
+          <button
+            className="product__buybutton"
+            onClick={() => {
+              handleBuy(id)
+            }}
+          >
+            訂購
+          </button>
         </div>
       </div>
     </>

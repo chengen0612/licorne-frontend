@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+
 import './product-list.css'
 import CustomizedSlider from './components/filter/Pricefilter.js'
 import Materialfilter from './components/filter/Materialfilter.js'
@@ -7,6 +8,7 @@ import Products from './components/product/Products.js'
 import Labels from './components/product/Labels.js'
 import Pages from './components/product/Pages.js'
 import Header from '../../components/Header'
+import axios from 'axios'
 function Official() {
   const [products, setPrdoducts] = useState([]) //給商品顯示(出現有什麼商品)
   const [pages, setPages] = useState([]) //給頁面顯示用(出現有幾頁)
@@ -26,8 +28,9 @@ function Official() {
   })
   const [formData, updateFormData] = useState(initialFormData) //給表單
   //要送出的表單有價格區間、所選原料
-
   //滑動條改變就把新價格放進狀態
+  // heart = {id: number, selected:false}
+  // const [selected,setSelected] =useState(false)
   const handleChange = (event, newValue) => {
     setValue(newValue)
     updateFormData({
@@ -80,17 +83,15 @@ function Official() {
     // console.log(searchMaterial)
   }
 
-  // const handleDeletematerial = (key) => {
-  // const newSearchMaterial = [...searchMaterial]
-  // console.log(newSearchMaterial)
-  // newSearchMaterial.filter((searchmaterial, i) => {
-  //   return searchmaterial.id !== key
-  // })
-  // // console.log(searchMaterial)
-  // setSearchMaterial(newSearchMaterial)
-  // // setSearchList()
-  // // console.log(searchMaterial)
-  // }
+  const handleBuy = (productId) => {
+    postProductToCart(productId)
+    alert('成功加入購物車!')
+  }
+
+  const handleCollect = (productId) => {
+    postProductToCollect(productId)
+    alert('成功加入我的最愛!')
+  }
 
   const handleSubmit = (e) => {
     //擋住跳轉
@@ -187,6 +188,35 @@ function Official() {
     // console.log(target)
     // console.log(target)
     setSearchMaterial(target)
+  }
+
+  //memberId登入使用者的id
+  //productId點擊的商品id
+  //productQuantity商品數量固定為1
+
+  const postProductToCart = async (productId) => {
+    let url = `http://localhost:6005/buyProduct`
+    let params = {
+      params: {
+        memberId: 1, //這邊要改成session.id
+        productId: productId,
+        productQuantity: 1,
+      },
+    }
+    const response = await axios.post(url, params)
+    console.log(response)
+  }
+
+  const postProductToCollect = async (productId) => {
+    let url = `http://localhost:6005/collectProduct`
+    let params = {
+      params: {
+        memberId: 2,
+        productId: productId,
+      },
+    }
+    const response = await axios.post(url, params)
+    console.log(response)
   }
 
   //使用第一生命周期載入資料
@@ -395,6 +425,7 @@ function Official() {
               {products.map((product, i) => {
                 return (
                   <Products
+                    id={product.id}
                     key={product.id}
                     img={product.img_id}
                     name_zh={product.name_zh}
@@ -402,6 +433,10 @@ function Official() {
                     top={product.top}
                     middle={product.middle}
                     base={product.base}
+                    handleBuy={handleBuy}
+                    handleCollect={handleCollect}
+                    // setSelected={setSelected}
+                    // changeColor={changeColor}
                   />
                 )
               })}
