@@ -1,1 +1,184 @@
-// @import '../../styles/global.scss';
+@import '../../styles/global.scss';
+
+.best-wrapper {
+  max-width: 1520px;
+  margin: 100px auto 200px;
+  // set up for sidebar filter
+  position: relative;
+}
+
+.best__title {
+  margin-bottom: 60px;
+  font-weight: bold;
+}
+
+.best__sidebar {
+  position: absolute;
+}
+.best__sidebar-title {
+  line-height: 60px;
+  font-weight: 700;
+  & svg {
+    transform: translateY(-3px);
+  }
+}
+
+/****** dropdown menu ******/
+%option {
+  height: 60px;
+  padding: 15px 20px;
+  background: $c-white;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+.best__dropdown-menu {
+  width: 220px;
+  // height: 60px; // value for toggle
+  border: 1px solid $c-primary;
+  border-radius: $br-s;
+  overflow: hidden;
+  &:nth-of-type(2) {
+    margin-top: 30px;
+  }
+}
+.best__dropdown-title {
+  @extend %option;
+  background: $c-primary;
+  color: $c-secondary;
+  cursor: auto;
+  & svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+.best__checkbox-options,
+.best__select-options {
+  @extend %option;
+  &:first-child {
+    border-top: 1px solid $c-primary;
+  }
+  &:hover,
+  &.active {
+    filter: brightness(0.9);
+  }
+}
+.best__checkbox-item [type='checkbox'] {
+  transform: translateY(-1px);
+}
+.best__select-options svg {
+  transform: translateY(5px);
+}
+/****** dropdown menu end ******/
+
+.best__display-wrap {
+  width: 100%;
+  height: 785px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 135px;
+  &:nth-of-type(3) {
+    height: auto;
+    padding-top: 60px;
+    justify-content: start;
+    row-gap: 120px;
+  }
+}
+
+/****** product card start ******/
+.best__prod-card {
+  width: 415px;
+  height: 665px;
+  position: relative;
+  user-select: none;
+  // &.animate {
+  //   animation: fadein 2s ease;
+  // }
+}
+// @keyframes fadein {
+//   from {
+//     opacity: 0;
+//   } to {
+//     opacity: 1;
+//   }
+// }
+.best__prod-sequence {
+  position: absolute;
+  & img {
+    width: 90px;
+    height: 120px;
+  }
+}
+// product's introduction
+.best__prod-display {
+  width: 330px;
+  height: 530px;
+  border-radius: 168px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  overflow: hidden;
+  cursor: pointer;
+  & img {
+    width: 150px;
+    height: 310px;
+    margin-bottom: 5px;
+  }
+  &:hover .best__prod-detail {
+    opacity: 0.9;
+  }
+  &:hover .best__prod-shadow {
+    opacity: 1;
+  }
+}
+.best__prod-detail {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  background: $c-white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  right: 65px;
+  // opacity: 0.85;
+  opacity: 0;
+  transition: 0.7s;
+  cursor: pointer;
+  & span {
+    padding: 5px 0;
+    font-size: 20px;
+    display: inline-block;
+  }
+}
+.best__prod-shadow {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  position: absolute;
+  opacity: 0;
+  transition: 0.3s;
+}
+.best__prod-btn {
+  width: 180px;
+  height: 60px;
+  border: none;
+  border-radius: $br-b;
+  position: absolute;
+  right: 75px;
+  bottom: 0;
+  &:hover {
+    filter: brightness(0.95);
+  }
+}
+/****** product card end ******/
