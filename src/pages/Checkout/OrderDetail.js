@@ -31,7 +31,7 @@ const DeliveryMethod = ({
   const deliveryMethod = ['指定地址', '店鋪自取']
   const [checkedValue, setCheckedValue] = useState(deliveryMethod[0])
 
-  console.log('what is this', storeName[10])
+  // console.log('what is this', storeName[10])
 
   //預設顯示資訊
   const [stores, setStores] = useState([
@@ -93,6 +93,7 @@ const DeliveryMethod = ({
           <div className="checkout__order-box-delivery-edit-wrapper">
             <span className="checkout__order-box-recipient">
               {/* 哭肉狗狗 */}
+              {/* send to db: 收件人姓名 */}
               {recipientName}
             </span>
             <FiEdit
@@ -103,13 +104,16 @@ const DeliveryMethod = ({
           </div>
           <span className="checkout__order-box-recipient-phone">
             {/* 0912345678 */}
+            {/* send to db: 收件人電話 */}
             {recipientPhone}
           </span>
           <span className="checkout__order-box-recipient-address">
             {/* 29850桃園市桃園區中正路100巷100號 */}
+            {/* send to db: 收件人地址 */}
             {recipientAddress}
           </span>
           <span className="checkout__order-box-buyer">
+            {/* send to db: 會員姓名 */}
             訂購人：{memberName}
           </span>
         </div>
@@ -208,20 +212,20 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log('member info', data)
+    // console.log('member info', data)
 
     const memberName = data[0].member_name
-    console.log('db member name', memberName)
+    // console.log('db member name', memberName)
     setMemberName(memberName)
     setRecipientName(memberName)
 
     const memberPhone = data[0].member_phone
-    console.log('db member phone', memberPhone)
+    // console.log('db member phone', memberPhone)
     setRecipientPhone(memberPhone)
     setMemberPhone(memberPhone)
 
     const memberAddress = data[0].member_address
-    console.log('db member address', memberAddress)
+    // console.log('db member address', memberAddress)
     setMemberAddress(memberAddress)
     setRecipientAddress(memberAddress)
   }
@@ -265,12 +269,12 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
     const storeLng = stores.map((item) => {
       return item.course_place_lng
     })
-    console.log('store data', stores)
-    console.log('store name', storeName)
-    console.log('store address', storeAddress)
-    console.log('store phone', storePhone)
-    console.log('store lat', storeLat)
-    console.log('store lng', storeLng)
+    // console.log('store data', stores)
+    // console.log('store name', storeName)
+    // console.log('store address', storeAddress)
+    // console.log('store phone', storePhone)
+    // console.log('store lat', storeLat)
+    // console.log('store lng', storeLng)
     setPlaceLatLng(stores)
     setStoreName(storeName)
     setStoreAddress(storeAddress)
@@ -318,6 +322,7 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
             setStoreLat={setStoreLat}
           />
         </div>
+        {/* send to db: 付款方式（尚未完成） */}
         <div className="checkout__order-box-payment pr-4 pl-4 pb-4">
           <span className="checkout__order-box-payment-title">付款方式</span>
           <div className="checkout__order-box-payment-labels">
@@ -362,25 +367,21 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
             <span className="checkout__order-box-total-text">結帳金額：</span>
             <span className="checkout__order-box-total-price">
               {' '}
+              {/* send to db: 訂單總金額 */}
               NT$ {total}
             </span>
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
-          <button
-            className="checkout__checkoutBtn"
-            type="submit"
-            disabled={total === 0}
-            // onClick={
-            //   value === '信用卡' ? (
-            //     <Link to="/checkout/payment" />
-            //   ) : (
-            //     <Link to="/member" />
-            //   )
-            // }
-          >
-            確認結帳
-          </button>
+          <Link to="/checkout/payment">
+            <button
+              className="checkout__checkoutBtn"
+              type="submit"
+              disabled={total === 0}
+            >
+              確認結帳
+            </button>
+          </Link>
         </div>
       </div>
     </>

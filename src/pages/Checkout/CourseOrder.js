@@ -17,7 +17,7 @@ function CourseOrder({ setCourseTotal }) {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log('course info', data)
+    // console.log('course info', data)
     setCourseItems(data)
   }
 
@@ -49,10 +49,6 @@ function CourseOrder({ setCourseTotal }) {
     <>
       <div className="checkout__course-box-top pl-4 pt-3 pb-2">
         <label className="checkout__course-box-title">
-          {/* <input
-            className="checkout__course-box-checkbox-all"
-            type="checkbox"
-          /> */}
           工作坊課程 <span>({courseItems.length})</span>
         </label>
       </div>
@@ -62,18 +58,14 @@ function CourseOrder({ setCourseTotal }) {
           <Link to="/course">前往頁面報名課程</Link>
         </div>
       )}
+      {/* send to db: 課程商品細節 */}
       {courseItems.map((courseItem, i) => {
         return (
           <React.Fragment key={i}>
             <div className="checkout__course-box-list p-4">
-              {/* <input
-                className="checkout__course-box-checkbox"
-                type="checkbox"
-              /> */}
               <div className="checkout__course-box-img-wrapper">
                 <img
                   className="checkout__course-box-img"
-                  // src={imgPath + '/images/course/perfume.jpeg'}
                   src={courseItem.img_id}
                   alt=""
                 />
@@ -110,6 +102,8 @@ function CourseOrder({ setCourseTotal }) {
                 <span> x {courseItem.quantity}</span>
               </span>
               <span className="checkout__course-box-product-subtotal">
+                {/* NT $1200 */}
+                {/* 課程小計 */}
                 NT$ {courseTotal}
               </span>
               <FiX
