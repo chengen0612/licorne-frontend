@@ -4,12 +4,12 @@
   position: relative;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url(http://localhost:3000/images/home/map.png) center center no-repeat;
+    url(http://localhost:3000/images/home/map.png) center center no-repeat; */
 }
 
 .map__card {
@@ -130,4 +130,9 @@
   position: absolute;
   right: 28px;
   bottom: 51px;
+}
+
+.home__map {
+  height: 100vh;
+  width: 100%;
 }
