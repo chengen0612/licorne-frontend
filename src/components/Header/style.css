@@ -50,7 +50,8 @@
 .header__rwd-icon-1 {
   width: 80px;
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  justify-content: flex-end;
 }
 .header__rwd-icon-2 {
   width: 90px;

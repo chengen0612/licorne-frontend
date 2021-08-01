@@ -51,10 +51,10 @@ function Header(props) {
           <div className="header__icon-border">
             <div className="icon">
               <div className="header__rwd-icon-1">
-                <div role="button">
+                {/* <div role="button">
                   <FiSearch className="header-i" />
-                </div>
-                <Link to="/member">
+                </div> */}
+                <Link to="/login">
                   <FiUser className="header-i" />
                 </Link>
               </div>
@@ -89,7 +89,7 @@ function Header(props) {
               <Link to="/official">官方經典</Link>
             </li>
             <li>
-              <Link to="/bestseller">專屬香氣</Link>
+              <Link to="/quiz">專屬香氣</Link>
             </li>
           </ul>
         </div>

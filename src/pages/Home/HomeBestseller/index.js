@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { FiArrowRight } from 'react-icons/fi'
 
@@ -44,9 +45,9 @@ function HomeBestseller() {
         {/* <!-- 商品區塊 --> */}
         {/* <!-- 前往排行榜區塊 --> */}
         <div className="d-flex justify-content-end">
-          <a className="popular__aArrow" href="">
+          <Link className="popular__aArrow" to="/bestseller">
             前往排行榜 <FiArrowRight />
-          </a>
+          </Link>
         </div>
       </article>
     </>
