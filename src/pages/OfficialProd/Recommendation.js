@@ -12,42 +12,8 @@ function Recommendation() {
         <div className="official__recommendation-group">
           <FiChevronLeft className="feather-m" />
           <OtherProduct />
-          {/* <div className="test d-flex flex-column">
-            <div className="official__img-group-wrapper">
-              <img
-                className="official__img"
-                src={imgPath + '/images/official/cocktail_100ml.png'}
-                alt=""
-              />
-            </div>
-            <div className="d-flex flex-column align-items-center">
-              <span>莫西多</span>
-              <span>Mojito</span>
-              <span>調酒香氛系列</span>
-              <span>NT $2500</span>
-              <span>
-                查看詳情 <FiChevronRight />{' '}
-              </span>
-            </div>
-          </div>
-          <div className="test d-flex flex-column">
-            <div className="official__img-group-wrapper">
-              <img
-                className="official__img"
-                src={imgPath + '/images/official/cocktail_100ml.png'}
-                alt=""
-              />
-            </div>
-            <div className="d-flex flex-column align-items-center">
-              <span>莫西多</span>
-              <span>Mojito</span>
-              <span>調酒香氛系列</span>
-              <span>NT $2500</span>
-              <span>
-                查看詳情 <FiChevronRight />{' '}
-              </span>
-            </div>
-          </div> */}
+          <OtherProduct />
+          <OtherProduct />
           <FiChevronRight className="feather-m" />
         </div>
       </section>

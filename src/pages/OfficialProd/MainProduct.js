@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { imgPath } from '../../config'
 import { FiHeart, FiChevronDown } from 'react-icons/fi'
 import { GiWaterDrop } from 'react-icons/gi'
-import OfficialAccordion from './components/ProductAccordion'
+import ProductAccordion from './components/ProductAccordion'
 
 function MainProduct({ item }) {
   const options = [
@@ -27,16 +27,19 @@ function MainProduct({ item }) {
           <img
             className="official__img"
             src={imgPath + '/images/official/animal_100ml.png'}
-            // src={item[0].img_id}
+            src={item.img_id}
             alt=""
           />
         </div>
         <div className="official__info">
           <h3 className="official__title">
-            森林 Forest
-            {/* {item[0].name_zh} {item[0].name_en} */}
+            {/* 森林 Forest */}
+            {item.name_zh} {item.name_en}
           </h3>
-          <span className="official__subtitle">大自然香氛</span>
+          <span className="official__subtitle">
+            {/* 大自然香氛 */}
+            {item.series_name}
+          </span>
           <div className="official__dropdown-menu">
             <div className="official__dropdown-title">
               請選擇容量 <FiChevronDown />
@@ -63,7 +66,7 @@ function MainProduct({ item }) {
               <FiHeart className="official__fav-btn feather-s" role="button" />
             </div>
           </div>
-          <OfficialAccordion />
+          <ProductAccordion item={item} />
         </div>
       </section>
     </>
