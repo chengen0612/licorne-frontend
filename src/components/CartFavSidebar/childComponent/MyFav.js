@@ -2,22 +2,35 @@ import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import MyFavOfficialItem from './MyFavOfficialItem'
+import MyFavCustomItem from './MyFavCustomItem'
+import MyFavCourseItem from './MyFavCourseItem'
 
-function MyFav({ favOrCart, officialFavorites, setOfficialFavorites }) {
+function MyFav({
+  favOrCart,
+  officialFavorites,
+  setOfficialFavorites,
+  customFavorites,
+  setCustomFavorites,
+  courseFavorites,
+  setCourseFavorites,
+}) {
   return (
     <>
       <div
         className="cj-sidebar__fav"
         style={{ display: favOrCart === 'Fav' ? 'block' : 'none' }}
       >
-        {officialFavorites.length > 0 ? (
+        {officialFavorites.length +
+          customFavorites.length +
+          courseFavorites.length >
+        0 ? (
           ''
         ) : (
           <p className="cj-sidebar__cart__no-item-message">
             收藏清單中沒有任何商品
           </p>
         )}
-
+        {/*  */}
         {officialFavorites.map((officialFavorite, key) => {
           return (
             <div key={officialFavorite.id} className="cj-sidebar__fav__item">
@@ -31,6 +44,33 @@ function MyFav({ favOrCart, officialFavorites, setOfficialFavorites }) {
                 img_id={officialFavorite.img_id}
                 series_name={officialFavorite.series_name}
                 volume={officialFavorite.volume}
+              />
+            </div>
+          )
+        })}
+        {/*  */}
+        {customFavorites.map((customFavorite, key) => {
+          return (
+            <div key={customFavorite.id} className="cj-sidebar__fav__item">
+              <MyFavCustomItem
+                customFavorites={customFavorites}
+                customFavorite={customFavorite}
+                setCustomFavorites={setCustomFavorites}
+              />
+            </div>
+          )
+        })}
+        {/*  */}
+        {courseFavorites.map((courseFavorite, key) => {
+          return (
+            <div
+              key={courseFavorite.course_id}
+              className="cj-sidebar__fav__item"
+            >
+              <MyFavCourseItem
+                courseFavorites={courseFavorites}
+                courseFavorite={courseFavorite}
+                setCourseFavorites={setCourseFavorites}
               />
             </div>
           )

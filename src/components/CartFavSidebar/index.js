@@ -22,6 +22,8 @@ function CartFavSidebar({
   const [totalAmountCourse, setTotalAmountCourse] = useState(0)
   //
   const [officialFavorites, setOfficialFavorites] = useState([])
+  const [customFavorites, setCustomFavorites] = useState([])
+  const [courseFavorites, setCourseFavorites] = useState([])
 
   function calculateTotal() {
     //計算總金額函式
@@ -57,6 +59,36 @@ function CartFavSidebar({
     const responseCollect = await fetch(requestCollect)
     const officialFavorites = await responseCollect.json()
     setOfficialFavorites(officialFavorites)
+  }
+
+  // 收藏客製化 API
+  async function getCustomCollectFromServer() {
+    const urlCollect = 'http://localhost:6005/sidebar/customCollect'
+    const requestCollect = new Request(urlCollect, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCollect = await fetch(requestCollect)
+    const customCollect = await responseCollect.json()
+    setCustomFavorites(customCollect)
+  }
+
+  //收藏課程 API
+  async function getCourseCollectFromServer() {
+    const urlCollect = 'http://localhost:6005/sidebar/courseCollect'
+    const requestCollect = new Request(urlCollect, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCollect = await fetch(requestCollect)
+    const courseCollect = await responseCollect.json()
+    setCourseFavorites(courseCollect)
   }
 
   // 官方產品 API
@@ -110,9 +142,11 @@ function CartFavSidebar({
 
   useEffect(() => {
     getOfficialProductFromServer()
-    getOfficialCollectFromServer()
     getCustomProductFromServer()
     getCourseProductsFromServer()
+    getOfficialCollectFromServer()
+    getCustomCollectFromServer()
+    getCourseCollectFromServer()
   }, [])
 
   //
@@ -200,6 +234,12 @@ function CartFavSidebar({
           favOrCart={favOrCart}
           officialFavorites={officialFavorites}
           setOfficialFavorites={setOfficialFavorites}
+          //
+          customFavorites={customFavorites}
+          setCustomFavorites={setCustomFavorites}
+          //
+          courseFavorites={courseFavorites}
+          setCourseFavorites={setCourseFavorites}
         />
       </div>
     </>
