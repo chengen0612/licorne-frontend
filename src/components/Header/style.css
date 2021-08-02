@@ -62,6 +62,9 @@
 .logo {
   font-size: var(--fs-h1);
   font-family: var(--ff-didot);
+  /* avoid being blocked by header .header__icon-border */
+  position: relative;
+  z-index: 1;
 }
 @media screen and (max-width: 800px) {
   .header__menu__list {
