@@ -31,6 +31,19 @@ function Official() {
   //滑動條改變就把新價格放進狀態
   // heart = {id: number, selected:false}
   // const [selected,setSelected] =useState(false)
+  // 載入指示的spinner動畫用的
+  const [isLoading, setIsLoading] = useState(true)
+
+  const spinner = (
+    <>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border text-success" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    </>
+  )
+
   const handleChange = (event, newValue) => {
     setValue(newValue)
     updateFormData({
@@ -38,6 +51,7 @@ function Official() {
       priceValue: newValue,
     })
   }
+
   //點選原料將之放進searchlist
   const handleChangeBymaterial = (event) => {
     const value = event.target.value
@@ -232,34 +246,50 @@ function Official() {
     })
   }, [searchList])
   useEffect(() => {
+    setIsLoading(true)
     if (clickdelete) {
       postSearchToServer()
     }
     setClickDelete(false)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
   }, [searchList])
   //很怪問老師
   useEffect(() => {
+    setIsLoading(true)
     if (click) {
       getPrdoductsFromServer()
     }
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
   }, [clickPage, click])
   //很怪問老師
   useEffect(() => {
+    setIsLoading(true)
     if (clickSeriesBlock) {
       getSeriesproductFromServer()
       if (click) {
         getSeriesproductFromServer()
       }
     }
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
   }, [clickSeries, clickSeriesBlock, clickPage, click])
 
   useEffect(() => {
+    setIsLoading(true)
     if (clicksearch) {
       postSearchToServer()
       if (click) {
         postSearchToServer()
       }
     }
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
   }, [clicksearch, clickPage, click])
 
   return (
@@ -394,9 +424,12 @@ function Official() {
             </div>
           </form>
         </aside>
-        <main className="product__main__content">
-          <div className="product__total__ptoductitems ">
-            {/* <div className="watercolor-box">
+        {isLoading ? (
+          spinner
+        ) : (
+          <main className="product__main__content">
+            <div className="product__total__ptoductitems ">
+              {/* <div className="watercolor-box">
             <figure className="watercolor1">
               <img className="leaves" src="/img/watercolor/Leaves.png" alt="" />
             </figure>
@@ -404,62 +437,63 @@ function Official() {
               <img className="leaves" src="/img/watercolor/Leaves.png" alt="" />
             </figure>
           </div> */}
-            {/* 組件Labels */}
-            <div className="product__labels__box d-flex">
-              {searchMaterial &&
-                searchMaterial.map((material, i) => {
+              {/* 組件Labels */}
+              <div className="product__labels__box d-flex">
+                {searchMaterial &&
+                  searchMaterial.map((material, i) => {
+                    return (
+                      <Labels
+                        key={material.id}
+                        id={material.id}
+                        name={material.zh_name}
+                        handleDelete={handleDelete}
+                      />
+                    )
+                  })}
+                {/* <Labels /> */}
+              </div>
+              {/* 組件Labels */}
+              {/* 組件Products */}
+              <div className="d-flex products__items__box justify-content-center ">
+                {products.map((product, i) => {
                   return (
-                    <Labels
-                      key={material.id}
-                      id={material.id}
-                      name={material.zh_name}
-                      handleDelete={handleDelete}
+                    <Products
+                      id={product.id}
+                      key={product.id}
+                      img={product.img_id}
+                      name_zh={product.name_zh}
+                      price={product.price}
+                      top={product.top}
+                      middle={product.middle}
+                      base={product.base}
+                      handleBuy={handleBuy}
+                      handleCollect={handleCollect}
+                      // setSelected={setSelected}
+                      // changeColor={changeColor}
                     />
                   )
                 })}
-              {/* <Labels /> */}
+              </div>
+              {/* 組件Products */}
+              {/* 組件Pages */}
+              <div className="d-flex justify-content-center">
+                {/* <Pages /> */}
+                {pages.map((page, i) => {
+                  return (
+                    <Pages
+                      key={i}
+                      pagenumber={page}
+                      setClickPage={setClickPage}
+                      setClick={setClick}
+                      click={click}
+                    />
+                  )
+                })}
+              </div>
+              {/* 組件Pages */}
             </div>
-            {/* 組件Labels */}
-            {/* 組件Products */}
-            <div className="d-flex products__items__box justify-content-center ">
-              {products.map((product, i) => {
-                return (
-                  <Products
-                    id={product.id}
-                    key={product.id}
-                    img={product.img_id}
-                    name_zh={product.name_zh}
-                    price={product.price}
-                    top={product.top}
-                    middle={product.middle}
-                    base={product.base}
-                    handleBuy={handleBuy}
-                    handleCollect={handleCollect}
-                    // setSelected={setSelected}
-                    // changeColor={changeColor}
-                  />
-                )
-              })}
-            </div>
-            {/* 組件Products */}
-            {/* 組件Pages */}
-            <div className="d-flex justify-content-center">
-              {/* <Pages /> */}
-              {pages.map((page, i) => {
-                return (
-                  <Pages
-                    key={i}
-                    pagenumber={page}
-                    setClickPage={setClickPage}
-                    setClick={setClick}
-                    click={click}
-                  />
-                )
-              })}
-            </div>
-            {/* 組件Pages */}
-          </div>
-        </main>
+          </main>
+        )}
       </div>
     </>
   )
