@@ -7,9 +7,7 @@ function CourseClassRoom(props) {
     props.setSelectForm(name)
     clickLatLng()
   }
-  const routeLinkHandler = (e) => {
-    e.preventDefault()
-  }
+
   return (
     <>
       <div className="modal__map__item">
@@ -21,9 +19,7 @@ function CourseClassRoom(props) {
           <br />
           營業時間：週二至週日 10:00 - 20:00
         </span>
-        <a href="/" className="modal__route-link" onClick={routeLinkHandler}>
-          前往路線
-        </a>
+
         <input
           type="button"
           className="modal__store-btn"
