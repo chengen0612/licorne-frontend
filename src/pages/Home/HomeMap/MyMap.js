@@ -11,8 +11,8 @@ const MarkerIcon = () => {
       >
         <img
           src={imgPath + '/images/course/map-markersolid.svg'}
-          alt=""
-          className="modal__marker"
+          alt="marker"
+          className="map__marker"
         />
       </div>
     </>
@@ -22,34 +22,9 @@ const MarkerIcon = () => {
 export default function MyMap(props) {
   const { displayShops, selectedShop } = props
 
-  // json抓出經緯度
-  const [jsonArrayLatLng, setJsonArrayLatLng] = useState([])
-
-  // 經緯度預設值
-  const [userLatLng, setUserLatLng] = useState({ lat: 0, lng: 0 })
-
-  //console.log(JSON.stringify(userLatLng));
-
-  //預設顯示資訊
-  // const [shops, setShops] = useState([
-  //   {
-  //     course_place_name: '高雄民益店',
-  //     course_place_address: '高雄市小港區民益路13號',
-  //     course_place_phone: '07-8012255',
-  //     course_place_lat: '22.5662669501168',
-  //     course_place_lng: '120.34782427919656',
-  //   },
-  // ])
-
-  // 顯示鄰近店鋪
-  // const [show, setShow] = useState(false)
-  // const clickShow = (e) => {
-  //   setShow(true)
-  //   const results = displayShops.filter((item) => {
-  //     return item.course_place_address
-  //   })
-  //   setShops(results)
-  // }
+  // json 抓出經緯度
+  const [latLngList, setLatLngList] = useState([])
+  const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 })
 
   // 自動定位目前位置
   const defaultProps = {
@@ -60,46 +35,46 @@ export default function MyMap(props) {
     zoom: 16,
   }
 
-  // handle user's position
+  // ask user's position
   useEffect(() => {
     if (navigator.geolocation) {
-      // 執行要權限的function
       function error() {
         alert('無法取得你的位置')
       }
-
-      // 使用者允許抓目前位置，回傳經緯度
       function success(position) {
-        setUserLatLng({
+        setMapCenter({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         })
       }
-
-      // 跟使用者拿所在位置的權限
+      // ask position
       navigator.geolocation.getCurrentPosition(success, error)
     } else {
       alert('Sorry, 你的裝置不支援地理位置功能。')
     }
   }, [])
 
-  // handle data get from search result
+  // handle map center and marker
   useEffect(() => {
-    const latlngList = displayShops.map((v, i) => {
+    const latLngList = displayShops.map((v, i) => {
       return {
         course_place_lat: v.course_place_lat,
         course_place_lng: v.course_place_lng,
       }
     })
-    setJsonArrayLatLng(latlngList)
+    setLatLngList(latLngList)
+    // set up map center
+    const lat = +displayShops[0].course_place_lat
+    const lng = +displayShops[0].course_place_lng
+    setMapCenter({ lat: lat, lng: lng })
   }, [displayShops])
 
-  // reset center of the map
+  // reset map center after select shop
   useEffect(() => {
     if (Object.keys(selectedShop).length === 0) return
-    const lat = selectedShop.course_place_lat
-    const lng = selectedShop.course_place_lng
-    setUserLatLng({ lat: lat, lng: lng })
+    const lat = +selectedShop.course_place_lat
+    const lng = +selectedShop.course_place_lng
+    setMapCenter({ lat: lat, lng: lng })
   }, [selectedShop])
 
   // 計算經緯度距離
@@ -128,27 +103,19 @@ export default function MyMap(props) {
         <GoogleMapReact
           bootstrapURLKeys={{ key: '' }}
           defaultCenter={defaultProps.center}
-          center={userLatLng}
+          center={mapCenter}
           defaultZoom={defaultProps.zoom}
         >
-          <MarkerIcon lat={userLatLng.lat} lng={userLatLng.lng} />
-          {Object.keys(selectedShop).length === 0 ? (
-            jsonArrayLatLng.map((value, index) => {
-              return (
-                <MarkerIcon
-                  key={index}
-                  lat={value.course_place_lat}
-                  lng={value.course_place_lng}
-                />
-              )
-            })
-          ) : (
-            <MarkerIcon
-              lat={selectedShop.course_place_lat}
-              lng={selectedShop.course_place_lng}
-            />
-          )}
-          {}
+          <MarkerIcon lat={mapCenter.lat} lng={mapCenter.lng} />
+          {latLngList.map((value, index) => {
+            return (
+              <MarkerIcon
+                key={index}
+                lat={value.course_place_lat}
+                lng={value.course_place_lng}
+              />
+            )
+          })}
         </GoogleMapReact>
       </div>
     </>

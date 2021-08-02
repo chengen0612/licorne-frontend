@@ -137,8 +137,7 @@
   width: 100%;
 }
 
-.modal__marker {
-  width: 30px;
-  height: 30px;
-  stroke: var(--c-primary);
+.map__marker {
+  width: 50px;
+  height: 50px;
 }

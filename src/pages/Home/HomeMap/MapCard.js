@@ -43,9 +43,6 @@ export default function MapCard(props) {
             return (
               <MapListItem
                 key={i}
-                // name={shop.course_place_name}
-                // address={shop.course_place_address}
-                // phone={shop.course_place_phone}
                 data={shop}
                 setSelectedShop={setSelectedShop}
               />
