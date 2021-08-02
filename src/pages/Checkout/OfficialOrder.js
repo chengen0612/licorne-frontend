@@ -30,10 +30,6 @@ function OfficialOrder({ setOfficialTotal }) {
     setQuantities(quantities)
   }
 
-  useEffect(() => {
-    getOfficialInfoFromServer()
-  }, [])
-
   const subtotals = officialItems.map((item, i) => {
     return +item.price * quantities[i]
   })
@@ -43,12 +39,30 @@ function OfficialOrder({ setOfficialTotal }) {
   }, 0)
   setOfficialTotal(officialTotal)
 
+  useEffect(() => {
+    getOfficialInfoFromServer()
+  }, [])
+
+  useEffect(() => {
+    let newQuantities = quantities
+    setQuantities(newQuantities)
+  }, [officialItems, quantities])
+
   const handleDelete = (id) => {
     const newOfficialItems = officialItems.filter((v, i) => {
       return v.id !== id
     })
-    console.log('current officialItems', newOfficialItems)
+    let newQuantities = quantities
+    officialItems.forEach((v, i) => {
+      console.log('this is v', v)
+      if (v.id === id) {
+        newQuantities.splice(i, 1)
+        return
+      }
+    })
+    console.log('current quantity', newQuantities)
     setOfficialItems(newOfficialItems)
+    setQuantities(newQuantities)
   }
 
   return (
@@ -103,12 +117,13 @@ function OfficialOrder({ setOfficialTotal }) {
                 className="checkout__box-quantity"
                 type="number"
                 name="quantity"
+                min="1"
                 value={quantities[i]}
                 onInput={(e) => {
                   const newQuantities = quantities.map((quantity, index) => {
                     if (i === index) {
                       if (+e.target.value < 1) {
-                        return ''
+                        return 1
                       } else if (
                         +e.target.value.length > 2 ||
                         +e.target.value > 20
@@ -124,9 +139,20 @@ function OfficialOrder({ setOfficialTotal }) {
                   console.log('set official quantities', newQuantities)
                   console.log('current official quantities', quantities)
                 }}
-                onKeyDown={(e) =>
-                  symbolsArr.includes(e.key) && e.preventDefault()
-                }
+                // onInput={(e) => {
+                //   const newQuantities = quantities.map((quantity, index) => {
+                //     if (i === index) {
+                //       return +e.target.value
+                //     }
+                //     return quantity
+                //   })
+                //   // quantities[i] = +e.target.value
+                //   setQuantities(newQuantities)
+                //   console.log('current officialQuantities', quantities)
+                // }}
+                // onKeyDown={(e) =>
+                //   symbolsArr.includes(e.key) && e.preventDefault()
+                // }
               />
               <span className="checkout__official-box-product-subtotal">
                 {/* NT $6000 */}

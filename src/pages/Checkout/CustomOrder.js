@@ -46,12 +46,26 @@ function CustomOrder({ setCustomTotal }) {
 
   const volume = '100ML'
 
+  useEffect(() => {
+    let newQuantities = quantities
+    setQuantities(newQuantities)
+  }, [customItems, quantities])
+
   const handleDelete = (id) => {
     const newCustomItems = customItems.filter((v, i) => {
       return v.id !== id
     })
-    console.log('current customItems', newCustomItems)
+    let newQuantities = quantities
+    customItems.forEach((v, i) => {
+      console.log('this is v', v)
+      if (v.id === id) {
+        newQuantities.splice(i, 1)
+        return
+      }
+    })
+    console.log('current quantity', newQuantities)
     setCustomItems(newCustomItems)
+    setQuantities(newQuantities)
   }
 
   return (
