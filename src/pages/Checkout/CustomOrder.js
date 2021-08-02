@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
-function CustomOrder() {
+function CustomOrder({ setCustomTotal }) {
   const [customItems, setCustomItems] = useState([])
   const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
@@ -20,14 +20,14 @@ function CustomOrder() {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log('customProduct', data)
+    // console.log('custom info', data)
     setCustomItems(data)
 
     const quantities = data.map((item) => {
       return item.quantity
     })
 
-    console.log('customQuantities', quantities)
+    console.log('custom quantities', quantities)
     setQuantities(quantities)
   }
 
@@ -38,6 +38,13 @@ function CustomOrder() {
   const subtotals = customItems.map((item, i) => {
     return +item.price * quantities[i]
   })
+
+  const customTotal = subtotals.reduce(function (a, b) {
+    return a + b
+  }, 0)
+  setCustomTotal(customTotal)
+
+  const volume = '100ML'
 
   const handleDelete = (id) => {
     const newCustomItems = customItems.filter((v, i) => {
@@ -51,40 +58,30 @@ function CustomOrder() {
     <>
       <div className="checkout__custom-box-top pl-4 pt-3 pb-2">
         <label className="checkout__custom-box-title">
-          <input
-            className="checkout__custom-box-checkbox-all"
-            type="checkbox"
-          />
           客製商品 <span>({customItems.length})</span>
         </label>
       </div>
       {customItems.length === 0 && (
-        <p className="checkout__box-none d-flex justify-content-center pt-4 pb-4">
-          購物籃中沒有任何商品
-        </p>
+        <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
+          <span>購物籃中沒有任何商品</span>
+          <Link to="/custom">前往頁面製作商品</Link>
+        </div>
       )}
+      {/* send to db: 客製化商品細節 */}
       {customItems.map((customItem, i) => {
         return (
           <React.Fragment key={customItem.id}>
             <div className="checkout__custom-box-list p-4">
-              <input
-                className="checkout__custom-box-checkbox"
-                type="checkbox"
-              />
+              {/* TODO: add corresponding link to product */}
               <Link to="/" className="checkout__custom-box-img-wrapper">
                 <img
                   className="checkout__custom-box-img"
-                  // src={imgPath + '/images/custom/fragrance_flower.png'}
-                  key={customItem.id}
                   src={customItem.bottle_img}
                   alt=""
                 />
               </Link>
               <Link to="/" className="checkout__custom-box-details w-25 pl-4">
-                <span
-                  className="checkout__custom-box-name-zh"
-                  key={customItem.id}
-                >
+                <span className="checkout__custom-box-name-zh">
                   {/* MTLALM */}
                   {customItem.cust_id}
                 </span>
@@ -97,31 +94,37 @@ function CustomOrder() {
                   {customItem.fragrance_name}
                 </span>
                 <span className="checkout__custom-box-product-volume">
-                  100ML
+                  {/* 100ML */}
+                  {volume}
                 </span>
               </Link>
-              <span
-                className="checkout__custom-box-product-price"
-                key={customItem.id}
-              >
+              <span className="checkout__custom-box-product-price">
                 {/* NT $2000 */}
                 NT$ {customItem.price}
               </span>
               <input
-                className="box-quantity"
+                className="checkout__box-quantity"
                 type="number"
-                min="1"
-                defaultValue={quantities[i]}
+                value={quantities[i]}
                 onInput={(e) => {
                   const newQuantities = quantities.map((quantity, index) => {
                     if (i === index) {
-                      return +e.target.value
+                      if (+e.target.value < 1) {
+                        return ''
+                      } else if (
+                        +e.target.value.length > 2 ||
+                        +e.target.value > 20
+                      ) {
+                        return 20
+                      } else {
+                        return +e.target.value
+                      }
                     }
                     return quantity
                   })
-                  // quantities[i] = +e.target.value
                   setQuantities(newQuantities)
-                  console.log('current customQuantities', quantities)
+                  console.log('set custom quantities', newQuantities)
+                  console.log('current custom quantities', quantities)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
@@ -129,6 +132,7 @@ function CustomOrder() {
               />
               <span className="checkout__custom-box-product-subtotal">
                 {/* NT $6000 */}
+                {/* 客製化小計 */}
                 NT$ {subtotals[i]}
               </span>
               <FiX

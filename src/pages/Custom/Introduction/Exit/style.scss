@@ -13,7 +13,8 @@
 
 .c-intro-exit__greet {
   position: relative;
-  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  // text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  text-shadow: $text-shadow;
 }
 
 .c-intro-exit__ahead-btn {

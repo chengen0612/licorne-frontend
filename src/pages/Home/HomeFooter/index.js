@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './style.css'
 import imgURL from './imgs/LICORNE_logo.svg'
 
@@ -12,27 +13,27 @@ function Footer() {
         <div className="footer__listBox">
           <ul className="footer__topList">
             <li>
-              <a href="/#">關於我們</a>
+              <Link to="/">關於我們</Link>
             </li>
             <li>
-              <a href="/#">客製香水</a>
+              <Link to="/custom/entrance">客製香水</Link>
             </li>
             <li>
-              <a href="/#">課程體驗</a>
+              <Link to="/course">課程體驗</Link>
             </li>
             <li>
-              <a href="/#">人氣熱銷</a>
+              <Link to="/bestseller">人氣熱銷</Link>
             </li>
           </ul>
           <ul className="footer__bottomList">
             <li>
-              <a href="/#">官方經典</a>
+              <Link to="/official">官方經典</Link>
             </li>
             <li>
-              <a href="/#">專屬香氣</a>
+              <Link to="/">專屬香氣</Link>
             </li>
             <li>
-              <a href="/#">實體店舖</a>
+              <Link to="/">實體店舖</Link>
             </li>
           </ul>
         </div>

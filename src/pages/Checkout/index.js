@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './style.scss'
 // import { imgPath } from '../../config'
-import { FiX } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
 import OfficialOrder from './OfficialOrder'
 import CustomOrder from './CustomOrder'
 import CourseOrder from './CourseOrder'
 import OrderDetail from './OrderDetail'
 
 function Checkout() {
+  const [officialTotal, setOfficialTotal] = useState(0)
+  const [customTotal, setCustomTotal] = useState(0)
+  const [courseTotal, setCourseTotal] = useState(0)
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -16,6 +18,7 @@ function Checkout() {
 
     console.log(data.get(''))
   }
+
   return (
     <>
       <div className="pageWrapper">
@@ -27,17 +30,21 @@ function Checkout() {
             <div className="checkout__boxes d-flex justify-content-between">
               <div className="checkout__product-boxes">
                 <div className="checkout__official-box">
-                  <OfficialOrder />
+                  <OfficialOrder setOfficialTotal={setOfficialTotal} />
                 </div>
                 <div className="checkout__custom-box">
-                  <CustomOrder />
+                  <CustomOrder setCustomTotal={setCustomTotal} />
                 </div>
                 <div className="checkout__course-box">
-                  <CourseOrder />
+                  <CourseOrder setCourseTotal={setCourseTotal} />
                 </div>
               </div>
               <div className="checkout__order-box">
-                <OrderDetail />
+                <OrderDetail
+                  officialTotal={officialTotal}
+                  customTotal={customTotal}
+                  courseTotal={courseTotal}
+                />
               </div>
             </div>
           </form>

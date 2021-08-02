@@ -56,6 +56,30 @@ function CourseList() {
   }, [])
 
   //--------------------------
+  const courseCollect = {
+    title: title,
+    info: titleInfo,
+    img: img,
+  }
+
+  //-------------------------將收藏送至資料庫
+  async function sentCollect() {
+    const url = `http://localhost:6005/getCollect`
+
+    const request = new Request(url, {
+      method: 'POST',
+      body: JSON.stringify(courseCollect),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+      }),
+    })
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log('收藏成功!', data)
+  }
+  //-------------------------------------------------
+
   return (
     <>
       <div className="content">
@@ -67,7 +91,7 @@ function CourseList() {
           <h1 className="title">{title}</h1>
           <p className="title_content">{titleInfo}</p>
 
-          <CourseForm placeLatLng={placeLatLng} />
+          <CourseForm placeLatLng={placeLatLng} sentCollect={sentCollect} />
         </aside>
       </div>
       <section className="course_info">

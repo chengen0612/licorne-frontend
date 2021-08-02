@@ -6,9 +6,6 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   /* margin: 26px 20px 26px auto; */
 }
-#coursebtn {
-  border-bottom: 3px solid #223843;
-}
 .memberFavorites__favoritesBtn {
   width: 200px;
   margin: 0 auto;
@@ -35,14 +32,16 @@
   /* outline: 1px solid red; */
 }
 .memberFavorites__courseImage {
-  width: 300px;
-  height: 200px;
+  overflow: hidden;
+}
+.memberFavorites__image {
+  max-width: 300px;
   /* outline: 1px solid blue; */
 }
 .memberFavorites__couresText {
   width: 600px;
   /* outline: 1px solid green; */
-  margin: 20px 0 auto 20px;
+  margin: 20px 0 auto 40px;
 }
 .memberFavorites__line {
   margin: 20px 0 20px 0;
@@ -62,6 +61,7 @@
   height: 50px;
   /* outline: 1px solid red; */
   margin: 130px 20px auto auto;
+  display: flex;
 }
 .memberFavorites__signUp {
   width: 100px;
@@ -78,8 +78,7 @@
   font-size: 15px;
   font-weight: lighter;
   text-decoration: underline;
-  border: 1px solid transparent;
-  background-color: #ffffff;
+  margin: auto 0;
 }
 .memberFavorites__signUp:disabled {
   background-color: #efefef;
