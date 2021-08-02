@@ -1,0 +1,23 @@
+.App-payment {
+  padding: 30px;
+}
+
+.form__credit-card {
+  margin: 30px auto 0;
+  max-width: 400px;
+}
+
+.form-actions {
+  margin-top: 20px;
+}
+
+
+.App-highlight {
+  font-family: serif;
+  margin: 15px auto 0;
+  max-width: 300px;
+}
+
+.App-highlight > div {
+  padding-left: 40px;
+}

@@ -15,6 +15,7 @@ const CopyWritingContents = [
 ]
 const textClassName = ['TextAll', 'TextAllGary', 'TextAll']
 const LinkClassName = ['around', 'center', 'around']
+const linkPath = ['/course/list', '/course/diffuser', '/course/exhibition']
 
 function CourseHome() {
   const [bgClassName, setBgClassName] = useState(ImgClassNames[0])
@@ -45,6 +46,7 @@ function CourseHome() {
                   CopyWritingContent={CopyWritingContents[i]}
                   title={titles[i]}
                   linkColor={linkColor}
+                  linkPath={linkPath[i]}
                 />
               )
             })}

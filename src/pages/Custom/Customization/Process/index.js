@@ -39,7 +39,7 @@ function Process(props) {
 
     const reponse = await fetch(url, request)
     const data = await reponse.json()
-    // console.log(data)
+    console.log(data)
 
     setItemsData(data.ingredientData)
     setSeriesData(data.fragranceData)
@@ -115,10 +115,14 @@ function Process(props) {
       serieDescription: serie.description_zh,
       productCode: productCode,
       productImage: serie.bottle_img,
+      color: serie.color,
     }
 
     setProductDetail(result)
   }
+
+  // from here
+  const getBottleOnLoad = (e) => {}
 
   return (
     <>
@@ -140,7 +144,7 @@ function Process(props) {
             </>
           )}
         </article>
-        <div className="custom__bottle"></div>
+        <div className="custom__bottle" onLoad={getBottleOnLoad}></div>
         <aside className="custom__sidebar-wrapper">
           {displaySeries && (
             <SidebarItems
