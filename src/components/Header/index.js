@@ -7,7 +7,7 @@ import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
 
 function Header(props) {
-  console.log('header', props)
+  // console.log('header', props)
   const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
   // CJ：這個 state 是設定購物車側邊欄開關狀態
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false)

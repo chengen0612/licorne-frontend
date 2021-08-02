@@ -10,23 +10,12 @@ function MyFavCourseItem({
 }) {
   return (
     <>
-      <div className="cj-sidebar__cart__item__course-img">
+      <div className="cj-sidebar__fav__item__course-img">
         <img src={courseFavorite.course_img} alt="" />
       </div>
-      <div className="cj-sidebar__cart__item__course-desc">
+      <div className="cj-sidebar__fav__item__course-desc">
         <p>{courseFavorite.course_name_ch}</p>
-        <p>
-          {courseFavorite.package}
-          <span> </span>
-          {courseFavorite.people}
-        </p>
-        <p>
-          {courseFavorite.date}
-          <br />
-          {courseFavorite.period}
-        </p>
-        <p>{courseFavorite.place}</p>
-        <p>NT$ {courseFavorite.price}</p>
+        <p>{courseFavorite.course_description_ch}</p>
         <p
           role="button"
           onClick={() => {

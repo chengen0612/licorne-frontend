@@ -11,7 +11,7 @@ function MyCartCourseItem({
   return (
     <>
       <div className="cj-sidebar__cart__item__course-img">
-        <img src={courseProduct.course_img_id} alt="" />
+        <img src={courseProduct.course_img} alt="" />
         <div>
           <FiHeart className="feather-s" role="button" />
         </div>
