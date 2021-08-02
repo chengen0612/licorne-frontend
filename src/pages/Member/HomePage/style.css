@@ -334,7 +334,6 @@
   font-weight: var(--fw-light);
   text-decoration: underline;
 }
-
 .cj-sidebar__cart__item__custom-btn {
   /* border: 1px solid orange; */
   width: 100px;
@@ -441,7 +440,8 @@
 .cj-sidebar__fav__item__desc > p:nth-child(4) {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-light);
+  text-decoration: underline;
   margin: 10px 0 10px 0;
 }
 

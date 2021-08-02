@@ -60,6 +60,8 @@ const useForm = (validate) => {
           history.push('/')
         }, 500)
         localStorage.setItem('jwt', data.token)
+        localStorage.setItem('code:', data.code)
+        localStorage.setItem('userId:', data.userId)
       } else alert('登入失敗')
     }
     loginToSever()
