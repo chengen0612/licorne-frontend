@@ -218,6 +218,7 @@ function CartFavSidebar({
           officialProducts={officialProducts}
           setOfficialProducts={setOfficialProducts}
           totalAmountOfficial={totalAmountOfficial}
+          officialFavorites={officialFavorites}
           //
           customProducts={customProducts}
           setCustomProducts={setCustomProducts}
@@ -234,6 +235,7 @@ function CartFavSidebar({
           favOrCart={favOrCart}
           officialFavorites={officialFavorites}
           setOfficialFavorites={setOfficialFavorites}
+          officialProducts={officialProducts}
           //
           customFavorites={customFavorites}
           setCustomFavorites={setCustomFavorites}

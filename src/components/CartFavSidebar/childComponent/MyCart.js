@@ -11,6 +11,7 @@ function MyCart({
   officialProducts,
   setOfficialProducts,
   totalAmountOfficial,
+  officialFavorites,
   //
   customProducts,
   setCustomProducts,
@@ -47,6 +48,7 @@ function MyCart({
                 volume={officialProduct.volume}
                 quantity={officialProduct.quantity}
                 series_name={officialProduct.series_name}
+                officialFavorites={officialFavorites}
               />
             </div>
           )

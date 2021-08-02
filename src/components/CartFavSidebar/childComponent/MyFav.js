@@ -9,6 +9,7 @@ function MyFav({
   favOrCart,
   officialFavorites,
   setOfficialFavorites,
+  officialProducts,
   customFavorites,
   setCustomFavorites,
   courseFavorites,
@@ -44,6 +45,7 @@ function MyFav({
                 img_id={officialFavorite.img_id}
                 series_name={officialFavorite.series_name}
                 volume={officialFavorite.volume}
+                officialProducts={officialProducts}
               />
             </div>
           )

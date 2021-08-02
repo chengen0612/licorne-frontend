@@ -20,9 +20,7 @@ function MyFavCustomItem({
           <br />
           {customFavorite.fragrance_name}
         </p>
-        <div>
-          <p>瓶裝 100ML</p>
-        </div>
+        <p>瓶裝 100ML</p>
         <p>NT$ {customFavorite.price}</p>
         <p
           onClick={() => {
