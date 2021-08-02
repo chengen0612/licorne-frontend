@@ -103,8 +103,6 @@ function Profile(props) {
   // 一開始就會開始載入資料
   useEffect(() => {
     getUserFromServer()
-  }, [])
-  useEffect(() => {
     setTimeout(() => {
       setDataLoading(false)
     }, 500)

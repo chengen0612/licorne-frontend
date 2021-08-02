@@ -57,6 +57,7 @@ function LoginAndRegister() {
   // 註冊功能
   async function addUserToSever() {
     if (values.phoneReg === '') return
+    if (values.phoneReg.length < 10) return
     if (values.emailReg === '') return
     if (values.passwordReg === '') return
     if (values.passwordReg.length < 6) return
@@ -119,7 +120,7 @@ function LoginAndRegister() {
               </div>
               <input
                 className="loginAndRegister__leftEmail leftInput"
-                type="email"
+                type="text"
                 name="emailReg"
                 placeholder="請輸入您的電子信箱"
                 value={values.emailReg}

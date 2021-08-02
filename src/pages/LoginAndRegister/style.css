@@ -1,4 +1,4 @@
-/* @import '../../styles/global.css'; */
+@import '../../styles/global.css';
 .loginAndRegister__card {
   display: flex;
   width: 1400px;
@@ -132,4 +132,10 @@
 .loginAndRegister__loadingBox {
   width: 1920px;
   height: 740px;
+}
+.loginAndRegister__rightButton:hover,
+.loginAndRegister__leftButton:hover {
+  /* background: #2e6e90; */
+  filter: brightness(1.3);
+  transition: 0.3s;
 }

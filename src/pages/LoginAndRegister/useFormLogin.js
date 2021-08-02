@@ -26,7 +26,9 @@ const useForm = (validate) => {
     async function loginToSever() {
       // 開啟載入指示
       if (loginValues.loginPhone === '') return
+      if (loginValues.loginPhone.length < 10) return
       if (loginValues.loginPassword === '') return
+      if (loginValues.loginPassword.length < 6) return
       const user = {
         loginPhone: loginValues.loginPhone,
         loginPassword: loginValues.loginPassword,

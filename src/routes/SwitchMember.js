@@ -23,20 +23,20 @@ function SwitchMember() {
         {/* <Route path="/member/data">
           <Header />
           <MemberData />
-        </Route>
-        <Route path="/member/favorites/course">
+        </Route> */}
+        {/* <Route path="/member/favorites/course">
           <Header />
           <MemberFavoritesCourse />
         </Route>
         <Route path="/member/favorites/perfume">
           <Header />
           <MemberFavoritesPerfume />
-        </Route>
-        <Route path="/member/order/perfume">
+        </Route> */}
+        {/* <Route path="/member/order/perfume">
           <Header />
           <MemberOrderPerfume />
-        </Route>
-        <Route path="/member/order/course">
+        </Route> */}
+        {/* <Route path="/member/order/course">
           <Header />
           <MemberOrderCourse />
         </Route> */}
