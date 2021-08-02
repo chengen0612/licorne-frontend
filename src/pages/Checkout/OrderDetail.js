@@ -29,6 +29,7 @@ const DeliveryMethod = ({
   setStoreAddress,
 }) => {
   const deliveryMethod = ['指定地址', '店鋪自取']
+  const [checked, setChecked] = useState(true)
   const [checkedValue, setCheckedValue] = useState(deliveryMethod[0])
 
   // console.log('what is this', storeName[10])
@@ -121,50 +122,52 @@ const DeliveryMethod = ({
       {/* 店鋪自取 */}
       {checkedValue === deliveryMethod[1] && (
         <>
-          {/* {stores.map((store, index) => {
+          {stores.map((store, index) => {
             return (
-              <> */}
-          <div
-            className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
-            // key={index}
-          >
-            <div className="checkout__order-box-delivery-edit-wrapper">
-              <span className="checkout__order-box-recipient">
-                {/* 高雄民益店 */}
-                {/* {store.course_place_name} */}
-                {data.course_place_name}
-              </span>
-              <FiEdit
-                className="feather-s"
-                role="button"
-                onClick={() => {
-                  showModalHandler(deliveryMethod[1])
-                }}
-              />
-            </div>
-            <span className="checkout__order-box-recipient-phone">
-              {/* 07-8012255 */}
-              {/* {store.course_place_phone} */}
-              {data.course_place_phone}
-            </span>
-            <span className="checkout__order-box-recipient-address">
-              {/* 高雄市小港區民益路13號 */}
-              {/* {store.course_place_address} */}
-              {data.course_place_address}
-            </span>
-            <span className="checkout__order-box-buyer">
-              訂購人：{memberName}
-            </span>
-          </div>
-          {/* </>
+              <>
+                <div
+                  className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
+                  key={index}
+                >
+                  <div className="checkout__order-box-delivery-edit-wrapper">
+                    <span className="checkout__order-box-recipient">
+                      {/* 高雄民益店 */}
+                      {store.course_place_name}
+                      {/* {data.course_place_name} */}
+                    </span>
+                    <FiEdit
+                      className="feather-s"
+                      role="button"
+                      onClick={() => {
+                        showModalHandler(deliveryMethod[1])
+                      }}
+                    />
+                  </div>
+                  <span className="checkout__order-box-recipient-phone">
+                    {/* 07-8012255 */}
+                    {store.course_place_phone}
+                    {/* {data.course_place_phone} */}
+                  </span>
+                  <span className="checkout__order-box-recipient-address">
+                    {/* 高雄市小港區民益路13號 */}
+                    {store.course_place_address}
+                    {/* {data.course_place_address} */}
+                  </span>
+                  <span className="checkout__order-box-buyer">
+                    訂購人：{memberName}
+                  </span>
+                </div>
+              </>
             )
-          })} */}
+          })}
         </>
       )}
       {showModal.length > 0 && <Backdrop onClick={closeModalHandler} />}
       {showModal === deliveryMethod[0] && (
         <AddressEditModal
           onClose={closeModalHandler}
+          checked={checked}
+          setChecked={setChecked}
           memberName={memberName}
           memberPhone={memberPhone}
           memberAddress={memberAddress}

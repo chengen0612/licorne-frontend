@@ -3,6 +3,8 @@ import { FiX } from 'react-icons/fi'
 
 function AddressEditModal(props) {
   const {
+    checked,
+    setChecked,
     memberName,
     memberPhone,
     memberAddress,
@@ -60,7 +62,7 @@ function AddressEditModal(props) {
     // ... submit to API or something
   }
 
-  const [checked, setChecked] = useState(true)
+  // const [checked, setChecked] = useState(true)
 
   function closeHandler() {
     props.onClose()
@@ -77,14 +79,6 @@ function AddressEditModal(props) {
     data.recipientName = memberName
     data.recipientPhone = memberPhone
     data.recipientAddress = memberAddress
-  }
-
-  if (
-    memberName === recipientName &&
-    memberPhone === recipientPhone &&
-    memberAddress === recipientAddress
-  ) {
-    setChecked(true)
   }
 
   return (
@@ -169,7 +163,6 @@ function AddressEditModal(props) {
             required
           />
         </label>
-        {/* FIXME: checkbox should not be checked when member info don't match with recipient info */}
         <label className="checkbox-label" htmlFor="">
           <input
             type="checkbox"
