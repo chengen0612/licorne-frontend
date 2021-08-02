@@ -4,6 +4,7 @@ import React from 'react'
 import '../../../../styles/global.css'
 import '../style.css'
 import { FiHeart, FiMinus, FiPlus } from 'react-icons/fi'
+import styled from 'styled-components'
 
 function MyCartOffcialItem({
   id,
