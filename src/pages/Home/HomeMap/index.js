@@ -14,6 +14,7 @@ function HomeMap() {
       // course_place_lng: '120.34782427919656',
     },
   ])
+  const [selectedShop, setSelectedShop] = useState({})
 
   useEffect(() => {
     getCourseFromServer()
@@ -30,18 +31,19 @@ function HomeMap() {
     })
     const response = await fetch(request)
     const data = await response.json()
-    // console.log(data.place)
+    console.log(data.place)
     setShopList(data.place)
   }
 
   return (
     <>
       <div className="map">
-        <MyMap displayShops={displayShops} />
+        <MyMap displayShops={displayShops} selectedShop={selectedShop} />
         <MapCard
           shopList={shopList}
           displayShops={displayShops}
           setDisplayShops={setDisplayShops}
+          setSelectedShop={setSelectedShop}
         />
       </div>
     </>

@@ -20,12 +20,7 @@ const MarkerIcon = () => {
 }
 
 export default function MyMap(props) {
-  //設定選擇店鋪
-  // const { setSelectForm, displayShops } = props
-  const { displayShops } = props
-  console.log('displayShops', displayShops)
-
-  //const [select, setSelect] = useState('');
+  const { displayShops, selectedShop } = props
 
   // json抓出經緯度
   const [jsonArrayLatLng, setJsonArrayLatLng] = useState([])
@@ -45,18 +40,6 @@ export default function MyMap(props) {
   //     course_place_lng: '120.34782427919656',
   //   },
   // ])
-
-  //搜尋功能
-  // const queryString = useRef(null)
-
-  // const queryHandler = () => {
-  //   const keyword = queryString.current.value
-  //   if (keyword.length === 0) return
-  //   const results = displayShops.filter((item) => {
-  //     return item.course_place_address.includes(keyword)
-  //   })
-  //   setShops(results)
-  // }
 
   // 顯示鄰近店鋪
   // const [show, setShow] = useState(false)
@@ -100,7 +83,7 @@ export default function MyMap(props) {
     }
   }, [])
 
-  // store data get from search result
+  // handle data get from search result
   useEffect(() => {
     const latlngList = displayShops.map((v, i) => {
       return {
@@ -110,6 +93,14 @@ export default function MyMap(props) {
     })
     setJsonArrayLatLng(latlngList)
   }, [displayShops])
+
+  // reset center of the map
+  useEffect(() => {
+    if (Object.keys(selectedShop).length === 0) return
+    const lat = selectedShop.course_place_lat
+    const lng = selectedShop.course_place_lng
+    setUserLatLng({ lat: lat, lng: lng })
+  }, [selectedShop])
 
   // 計算經緯度距離
   // function calcCrow(lat1, lon1, lat2, lon2) {
@@ -141,15 +132,23 @@ export default function MyMap(props) {
           defaultZoom={defaultProps.zoom}
         >
           <MarkerIcon lat={userLatLng.lat} lng={userLatLng.lng} />
-          {jsonArrayLatLng.map((value, index) => {
-            return (
-              <MarkerIcon
-                key={index}
-                lat={value.course_place_lat}
-                lng={value.course_place_lng}
-              />
-            )
-          })}
+          {Object.keys(selectedShop).length === 0 ? (
+            jsonArrayLatLng.map((value, index) => {
+              return (
+                <MarkerIcon
+                  key={index}
+                  lat={value.course_place_lat}
+                  lng={value.course_place_lng}
+                />
+              )
+            })
+          ) : (
+            <MarkerIcon
+              lat={selectedShop.course_place_lat}
+              lng={selectedShop.course_place_lng}
+            />
+          )}
+          {}
         </GoogleMapReact>
       </div>
     </>

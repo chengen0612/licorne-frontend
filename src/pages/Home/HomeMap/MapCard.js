@@ -3,7 +3,7 @@ import { FiMapPin, FiSearch } from 'react-icons/fi'
 import MapListItem from './MapListItem'
 
 export default function MapCard(props) {
-  const { shopList, displayShops, setDisplayShops } = props
+  const { shopList, displayShops, setDisplayShops, setSelectedShop } = props
 
   const queryString = useRef(null)
 
@@ -14,6 +14,7 @@ export default function MapCard(props) {
       return item.course_place_address.includes(keyword)
     })
     setDisplayShops(results)
+    setSelectedShop({})
   }
 
   return (
@@ -42,9 +43,11 @@ export default function MapCard(props) {
             return (
               <MapListItem
                 key={i}
-                name={shop.course_place_name}
-                address={shop.course_place_address}
-                phone={shop.course_place_phone}
+                // name={shop.course_place_name}
+                // address={shop.course_place_address}
+                // phone={shop.course_place_phone}
+                data={shop}
+                setSelectedShop={setSelectedShop}
               />
             )
           })}
