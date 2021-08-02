@@ -343,16 +343,11 @@
   font-family: 'Noto Sans', sans-serif;
   font-size: 14px;
   font-weight: var(--fw-light);
+  width: 130px;
+  margin: 5px 0 !important;
 }
 
-.cj-sidebar__fav__item__course-desc > p:nth-child(4) {
-  font-family: 'Noto Sans', sans-serif;
-  font-size: var(--fs-span);
-  font-weight: var(--fw-medium);
-  margin: 10px 0 10px 0;
-}
-
-.cj-sidebar__fav__item__course-desc > p:nth-child(5) {
+.cj-sidebar__fav__item__course-desc > p:nth-child(3) {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-span);
   font-weight: var(--fw-light);
