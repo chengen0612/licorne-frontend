@@ -123,7 +123,7 @@ function OfficialOrder({ setOfficialTotal }) {
                   const newQuantities = quantities.map((quantity, index) => {
                     if (i === index) {
                       if (+e.target.value < 1) {
-                        return 1
+                        return ''
                       } else if (
                         +e.target.value.length > 2 ||
                         +e.target.value > 20
