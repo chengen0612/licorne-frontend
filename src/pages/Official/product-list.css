@@ -521,3 +521,10 @@ input[type='range']::-webkit-slider-thumb {
   color: #223843;
   text-decoration: none;
 }
+.heart {
+  font-size: 27px;
+  color: rgb(0, 0, 0);
+}
+.heart.active {
+  color: red;
+}

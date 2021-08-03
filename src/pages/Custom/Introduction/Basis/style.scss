@@ -4,6 +4,7 @@
 .c-intro-basis-intro {
   width: 400px;
   height: 510px;
+  text-shadow: $text-shadow;
   position: absolute;
   top: 108px;
   left: 128px;
@@ -18,44 +19,40 @@
   width: 82px;
   height: 298px;
   position: absolute;
-  top: 391px;
-  left: 1209px;
+  top: 42vh;
+  left: 55vw;
   animation: $ani-fadein;
 }
 .c-intro__img-water {
   width: 150px;
   height: 200px;
   position: absolute;
-  top: 391px;
-  left: 1209px;
+  top: 50vh;
+  left: 53vw;
   animation: $ani-fadein;
 }
-%oil {
+@mixin oil ($top, $left){
   width: 200px;
   height: 240px;
   position: absolute;
+  top: $top;
+  left: $left;
   animation: $ani-fadein;
 }
 .c-intro__img-oil-lavender {
-  @extend %oil;
-  top: 273px;
-  left: 1082px;
+  @include oil(32vh, 45vw);
 }
 .c-intro__img-oil-herb {
-  @extend %oil;
-  top: 326px;
-  left: 1377px;
+  @include oil(40vh, 61vw);
 }
 .c-intro__img-oil-orange {
-  @extend %oil;
-  top: 568px;
-  left: 1177px;
+  @include oil(57vh, 51vw);
 }
 .c-intro__img-finished {
   width: 347px;
   height: 420px;
   position: absolute;
-  top: 347px;
-  left: 1166px;
+  top: 34vh;
+  left: 47vw;
   animation: $ani-fadein;
 }

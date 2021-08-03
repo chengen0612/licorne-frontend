@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+
 import './product-list.css'
 import CustomizedSlider from './components/filter/Pricefilter.js'
 import Materialfilter from './components/filter/Materialfilter.js'
@@ -7,6 +8,7 @@ import Products from './components/product/Products.js'
 import Labels from './components/product/Labels.js'
 import Pages from './components/product/Pages.js'
 import Header from '../../components/Header'
+import axios from 'axios'
 function Official() {
   const [products, setPrdoducts] = useState([]) //給商品顯示(出現有什麼商品)
   const [pages, setPages] = useState([]) //給頁面顯示用(出現有幾頁)
@@ -26,8 +28,22 @@ function Official() {
   })
   const [formData, updateFormData] = useState(initialFormData) //給表單
   //要送出的表單有價格區間、所選原料
-
   //滑動條改變就把新價格放進狀態
+  // heart = {id: number, selected:false}
+  // const [selected,setSelected] =useState(false)
+  // 載入指示的spinner動畫用的
+  const [isLoading, setIsLoading] = useState(true)
+
+  const spinner = (
+    <>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border text-success" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    </>
+  )
+
   const handleChange = (event, newValue) => {
     setValue(newValue)
     updateFormData({
@@ -35,6 +51,7 @@ function Official() {
       priceValue: newValue,
     })
   }
+
   //點選原料將之放進searchlist
   const handleChangeBymaterial = (event) => {
     const value = event.target.value
@@ -80,17 +97,15 @@ function Official() {
     // console.log(searchMaterial)
   }
 
-  // const handleDeletematerial = (key) => {
-  // const newSearchMaterial = [...searchMaterial]
-  // console.log(newSearchMaterial)
-  // newSearchMaterial.filter((searchmaterial, i) => {
-  //   return searchmaterial.id !== key
-  // })
-  // // console.log(searchMaterial)
-  // setSearchMaterial(newSearchMaterial)
-  // // setSearchList()
-  // // console.log(searchMaterial)
-  // }
+  const handleBuy = (productId) => {
+    postProductToCart(productId)
+    alert('成功加入購物車!')
+  }
+
+  const handleCollect = (productId) => {
+    postProductToCollect(productId)
+    alert('成功加入我的最愛!')
+  }
 
   const handleSubmit = (e) => {
     //擋住跳轉
@@ -189,6 +204,35 @@ function Official() {
     setSearchMaterial(target)
   }
 
+  //memberId登入使用者的id
+  //productId點擊的商品id
+  //productQuantity商品數量固定為1
+
+  const postProductToCart = async (productId) => {
+    let url = `http://localhost:6005/buyProduct`
+    let params = {
+      params: {
+        memberId: 1, //這邊要改成session.id
+        productId: productId,
+        productQuantity: 1,
+      },
+    }
+    const response = await axios.post(url, params)
+    console.log(response)
+  }
+
+  const postProductToCollect = async (productId) => {
+    let url = `http://localhost:6005/collectProduct`
+    let params = {
+      params: {
+        memberId: 2,
+        productId: productId,
+      },
+    }
+    const response = await axios.post(url, params)
+    console.log(response)
+  }
+
   //使用第一生命周期載入資料
   useEffect(() => {
     getPrdoductsFromServer()
@@ -202,34 +246,50 @@ function Official() {
     })
   }, [searchList])
   useEffect(() => {
+    setIsLoading(true)
     if (clickdelete) {
       postSearchToServer()
     }
     setClickDelete(false)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
   }, [searchList])
   //很怪問老師
   useEffect(() => {
+    setIsLoading(true)
     if (click) {
       getPrdoductsFromServer()
     }
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
   }, [clickPage, click])
   //很怪問老師
   useEffect(() => {
+    setIsLoading(true)
     if (clickSeriesBlock) {
       getSeriesproductFromServer()
       if (click) {
         getSeriesproductFromServer()
       }
     }
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
   }, [clickSeries, clickSeriesBlock, clickPage, click])
 
   useEffect(() => {
+    setIsLoading(true)
     if (clicksearch) {
       postSearchToServer()
       if (click) {
         postSearchToServer()
       }
     }
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
   }, [clicksearch, clickPage, click])
 
   return (
@@ -364,9 +424,12 @@ function Official() {
             </div>
           </form>
         </aside>
-        <main className="product__main__content">
-          <div className="product__total__ptoductitems ">
-            {/* <div className="watercolor-box">
+        {isLoading ? (
+          spinner
+        ) : (
+          <main className="product__main__content">
+            <div className="product__total__ptoductitems ">
+              {/* <div className="watercolor-box">
             <figure className="watercolor1">
               <img className="leaves" src="/img/watercolor/Leaves.png" alt="" />
             </figure>
@@ -374,57 +437,63 @@ function Official() {
               <img className="leaves" src="/img/watercolor/Leaves.png" alt="" />
             </figure>
           </div> */}
-            {/* 組件Labels */}
-            <div className="product__labels__box d-flex">
-              {searchMaterial &&
-                searchMaterial.map((material, i) => {
+              {/* 組件Labels */}
+              <div className="product__labels__box d-flex">
+                {searchMaterial &&
+                  searchMaterial.map((material, i) => {
+                    return (
+                      <Labels
+                        key={material.id}
+                        id={material.id}
+                        name={material.zh_name}
+                        handleDelete={handleDelete}
+                      />
+                    )
+                  })}
+                {/* <Labels /> */}
+              </div>
+              {/* 組件Labels */}
+              {/* 組件Products */}
+              <div className="d-flex products__items__box justify-content-center ">
+                {products.map((product, i) => {
                   return (
-                    <Labels
-                      key={material.id}
-                      id={material.id}
-                      name={material.zh_name}
-                      handleDelete={handleDelete}
+                    <Products
+                      id={product.id}
+                      key={product.id}
+                      img={product.img_id}
+                      name_zh={product.name_zh}
+                      price={product.price}
+                      top={product.top}
+                      middle={product.middle}
+                      base={product.base}
+                      handleBuy={handleBuy}
+                      handleCollect={handleCollect}
+                      // setSelected={setSelected}
+                      // changeColor={changeColor}
                     />
                   )
                 })}
-              {/* <Labels /> */}
+              </div>
+              {/* 組件Products */}
+              {/* 組件Pages */}
+              <div className="d-flex justify-content-center">
+                {/* <Pages /> */}
+                {pages.map((page, i) => {
+                  return (
+                    <Pages
+                      key={i}
+                      pagenumber={page}
+                      setClickPage={setClickPage}
+                      setClick={setClick}
+                      click={click}
+                    />
+                  )
+                })}
+              </div>
+              {/* 組件Pages */}
             </div>
-            {/* 組件Labels */}
-            {/* 組件Products */}
-            <div className="d-flex products__items__box justify-content-center ">
-              {products.map((product, i) => {
-                return (
-                  <Products
-                    key={product.id}
-                    img={product.img_id}
-                    name_zh={product.name_zh}
-                    price={product.price}
-                    top={product.top}
-                    middle={product.middle}
-                    base={product.base}
-                  />
-                )
-              })}
-            </div>
-            {/* 組件Products */}
-            {/* 組件Pages */}
-            <div className="d-flex justify-content-center">
-              {/* <Pages /> */}
-              {pages.map((page, i) => {
-                return (
-                  <Pages
-                    key={i}
-                    pagenumber={page}
-                    setClickPage={setClickPage}
-                    setClick={setClick}
-                    click={click}
-                  />
-                )
-              })}
-            </div>
-            {/* 組件Pages */}
-          </div>
-        </main>
+          </main>
+        )}
       </div>
     </>
   )

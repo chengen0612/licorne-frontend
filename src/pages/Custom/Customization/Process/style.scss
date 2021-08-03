@@ -8,11 +8,10 @@
   background: $c-secondary;
   filter: $ds-card;
   border-radius: 50px;
+  display: flex;
   position: absolute;
   top: 50px;
   left: 50vw;
-  // overflow: hidden;
-  display: flex;
 }
 .custom__progress-note {
   height: 100%;
@@ -93,14 +92,10 @@
   align-items: center;
 }
 .custom__series-menu li {
-  // outline: 1px solid blue;
   width: 100%;
   text-align: center;
   line-height: 120px;
   cursor: pointer;
-  // &.active {
-  //   background: $c-gray;
-  // }
 }
 @mixin activeSerie($width) {
   width: $width;
@@ -127,11 +122,10 @@
   }
 }
 
-// button group
+// buttons
 %btn {
   width: 150px;
   height: 60px;
-  background: $c-secondary;
   border: none;
   border-radius: $br-b;
   font-size: $fs-h3;
@@ -142,26 +136,33 @@
     box-shadow: none;
   }
 }
-%btnHover {
+%btn-light {
+  background: $c-secondary;
   &:hover {
-    // background: #1d475d;
-    // background: #265771;
     background: #2e6e90;
     color: $c-white;
-    // color: $c-secondary;
+    transition: 0.3s;
+  }
+}
+%btn-dark {
+  background: $c-primary;
+  color: $c-secondary;
+  &:hover {
+    background: #2e6e90;
+    color: $c-white;
     transition: 0.3s;
   }
 }
 .custom {
   &__btn-reset {
     @extend %btn;
-    @extend %btnHover;
+    @extend %btn-light;
     bottom: 50px;
     left: 100px;
   }
   &__btn-goback {
     @extend %btn;
-    @extend %btnHover;
+    @extend %btn-light;
     bottom: 50px;
     left: 290px;
   }
@@ -172,11 +173,9 @@
     right: 100px;
   }
   &__btn-complete.active {
-    @extend .custom__btn-complete;
+    @extend %btn;
+    @extend %btn-dark;
     background: $c-primary;
     color: $c-secondary;
-    &:hover {
-      @extend %btnHover;
-    }
   }
 }

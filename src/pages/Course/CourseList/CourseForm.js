@@ -41,7 +41,7 @@ const initialFormData = Object.freeze({
 })
 
 function CourseForm(props) {
-  const { placeLatLng } = props
+  const { placeLatLng, sentCollect } = props
   // 預設值
   const [place, setPlace] = useState(defaultPlace)
   const [dateValue, setDateValue] = useState(defaultDate)
@@ -111,12 +111,15 @@ function CourseForm(props) {
           selectPrice: v.price[0],
           selectTime: v.time[0],
         })
+
+        updateFormData({
+          ...formData,
+          [e.target.name]: e.target.value.trim(),
+          form__price: v.price[0],
+          form__time: v.time[0],
+        })
       }
       return true
-    })
-    updateFormData({
-      ...formData,
-      [e.target.name]: e.target.value.trim(),
     })
   }
   const changeTime = (e) => {
@@ -195,7 +198,10 @@ function CourseForm(props) {
     setDateValue(defaultDate)
     setDoSelect(defaultProgram)
   }
-
+  // 增加收藏
+  function addCollect() {
+    sentCollect()
+  }
   return (
     <>
       <div className="recheck__width d-flex justify-content-end">
@@ -277,7 +283,11 @@ function CourseForm(props) {
                 報名
               </button>
               <div className="loveBox">
-                <FiHeart data-feather="heart" className="far" />
+                <FiHeart
+                  data-feather="heart"
+                  className="far"
+                  onClick={addCollect}
+                />
               </div>
             </div>
           </div>
@@ -286,7 +296,6 @@ function CourseForm(props) {
         {showModal && (
           <CourseMapModal
             closeModalHandler={closeModalHandler}
-            // setSelectForm={setPlace}
             setSelectForm={onPlaceChange}
             placeLatLng={placeLatLng}
           />
