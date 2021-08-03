@@ -5,6 +5,7 @@ import Backdrop from './components/Backdrop'
 import AddressEditModal from './components/AddressEditModal'
 import StoreMapModal from './components/StoreMapModal'
 import DeliveryRadio from './components/DeliveryRadio'
+import PaymentRadio from './components/PaymentRadio'
 
 const DeliveryMethod = ({
   memberName,
@@ -188,13 +189,15 @@ const DeliveryMethod = ({
           // storeAddress={storeAddress}
           // storePhone={storePhone}
           placeLatLng={placeLatLng}
+          stores={stores}
+          setStores={setStores}
         />
       )}
     </>
   )
 }
 
-function OrderDetail({ officialTotal, customTotal, courseTotal }) {
+function OrderDetail({ officialTotal, customTotal, courseTotal, value }) {
   const [memberName, setMemberName] = useState([])
   const [memberPhone, setMemberPhone] = useState([])
   const [memberAddress, setMemberAddress] = useState([])
@@ -294,6 +297,9 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
   const deliveryFee = 0
   const total = productTotal + deliveryFee
 
+  const paymentMethod = ['信用卡', '貨到付款']
+  const [checkedValue, setCheckedValue] = useState(paymentMethod[0])
+
   return (
     <>
       <div className="checkout__order-box-top pl-4 pt-3 pb-3">
@@ -329,25 +335,11 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
         <div className="checkout__order-box-payment pr-4 pl-4 pb-4">
           <span className="checkout__order-box-payment-title">付款方式</span>
           <div className="checkout__order-box-payment-labels">
-            <label className="checkout__order-box-payment-card">
-              <input
-                className="radio"
-                type="radio"
-                name="payment"
-                value="信用卡"
-                defaultChecked="checked"
-              />
-              信用卡
-            </label>
-            <label className="checkout__order-box-payment-cash">
-              <input
-                className="radio"
-                type="radio"
-                name="payment"
-                value="貨到付款"
-              />
-              貨到付款
-            </label>
+            <PaymentRadio
+              checkedValue={checkedValue}
+              setCheckedValue={setCheckedValue}
+              paymentMethod={paymentMethod}
+            />
           </div>
         </div>
         <div className="checkout__order-box-amount pr-4 pl-4 pb-4">
@@ -376,7 +368,13 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
-          <Link to="/checkout/payment">
+          <Link
+            to={
+              checkedValue === paymentMethod[0]
+                ? '/checkout/payment'
+                : '/member'
+            }
+          >
             <button
               className="checkout__checkoutBtn"
               type="submit"
