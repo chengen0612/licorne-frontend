@@ -21,11 +21,13 @@ function MyCartMake({
       {customCollectDatas.length > 0 ? (
         ''
       ) : (
-        <h4 className="cj-sidebar__cart__no-item-message">沒有任何組合商品</h4>
+        <h4 className="memberProduct__cart__no-item-message">
+          沒有任何組合商品
+        </h4>
       )}
       {customCollectDatas.map((customCollectData, key) => {
         return (
-          <div key={customCollectData.id} className="cj-sidebar__make__item">
+          <div key={customCollectData.id} className="memberProduct__make__item">
             <MyCartMakeItem
               customCollectDatas={customCollectDatas}
               setCustomCollectDatas={setCustomCollectDatas}
