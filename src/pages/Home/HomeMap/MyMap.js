@@ -1,25 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react'
-import { imgPath } from '../../../config/index'
 
-const MarkerIcon = (props) => {
-  const { data, setSelectedShop } = props
-  return (
-    <>
-      <div
-        role="button"
-        style={{ transform: 'translate(-50%, -100%)' }}
-        onClick={() => setSelectedShop(data)}
-      >
-        <img
-          src={imgPath + '/images/course/map-markersolid.svg'}
-          alt="marker"
-          className="map__marker"
-        />
-      </div>
-    </>
-  )
-}
+// component
+import MapMarkerIcon from './MapMarkerIcon'
 
 export default function MyMap(props) {
   const { displayShops, selectedShop, setSelectedShop } = props
@@ -109,10 +92,10 @@ export default function MyMap(props) {
           center={mapCenter}
           defaultZoom={defaultProps.zoom}
         >
-          <MarkerIcon lat={mapCenter.lat} lng={mapCenter.lng} />
+          <MapMarkerIcon lat={mapCenter.lat} lng={mapCenter.lng} />
           {markerList.map((item, index) => {
             return (
-              <MarkerIcon
+              <MapMarkerIcon
                 key={index}
                 lat={item.course_place_lat}
                 lng={item.course_place_lng}
