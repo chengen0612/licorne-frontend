@@ -39,7 +39,7 @@ function SwitchCourse(props) {
     }
 
     setDisplay(result)
-  }, path)
+  }, [path])
 
   return (
     <>

@@ -10,7 +10,7 @@
   width: 200px;
   margin: 0 auto;
 }
-#perfumebtn {
+#favorActive {
   border-bottom: 3px solid #223843;
 }
 .favoritesBtn {
@@ -27,18 +27,13 @@
 }
 .memberFavorites__perfumeBox {
   display: flex;
-  margin: 31px 0 0 148px;
+  margin: 31px 0 0 0;
 }
 .memberFavorites__perfumeLeftBox {
-  width: 500px;
+  width: 1200px;
   height: 680px;
-  border: 1px solid red;
-}
-.memberFavorites__perfumeRightBox {
-  width: 500px;
-  height: 680px;
-  border: 1px solid red;
-  margin: 0 0 0 200px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
 }
 .memberFavorites__perfumeLeftMiddle {
   margin: 40px 0 0 0;
@@ -52,13 +47,11 @@
 .memberFavorites__perfumeRightBottom {
   margin: 40px 0 0 0;
 }
-.perfumeLeftItem {
-  width: 500px;
-  height: 200px;
-  border: 1px solid blue;
+.cj-sidebar__fav {
+  width: 1300px;
+  height: 680px;
 }
-.perfumeRightItem {
-  width: 500px;
-  height: 200px;
-  border: 1px solid blue;
+.cj-sidebar__fav__item {
+  display: inline-flex;
+  margin: 20px 80px 0 0;
 }

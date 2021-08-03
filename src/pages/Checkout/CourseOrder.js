@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 // import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
-function CourseOrder() {
+function CourseOrder({ setCourseTotal }) {
   const [courseItems, setCourseItems] = useState([])
   async function getCourseInfoFromServer() {
     const url = 'http://localhost:6005/checkout/course'
@@ -16,9 +17,21 @@ function CourseOrder() {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log('courseProduct', data)
+    // console.log('course info', data)
     setCourseItems(data)
   }
+
+  const subtotal = courseItems.map((item, i) => {
+    return +item.price * +item.quantity
+  })
+
+  console.log('course subtotal', subtotal)
+
+  const courseTotal = subtotal.reduce(function (a, b) {
+    return a + b
+  }, 0)
+  setCourseTotal(courseTotal)
+  console.log('course total', courseTotal)
 
   useEffect(() => {
     getCourseInfoFromServer()
@@ -36,31 +49,24 @@ function CourseOrder() {
     <>
       <div className="checkout__course-box-top pl-4 pt-3 pb-2">
         <label className="checkout__course-box-title">
-          <input
-            className="checkout__course-box-checkbox-all"
-            type="checkbox"
-          />
           工作坊課程 <span>({courseItems.length})</span>
         </label>
       </div>
       {courseItems.length === 0 && (
-        <p className="checkout__box-none d-flex justify-content-center pt-4 pb-4">
-          購物籃中沒有任何商品
-        </p>
+        <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
+          <span>購物籃中沒有任何商品</span>
+          <Link to="/course">前往頁面報名課程</Link>
+        </div>
       )}
+      {/* send to db: 課程商品細節 */}
       {courseItems.map((courseItem, i) => {
         return (
           <React.Fragment key={i}>
             <div className="checkout__course-box-list p-4">
-              <input
-                className="checkout__course-box-checkbox"
-                type="checkbox"
-              />
               <div className="checkout__course-box-img-wrapper">
                 <img
                   className="checkout__course-box-img"
-                  // src={imgPath + '/images/course/perfume.jpeg'}
-                  src={courseItem.img_id}
+                  src={courseItem.course_img}
                   alt=""
                 />
               </div>
@@ -75,11 +81,11 @@ function CourseOrder() {
                 </span>
                 <span className="checkout__course-box-product-date">
                   {/* 2021/06/22 */}
-                  {courseItem.course_date}
+                  {courseItem.date}
                 </span>
                 <span className="checkout__course-box-product-time">
                   {/* 09:00 - 17:00 */}
-                  {courseItem.course_time_period}
+                  {courseItem.period}
                 </span>
                 <span className="checkout__course-box-product-place">
                   {/* 高雄小港店 */}
@@ -88,16 +94,18 @@ function CourseOrder() {
               </div>
               <span className="checkout__course-box-product-price">
                 {/* NT $1200 */}
-                NT$ {courseItem.course_price}
+                NT$ {courseItem.price}
               </span>
               <span className="checkout__course-box-product-quantity">
                 {/* 單人 */}
-                {courseItem.quantity}
+                {courseItem.people}
+                <span> x {courseItem.quantity}</span>
               </span>
               <span className="checkout__course-box-product-subtotal">
-                NT $1200
+                {/* NT $1200 */}
+                {/* 課程小計 */}
+                NT$ {courseTotal}
               </span>
-              {/* TODO: delete product detail */}
               <FiX
                 className="feather-s"
                 role="button"

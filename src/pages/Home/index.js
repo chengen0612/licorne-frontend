@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import HomeHero from './HomeHero'
 import HomeCustomized from './HomeCustomized'
@@ -9,15 +9,20 @@ import HomeFooter from './HomeFooter'
 import HomeAside from './HomeAside'
 
 function Home() {
+  const [isLoaded, setIsLoaded] = useState(false)
   return (
     <>
-      <HomeHero />
-      <HomeCustomized />
-      <HomeCourse />
-      <HomeBestseller />
-      <HomeMap />
-      <HomeFooter />
-      <HomeAside />
+      <HomeHero setIsLoaded={setIsLoaded} />
+      {isLoaded && (
+        <>
+          <HomeCustomized />
+          <HomeCourse />
+          <HomeBestseller />
+          <HomeMap />
+          <HomeFooter />
+          <HomeAside />
+        </>
+      )}
     </>
   )
 }

@@ -1,26 +1,14 @@
 import React from 'react'
-import './style.scss'
+import './style.css'
+import { imgPath } from '../../config'
+import Sidebar from './Sidebar'
 
 function Quiz() {
   return (
     <>
       <section>
         <div className="info">
-          <div className="quizStart">
-            <h3>氣味尋覓</h3>
-            <div className="text_quiz">
-              <p>
-                張愛玲曾經說過「到人心裡的路是通過嗅覺，
-                因為人類的靈魂是他們的氣味。」 你想知道你的靈魂的樣子嗎？
-                接下來的心理測驗會是單選題，
-                請閱讀完情境後，選擇一個最適合你的答案。
-                請依照直覺作答，不要思考太久。
-              </p>
-            </div>
-
-            <img src="./images/quiz-start.jpg" alt="" />
-            <button className="quizStart_btn">開始測驗</button>
-          </div>
+          <Sidebar />
           <div className="title">
             <h1>尋找你的專屬香氣</h1>
           </div>
@@ -40,7 +28,11 @@ function Quiz() {
       </section>
       <section className="imgSection">
         <div className="imgBox">
-          <img className="img" src="./images/home-quiz.jpg" alt="" />
+          <img
+            className="img"
+            src={imgPath + '/images/quiz/home-quiz.jpg'}
+            alt=""
+          />
         </div>
       </section>
       <article>
@@ -49,17 +41,25 @@ function Quiz() {
         </div>
         <div className="link">
           <div className="box">
-            <img className="custom" src="/images/home-custom.jpg" alt="" />
+            <img
+              className="custom"
+              src={imgPath + '/images/quiz/home-custom.jpg'}
+              alt=""
+            />
           </div>
           <div className="line_box"></div>
           <div className="box">
-            <img className="course" src="/images/home-course.jpg" alt="" />
+            <img
+              className="course"
+              src={imgPath + '/images/quiz/home-course.jpg'}
+              alt=""
+            />
           </div>
           <div className="line_box"></div>
           <div className="box">
             <img
               className="bestseller"
-              src="/images/home-bestseller.jpg"
+              src={imgPath + '/images/quiz/home-bestseller.jpg'}
               alt=""
             />
           </div>
@@ -73,5 +73,4 @@ function Quiz() {
     </>
   )
 }
-
 export default Quiz
