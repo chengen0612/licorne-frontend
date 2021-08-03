@@ -57,7 +57,7 @@ const useForm = (validate) => {
       if (data.code === 0) {
         setTimeout(() => {
           alert('登入成功')
-          history.push('/')
+          history.push('/member')
         }, 500)
         localStorage.setItem('jwt', data.token)
         localStorage.setItem('code:', data.code)
