@@ -1,0 +1,137 @@
+@import '../../styles/global.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  margin: 0;
+}
+header {
+  height: 170px;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+.quizStart {
+  width: 600px;
+  height: 100vh;
+  background: #fcf9ee;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.quizStart img {
+  width: 100%;
+}
+.quizStart h3 {
+  color: #223843;
+  margin-top: 100px;
+}
+.text_quiz {
+  margin: 20px 0 40px 0;
+  max-width: 280px;
+  text-align: center;
+}
+.quizStart p {
+  color: #223843;
+}
+.quizStart_btn {
+  width: 320px;
+  height: 60px;
+  border-radius: 30px;
+  background: #223843;
+  color: #fff;
+  border: 1px solid #223843;
+  font-size: 1rem;
+}
+.title {
+  color: #223843;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.textBox {
+  width: 320px;
+  text-align: center;
+}
+.textBox p {
+  color: #223843;
+}
+.btn {
+  margin-top: 20px;
+  text-align: center;
+}
+.start {
+  border: 1px solid #223843;
+  background: #223843;
+  color: #fff;
+  width: 80px;
+  height: 25px;
+  font-size: 1rem;
+}
+.imgSection {
+  position: relative;
+  left: 0;
+}
+.imgBox {
+  margin: 68px 0;
+  background: #000;
+  width: 1920px;
+  height: 460px;
+  overflow: hidden;
+  position: relative;
+}
+.img {
+  margin-top: -450px;
+  width: 100%;
+}
+.info_down {
+  margin-bottom: 80px;
+  text-align: center;
+}
+.link {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.box {
+  width: 350px;
+  height: 350px;
+  background: #ccc;
+  overflow: hidden;
+}
+.line_box {
+  width: 2px;
+  height: 150px;
+  background: #c4c4c4;
+  align-self: center;
+  margin: 0 -400px;
+}
+.custom {
+  width: 150%;
+  margin: -10px 0 -10px -80px;
+}
+.course {
+  width: 150%;
+  margin-left: -60px;
+}
+.bestseller {
+  width: 230%;
+  margin: -130px 0 0 -220px;
+}
+.text {
+  display: flex;
+  justify-content: space-evenly;
+  color: #223843;
+  margin-bottom: 100px;
+}
