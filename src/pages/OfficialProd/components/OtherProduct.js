@@ -28,6 +28,7 @@ function OtherProduct() {
 
   return (
     <>
+      {/* FIXME: show three different series products with no repetition */}
       <div className="official__product-wrapper">
         <div className="official__product-img-wrapper">
           <img

@@ -10,6 +10,7 @@ function Recommendation() {
       <section className="official__recommendation">
         <h4 className="official__recommendation-title">其他產品</h4>
         <div className="official__recommendation-group">
+          {/* TODO: carousel */}
           <FiChevronLeft className="feather-m" />
           <OtherProduct />
           <OtherProduct />
