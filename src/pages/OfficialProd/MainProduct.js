@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.scss'
 import 'bootstrap/dist/css/bootstrap.css'
-import { imgPath } from '../../config'
+// import { imgPath } from '../../config'
 import { FiHeart, FiChevronDown } from 'react-icons/fi'
 import { GiWaterDrop } from 'react-icons/gi'
 import ProductAccordion from './components/ProductAccordion'
@@ -9,16 +9,21 @@ import ProductAccordion from './components/ProductAccordion'
 function MainProduct({ item }) {
   const options = [
     {
-      volume: '瓶裝 100ML',
+      volume: '50ML',
       price: 3500,
     },
     {
-      volume: '瓶裝 50ML',
+      volume: '100ML',
       price: 5000,
     },
   ]
 
   console.log('product info', item)
+
+  const [active, setActive] = useState(true)
+  const toggleClass = () => {
+    setActive(!active)
+  }
 
   return (
     <>
@@ -26,7 +31,7 @@ function MainProduct({ item }) {
         <div className="official__img-wrapper">
           <img
             className="official__img"
-            src={imgPath + '/images/official/animal_100ml.png'}
+            // src={imgPath + '/images/official/animal_100ml.png'}
             src={item.img_id}
             alt=""
           />
@@ -40,7 +45,11 @@ function MainProduct({ item }) {
             {/* 大自然香氛 */}
             {item.series_name}
           </span>
-          <div className="official__dropdown-menu">
+          <div
+            className={active ? 'official__dropdown-menu-active' : null}
+            id="official__dropdown-menu"
+            onClick={toggleClass}
+          >
             <div className="official__dropdown-title">
               請選擇容量 <FiChevronDown />
             </div>
@@ -48,7 +57,7 @@ function MainProduct({ item }) {
               {options.map((option, i) => {
                 return (
                   <div key={i} className="official__select-options">
-                    {option.volume}
+                    瓶裝 {option.volume}
                     <span className="d-flex">
                       NT$ {option.price}
                       &nbsp;&nbsp;&nbsp;
