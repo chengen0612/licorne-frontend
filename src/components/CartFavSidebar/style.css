@@ -438,8 +438,8 @@
   justify-content: center;
 }
 
-.cj-sidebar__cart__checkout p {
-  color: white;
+.cj-sidebar__cart__checkout a {
+  color: white !important;
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-h5);
 }

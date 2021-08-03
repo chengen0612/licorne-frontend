@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import '../../../styles/global.css'
 import '../style.css'
 import MyCartOffcialItem from './MyCartOffcialItem'
@@ -94,9 +95,9 @@ function MyCart({
       </div>
       <div className="cj-sidebar__cart__checkout">
         <div>
-          <p role="button" onClick={() => {}}>
+          <Link role="button" onClick={() => {}}>
             前往結帳
-          </p>
+          </Link>
         </div>
       </div>
     </div>
