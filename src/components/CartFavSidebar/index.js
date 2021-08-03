@@ -229,6 +229,7 @@ function CartFavSidebar({
           //
           // setTotalAmountOfficial={setTotalAmountOfficial} maybe not nessaccery? Observe a while!
           // calculateTotal={calculateTotal} maybe not nessaccery? Observe a while!
+          closeSidebar={closeSidebar} // 承恩加的
         />
         <MyFav
           favOrCart={favOrCart}

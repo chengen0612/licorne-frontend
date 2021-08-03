@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../../../styles/global.css'
 import '../style.css'
 import MyCartOffcialItem from './MyCartOffcialItem'
@@ -19,6 +19,8 @@ function MyCart({
   //
   courseProducts,
   setCourseProducts,
+  //
+  closeSidebar, // 承恩加的
 }) {
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
@@ -95,7 +97,13 @@ function MyCart({
       </div>
       <div className="cj-sidebar__cart__checkout">
         <div>
-          <Link role="button" onClick={() => {}}>
+          <Link
+            to="/checkout"
+            onClick={() => {
+              closeSidebar()
+              document.body.style.overflow = 'visible'
+            }}
+          >
             前往結帳
           </Link>
         </div>
