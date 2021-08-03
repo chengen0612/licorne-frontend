@@ -9,7 +9,8 @@ export default function MapCard(props) {
 
   const queryHandler = () => {
     const keyword = queryString.current.value
-    if (keyword.length === 0) return
+    const index = shopList.findIndex((item) => item.cities === keyword)
+    if (index === -1) return
     const results = shopList.filter((item) => {
       return item.course_place_address.includes(keyword)
     })
