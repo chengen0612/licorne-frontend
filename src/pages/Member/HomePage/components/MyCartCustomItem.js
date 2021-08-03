@@ -38,13 +38,13 @@ function MyCartCustomItem({
 
   return (
     <>
-      <div className="cj-sidebar__cart__item__custom-img">
+      <div className="memberProduct__cart__item__custom-img">
         <img src={bottle_img} alt="" />
         <div>
           <FiHeart className="feather-s" role="button" />
         </div>
       </div>
-      <div className="cj-sidebar__cart__item__custom-desc">
+      <div className="memberProduct__cart__item__custom-desc">
         <p>{cust_id}</p>
         <p>
           {custom_ingredient}
@@ -65,7 +65,7 @@ function MyCartCustomItem({
           刪除{' '}
         </p>
       </div>
-      <div className="cj-sidebar__cart__item__custom-btn">
+      <div className="memberProduct__cart__item__custom-btn">
         <div
           role="button"
           onClick={() => {
