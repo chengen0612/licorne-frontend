@@ -23,8 +23,6 @@ const DeliveryMethod = ({
   storePhone,
   storeLat,
   storeLng,
-  setStoreLng,
-  setStoreLat,
   setStoreName,
   setStorePhone,
   setStoreAddress,
@@ -41,8 +39,8 @@ const DeliveryMethod = ({
       course_place_name: '高雄民益店',
       course_place_address: '高雄市小港區民益路13號',
       course_place_phone: '07-8012255',
-      course_place_lat: '22.5662669501168',
-      course_place_lng: '120.34782427919656',
+      course_place_lat: 22.5662669501168,
+      course_place_lng: 120.34782427919656,
     },
   ])
 

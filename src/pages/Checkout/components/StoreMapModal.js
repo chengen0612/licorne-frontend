@@ -6,15 +6,35 @@ import StoreList from './StoreList'
 
 //MarkerIcon樣式
 
-const MarkerIcon = () => {
+const MarkerIcon = (props) => {
   return (
     <>
       <div
         className="modal__marker-box"
         style={{ transform: 'translate(-50%, -100%)' }}
       >
+        <p className="modal__marker-name">{props.classRoom}</p>
         <img
           src={imgPath + '/images/course/map-markersolid.svg'}
+          alt=""
+          className="modal__marker"
+        />
+      </div>
+      {/* <FiMapPin className="modal__marker" /> */}
+    </>
+  )
+}
+
+const MarkerCurrentPosition = (props) => {
+  return (
+    <>
+      <div
+        className="modal__marker-box"
+        style={{ transform: 'translate(-50%, -100%)' }}
+      >
+        <p className="modal__marker-name">{props.classRoom}</p>
+        <img
+          src={imgPath + '/images/course/map-markerCurentPosition.svg'}
           alt=""
           className="modal__marker"
         />
@@ -29,8 +49,6 @@ function StoreMapModal(props) {
   const { closeModalHandler, onPlaceChange, placeLatLng, stores, setStores } =
     props
 
-  //const [select, setSelect] = useState('');
-
   // json抓出經緯度
   const [jsonArrayLatLng, setJsonArrayLatLng] = useState([])
 
@@ -39,20 +57,20 @@ function StoreMapModal(props) {
   // const [lng, setLng] = useState(0);
   const [defaultLatLng, setDefaultLatLng] = useState({ lat: 0, lng: 0 })
 
-  //console.log(JSON.stringify(defaultLatLng));
-
+  // 判斷有沒有執行過搜尋功能
+  const [search, setSearch] = useState(false)
   //預設顯示資訊
-  // const [stores, setStores] = useState([
+  // const [shops, setShops] = useState([
   //   {
   //     course_place_name: '高雄民益店',
   //     course_place_address: '高雄市小港區民益路13號',
   //     course_place_phone: '07-8012255',
-  //     course_place_lat: '22.5662669501168',
-  //     course_place_lng: '120.34782427919656',
+  //     course_place_lat: 22.5662669501168,
+  //     course_place_lng: 120.34782427919656,
   //   },
   // ])
 
-  // 搜尋功能
+  //搜尋功能
   const queryString = useRef(null)
 
   const queryHandler = () => {
@@ -62,19 +80,10 @@ function StoreMapModal(props) {
       return item.course_place_address.includes(keyword)
     })
     setStores(results)
+    setSearch(true)
   }
 
-  // 顯示鄰近店鋪
-  const [show, setShow] = useState(false)
-  const clickShow = (e) => {
-    setShow(true)
-    const results = placeLatLng.filter((item) => {
-      return item.course_place_address
-    })
-    setStores(results)
-  }
-
-  // 自動定位目前位置
+  //自動定位目前位置
   const defaultProps = {
     center: {
       lat: 0,
@@ -109,8 +118,9 @@ function StoreMapModal(props) {
 
     const latlngList = placeLatLng.map((v, i) => {
       return {
-        course_place_lat: v.course_place_lat,
-        course_place_lng: v.course_place_lng,
+        course_place_name: v.course_place_name,
+        course_place_lat: +v.course_place_lat,
+        course_place_lng: +v.course_place_lng,
       }
     })
     setJsonArrayLatLng(latlngList)
@@ -120,12 +130,15 @@ function StoreMapModal(props) {
     var R = 6371 // km
     var dLat = toRad(lat2 - lat1)
     var dLon = toRad(lon2 - lon1)
-    var lat1 = toRad(lat1)
-    var lat2 = toRad(lat2)
+    var lat1Rad = toRad(lat1)
+    var lat2Rad = toRad(lat2)
 
     var a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2)
+      Math.sin(dLon / 2) *
+        Math.sin(dLon / 2) *
+        Math.cos(lat1Rad) *
+        Math.cos(lat2Rad)
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
     var d = R * c
     return d
@@ -135,6 +148,24 @@ function StoreMapModal(props) {
   function toRad(Value) {
     return (Value * Math.PI) / 180
   }
+
+  // 顯示鄰近店鋪
+  const [show, setShow] = useState(false)
+  const clickShow = (e) => {
+    setShow(true)
+    const results = placeLatLng.filter((value, index) => {
+      return (
+        calcCrow(
+          defaultLatLng.lat,
+          defaultLatLng.lng,
+          value.course_place_lat,
+          value.course_place_lng
+        ) < 2
+      )
+    })
+    setStores(results)
+  }
+
   return (
     <>
       <div className="modal__card">
@@ -168,6 +199,9 @@ function StoreMapModal(props) {
 
         <div className="modal__con__map d-flex justify-content-center">
           <div className="modal__content">
+            {show && stores.length === 0 && (
+              <p className="NoPalce">附近沒有鄰近店鋪</p>
+            )}
             {stores.map((store, i) => {
               return (
                 <StoreList
@@ -178,8 +212,8 @@ function StoreMapModal(props) {
                   onPlaceChange={onPlaceChange}
                   clickLatLng={() => {
                     setDefaultLatLng({
-                      lat: store.course_place_lat,
-                      lng: store.course_place_lng,
+                      lat: +store.course_place_lat,
+                      lng: +store.course_place_lng,
                     })
                   }}
                 />
@@ -188,17 +222,47 @@ function StoreMapModal(props) {
           </div>
           <div className="modal__map">
             <GoogleMapReact
-              bootstrapURLKeys={{ key: '' }}
+              bootstrapURLKeys={{
+                key: '',
+              }}
               defaultCenter={defaultProps.center}
               center={defaultLatLng}
               defaultZoom={defaultProps.zoom}
             >
-              <MarkerIcon lat={defaultLatLng.lat} lng={defaultLatLng.lng} />
+              <MarkerCurrentPosition
+                lat={defaultLatLng.lat}
+                lng={defaultLatLng.lng}
+              />
+
               {show &&
-                jsonArrayLatLng.map((value, index) => {
+                jsonArrayLatLng
+                  .filter((value, index) => {
+                    return (
+                      calcCrow(
+                        defaultLatLng.lat,
+                        defaultLatLng.lng,
+                        value.course_place_lat,
+                        value.course_place_lng
+                      ) < 2
+                    )
+                  })
+                  .map((value, index) => {
+                    return (
+                      <MarkerIcon
+                        key={index}
+                        classRoom={value.course_place_name}
+                        lat={value.course_place_lat}
+                        lng={value.course_place_lng}
+                      />
+                    )
+                  })}
+              {search &&
+                stores.length >= 0 &&
+                stores.map((value, index) => {
                   return (
                     <MarkerIcon
                       key={index}
+                      classRoom={value.course_place_name}
                       lat={value.course_place_lat}
                       lng={value.course_place_lng}
                     />
