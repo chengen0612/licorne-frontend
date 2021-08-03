@@ -4,7 +4,7 @@ function StoreList(props) {
   const { name, address, phone, clickLatLng } = props
 
   function clickSetPlace() {
-    props.onChangePlace(name, phone, address)
+    props.onPlaceChange(name, phone, address)
     clickLatLng()
   }
   const routeLinkHandler = (e) => {

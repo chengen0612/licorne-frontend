@@ -26,7 +26,8 @@ const MarkerIcon = () => {
 
 function StoreMapModal(props) {
   //設定選擇店鋪
-  const { closeModalHandler, onChangePlace, placeLatLng } = props
+  const { closeModalHandler, onPlaceChange, placeLatLng, stores, setStores } =
+    props
 
   //const [select, setSelect] = useState('');
 
@@ -41,17 +42,17 @@ function StoreMapModal(props) {
   //console.log(JSON.stringify(defaultLatLng));
 
   //預設顯示資訊
-  const [stores, setStores] = useState([
-    {
-      course_place_name: '高雄民益店',
-      course_place_address: '高雄市小港區民益路13號',
-      course_place_phone: '07-8012255',
-      course_place_lat: '22.5662669501168',
-      course_place_lng: '120.34782427919656',
-    },
-  ])
+  // const [stores, setStores] = useState([
+  //   {
+  //     course_place_name: '高雄民益店',
+  //     course_place_address: '高雄市小港區民益路13號',
+  //     course_place_phone: '07-8012255',
+  //     course_place_lat: '22.5662669501168',
+  //     course_place_lng: '120.34782427919656',
+  //   },
+  // ])
 
-  //搜尋功能
+  // 搜尋功能
   const queryString = useRef(null)
 
   const queryHandler = () => {
@@ -62,6 +63,7 @@ function StoreMapModal(props) {
     })
     setStores(results)
   }
+
   // 顯示鄰近店鋪
   const [show, setShow] = useState(false)
   const clickShow = (e) => {
@@ -72,7 +74,7 @@ function StoreMapModal(props) {
     setStores(results)
   }
 
-  //自動定位目前位置
+  // 自動定位目前位置
   const defaultProps = {
     center: {
       lat: 0,
@@ -173,7 +175,7 @@ function StoreMapModal(props) {
                   name={store.course_place_name}
                   address={store.course_place_address}
                   phone={store.course_place_phone}
-                  onChangePlace={onChangePlace}
+                  onPlaceChange={onPlaceChange}
                   clickLatLng={() => {
                     setDefaultLatLng({
                       lat: store.course_place_lat,
