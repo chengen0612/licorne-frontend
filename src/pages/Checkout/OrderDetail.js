@@ -121,44 +121,35 @@ const DeliveryMethod = ({
       {/* 店鋪自取 */}
       {checkedValue === deliveryMethod[1] && (
         <>
-          {stores.map((store, index) => {
-            return (
-              <>
-                <div
-                  className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
-                  key={index}
-                >
-                  <div className="checkout__order-box-delivery-edit-wrapper">
-                    <span className="checkout__order-box-recipient">
-                      {/* 高雄民益店 */}
-                      {store.course_place_name}
-                      {/* {data.course_place_name} */}
-                    </span>
-                    <FiEdit
-                      className="feather-s"
-                      role="button"
-                      onClick={() => {
-                        showModalHandler(deliveryMethod[1])
-                      }}
-                    />
-                  </div>
-                  <span className="checkout__order-box-recipient-phone">
-                    {/* 07-8012255 */}
-                    {store.course_place_phone}
-                    {/* {data.course_place_phone} */}
-                  </span>
-                  <span className="checkout__order-box-recipient-address">
-                    {/* 高雄市小港區民益路13號 */}
-                    {store.course_place_address}
-                    {/* {data.course_place_address} */}
-                  </span>
-                  <span className="checkout__order-box-buyer">
-                    訂購人：{memberName}
-                  </span>
-                </div>
-              </>
-            )
-          })}
+          <div className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2">
+            <div className="checkout__order-box-delivery-edit-wrapper">
+              <span className="checkout__order-box-recipient">
+                {/* 高雄民益店 */}
+                {storeName}
+                {/* {data.course_place_name} */}
+              </span>
+              <FiEdit
+                className="feather-s"
+                role="button"
+                onClick={() => {
+                  showModalHandler(deliveryMethod[1])
+                }}
+              />
+            </div>
+            <span className="checkout__order-box-recipient-phone">
+              {/* 07-8012255 */}
+              {storeAddress}
+              {/* {data.course_place_phone} */}
+            </span>
+            <span className="checkout__order-box-recipient-address">
+              {/* 高雄市小港區民益路13號 */}
+              {storePhone}
+              {/* {data.course_place_address} */}
+            </span>
+            <span className="checkout__order-box-buyer">
+              訂購人：{memberName}
+            </span>
+          </div>
         </>
       )}
       {showModal.length > 0 && <Backdrop onClick={closeModalHandler} />}
@@ -258,21 +249,21 @@ function OrderDetail({ officialTotal, customTotal, courseTotal, value }) {
     const response = await fetch(request)
     const data = await response.json()
     const stores = data.place
-    const storeName = stores.map((item) => {
-      return item.course_place_name
-    })
-    const storeAddress = stores.map((item) => {
-      return item.course_place_address
-    })
-    const storePhone = stores.map((item) => {
-      return item.course_place_phone
-    })
-    const storeLat = stores.map((item) => {
-      return item.course_place_lat
-    })
-    const storeLng = stores.map((item) => {
-      return item.course_place_lng
-    })
+    // const storeName = stores.map((item, i) => {
+    //   return item.course_place_name
+    // })
+    // const storeAddress = stores.map((item) => {
+    //   return item.course_place_address
+    // })
+    // const storePhone = stores.map((item) => {
+    //   return item.course_place_phone
+    // })
+    // const storeLat = stores.map((item) => {
+    //   return item.course_place_lat
+    // })
+    // const storeLng = stores.map((item) => {
+    //   return item.course_place_lng
+    // })
     // console.log('store data', stores)
     // console.log('store name', storeName)
     // console.log('store address', storeAddress)
@@ -280,11 +271,11 @@ function OrderDetail({ officialTotal, customTotal, courseTotal, value }) {
     // console.log('store lat', storeLat)
     // console.log('store lng', storeLng)
     setPlaceLatLng(stores)
-    setStoreName(storeName)
-    setStoreAddress(storeAddress)
-    setStorePhone(storePhone)
-    setStoreLat(storeLat)
-    setStoreLng(storeLng)
+    setStoreName('高雄民益店')
+    setStoreAddress('高雄市小港區民益路13號')
+    setStorePhone('07-8012255')
+    setStoreLat('22.5662669501168')
+    setStoreLng('120.34782427919656')
   }
 
   useEffect(() => {
