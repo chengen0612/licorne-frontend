@@ -71,8 +71,9 @@
 
 .official__select-options {
   @extend %option;
+  // TODO: border between options?
   &:first-child {
-    border-top: 1px solid $c-primary;
+    // border-top: 1px solid $c-primary;
   }
   &:hover {
     filter: brightness(0.9);
