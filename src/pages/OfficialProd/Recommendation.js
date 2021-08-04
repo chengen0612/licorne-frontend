@@ -2,7 +2,7 @@ import React from 'react'
 import './style.scss'
 // import { imgPath } from '../../config'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
-import OtherProduct from './components/OtherProduct'
+import OtherProducts from './components/OtherProducts'
 
 function Recommendation() {
   return (
@@ -12,9 +12,7 @@ function Recommendation() {
         <div className="official__recommendation-group">
           {/* TODO: carousel */}
           <FiChevronLeft className="feather-m" />
-          <OtherProduct />
-          <OtherProduct />
-          <OtherProduct />
+          <OtherProducts />
           <FiChevronRight className="feather-m" />
         </div>
       </section>
