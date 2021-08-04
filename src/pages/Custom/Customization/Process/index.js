@@ -7,12 +7,15 @@ import './style.scss'
 
 import SidebarSeries from './SidebarSeries'
 import SidebarItems from './SidebarItems'
-import ProgressBar from './ProgressBar'
+import ProgressNote from './ProgressNote'
 import Beaker from './Beaker'
 
 function Process(props) {
   // pass data of finished product
   const { setProductDetail } = props
+
+  // static resource
+  const noteList = ['前調', '中調', '後調']
 
   // store data from server
   const [itemsData, setItemsData] = useState([])
@@ -24,7 +27,7 @@ function Process(props) {
   const [selectedItems, setSelectedItems] = useState([])
   const [selectedSeries, setSelectedSeries] = useState([])
   const [imageSrcs, setImageSrcs] = useState([])
-  const [noteStatus, setNoteStatus] = useState([false, false, false])
+  const [currentNote, setCurrentNote] = useState(noteList[0])
 
   // get data
   async function getDataFromServer() {
@@ -60,9 +63,7 @@ function Process(props) {
   // handle progress bar
   useEffect(() => {
     const count = Math.min(selectedItems.length, 2)
-    const newProgressBar = [false, false, false]
-    newProgressBar[count] = true
-    setNoteStatus(newProgressBar)
+    setCurrentNote(noteList[count])
   }, [selectedItems])
 
   // refresh choices
@@ -132,7 +133,13 @@ function Process(props) {
         <div className="orange-blob"></div>
         <div className="yellow-blob"></div>
         {/* background blob end */}
-        <ProgressBar noteStatus={noteStatus} />
+        {/* progress bar */}
+        <div className="custom__progress-bar">
+          {noteList.map((value) => (
+            <ProgressNote note={value} currentNote={currentNote} />
+          ))}
+        </div>
+        {/* progress bar end */}
         <Link to="/" draggable="false">
           <FiX className="close-btn" />
         </Link>
@@ -144,6 +151,10 @@ function Process(props) {
             </>
           )}
         </article>
+        <span className="custom__notice">
+          {/* TODO 完成製作改成 alert */}
+          {selectedItems.length < 3 ? '請選擇' + currentNote : '恭喜完成製作'}
+        </span>
         <Beaker
           setDisplaySerie={setDisplaySerie}
           selectedItems={selectedItems}
