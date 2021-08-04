@@ -122,7 +122,17 @@ function Process(props) {
   }
 
   // from here
-  const getBottleOnLoad = (e) => {}
+
+  const dropHandler = (e) => {
+    console.log('droped!!!!!!')
+    const src = e.dataTransfer.getData('image/png')
+    console.log(src)
+  }
+
+  const cancelDefault = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
 
   return (
     <>
@@ -133,7 +143,7 @@ function Process(props) {
         <div className="yellow-blob"></div>
         {/* background blob end */}
         <ProgressBar noteStatus={noteStatus} />
-        <Link to="/">
+        <Link to="/" draggable="false">
           <FiX className="close-btn" />
         </Link>
         <article className="description">
@@ -144,7 +154,12 @@ function Process(props) {
             </>
           )}
         </article>
-        <div className="custom__bottle" onLoad={getBottleOnLoad}></div>
+        <div
+          className="custom__bottle"
+          onDrop={dropHandler}
+          onDragEnd={cancelDefault}
+          onDragOver={cancelDefault}
+        ></div>
         <aside className="custom__sidebar-wrapper">
           {displaySeries && (
             <SidebarItems

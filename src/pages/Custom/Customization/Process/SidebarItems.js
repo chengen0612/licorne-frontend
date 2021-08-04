@@ -23,16 +23,10 @@ function SidebarItems(props) {
     setDisplaySeries('')
   }
 
-  // from here
-  const getIamgeOnLoad = (e) => {
-    console.log(e.target)
-    e.target.addEventListener('dragstart', handleDragStart)
-  }
-
   const handleDragStart = (e) => {
-    // e.preventDefault()
     const data = e.target.currentSrc
     e.dataTransfer.setData('image/png', data)
+    // console.log(data)
   }
 
   return (
@@ -43,13 +37,15 @@ function SidebarItems(props) {
             <li
               key={item.id}
               onClick={() => setItems(item.id, item.fragrance_id)}
+              // draggable="true"
             >
               <img
                 className="custom__items-image"
                 src={imgPath + item.ingredient_img}
                 alt={item.name_zh}
                 draggable="true"
-                onLoad={getIamgeOnLoad}
+                onDragStart={handleDragStart}
+                onDrag={(e) => e.preventDefailt}
               />
             </li>
           )

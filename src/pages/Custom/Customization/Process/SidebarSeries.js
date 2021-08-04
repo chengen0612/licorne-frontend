@@ -38,6 +38,7 @@ function SidebarSeries(props) {
               onClick={() => {
                 displayHandler(item)
               }}
+
             >
               <img
                 // className={className[i]}
@@ -48,6 +49,8 @@ function SidebarSeries(props) {
                 }
                 src={imgPath + item.series_img}
                 alt={item.name_zh}
+                draggable="false"
+                onDragStart={(e) => e.preventDefailt}
               />
             </li>
           )
