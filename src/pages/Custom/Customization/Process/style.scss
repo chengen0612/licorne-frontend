@@ -23,8 +23,14 @@
   }
 }
 
-// custom bottle
-.custom__bottle {
+// custom beaker
+@mixin beakerImg($move) {
+  width: 240px;
+  position: absolute;
+  bottom: 0;
+  left: $move;
+}
+.custom__beaker {
   width: 500px;
   height: 500px;
   margin-left: -250px;
@@ -35,6 +41,16 @@
   position: absolute;
   top: 420px;
   left: 50vw;
+  overflow: hidden;
+  &__img0 {
+    @include beakerImg(0);
+  }
+  &__img1 {
+    @include beakerImg(120px);
+  }
+  &__img2 {
+    @include beakerImg(240px);
+  }
 }
 
 // sidebar top

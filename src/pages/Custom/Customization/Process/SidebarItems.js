@@ -24,9 +24,14 @@ function SidebarItems(props) {
   }
 
   const handleDragStart = (e) => {
+    e.stopPropagation()
     const data = e.target.currentSrc
     e.dataTransfer.setData('image/png', data)
-    // console.log(data)
+  }
+
+  const handleDrag = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
   }
 
   return (
@@ -45,7 +50,7 @@ function SidebarItems(props) {
                 alt={item.name_zh}
                 draggable="true"
                 onDragStart={handleDragStart}
-                onDrag={(e) => e.preventDefailt}
+                onDrag={handleDrag}
               />
             </li>
           )

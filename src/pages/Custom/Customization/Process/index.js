@@ -10,6 +10,7 @@ import './style.scss'
 import SidebarSeries from './SidebarSeries'
 import SidebarItems from './SidebarItems'
 import ProgressBar from './ProgressBar'
+import Beaker from './Beaker'
 
 function Process(props) {
   // pass data of finished product
@@ -22,6 +23,7 @@ function Process(props) {
   // states effect screen
   const [displaySeries, setDisplaySeries] = useState('')
   const [description, setDescription] = useState('')
+  const [imageSrcs, setImageSrcs] = useState([])
   const [selectedItems, setSelectedItems] = useState([])
   const [selectedSeries, setSelectedSeries] = useState([])
   const [noteStatus, setNoteStatus] = useState([false, false, false])
@@ -121,19 +123,6 @@ function Process(props) {
     setProductDetail(result)
   }
 
-  // from here
-
-  const dropHandler = (e) => {
-    console.log('droped!!!!!!')
-    const src = e.dataTransfer.getData('image/png')
-    console.log(src)
-  }
-
-  const cancelDefault = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }
-
   return (
     <>
       <div className="custom">
@@ -154,12 +143,7 @@ function Process(props) {
             </>
           )}
         </article>
-        <div
-          className="custom__bottle"
-          onDrop={dropHandler}
-          onDragEnd={cancelDefault}
-          onDragOver={cancelDefault}
-        ></div>
+        <Beaker imageSrcs={imageSrcs} setImageSrcs={setImageSrcs} />
         <aside className="custom__sidebar-wrapper">
           {displaySeries && (
             <SidebarItems
