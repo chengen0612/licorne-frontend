@@ -77,11 +77,11 @@ function Process(props) {
   // back to previous step
   const gobackExecuter = () => {
     const [lastItem, ...otherItems] = selectedItems.reverse()
-    setSelectedItems(otherItems)
+    setSelectedItems(otherItems.reverse())
     const [lastSerie, ...otherSeries] = selectedSeries.reverse()
-    setSelectedSeries(otherSeries)
+    setSelectedSeries(otherSeries.reverse())
     const [lastImage, ...otherImages] = imageSrcs.reverse()
-    setImageSrcs(otherImages)
+    setImageSrcs(otherImages.reverse())
   }
 
   // pass product data
