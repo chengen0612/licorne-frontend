@@ -6,7 +6,7 @@ import { imgPath } from '../../config'
 function ProductCard(props) {
   const { data } = props
 
-  const [showDetail, setShowDetail] = useState(false)
+  // const [showDetail, setShowDetail] = useState(false)
 
   const {
     cust_id,
@@ -23,9 +23,9 @@ function ProductCard(props) {
   } = data
 
   // reset related elements state
-  useEffect(() => {
-    setShowDetail(false)
-  }, [data])
+  // useEffect(() => {
+  //   setShowDetail(false)
+  // }, [data])
 
   const purchaseHandler = async () => {
     const url = 'http://localhost:6005/bestseller/addcart'
@@ -43,24 +43,20 @@ function ProductCard(props) {
         <div
           className="best__prod-display"
           style={{ background: color }}
-          onClick={() => setShowDetail(!showDetail)}
-          title={!showDetail && '點擊查看說明'}
+          // onClick={() => setShowDetail(!showDetail)}
+          // title={!showDetail && '點擊查看說明'}
         >
           <img src={imgPath + bottle_img} alt={cust_id} />
           <h3 className="best__prod-title">{cust_id}</h3>
           <span className="best__prod-price">NT ${price}</span>
-          {showDetail && (
-            <>
-              <div className="best__prod-shadow"></div>
-              <div className="best__prod-detail">
-                {/* eslint-disable */}
-                <span>前調：{top_zh} {top_id}</span>
-                <span>中調：{mid_zh} {mid_id}</span>
-                <span>後調：{base_zh} {base_id}</span>
-                {/* eslint-enable */}
-              </div>
-            </>
-          )}
+          <div className="best__prod-shadow"></div>
+          <div className="best__prod-detail">
+            {/* eslint-disable */}
+            <span>前調：{top_zh} {top_id}</span>
+            <span>中調：{mid_zh} {mid_id}</span>
+            <span>後調：{base_zh} {base_id}</span>
+            {/* eslint-enable */}
+          </div>
         </div>
         <button
           className="best__prod-btn"

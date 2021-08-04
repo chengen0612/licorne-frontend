@@ -20,6 +20,9 @@
   margin: 20px 0 0 38px;
 }
 .memberHomePage__totalNumber {
+  width: 90px;
+  display: flex;
+  justify-content: space-between;
   margin: 20px 0 0 0;
 }
 .memberHomePage__goPayBtn {
@@ -32,12 +35,25 @@
   font-weight: lighter;
   outline: none;
   border: 1px solid transparent;
-  margin: 270px 50px auto 50px;
+  margin: 40px 50px auto 50px;
 }
-.memberHomePage__productList ul {
+.memberHomePage__productList {
   list-style: none;
-  margin: 0 0 0 30px;
+  margin: 0 10px 0 30px;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 215px;
+  height: 300px;
+}
+.memberHomePage__productList__MyCartOffcialText,
+.memberHomePage__productList__MyCartCustomText {
+  width: 190px;
+  display: flex;
+  justify-content: space-between;
 }
 .memberHomePage__product {
   font-weight: lighter;
+}
+.memberHomePage__cheakListLine {
+  margin: 20px auto;
 }

@@ -9703,6 +9703,16 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-avatar-uploader@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-avatar-uploader/-/react-avatar-uploader-1.0.3.tgz#b520dcb91447008fc8a1415b2ff4714077276e98"
+  integrity sha512-f7YVT7gHcllj7ok0XlUM08Z843N9tEKoGj4pvD5E0MHgxHNDPEdSzORqwewApKJBSC+YU5T8McTzqSlES/Dq3Q==
+
+react-bootstrap-sweetalert@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-sweetalert/-/react-bootstrap-sweetalert-5.2.0.tgz#a58bc9fa863eaf518a78b6d0716a25f32182d570"
+  integrity sha512-7eaKHgDcYfoRUxiYPZuHjygeLa3yDycGWB+Xwr+PWo6h0HDixwfgGXqWBmDYXI4ZQ453BcY77iBWBZhRbnH/6g==
+
 react-bootstrap@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.6.1.tgz#c5493c028ede885826b72eb31e66f6f0a52ab007"

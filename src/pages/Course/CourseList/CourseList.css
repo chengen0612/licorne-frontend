@@ -389,3 +389,20 @@ header {
   top: 0;
   left: 0;
 }
+.map__search-icon.map__search-icon {
+  stroke: #fff;
+}
+
+.modal__marker-name {
+  writing-mode: horizontal-tb;
+  font-size: 18px;
+  width: 200px;
+  margin-left: -30px;
+  color: #880000;
+}
+.NoPalce {
+  font-size: 30px;
+  color: var(--c-primary);
+  text-align: center;
+  margin-top: 100px;
+}

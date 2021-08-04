@@ -1,25 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
 
-function OrderBtn() {
+function OrderBtn(props) {
+  const { rightCard, setRightCard } = props
   return (
     <>
-      <div className="memberOrderPerfume__orderBtn">
-        <a href="/member/order/perfume">
-          <button
-            id="perfumebtn"
-            className="memberOrderPerfume__perfumebtn orderBtn"
-          >
-            香水
-          </button>
-        </a>
-        <a href="/member/order/course">
-          <button className="memberOrderPerfume__coursebtn orderBtn">
-            課程
-          </button>
-        </a>
+      <div className="memberFavorites__favoritesBtn">
+        <button
+          onClick={() => {
+            setRightCard('香水')
+          }}
+          id={rightCard === '香水' ? 'orderActive' : ''}
+          className="memberFavorites__perfumebtn favoritesBtn"
+        >
+          香水
+        </button>
+        <button
+          onClick={() => {
+            setRightCard('課程')
+          }}
+          id={rightCard === '課程' ? 'orderActive' : ''}
+          className="memberFavorites__coursebtn favoritesBtn"
+        >
+          課程
+        </button>
       </div>
     </>
   )

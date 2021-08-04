@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './style.css'
 import sense from './imgs/home-course1.jpeg'
 import diffuser from './imgs/home-course2.jpg'
@@ -17,7 +18,7 @@ function HomeCourse() {
       <div className="course__cards">
         <div className="course__card">
           {/* TODO: change to Link? */}
-          <a className="course__card-link" href="/#">
+          <Link className="course__card-link" to="/course/exhibition">
             {/* FIXME: unnatural transition */}
             <div className="course__card-image-wrapper">
               {/* TODO: find new photo */}
@@ -32,11 +33,11 @@ function HomeCourse() {
               <div className="course__card-title">氣味限定展覽</div>
               <span className="course__card-price">NT$ 500 起</span>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="course__card">
           {/* TODO: change to Link? */}
-          <a className="course__card-link" href="/#">
+          <Link className="course__card-link" to="/course/diffuser">
             {/* FIXME: unnatural transition */}
             <div className="course__card-image-wrapper">
               <img className="course__card-image" src={diffuser} alt="" />
@@ -50,11 +51,11 @@ function HomeCourse() {
               <div className="course__card-title">擴香製作體驗</div>
               <span className="course__card-price">NT$ 1280 起</span>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="course__card">
           {/* TODO: change to Link? */}
-          <a className="course__card-link" href="/#">
+          <Link className="course__card-link" to="/course/list">
             {/* FIXME: unnatural transition */}
             <div className="course__card-image-wrapper">
               <img className="course__card-image" src={perfume} alt="" />
@@ -68,7 +69,7 @@ function HomeCourse() {
               <div className="course__card-title">香水調製工作坊</div>
               <span className="course__card-price">NT$ 2400 起</span>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
