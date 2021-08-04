@@ -38,7 +38,11 @@ function HomeMap() {
   return (
     <>
       <div className="map">
-        <MyMap displayShops={displayShops} selectedShop={selectedShop} />
+        <MyMap
+          displayShops={displayShops}
+          selectedShop={selectedShop}
+          setSelectedShop={setSelectedShop}
+        />
         <MapCard
           shopList={shopList}
           displayShops={displayShops}

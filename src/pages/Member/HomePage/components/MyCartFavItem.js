@@ -14,10 +14,10 @@ function MyCartFavItem({
 }) {
   return (
     <>
-      <div className="cj-sidebar__fav__item__img">
+      <div className="memberProduct__fav__item__img">
         <img src={img_id} alt="" />
       </div>
-      <div className="cj-sidebar__fav__item__desc">
+      <div className="memberProduct__fav__item__desc">
         <p>{name_zh}</p>
         <p>
           {name_en}
@@ -36,7 +36,7 @@ function MyCartFavItem({
           刪除
         </p>
       </div>
-      <div className="cj-sidebar__fav__item__btn">
+      <div className="memberProduct__fav__item__btn">
         <div>
           <FiShoppingBag />
         </div>

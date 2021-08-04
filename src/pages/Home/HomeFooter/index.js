@@ -8,7 +8,9 @@ function Footer() {
     <>
       <footer className="footer">
         <div className="footer__logoBox">
-          <img className="footer__logo" src={imgURL} alt="" />
+          <Link to="">
+            <img className="footer__logo" src={imgURL} alt="" />
+          </Link>
         </div>
         <div className="footer__listBox">
           <ul className="footer__topList">

@@ -4,6 +4,7 @@ import React from 'react'
 import '../../../../styles/global.css'
 import '../style.css'
 import { FiHeart, FiMinus, FiPlus } from 'react-icons/fi'
+import styled from 'styled-components'
 
 function MyCartOffcialItem({
   id,
@@ -41,13 +42,13 @@ function MyCartOffcialItem({
 
   return (
     <>
-      <div className="cj-sidebar__cart__item__official-img">
+      <div className="memberProduct__cart__item__official-img">
         <img src={img_id} alt="" />
         <div>
           <FiHeart className="feather-s" role="button" />
         </div>
       </div>
-      <div className="cj-sidebar__cart__item__official-desc">
+      <div className="memberProduct__cart__item__official-desc">
         <p>{name_zh}</p>
         <p>
           {name_en}
@@ -68,7 +69,7 @@ function MyCartOffcialItem({
           刪除{' '}
         </p>
       </div>
-      <div className="cj-sidebar__cart__item__official-btn">
+      <div className="memberProduct__cart__item__official-btn">
         <div
           role="button"
           onClick={() => {

@@ -380,6 +380,7 @@ input[type='range']::-webkit-slider-thumb {
   z-index: 6;
   transition: 0.5s;
   overflow: hidden;
+  position: relative;
 }
 
 /* .product-box {
@@ -416,7 +417,7 @@ input[type='range']::-webkit-slider-thumb {
 } */
 /* .product:hover {
   height: 530px;
-} */
+} */  
 .product__img__box {
   display: flex;
   width: 200px;
@@ -429,11 +430,13 @@ input[type='range']::-webkit-slider-thumb {
   object-fit: cover;
   width: 90%;
   height: 90%;
-  margin-left: 25px;
+  /* margin-left: 25px; */
   margin-top: 70px;
 }
 .product__heart__box {
   padding-top: 70px;
+  position: absolute;
+  right: 30px;
 }
 .product__FiHear {
   margin: 0;

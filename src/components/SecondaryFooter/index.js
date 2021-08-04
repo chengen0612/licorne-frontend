@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './style.css'
 import imgURL from './imgs/LICORNE_logo.svg'
 import {
@@ -13,32 +14,34 @@ function SecondaryFooter() {
     <>
       <footer className="secondaryFooter__style">
         <div className="secondaryFooter__logoBox">
-          <img className="secondaryFooter__logo" src={imgURL} alt="" />
+          <Link to="/">
+            <img className="secondaryFooter__logo" src={imgURL} alt="" />
+          </Link>
         </div>
         <div className="secondaryFooter__listBox">
           <ul className="secondaryFooter__topList">
             <li>
-              <a href="/#">關於我們</a>
+              <Link to="/">關於我們</Link>
             </li>
             <li>
-              <a href="/#">客製香水</a>
+              <Link to="/custom/entrance">客製香水</Link>
             </li>
             <li>
-              <a href="/#">課程體驗</a>
+              <Link to="/course/list">課程體驗</Link>
             </li>
             <li>
-              <a href="/#">人氣熱銷</a>
+              <Link to="/bestseller">人氣熱銷</Link>
             </li>
           </ul>
           <ul className="secondaryFooter__bottomList">
             <li>
-              <a href="/#">官方經典</a>
+              <Link to="/official">官方經典</Link>
             </li>
             <li>
-              <a href="/#">專屬香氣</a>
+              <Link to="/">專屬香氣</Link>
             </li>
             <li>
-              <a href="/#">實體店舖</a>
+              <Link to="/">實體店舖</Link>
             </li>
           </ul>
         </div>
@@ -61,7 +64,7 @@ function SecondaryFooter() {
         </div>
         <div className="secondaryFooter__icon">
           <button className="secondaryFooter__button">
-            <FiFacebook className="secondaryFooter__facebook"/>
+            <FiFacebook className="secondaryFooter__facebook" />
           </button>
           <button className="secondaryFooter__button">
             <FiInstagram className="secondaryFooter__instagram" />

@@ -66,7 +66,7 @@ function CourseOrder({ setCourseTotal }) {
               <div className="checkout__course-box-img-wrapper">
                 <img
                   className="checkout__course-box-img"
-                  src={courseItem.img_id}
+                  src={courseItem.course_img}
                   alt=""
                 />
               </div>

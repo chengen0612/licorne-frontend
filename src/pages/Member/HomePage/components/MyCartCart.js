@@ -22,17 +22,17 @@ function MyCartCart({
 }) {
   return (
     <>
-      <div className="cj-sidebar__cart">
+      <div className="memberProduct__cart">
         {officialProducts.length + customProducts.length > 0 ? (
           ''
         ) : (
-          <h4 className="cj-sidebar__cart__no-item-message">
+          <h4 className="memberProduct__cart__no-item-message">
             購物籃中沒有任何商品
           </h4>
         )}
         {officialProducts.map((officialProduct, key) => {
           return (
-            <div key={officialProduct.id} className="cj-sidebar__cart__item">
+            <div key={officialProduct.id} className="memberProduct__cart__item">
               <MyCartOffcialItem
                 id={officialProduct.id}
                 officialProducts={officialProducts}
@@ -50,7 +50,7 @@ function MyCartCart({
         })}
         {customProducts.map((customProduct, key) => {
           return (
-            <div key={customProduct.id} className="cj-sidebar__cart__item">
+            <div key={customProduct.id} className="memberProduct__cart__item">
               <MyCartCustomItem
                 customProducts={customProducts}
                 id={customProduct.id}

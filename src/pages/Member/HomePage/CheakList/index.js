@@ -47,9 +47,9 @@ function CheakList({
             )
           })}
         </div>
-        {/* <div className="memberHomePage__goPay">
+        <div className="memberHomePage__goPay">
           <button className="memberHomePage__goPayBtn">前往結帳</button>
-        </div> */}
+        </div>
       </div>
     </>
   )
