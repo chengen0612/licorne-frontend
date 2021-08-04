@@ -71,6 +71,7 @@ function Process(props) {
   const resetExecutor = () => {
     setSelectedItems([])
     setSelectedSeries([])
+    setImageSrcs([])
   }
 
   // back to previous step
@@ -79,6 +80,8 @@ function Process(props) {
     setSelectedItems(otherItems)
     const [lastSerie, ...otherSeries] = selectedSeries.reverse()
     setSelectedSeries(otherSeries)
+    const [lastImage, ...otherImages] = imageSrcs.reverse()
+    setImageSrcs(otherImages)
   }
 
   // pass product data
@@ -143,17 +146,25 @@ function Process(props) {
             </>
           )}
         </article>
-        <Beaker imageSrcs={imageSrcs} setImageSrcs={setImageSrcs} />
+        <Beaker
+          imageSrcs={imageSrcs}
+          setDisplaySeries={setDisplaySeries}
+          setImageSrcs={setImageSrcs}
+          selectedItems={selectedItems}
+          setSelectedItems={setSelectedItems}
+          selectedSeries={selectedSeries}
+          setSelectedSeries={setSelectedSeries}
+        />
         <aside className="custom__sidebar-wrapper">
           {displaySeries && (
             <SidebarItems
               data={itemsData}
               displaySeries={displaySeries}
-              setDisplaySeries={setDisplaySeries}
-              selectedItems={selectedItems}
-              setSelectedItems={setSelectedItems}
-              selectedSeries={selectedSeries}
-              setSelectedSeries={setSelectedSeries}
+              // setDisplaySeries={setDisplaySeries}
+              // selectedItems={selectedItems}
+              // setSelectedItems={setSelectedItems}
+              // selectedSeries={selectedSeries}
+              // setSelectedSeries={setSelectedSeries}
             />
           )}
           <SidebarSeries
