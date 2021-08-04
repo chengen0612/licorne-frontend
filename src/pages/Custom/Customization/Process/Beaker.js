@@ -4,13 +4,14 @@ function Beaker(props) {
   const {
     imageSrcs,
     setImageSrcs,
-    setDisplaySeries,
+    setDisplaySerie,
     selectedItems,
     setSelectedItems,
     selectedSeries,
     setSelectedSeries,
   } = props
 
+  // litsen to drop event
   const dropHandler = (e) => {
     try {
       const obj = JSON.parse(e.dataTransfer.getData('data'))
@@ -18,7 +19,7 @@ function Beaker(props) {
       const itemId = obj.itemId
       const fragranceId = obj.fragranceId
       setImageSrcs([...imageSrcs, src])
-      setItems(itemId, fragranceId)
+      mainHandler(itemId, fragranceId)
     } catch {}
   }
 
@@ -27,11 +28,11 @@ function Beaker(props) {
     e.stopPropagation()
   }
 
-  const setItems = (iId, fId) => {
+  const mainHandler = (iId, fId) => {
     setSelectedItems([...selectedItems, iId])
     setSelectedSeries([...selectedSeries, fId])
     // 關閉材料選單
-    setDisplaySeries('')
+    setDisplaySerie('')
   }
 
   return (

@@ -2,13 +2,8 @@ import React from 'react'
 import { imgPath } from '../../../../config'
 
 function SidebarSeries(props) {
-  const {
-    data,
-    displaySeries,
-    setDisplaySeries,
-    selectedItems,
-    selectedSeries,
-  } = props
+  const { data, displaySerie, setDisplaySerie, selectedItems, selectedSeries } =
+    props
 
   const className = [
     'custom__series-fruit',
@@ -24,7 +19,7 @@ function SidebarSeries(props) {
     // 有沒有選過這個系列
     if (selectedSeries.includes(id)) return
     // 控制收合
-    displaySeries === id ? setDisplaySeries('') : setDisplaySeries(id)
+    displaySerie === id ? setDisplaySerie('') : setDisplaySerie(id)
   }
 
   return (
@@ -34,16 +29,14 @@ function SidebarSeries(props) {
           return (
             <li
               key={item.id}
-              // className={displaySeries === item.id && 'active'}
+              // className={displaySerie === item.id && 'active'}
               onClick={() => {
                 displayHandler(item)
               }}
-
             >
               <img
-                // className={className[i]}
                 className={
-                  displaySeries === item.id
+                  displaySerie === item.id
                     ? `${className[i]} active`
                     : `${className[i]}`
                 }
