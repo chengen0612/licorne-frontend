@@ -8,14 +8,23 @@ import { GiWaterDrop } from 'react-icons/gi'
 import ProductAccordion from './components/ProductAccordion'
 
 const Main = ({ item }) => {
+  const [visibility, setVisibility] = useState('hidden')
+  const styles = {
+    visibility: visibility,
+  }
+
   return (
     <>
-      <div className="official__select-options">
+      <div
+        className="official__select-options"
+        onMouseEnter={() => setVisibility('visible')}
+        onMouseLeave={() => setVisibility('hidden')}
+      >
         瓶裝 {item.volume}
         <span className="d-flex">
           NT$ {item.price}
-          &nbsp;&nbsp;&nbsp;
-          <GiWaterDrop />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <GiWaterDrop style={styles} />
         </span>
       </div>
     </>
@@ -23,16 +32,23 @@ const Main = ({ item }) => {
 }
 
 const Sibling = ({ siblingId, siblingItem }) => {
+  const [visibility, setVisibility] = useState('hidden')
+  const styles = {
+    visibility: visibility,
+  }
   return (
     <>
-      {/* FIXME: weird transition */}
       <Link to={`/official/${siblingId}`}>
-        <div className="official__select-options">
+        <div
+          className="official__select-options"
+          onMouseEnter={() => setVisibility('visible')}
+          onMouseLeave={() => setVisibility('hidden')}
+        >
           瓶裝 {siblingItem.volume}
           <span className="d-flex">
             NT$ {siblingItem.price}
-            &nbsp;&nbsp;&nbsp;
-            <GiWaterDrop />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <GiWaterDrop style={styles} />
           </span>
         </div>
       </Link>
@@ -84,9 +100,6 @@ function MainProduct({ id, item, siblingItem }) {
               id="official__dropdown-menu"
               onClick={toggleClass}
             >
-              {/* <div className="official__dropdown-title">
-              請選擇容量 <FiChevronDown />
-            </div> */}
               <div className="official__dropdown-title">
                 瓶裝 {item.volume}
                 <span className="d-flex">
@@ -107,9 +120,6 @@ function MainProduct({ id, item, siblingItem }) {
               id="official__dropdown-menu"
               onClick={toggleClass}
             >
-              {/* <div className="official__dropdown-title">
-              請選擇容量 <FiChevronDown />
-            </div> */}
               <div className="official__dropdown-title">
                 瓶裝 {item.volume}
                 <span className="d-flex">
