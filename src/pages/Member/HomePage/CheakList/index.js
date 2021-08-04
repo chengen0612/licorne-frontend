@@ -3,6 +3,7 @@ import './style.css'
 import { FiEdit } from 'react-icons/fi'
 import MyCartOffcialText from '../components/MyCartOffcialText'
 import MyCartCustomText from '../components/MyCartCustomText'
+import { Link } from 'react-router-dom'
 
 function CheakList({
   officialProducts,
@@ -48,7 +49,9 @@ function CheakList({
           })}
         </div>
         <div className="memberHomePage__goPay">
-          <button className="memberHomePage__goPayBtn">前往結帳</button>
+          <Link to="/checkout">
+            <button className="memberHomePage__goPayBtn">前往結帳</button>
+          </Link>
         </div>
       </div>
     </>

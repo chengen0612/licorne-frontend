@@ -106,7 +106,7 @@
   margin: 0 auto;
   align-items: center;
 }
-.spinner-border {
+#spinner-border {
   width: 5rem;
   height: 5rem;
 }

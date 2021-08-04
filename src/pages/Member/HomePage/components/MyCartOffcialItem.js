@@ -5,6 +5,8 @@ import '../../../../styles/global.css'
 import '../style.css'
 import { FiHeart, FiMinus, FiPlus } from 'react-icons/fi'
 import styled from 'styled-components'
+import Alert from 'react-bootstrap/Alert'
+import swal from 'sweetalert'
 
 function MyCartOffcialItem({
   id,
@@ -18,6 +20,26 @@ function MyCartOffcialItem({
   quantity,
   series_name,
 }) {
+  function askDelete() {
+    swal({
+      title: '確定要刪除嗎？',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal({
+          title: '刪除成功！',
+          icon: 'success',
+        })
+        const newOfficialProducts = officialProducts.filter((v, i) => {
+          return v.id !== id
+        })
+        setOfficialProducts(newOfficialProducts)
+      }
+    })
+  }
+
   function removeQTY() {
     const newOfficialProducts = [...officialProducts]
     const index = newOfficialProducts.findIndex((v, i) => {
@@ -60,10 +82,7 @@ function MyCartOffcialItem({
         <p
           role="button"
           onClick={() => {
-            const newOfficialProducts = officialProducts.filter((v, i) => {
-              return v.id !== id
-            })
-            setOfficialProducts(newOfficialProducts)
+            askDelete()
           }}
         >
           刪除{' '}

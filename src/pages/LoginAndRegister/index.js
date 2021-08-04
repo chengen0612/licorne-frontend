@@ -8,6 +8,7 @@ import validateLogin from './validateInfoLogin'
 import { FiEyeOff, FiEye } from 'react-icons/fi'
 import './style.css'
 import { Link } from 'react-router-dom'
+import swal from 'sweetalert'
 
 // 密碼顯示/隱藏 icon
 const eyeOn = <FiEye size={25} />
@@ -48,16 +49,17 @@ function LoginAndRegister() {
   //   const response = await fetch(request)
   //   const data = await response.json()
 
-  //   console.log('伺服器回傳的json資料', data)
+  //   console.log('會員ID:', data)
   //   // 要等驗証過，再設定資料(簡單的直接設定)
-  //   // if (data.user) alert('登入中')
-  //   // else alert('未登入')
+  //   if (data.mid) alert('登入中')
+  //   else alert('未登入')
   // }
 
   // 註冊功能
   async function addUserToSever() {
     if (values.phoneReg === '') return
     if (values.phoneReg.length < 10) return
+    if (values.phoneReg.length > 10) return
     if (values.emailReg === '') return
     if (values.passwordReg === '') return
     if (values.passwordReg.length < 6) return
@@ -86,14 +88,17 @@ function LoginAndRegister() {
     console.log('伺服器回傳的json資料', data)
     setTimeout(() => {
       setIsLoading(false)
-      alert('註冊成功')
+      swal('註冊成功！', {
+        buttons: false,
+        timer: 2000,
+      })
     }, 500)
   }
   const loading = (
     <>
       <div className="loginAndRegister__loadingBox">
         <div className="d-flex justify-content-center loginAndRegister__loading">
-          <div className="spinner-border" role="status">
+          <div id="spinner-border" className="spinner-border" role="status">
             <span className="sr-only">Loading...</span>
           </div>
         </div>
@@ -202,14 +207,14 @@ function LoginAndRegister() {
               </div>
               <button className="loginAndRegister__rightButton">登入</button>
               {/* <button
-          type="button"
-          onClick={() => {
-            checkLogin()
-          }}
-          className="btn btn-primary"
-        >
-          檢查登入狀態
-        </button> */}
+                type="button"
+                onClick={() => {
+                  checkLogin()
+                }}
+                className="btn btn-primary"
+              >
+                檢查登入狀態
+              </button> */}
             </div>
           </form>
         </div>
