@@ -5,6 +5,7 @@ import { FiShoppingBag } from 'react-icons/fi'
 
 function MyFavOfficialItem({
   officialFavorites,
+  officialFavorite,
   setOfficialFavorites,
   id,
   name_zh,
@@ -14,6 +15,7 @@ function MyFavOfficialItem({
   series_name,
   volume,
   officialProducts,
+  setOfficialProducts,
 }) {
   function checkIsInCart() {
     let currentID = id
@@ -23,6 +25,19 @@ function MyFavOfficialItem({
       }
     }
     return false
+  }
+
+  function switchIsInCart() {
+    if (checkIsInCart() === true) {
+      const newOfficialProducts = officialProducts.filter((v, i) => {
+        return v.id !== id
+      })
+      setOfficialProducts(newOfficialProducts)
+    } else {
+      let officialProductsCopy = [...officialProducts]
+      officialProductsCopy.push(officialFavorite)
+      setOfficialProducts(officialProductsCopy)
+    }
   }
 
   return (
@@ -57,6 +72,9 @@ function MyFavOfficialItem({
               ? 'cj-sidebar__fav__item__official-btn__circle--active'
               : 'cj-sidebar__fav__item__official-btn__circle'
           }
+          onClick={() => {
+            switchIsInCart()
+          }}
         >
           <FiShoppingBag className="cj-sidebar__fav__item__official-btn__FiShoppingBag" />
         </div>

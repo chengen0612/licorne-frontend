@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import { FiHeart } from 'react-icons/fi'
@@ -6,6 +6,7 @@ import { FiHeart } from 'react-icons/fi'
 function MyCartOffcialItem({
   id,
   officialProducts,
+  officialProduct,
   setOfficialProducts,
   img_id,
   name_zh,
@@ -15,7 +16,10 @@ function MyCartOffcialItem({
   quantity,
   series_name,
   officialFavorites,
+  setOfficialFavorites,
 }) {
+  // const [isInFavorite, setIsInFavorite] = useState(true)
+
   function removeQTY() {
     const newOfficialProducts = [...officialProducts]
     const index = newOfficialProducts.findIndex((v, i) => {
@@ -39,13 +43,25 @@ function MyCartOffcialItem({
   }
 
   function checkIsFav() {
-    let currentID = id
     for (let officialFavorite of officialFavorites) {
-      if (officialFavorite.id === currentID) {
+      if (officialFavorite.id === id) {
         return true
       }
     }
     return false
+  }
+
+  function switchIsFav() {
+    if (checkIsFav() === true) {
+      const newOfficialFavorites = officialFavorites.filter((v, i) => {
+        return v.id !== id
+      })
+      setOfficialFavorites(newOfficialFavorites)
+    } else {
+      let officialFavoritesCopy = [...officialFavorites]
+      officialFavoritesCopy.push(officialProduct)
+      setOfficialFavorites(officialFavoritesCopy)
+    }
   }
 
   return (
@@ -57,6 +73,9 @@ function MyCartOffcialItem({
           <FiHeart
             className={checkIsFav() ? 'feather-s--active' : 'feather-s'}
             role="button"
+            onClick={() => {
+              switchIsFav()
+            }}
           />
         </div>
       </div>
