@@ -7,6 +7,39 @@ import { Link } from 'react-router-dom'
 import { GiWaterDrop } from 'react-icons/gi'
 import ProductAccordion from './components/ProductAccordion'
 
+const Main = ({ item }) => {
+  return (
+    <>
+      <div className="official__select-options">
+        瓶裝 {item.volume}
+        <span className="d-flex">
+          NT$ {item.price}
+          &nbsp;&nbsp;&nbsp;
+          <GiWaterDrop />
+        </span>
+      </div>
+    </>
+  )
+}
+
+const Sibling = ({ siblingId, siblingItem }) => {
+  return (
+    <>
+      {/* FIXME: weird transition */}
+      <Link to={`/official/${siblingId}`}>
+        <div className="official__select-options">
+          瓶裝 {siblingItem.volume}
+          <span className="d-flex">
+            NT$ {siblingItem.price}
+            &nbsp;&nbsp;&nbsp;
+            <GiWaterDrop />
+          </span>
+        </div>
+      </Link>
+    </>
+  )
+}
+
 function MainProduct({ id, item, siblingItem }) {
   const [active, setActive] = useState(true)
   const toggleClass = () => {
@@ -20,6 +53,8 @@ function MainProduct({ id, item, siblingItem }) {
   }
   const siblingId = isEven(Number(id))
   console.log('siblingId', siblingId)
+  const mainId = Number(id)
+  console.log('id', mainId)
 
   return (
     <>
@@ -37,54 +72,57 @@ function MainProduct({ id, item, siblingItem }) {
             {/* 森林 Forest */}
             {item.name_zh} {item.name_en}
           </h3>
+          {/* TODO: add link directing to series page */}
           <span className="official__subtitle">
             {/* 大自然香氛 */}
             {item.series_name}
           </span>
-          {/* TODO: display selected option */}
-          {/* FIXME: option in descending order */}
-          <div
-            className={active ? 'official__dropdown-menu-active' : null}
-            id="official__dropdown-menu"
-            onClick={toggleClass}
-          >
-            <div className="official__dropdown-title">
+          {/* mainId = 39 */}
+          {mainId < siblingId && (
+            <div
+              className={active ? 'official__dropdown-menu-active' : null}
+              id="official__dropdown-menu"
+              onClick={toggleClass}
+            >
+              {/* <div className="official__dropdown-title">
               請選擇容量 <FiChevronDown />
-            </div>
-            <div className="official__dropdown-content">
-              <div className="official__select-options">
+            </div> */}
+              <div className="official__dropdown-title">
                 瓶裝 {item.volume}
                 <span className="d-flex">
                   NT$ {item.price}
-                  &nbsp;&nbsp;&nbsp;
-                  <GiWaterDrop />
+                  &nbsp;&nbsp;&nbsp; <FiChevronDown />
                 </span>
               </div>
-              {/* FIXME: weird transition */}
-              <Link to={`/official/${siblingId}`}>
-                <div className="official__select-options">
-                  瓶裝 {siblingItem.volume}
-                  <span className="d-flex">
-                    NT$ {siblingItem.price}
-                    &nbsp;&nbsp;&nbsp;
-                    <GiWaterDrop />
-                  </span>
-                </div>
-              </Link>
-              {/* {options.map((option, i) => {
-                return (
-                  <div key={i} className="official__select-options">
-                    瓶裝 {option.volume}
-                    <span className="d-flex">
-                      NT$ {item.price}
-                      &nbsp;&nbsp;&nbsp;
-                      <GiWaterDrop />
-                    </span>
-                  </div>
-                )
-              })} */}
+              <div className="official__dropdown-content">
+                <Main item={item} />
+                <Sibling siblingId={siblingId} siblingItem={siblingItem} />
+              </div>
             </div>
-          </div>
+          )}
+          {/* mainId = 40 */}
+          {mainId > siblingId && (
+            <div
+              className={active ? 'official__dropdown-menu-active' : null}
+              id="official__dropdown-menu"
+              onClick={toggleClass}
+            >
+              {/* <div className="official__dropdown-title">
+              請選擇容量 <FiChevronDown />
+            </div> */}
+              <div className="official__dropdown-title">
+                瓶裝 {item.volume}
+                <span className="d-flex">
+                  NT$ {item.price}
+                  &nbsp;&nbsp;&nbsp; <FiChevronDown />
+                </span>
+              </div>
+              <div className="official__dropdown-content">
+                <Sibling siblingId={siblingId} siblingItem={siblingItem} />
+                <Main item={item} />
+              </div>
+            </div>
+          )}
           <div className="official__btn-group">
             <button className="official__order-btn">訂購</button>
             <div className="official__fav">
