@@ -25,13 +25,18 @@
 
 .header__menu__list li {
   margin: 0 35px;
-  border-bottom: 4px solid var(--c-bg-main);
-  padding-bottom: 8px;
+  border-bottom: 4px solid transparent;
+  padding-bottom: 11px;
 }
 .header__menu__list li:hover {
   transition: 0.8s;
   font-weight: bold;
   border-bottom: 4px solid var(--c-primary);
+}
+.menu-foucs {
+  font-weight: bold;
+  border-bottom: 4px solid var(--c-primary);
+  padding-bottom: 13px;
 }
 .header__icon-border {
   width: 80%;

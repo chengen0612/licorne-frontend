@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, NavLink } from 'react-router-dom'
 import './style.css'
 import CartFavSidebar from '../CartFavSidebar'
 
-import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
+import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
 
 function Header(props) {
-  // console.log('header', props)
   const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
   // CJ：這個 state 是設定購物車側邊欄開關狀態
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
@@ -79,19 +78,29 @@ function Header(props) {
         <div className="header__menu">
           <ul className="header__menu__list">
             <li>
-              <Link to="/custom/entrance">客製香水</Link>
+              <NavLink to="/custom/entrance" activeClassName="menu-foucs">
+                客製香水
+              </NavLink>
             </li>
             <li>
-              <Link to="/course">課程體驗</Link>
+              <NavLink to="/course" activeClassName="menu-foucs">
+                課程體驗
+              </NavLink>
             </li>
             <li>
-              <Link to="/bestseller">人氣熱銷</Link>
+              <NavLink to="/bestseller" activeClassName="menu-foucs">
+                人氣熱銷
+              </NavLink>
             </li>
             <li>
-              <Link to="/official">官方經典</Link>
+              <NavLink to="/official" activeClassName="menu-foucs">
+                官方經典
+              </NavLink>
             </li>
             <li>
-              <Link to="/quiz">專屬香氣</Link>
+              <NavLink to="/quiz" activeClassName="menu-foucs">
+                專屬香氣
+              </NavLink>
             </li>
           </ul>
         </div>
