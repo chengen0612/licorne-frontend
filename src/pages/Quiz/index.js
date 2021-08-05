@@ -14,9 +14,9 @@ function Quiz() {
 
   function openSidebar() {
     setSidebarIsOpen(true)
-    // const scrollbarWidth = window.innerWidth - document.body.offsetWidth
-    // document.body.style.overflow = 'hidden'
-    // document.body.style.width = `calc(100% - ${scrollbarWidth}px)`
+    const scrollbarWidth = window.innerWidth - document.body.offsetWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.width = `calc(100% - ${scrollbarWidth}px)`
   }
 
   return (
