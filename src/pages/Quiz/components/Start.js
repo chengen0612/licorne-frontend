@@ -1,6 +1,6 @@
 import React from 'react'
-import './style.css'
-import { imgPath } from '../../config'
+import '../style.css'
+import { imgPath } from '../../../config'
 
 function Start() {
   return (

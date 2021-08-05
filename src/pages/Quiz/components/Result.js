@@ -1,8 +1,7 @@
 import React from 'react'
-import './style.css'
-import { imgPath } from '../../config'
+import '../style.css'
+import { imgPath } from '../../../config'
 import { FiRotateCcw } from 'react-icons/fi'
-// import Start from './Start'
 
 function Result() {
   return (
