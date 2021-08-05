@@ -5,6 +5,8 @@ export default function validateInfo(values) {
     errors.phoneReg = '請輸入手機號碼'
   } else if (values.phoneReg.length < 10) {
     errors.phoneReg = '手機號碼必須為10碼'
+  } else if (values.phoneReg.length > 10) {
+    errors.phoneReg = '手機號碼不得超過10碼'
   }
   // else if (!/^[A-Za-z]+/.test(values.name.trim())) {
   //   errors.name = 'Enter a valid name';

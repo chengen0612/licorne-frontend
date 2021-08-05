@@ -13,16 +13,13 @@ function MyCartFav({
   return (
     <>
       <div className="memberProduct__fav">
-        {
-          (officialCollectDatas,
-          customCollectDatas.length > 0 ? (
-            ''
-          ) : (
-            <h4 className="memberProduct__fav__no-item-message">
-              收藏清單中沒有任何商品
-            </h4>
-          ))
-        }
+        {officialCollectDatas.length + customCollectDatas.length > 0 ? (
+          ''
+        ) : (
+          <h4 className="memberProduct__fav__no-item-message">
+            收藏清單中沒有任何商品
+          </h4>
+        )}
 
         {officialCollectDatas.map((officialCollectData, key) => {
           return (

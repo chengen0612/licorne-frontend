@@ -453,7 +453,7 @@
   cursor: pointer;
 }
 
-.memberProduct__fav__item__btn {
+.memberProduct__fav__item__btn__box {
   /* border: 1px solid orange; */
   width: 100px;
   display: flex;
@@ -461,7 +461,8 @@
   justify-content: center;
 }
 
-.memberProduct__fav__item__btn div {
+.memberProduct__fav__item__btn {
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -469,6 +470,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: 1px solid transparent;
 }
 
 .memberProduct__fav__item__btn div:first-child {

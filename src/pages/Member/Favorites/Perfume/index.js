@@ -14,11 +14,13 @@ function FavoritePerfume(props) {
   async function getOfficialCollectFromServer() {
     setDataLoading(true)
     const urlCollect = 'http://localhost:6005/member/officialCollect'
+    const jwtToken = localStorage.getItem('userId')
     const requestCollect = new Request(urlCollect, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: jwtToken,
       }),
     })
     const responseCollect = await fetch(requestCollect)
@@ -27,11 +29,13 @@ function FavoritePerfume(props) {
   }
   async function getCustomCollectFromServer() {
     const urlCollect = 'http://localhost:6005/member/customCollect'
+    const jwtToken = localStorage.getItem('userId')
     const requestCollect = new Request(urlCollect, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: jwtToken,
       }),
     })
     const responseCollect = await fetch(requestCollect)
@@ -49,7 +53,7 @@ function FavoritePerfume(props) {
   const loading = (
     <>
       <div className="d-flex justify-content-center memberData_loading">
-        <div className="spinner-border" role="status">
+        <div id="spinner-border" className="spinner-border" role="status">
           <span className="sr-only">Loading...</span>
         </div>
       </div>

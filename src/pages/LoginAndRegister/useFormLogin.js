@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import Alert from 'react-bootstrap/Alert'
+import swal from 'sweetalert'
 
 const useForm = (validate) => {
   const [loginValues, setLoginValues] = useState({
@@ -19,7 +21,6 @@ const useForm = (validate) => {
     e.preventDefault()
     setLoginErrors(validate(loginValues))
     const data = new FormData(e.target)
-
     console.log(data.get('loginPhone'))
     console.log(data.get('loginPassword'))
 
@@ -56,13 +57,20 @@ const useForm = (validate) => {
       // 要等驗証過，再設定資料(簡單的直接設定)
       if (data.code === 0) {
         setTimeout(() => {
-          alert('登入成功')
+          swal('登入成功！', {
+            buttons: false,
+            timer: 2000,
+          })
           history.push('/member')
         }, 500)
         localStorage.setItem('jwt', data.token)
-        localStorage.setItem('code:', data.code)
-        localStorage.setItem('userId:', data.userId)
-      } else alert('登入失敗')
+        localStorage.setItem('code', data.code)
+        localStorage.setItem('userId', data.userId)
+      } else
+        swal('登入失敗！', {
+          buttons: false,
+          timer: 2000,
+        })
     }
     loginToSever()
     // ex. 送到伺服器

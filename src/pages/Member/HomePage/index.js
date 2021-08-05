@@ -38,11 +38,13 @@ function MemberHomePage(favOrCart, setFavOrCart) {
   async function getOfficialProductFromServer() {
     setDataLoading(true)
     const urlCart = 'http://localhost:6005/member/official'
+    const jwtToken = localStorage.getItem('userId')
     const requestCart = new Request(urlCart, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: jwtToken,
       }),
     })
     const responseCart = await fetch(requestCart)
@@ -54,11 +56,13 @@ function MemberHomePage(favOrCart, setFavOrCart) {
   //客製化產品 API
   async function getCustomProductFromServer() {
     const urlCart = 'http://localhost:6005/member/custom'
+    const jwtToken = localStorage.getItem('userId')
     const requestCart = new Request(urlCart, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: jwtToken,
       }),
     })
     const responseCustom = await fetch(requestCart)
@@ -69,11 +73,13 @@ function MemberHomePage(favOrCart, setFavOrCart) {
   // 取得組合資料
   async function getCustomCollectFromServer() {
     const urlCollect = 'http://localhost:6005/member/customCollect'
+    const jwtToken = localStorage.getItem('userId')
     const requestCollect = new Request(urlCollect, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: jwtToken,
       }),
     })
     const responseCollect = await fetch(requestCollect)
@@ -97,7 +103,7 @@ function MemberHomePage(favOrCart, setFavOrCart) {
   const loading = (
     <>
       <div className="d-flex justify-content-center memberData_loading">
-        <div className="spinner-border" role="status">
+        <div id="spinner-border" className="spinner-border" role="status">
           <span className="sr-only">Loading...</span>
         </div>
       </div>
@@ -145,6 +151,7 @@ function MemberHomePage(favOrCart, setFavOrCart) {
             <MyCartMake
               customCollectDatas={customCollectDatas}
               setCustomCollectDatas={setCustomCollectDatas}
+              setCustomProducts={setCustomProducts}
             />
           </div>
         </div>

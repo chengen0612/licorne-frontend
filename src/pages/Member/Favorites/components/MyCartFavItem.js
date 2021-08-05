@@ -2,6 +2,7 @@ import React from 'react'
 import '../../../../styles/global.css'
 import '../../style.css'
 import { FiShoppingBag } from 'react-icons/fi'
+import swal from 'sweetalert'
 
 function MyCartFavItem({
   officialCollectDatas,
@@ -12,6 +13,25 @@ function MyCartFavItem({
   price,
   img_id,
 }) {
+  function askDelete() {
+    swal({
+      title: '確定要刪除嗎？',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal({
+          title: '刪除成功！',
+          icon: 'success',
+        })
+        const newCollectDatas = officialCollectDatas.filter((v, i) => {
+          return v.id !== id
+        })
+        setOfficialCollectDatas(newCollectDatas)
+      }
+    })
+  }
   return (
     <>
       <div className="memberProduct__fav__item__img">
@@ -27,19 +47,16 @@ function MyCartFavItem({
         <p>NT$ {price}</p>
         <p
           onClick={() => {
-            const newCollectDatas = officialCollectDatas.filter((v, i) => {
-              return v.id !== id
-            })
-            setOfficialCollectDatas(newCollectDatas)
+            askDelete()
           }}
         >
           刪除
         </p>
       </div>
-      <div className="memberProduct__fav__item__btn">
-        <div>
+      <div className="memberProduct__fav__item__btn__box">
+        <button className="memberProduct__fav__item__btn">
           <FiShoppingBag />
-        </div>
+        </button>
       </div>
     </>
   )

@@ -2,6 +2,7 @@ import React from 'react'
 import '../../../../styles/global.css'
 import '../style.css'
 import { FiHeart, FiMinus, FiPlus } from 'react-icons/fi'
+import swal from 'sweetalert'
 
 function MyCartCustomItem({
   customProducts,
@@ -14,6 +15,25 @@ function MyCartCustomItem({
   quantity,
   bottle_img,
 }) {
+  function askDelete() {
+    swal({
+      title: '確定要刪除嗎？',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal({
+          title: '刪除成功！',
+          icon: 'success',
+        })
+        const newCustomProducts = customProducts.filter((v, i) => {
+          return v.id !== id
+        })
+        setCustomProducts(newCustomProducts)
+      }
+    })
+  }
   function removeQTY() {
     const newCustomProducts = [...customProducts]
     const index = newCustomProducts.findIndex((v, i) => {
@@ -56,10 +76,7 @@ function MyCartCustomItem({
         <p
           role="button"
           onClick={() => {
-            const newCustomProducts = customProducts.filter((v, i) => {
-              return v.id !== id
-            })
-            setCustomProducts(newCustomProducts)
+            askDelete()
           }}
         >
           刪除{' '}

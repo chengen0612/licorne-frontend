@@ -3,6 +3,8 @@ import '../../../../styles/global.css'
 import '../../style.css'
 import { FiShoppingBag } from 'react-icons/fi'
 import { imgPath } from '../../../../config'
+import swal from 'sweetalert'
+import { Link } from 'react-router-dom'
 
 function MyCourseItem({
   courseCollectDatas,
@@ -13,6 +15,25 @@ function MyCourseItem({
   course_img,
   course_description_ch,
 }) {
+  function askDelete() {
+    swal({
+      title: '確定要刪除嗎？',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal({
+          title: '刪除成功！',
+          icon: 'success',
+        })
+        const newCollectDatas = courseCollectDatas.filter((v, i) => {
+          return v.id !== id
+        })
+        setCourseCollectDatas(newCollectDatas)
+      }
+    })
+  }
   return (
     <>
       <div className="memberFavorites__courseItem">
@@ -27,19 +48,18 @@ function MyCourseItem({
           <p
             className="memberFavorites__delBtn"
             onClick={() => {
-              const newCollectDatas = courseCollectDatas.filter((v, i) => {
-                return v.id !== id
-              })
-              setCourseCollectDatas(newCollectDatas)
+              askDelete()
             }}
           >
             刪除
           </p>
-          <input
-            type="button"
-            className="memberFavorites__signUp signUp1"
-            value="報名"
-          />
+          <Link to="/course/list">
+            <input
+              type="button"
+              className="memberFavorites__signUp signUp1"
+              value="報名"
+            />
+          </Link>
         </div>
       </div>
       <hr className="memberFavorites__line" />
