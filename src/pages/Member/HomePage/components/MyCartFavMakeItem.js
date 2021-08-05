@@ -20,6 +20,7 @@ function MyCartMakeItem({
   async function addToCart() {
     swal('成功加入購物車！', {
       button: false,
+      timer: 1200,
     })
     const userData = { id }
 
@@ -93,6 +94,7 @@ function MyCartMakeItem({
         </p>
         <p>NT$ {price}</p>
         <p
+          role="button"
           onClick={() => {
             askDelete()
           }}

@@ -224,10 +224,6 @@
   border-radius: 50%;
 }
 
-.memberProduct__cart__item__official-btn div:hover {
-  background-color: #efefef;
-}
-
 .memberProduct__cart__item__official-btn p {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-h5);
@@ -356,10 +352,6 @@
   border-radius: 50%;
 }
 
-.memberProduct__cart__item__custom-btn div:hover {
-  background-color: #efefef;
-}
-
 .memberProduct__cart__item__custom-btn p {
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-h5);
@@ -476,4 +468,9 @@
 .memberProduct__fav__item__btn div:first-child {
   color: white;
   cursor: pointer;
+}
+.memberProduct__cart__item__official-btn div:hover,
+.memberProduct__cart__item__custom-btn div:hover {
+  filter: brightness(1.5);
+  transition: 0.3s;
 }

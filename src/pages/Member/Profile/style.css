@@ -43,9 +43,10 @@
 }
 .memberData__introContent {
   width: 200px;
-  height: 200px;
+  height: 265px;
   font-size: 20px;
   font-weight: normal;
+  background-color: #efefef;
   margin: 20px 0 0 80px;
   border: 0;
   border-radius: 10px;
@@ -54,17 +55,24 @@
 .memberData__basicInfo {
   margin: 120px 0 0 0;
 }
-.memberData__input {
+.memberData__input,
+.memberData__birth {
   width: 400px;
   font-size: 30px;
   font-weight: normal;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #efefef;
   margin-bottom: 20px;
   resize: none;
   border-style: none;
 }
-.memberData__birth {
+.memberData__input:hover,
+.memberData__birth:hover,
+.memberData__introContent:hover {
+  filter: brightness(0.9);
+  transition: 0.3s;
+}
+/* .memberData__birth {
   width: 250px;
   font-size: 30px;
   font-weight: normal;
@@ -73,7 +81,7 @@
   margin-bottom: 20px;
   resize: none;
   border-style: none;
-}
+} */
 .memberData__contactTitle {
   margin: 0 50px 30px -80px;
 }
