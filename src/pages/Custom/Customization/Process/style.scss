@@ -25,8 +25,8 @@
 
 // notice message
 .custom__notice{
-  margin-left: -90px;
-  font-size: $fs-h2;
+  margin-left: -70px;
+  font-size: $fs-h3;
   color: $c-important;
   position: absolute;
   top: 200px;
@@ -39,11 +39,13 @@
   position: absolute;
   bottom: 0;
   left: $move;
+  z-index: 0;
 }
 .custom__beaker {
   width: 500px;
   height: 500px;
   margin-left: -250px;
+  // background: url(http://localhost:3000/images/custom/beaker.png) center center / cover;
   border-radius: 0 0 80px 80px;
   border-right: 20px solid $c-primary;
   border-bottom: 20px solid $c-primary;

@@ -101,9 +101,9 @@ function Result(props) {
         <button className="product__btn-purchase" onClick={purchaseHandler}>
           <FiShoppingBag /> 訂購
         </button>
-        <button className="product__btn-share">
+        {/* <button className="product__btn-share">
           <FiUpload /> 分享
-        </button>
+        </button> */}
       </div>
     </>
   )
