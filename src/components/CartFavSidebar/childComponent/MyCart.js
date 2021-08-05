@@ -18,6 +18,8 @@ function MyCart({
   customProducts,
   setCustomProducts,
   totalAmountCustom,
+  customFavorites,
+  setCustomFavorites,
   //
   courseProducts,
   setCourseProducts,
@@ -65,6 +67,7 @@ function MyCart({
             <div key={customProduct.id} className="cj-sidebar__cart__item">
               <MyCartCustomItem
                 customProducts={customProducts}
+                customProduct={customProduct}
                 id={customProduct.id}
                 cust_id={customProduct.cust_id}
                 price={customProduct.price}
@@ -73,6 +76,8 @@ function MyCart({
                 fragrance_name={customProduct.fragrance_name}
                 quantity={customProduct.quantity}
                 bottle_img={customProduct.bottle_img}
+                customFavorites={customFavorites}
+                setCustomFavorites={setCustomFavorites}
               />
             </div>
           )

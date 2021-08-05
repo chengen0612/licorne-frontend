@@ -69,7 +69,6 @@ function MyCartOffcialItem({
       <div className="cj-sidebar__cart__item__official-img">
         <img src={img_id} alt="" />
         <div>
-          {/* <FiHeart className="feather-s" role="button" /> */}
           <FiHeart
             className={checkIsFav() ? 'feather-s--active' : 'feather-s'}
             role="button"

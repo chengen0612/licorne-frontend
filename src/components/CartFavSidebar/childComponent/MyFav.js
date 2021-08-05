@@ -15,6 +15,8 @@ function MyFav({
   setCustomFavorites,
   courseFavorites,
   setCourseFavorites,
+  customProducts,
+  setCustomProducts,
 }) {
   return (
     <>
@@ -61,6 +63,8 @@ function MyFav({
                 customFavorites={customFavorites}
                 customFavorite={customFavorite}
                 setCustomFavorites={setCustomFavorites}
+                customProducts={customProducts}
+                setCustomProducts={setCustomProducts}
               />
             </div>
           )

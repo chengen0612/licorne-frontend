@@ -102,6 +102,8 @@ function CartFavSidebar({
           customProducts={customProducts}
           setCustomProducts={setCustomProducts}
           totalAmountCustom={totalAmountCustom}
+          customFavorites={customFavorites}
+          setCustomFavorites={setCustomFavorites}
           //
           courseProducts={courseProducts}
           setCourseProducts={setCourseProducts}
@@ -120,6 +122,8 @@ function CartFavSidebar({
           //
           customFavorites={customFavorites}
           setCustomFavorites={setCustomFavorites}
+          customProducts={customProducts}
+          setCustomProducts={setCustomProducts}
           //
           courseFavorites={courseFavorites}
           setCourseFavorites={setCourseFavorites}

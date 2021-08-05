@@ -5,6 +5,7 @@ import { FiHeart } from 'react-icons/fi'
 
 function MyCartCustomItem({
   customProducts,
+  customProduct,
   id,
   cust_id,
   price,
@@ -13,6 +14,8 @@ function MyCartCustomItem({
   fragrance_name,
   quantity,
   bottle_img,
+  customFavorites,
+  setCustomFavorites,
 }) {
   function removeQTY() {
     const newCustomProducts = [...customProducts]
@@ -36,12 +39,40 @@ function MyCartCustomItem({
     setCustomProducts(newCustomProducts)
   }
 
+  function checkIsFav() {
+    for (let customFavorite of customFavorites) {
+      if (customFavorite.id === id) {
+        return true
+      }
+    }
+    return false
+  }
+
+  function switchIsFav() {
+    if (checkIsFav() === true) {
+      const newCustomFavorites = customFavorites.filter((v, i) => {
+        return v.id !== id
+      })
+      setCustomFavorites(newCustomFavorites)
+    } else {
+      let customFavoritesCopy = [...customFavorites]
+      customFavoritesCopy.push(customProduct)
+      setCustomFavorites(customFavoritesCopy)
+    }
+  }
+
   return (
     <>
       <div className="cj-sidebar__cart__item__custom-img">
         <img src={bottle_img} alt="" />
         <div>
-          <FiHeart className="feather-s" role="button" />
+          <FiHeart
+            className={checkIsFav() ? 'feather-s--active' : 'feather-s'}
+            role="button"
+            onClick={() => {
+              switchIsFav()
+            }}
+          />
         </div>
       </div>
       <div className="cj-sidebar__cart__item__custom-desc">
