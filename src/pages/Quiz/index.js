@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.scss'
 import { imgPath } from '../../config'
 import { Link } from 'react-router-dom'
 import Sidebar from './Sidebar'
 
 function Quiz() {
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
+
+  const closeSidebar = () => {
+    setSidebarIsOpen(false)
+    document.body.style.width = '100%'
+  }
+
+  function openSidebar() {
+    setSidebarIsOpen(true)
+    // const scrollbarWidth = window.innerWidth - document.body.offsetWidth
+    // document.body.style.overflow = 'hidden'
+    // document.body.style.width = `calc(100% - ${scrollbarWidth}px)`
+  }
+
   return (
     <>
-      <Sidebar />
+      <Sidebar sidebarIsOpen={sidebarIsOpen} closeSidebar={closeSidebar} />
       <div className="pageWrapper">
         <section className="quiz">
           <div className="quiz__info">
@@ -23,7 +37,14 @@ function Quiz() {
               藉由這個簡單的測驗，來尋找專屬於你的香味吧！
             </p>
             <div className="quiz__begin">
-              <button className="quiz__begin-btn">開始</button>
+              <button
+                className="quiz__begin-btn"
+                onClick={() => {
+                  openSidebar()
+                }}
+              >
+                開始
+              </button>
             </div>
           </div>
         </section>
