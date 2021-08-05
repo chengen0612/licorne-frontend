@@ -22,15 +22,15 @@ function Quiz() {
               你是否了解你給人最主觀的印象呢？ <br />
               藉由這個簡單的測驗，來尋找專屬於你的香味吧！
             </p>
-            <div className="quiz__start">
-              <button className="quiz__start-btn">開始</button>
+            <div className="quiz__begin">
+              <button className="quiz__begin-btn">開始</button>
             </div>
           </div>
         </section>
       </div>
-      <div className="quiz__img-box">
+      <div className="quiz__index-img-box">
         <img
-          className="quiz__img"
+          className="quiz__index-img"
           src={imgPath + '/images/quiz/home-quiz.jpg'}
           alt=""
         />
