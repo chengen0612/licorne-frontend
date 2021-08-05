@@ -7,16 +7,17 @@
   display: flex;
   position: absolute;
   top: 130px;
-  left: 100px;
-  & h4 {
-    width: 200px;
-    margin-top: 80px; // fix position
-    margin-right: 40px; // fix position
+  left: 50px;
+  & h2 {
+    width: 250px;
+    margin-top: 60px; // fix position
+    margin-right: 30px; // fix position
     text-align: center;
-    line-height: 2rem;
+    line-height: 2.5rem;
   }
   & p {
     width: 600px;
+    font-size: $fs-h5;
   }
 }
 
@@ -50,15 +51,12 @@
 
 .c-intro-notes__card {
   &0 {
-    // animation: $ani-fadein;
     @include card-status(320px);
   }
   &1 {
-    // animation: $ani-fadein;
     @include card-status(200px);
   }
   &2 {
-    // animation: $ani-fadein;
     @include card-status(60px);
   }
 }

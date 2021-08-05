@@ -9,7 +9,7 @@ function Basis(props) {
   return (
     <>
       <section className="c-intro-basis-intro">
-        <h5>香水組成與結構</h5>
+        <h2>香水組成與結構</h2>
         <p>
           一瓶香水成份可分為三個部分，酒精(Alcohol)、水(Distilled
           Water)、及精油(Fragrance Oil)。精油(Fragrance
