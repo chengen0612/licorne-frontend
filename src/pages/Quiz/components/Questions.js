@@ -2,30 +2,136 @@ import React, { useState, useEffect } from 'react'
 import '../style.scss'
 import { FiChevronLeft } from 'react-icons/fi'
 import axios from 'axios'
+import QuestionOne from './Questions/QuestionOne'
+import QuestionTwo from './Questions/QuestionTwo'
+import QuestionThree from './Questions/QuestionThree'
+import QuestionFour from './Questions/QuestionFour'
+import QuestionFive from './Questions/QuestionFive'
 
 function Question() {
-  // const [questions, setQuestions] = useState([])
-  const [answers, setAnswer] = useState([])
-  const [opacity, setOpacity] = useState(1)
-  // const styles = {
-  //   opacity: opacity,
-  // }
+  // QuestionOne
+  const [q1, setQ1] = useState([])
+  const [a1, setA1] = useState([])
+  const [b1, setB1] = useState([])
+  const [c1, setC1] = useState([])
+  const [d1, setD1] = useState([])
+
+  // QuestionTwo
+  const [q2, setQ2] = useState([])
+  const [a2, setA2] = useState([])
+  const [b2, setB2] = useState([])
+  const [c2, setC2] = useState([])
+  const [d2, setD2] = useState([])
+
+  // QuestionThree
+  const [q3, setQ3] = useState([])
+  const [a3, setA3] = useState([])
+  const [b3, setB3] = useState([])
+  const [c3, setC3] = useState([])
+  const [d3, setD3] = useState([])
+
+  // QuestionFour
+  const [q4, setQ4] = useState([])
+  const [a4, setA4] = useState([])
+  const [b4, setB4] = useState([])
+  const [c4, setC4] = useState([])
+  const [d4, setD4] = useState([])
+
+  // QuestionFive
+  const [q5, setQ5] = useState([])
+  const [a5, setA5] = useState([])
+  const [b5, setB5] = useState([])
+  const [c5, setC5] = useState([])
+  const [d5, setD5] = useState([])
+
   const getDataFromServer = async () => {
     const url = 'http://localhost:6005/quiz'
     const response = await axios.get(url)
     const quiz = response.data
-    const question = quiz.question
-    const answer = quiz.answer
     console.log('quiz', quiz)
-    console.log('question', question)
-    console.log('answer', answer)
-    setAnswer(answer)
+
+    /* questions */
+    const questions = quiz.question
+    const question = questions.map((v, i) => {
+      return v.topic
+    })
+    setQ1(question[0])
+    setQ2(question[1])
+    setQ3(question[2])
+    setQ4(question[3])
+    setQ5(question[4])
+
+    const answers = quiz.answer
+    const questsArr = answers.map((v, i) => {
+      return v.topic
+    })
+    const answer = answers.map((v, i) => {
+      return v.answer
+    })
+    console.log('answers', answer)
+    console.log('questions', questsArr)
+
+    // returns index of the first answer in array of questions
+    const index1 = questsArr.findIndex((quest) => quest === question[0])
+    const index2 = questsArr.findIndex((quest) => quest === question[1])
+    const index3 = questsArr.findIndex((quest) => quest === question[2])
+    const index4 = questsArr.findIndex((quest) => quest === question[3])
+    const index5 = questsArr.findIndex((quest) => quest === question[4])
+
+    /* answers */
+    // QuestionOne
+    const a1 = answer[index1]
+    const b1 = answer[index1 + 1]
+    const c1 = answer[index1 + 2]
+    const d1 = answer[index1 + 3]
+    setA1(a1)
+    setB1(b1)
+    setC1(c1)
+    setD1(d1)
+
+    // QuestionTwo
+    const a2 = answer[index2]
+    const b2 = answer[index2 + 1]
+    const c2 = answer[index2 + 2]
+    const d2 = answer[index2 + 3]
+    setA2(a2)
+    setB2(b2)
+    setC2(c2)
+    setD2(d2)
+
+    // QuestionThree
+    const a3 = answer[index3]
+    const b3 = answer[index3 + 1]
+    const c3 = answer[index3 + 2]
+    const d3 = answer[index3 + 3]
+    setA3(a3)
+    setB3(b3)
+    setC3(c3)
+    setD3(d3)
+
+    // QuestionFour
+    const a4 = answer[index4]
+    const b4 = answer[index4 + 1]
+    const c4 = answer[index4 + 2]
+    const d4 = answer[index4 + 3]
+    setA4(a4)
+    setB4(b4)
+    setC4(c4)
+    setD4(d4)
+
+    // QuestionFive
+    const a5 = answer[index5]
+    const b5 = answer[index5 + 1]
+    const c5 = answer[index5 + 2]
+    const d5 = answer[index5 + 3]
+    setA5(a5)
+    setB5(b5)
+    setC5(c5)
+    setD5(d5)
   }
 
   useEffect(() => {
     getDataFromServer()
-    // get data from server
-    // set response to state
   }, [])
 
   return (
@@ -34,24 +140,29 @@ function Question() {
         <FiChevronLeft className="feather-s" />
         <span className="quiz__back-text">返回</span>
       </div>
-      <div>
+      <QuestionOne q1={q1} a1={a1} b1={b1} c1={c1} d1={d1} />
+      {/* <QuestionTwo q2={q2} a2={a2} b2={b2} c2={c2} d2={d2} /> */}
+      {/* <QuestionThree q3={q3} a3={a3} b3={b3} c3={c3} d3={d3} /> */}
+      {/* <QuestionFour q4={q4} a4={a4} b4={b4} c4={c4} d4={d4} /> */}
+      {/* <QuestionFive q5={q5} a5={a5} b5={b5} c5={c5} d5={d5} /> */}
+      {/* <div>
         <div className="quiz__question-number"> 1/5 </div>
-        <p className="quiz__question">
-          一個晴空萬里的日子，妳踏青去。
-          <br />
-          走著走著，前方出現一位女性，妳覺得她幾歲呢？
-        </p>
+        <p className="quiz__question">{q1}</p>
         <div className="quiz__divider">
           <div className="quiz__divider-line"></div>
           <div className="quiz__divider-diamond"></div>
         </div>
-        <div className="quiz__answers" onClick={() => setOpacity(0)}>
-          <button className="quiz__answer">35歲 </button>
-          <button className="quiz__answer">17歲</button>
-          <button className="quiz__answer">22歲</button>
-          <button className="quiz__answer">30歲</button>
+        <div
+          className="quiz__answers"
+          // onClick={() => setOpacity(0)}
+          // style={styles}
+        >
+          <button className="quiz__answer">{a1}</button>
+          <button className="quiz__answer">{b1}</button>
+          <button className="quiz__answer">{c1}</button>
+          <button className="quiz__answer">{d1}</button>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
