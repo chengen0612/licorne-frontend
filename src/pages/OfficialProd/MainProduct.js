@@ -6,6 +6,7 @@ import { FiHeart, FiChevronDown } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { GiWaterDrop } from 'react-icons/gi'
 import ProductAccordion from './components/ProductAccordion'
+import axios from 'axios'
 
 const Main = ({ item }) => {
   const [visibility, setVisibility] = useState('hidden')
@@ -72,6 +73,45 @@ function MainProduct({ id, item, siblingItem }) {
   const mainId = Number(id)
   console.log('id', mainId)
 
+  const handleBuy = (productId) => {
+    postProductToCart(productId)
+    alert('成功加入購物車!')
+  }
+
+  const handleCollect = (productId) => {
+    postProductToCollect(productId)
+    alert('成功加入我的最愛!')
+  }
+
+  //memberId登入使用者的id
+  //productId點擊的商品id
+  //productQuantity商品數量固定為1
+
+  const postProductToCart = async (productId) => {
+    let url = `http://localhost:6005/buyProduct`
+    let params = {
+      params: {
+        memberId: 1, //這邊要改成session.id
+        productId: productId,
+        productQuantity: 1,
+      },
+    }
+    const response = await axios.post(url, params)
+    console.log(response)
+  }
+
+  const postProductToCollect = async (productId) => {
+    let url = `http://localhost:6005/collectProduct`
+    let params = {
+      params: {
+        memberId: 1,
+        productId: productId,
+      },
+    }
+    const response = await axios.post(url, params)
+    console.log(response)
+  }
+
   return (
     <>
       <section className="official">
@@ -134,10 +174,23 @@ function MainProduct({ id, item, siblingItem }) {
             </div>
           )}
           <div className="official__btn-group">
-            <button className="official__order-btn">訂購</button>
+            <button
+              className="official__order-btn"
+              onClick={() => {
+                handleBuy(id)
+              }}
+            >
+              訂購
+            </button>
             <div className="official__fav">
               {' '}
-              <FiHeart className="official__fav-btn feather-s" role="button" />
+              <FiHeart
+                className="official__fav-btn feather-s"
+                role="button"
+                onClick={() => {
+                  handleCollect(id)
+                }}
+              />
             </div>
           </div>
           <ProductAccordion item={item} />
