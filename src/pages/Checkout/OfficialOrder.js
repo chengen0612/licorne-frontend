@@ -123,7 +123,7 @@ function OfficialOrder({ setOfficialTotal }) {
                   const newQuantities = quantities.map((quantity, index) => {
                     if (i === index) {
                       if (+e.target.value < 1) {
-                        return 1
+                        return ''
                       } else if (
                         +e.target.value.length > 2 ||
                         +e.target.value > 20
@@ -139,20 +139,9 @@ function OfficialOrder({ setOfficialTotal }) {
                   console.log('set official quantities', newQuantities)
                   console.log('current official quantities', quantities)
                 }}
-                // onInput={(e) => {
-                //   const newQuantities = quantities.map((quantity, index) => {
-                //     if (i === index) {
-                //       return +e.target.value
-                //     }
-                //     return quantity
-                //   })
-                //   // quantities[i] = +e.target.value
-                //   setQuantities(newQuantities)
-                //   console.log('current officialQuantities', quantities)
-                // }}
-                // onKeyDown={(e) =>
-                //   symbolsArr.includes(e.key) && e.preventDefault()
-                // }
+                onKeyDown={(e) =>
+                  symbolsArr.includes(e.key) && e.preventDefault()
+                }
               />
               <span className="checkout__official-box-product-subtotal">
                 {/* NT $6000 */}
