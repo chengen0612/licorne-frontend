@@ -3,7 +3,7 @@ import '../style.css'
 import { imgPath } from '../../../config'
 import { FiRotateCcw } from 'react-icons/fi'
 
-function Result() {
+function Results() {
   return (
     <>
       <div className="quiz__restart" role="button">
@@ -26,4 +26,4 @@ function Result() {
     </>
   )
 }
-export default Result
+export default Results
