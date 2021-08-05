@@ -1,4 +1,8 @@
 /* 晁榮：以下是我自己的 CSS Code */
+.homeCustomWrapper {
+  padding: 160px;
+}
+
 h2.homeCustom {
   font-size: var(--fs-h2);
   font-family: 'Noto Sans', sans-serif;
