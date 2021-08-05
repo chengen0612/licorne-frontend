@@ -3,10 +3,15 @@ import '../../style.scss'
 import { FiChevronLeft } from 'react-icons/fi'
 
 function QuestionFive({ q5, a5, b5, c5, d5 }) {
-  const [opacity, setOpacity] = useState(1)
+  const [none, setNone] = useState('')
+
   const fadeOut = {
-    opacity: opacity,
+    display: none,
     transform: '1s',
+  }
+  const handleClick = () => {
+    //  setIsShowFive(!isShowFive)
+    setNone('none')
   }
 
   return (
@@ -22,7 +27,7 @@ function QuestionFive({ q5, a5, b5, c5, d5 }) {
           <div className="quiz__divider-line"></div>
           <div className="quiz__divider-diamond"></div>
         </div>
-        <div className="quiz__answers" onClick={() => setOpacity(0)}>
+        <div className="quiz__answers" onClick={handleClick}>
           <button className="quiz__answer">{a5}</button>
           <button className="quiz__answer">{b5}</button>
           <button className="quiz__answer">{c5}</button>

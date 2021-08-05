@@ -134,35 +134,60 @@ function Question() {
     getDataFromServer()
   }, [])
 
+  const [isShowTwo, setIsShowTwo] = useState(true)
+  const [isShowThree, setIsShowThree] = useState(true)
+  const [isShowFour, setIsShowFour] = useState(true)
+  const [isShowFive, setIsShowFive] = useState(true)
+
   return (
     <>
       <div className="quiz__back" role="button">
         <FiChevronLeft className="feather-s" />
         <span className="quiz__back-text">返回</span>
       </div>
-      <QuestionOne q1={q1} a1={a1} b1={b1} c1={c1} d1={d1} />
-      {/* <QuestionTwo q2={q2} a2={a2} b2={b2} c2={c2} d2={d2} /> */}
-      {/* <QuestionThree q3={q3} a3={a3} b3={b3} c3={c3} d3={d3} /> */}
-      {/* <QuestionFour q4={q4} a4={a4} b4={b4} c4={c4} d4={d4} /> */}
-      {/* <QuestionFive q5={q5} a5={a5} b5={b5} c5={c5} d5={d5} /> */}
-      {/* <div>
-        <div className="quiz__question-number"> 1/5 </div>
-        <p className="quiz__question">{q1}</p>
-        <div className="quiz__divider">
-          <div className="quiz__divider-line"></div>
-          <div className="quiz__divider-diamond"></div>
-        </div>
-        <div
-          className="quiz__answers"
-          // onClick={() => setOpacity(0)}
-          // style={styles}
-        >
-          <button className="quiz__answer">{a1}</button>
-          <button className="quiz__answer">{b1}</button>
-          <button className="quiz__answer">{c1}</button>
-          <button className="quiz__answer">{d1}</button>
-        </div>
-      </div> */}
+      <QuestionOne
+        q1={q1}
+        a1={a1}
+        b1={b1}
+        c1={c1}
+        d1={d1}
+        isShowTwo={isShowTwo}
+        setIsShowTwo={setIsShowTwo}
+      />
+      {!isShowTwo && (
+        <QuestionTwo
+          q2={q2}
+          a2={a2}
+          b2={b2}
+          c2={c2}
+          d2={d2}
+          isShowThree={isShowThree}
+          setIsShowThree={setIsShowThree}
+        />
+      )}
+      {!isShowThree && (
+        <QuestionThree
+          q3={q3}
+          a3={a3}
+          b3={b3}
+          c3={c3}
+          d3={d3}
+          isShowFour={isShowFour}
+          setIsShowFour={setIsShowFour}
+        />
+      )}
+      {!isShowFour && (
+        <QuestionFour
+          q4={q4}
+          a4={a4}
+          b4={b4}
+          c4={c4}
+          d4={d4}
+          isShowFive={isShowFive}
+          setIsShowFive={setIsShowFive}
+        />
+      )}
+      {!isShowFive && <QuestionFive q5={q5} a5={a5} b5={b5} c5={c5} d5={d5} />}
     </>
   )
 }

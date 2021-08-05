@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css'
 // import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
@@ -7,6 +7,7 @@ import Questions from './components/Questions'
 import Results from './components/Results'
 
 function Sidebar({ sidebarIsOpen, closeSidebar }) {
+  const [isShowOne, setIsShowOne] = useState(true)
   return (
     <>
       <div
@@ -35,7 +36,8 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
             }}
           />
         </div>
-        <Start />
+        <Start isShowOne={isShowOne} setIsShowOne={setIsShowOne} />
+        {!isShowOne && <Questions />}
         {/* <Questions /> */}
         {/* <Results /> */}
       </div>
