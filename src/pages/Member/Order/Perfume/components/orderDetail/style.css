@@ -128,7 +128,19 @@
   background-color: #223843;
   opacity: 0.5;
 }
-.memberOrderPerfume__statusLine {
+.memberOrderPerfume__statusCircle_one {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #223843;
+}
+.memberOrderPerfume__leftLine {
+  width: 75px;
+  margin: 15px 3px 15px 3px;
+  border-top: 2px solid #223843;
+}
+.memberOrderPerfume__middleLine,
+.memberOrderPerfume__rightLine {
   width: 75px;
   margin: 15px 3px 15px 3px;
   border-top: 2px solid #223843;

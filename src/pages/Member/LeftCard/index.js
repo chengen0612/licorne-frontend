@@ -51,28 +51,28 @@ function MemberLeftCard() {
     member_receive: '',
     member_pic: '',
   })
-  function logOutCheck() {
-    swal({
-      title: '確定要登出嗎？',
-      buttons: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        swal('登出成功！', {
-          buttons: false,
-          timer: 1200,
-        })
-      }
-      setTimeout(() => {
-        logOut()
-      }, 1200)
-    })
-  }
+
   const history = useHistory()
   function logOut() {
     localStorage.clear()
     history.push('/login')
   }
-
+  function logOutCheck() {
+    swal({
+      title: '確定要登出嗎？',
+      buttons: true,
+    }).then((logout) => {
+      if (logout) {
+        swal('登出成功！', {
+          buttons: false,
+          timer: 1200,
+        })
+        setTimeout(() => {
+          logOut()
+        }, 1200)
+      }
+    })
+  }
   async function getUserFromServer() {
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/member/profile'
