@@ -1,0 +1,42 @@
+@import '../../styles/global.scss';
+
+.home__wrapper {
+  position: relative;
+  // background: url(http://localhost:3000/images/home/rose.svg) top 115vh right -239px /
+  //     688px no-repeat,
+  //   url(http://localhost:3000/images/home/lemon.png) top 195vh left -123px / 698px
+  //     569px no-repeat,
+  //   url(http://localhost:3000/images/home/peach.svg) top 250vh right -327px / 1002px
+  //     no-repeat;
+  overflow: hidden;
+}
+
+.home__bg-rose {
+  width: 688px;
+  position: absolute;
+  top: 115vh;
+  right: -239px;
+}
+
+.home__bg-lemon {
+  width: 698px;
+  position: absolute;
+  top: 180vh;
+  left: -113px;
+}
+
+.home__bg-peach {
+  width: 1002px;
+  position: absolute;
+  top: 250vh;
+  right: -327px;
+  transform: rotate(-45deg);
+}
+
+.home__backdrop {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 1;
+}
