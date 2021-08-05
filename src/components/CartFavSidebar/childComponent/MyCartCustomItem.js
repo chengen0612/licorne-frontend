@@ -51,9 +51,7 @@ function MyCartCustomItem({
           <br />
           {fragrance_name}
         </p>
-        <div>
-          <p>瓶裝 100ML</p>
-        </div>
+        <p>瓶裝 100ML</p>
         <p>NT$ {price}</p>
         <p
           role="button"

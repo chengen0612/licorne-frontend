@@ -10,145 +10,23 @@ function CartFavSidebar({
   closeSidebar,
   favOrCart,
   setFavOrCart,
+  officialProducts,
+  setOfficialProducts,
+  customProducts,
+  setCustomProducts,
+  courseProducts,
+  setCourseProducts,
+  officialFavorites,
+  setOfficialFavorites,
+  customFavorites,
+  setCustomFavorites,
+  courseFavorites,
+  setCourseFavorites,
+  calculateTotal,
+  totalAmountOfficial,
+  totalAmountCustom,
+  totalAmountCourse,
 }) {
-  // const closeSidebar = props.closeSidebar // 接住從 components/Header 傳來的 closeSidebar 函式
-  // const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
-  //
-  const [officialProducts, setOfficialProducts] = useState([]) // an array holding the data of official products
-  const [totalAmountOfficial, setTotalAmountOfficial] = useState(0) // a number, sum of each (official product qty) x (official product price)
-  const [customProducts, setCustomProducts] = useState([])
-  const [totalAmountCustom, setTotalAmountCustom] = useState(0)
-  const [courseProducts, setCourseProducts] = useState([])
-  const [totalAmountCourse, setTotalAmountCourse] = useState(0)
-  //
-  const [officialFavorites, setOfficialFavorites] = useState([])
-  const [customFavorites, setCustomFavorites] = useState([])
-  const [courseFavorites, setCourseFavorites] = useState([])
-
-  function calculateTotal() {
-    //計算總金額函式
-    let officialTotal = 0
-    let customTotal = 0
-    let courseTotal = 0
-    let sumOfTotals = 0
-    for (let officialProduct of officialProducts) {
-      officialTotal += officialProduct.quantity * officialProduct.price
-    }
-    for (let customProduct of customProducts) {
-      customTotal += customProduct.quantity * customProduct.price
-    }
-
-    for (let courseProduct of courseProducts) {
-      courseTotal += courseProduct.quantity * courseProduct.price
-    }
-
-    sumOfTotals = officialTotal + customTotal + courseTotal
-    setTotalAmountOfficial(sumOfTotals)
-  }
-
-  // 收藏官方 API
-  async function getOfficialCollectFromServer() {
-    const urlCollect = 'http://localhost:6005/sidebar/officialCollect'
-    const requestCollect = new Request(urlCollect, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const responseCollect = await fetch(requestCollect)
-    const officialFavorites = await responseCollect.json()
-    setOfficialFavorites(officialFavorites)
-  }
-
-  // 收藏客製化 API
-  async function getCustomCollectFromServer() {
-    const urlCollect = 'http://localhost:6005/sidebar/customCollect'
-    const requestCollect = new Request(urlCollect, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const responseCollect = await fetch(requestCollect)
-    const customCollect = await responseCollect.json()
-    setCustomFavorites(customCollect)
-  }
-
-  //收藏課程 API
-  async function getCourseCollectFromServer() {
-    const urlCollect = 'http://localhost:6005/sidebar/courseCollect'
-    const requestCollect = new Request(urlCollect, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const responseCollect = await fetch(requestCollect)
-    const courseCollect = await responseCollect.json()
-    setCourseFavorites(courseCollect)
-  }
-
-  // 官方產品 API
-  async function getOfficialProductFromServer() {
-    const urlCart = 'http://localhost:6005/sidebar/official'
-    const requestCart = new Request(urlCart, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const responseCart = await fetch(requestCart)
-    const officialProduct = await responseCart.json()
-    setOfficialProducts(officialProduct)
-  }
-
-  //客製化產品 API
-  async function getCustomProductFromServer() {
-    const urlCart = 'http://localhost:6005/sidebar/custom'
-    const requestCart = new Request(urlCart, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const responseCustom = await fetch(requestCart)
-    const customProduct = await responseCustom.json()
-    setCustomProducts(customProduct)
-  }
-
-  // 課程 API
-  async function getCourseProductsFromServer() {
-    const urlCourse = 'http://localhost:6005/sidebar/course'
-    const requestCourse = new Request(urlCourse, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const responseCourse = await fetch(requestCourse)
-    const courseProduct = await responseCourse.json()
-    setCourseProducts(courseProduct)
-  }
-
-  useEffect(() => {
-    calculateTotal()
-  }, [officialProducts, customProducts, courseProducts])
-
-  useEffect(() => {
-    getOfficialProductFromServer()
-    getCustomProductFromServer()
-    getCourseProductsFromServer()
-    getOfficialCollectFromServer()
-    getCustomCollectFromServer()
-    getCourseCollectFromServer()
-  }, [])
-
   //
 
   return (
@@ -218,6 +96,8 @@ function CartFavSidebar({
           officialProducts={officialProducts}
           setOfficialProducts={setOfficialProducts}
           totalAmountOfficial={totalAmountOfficial}
+          officialFavorites={officialFavorites}
+          setOfficialFavorites={setOfficialFavorites}
           //
           customProducts={customProducts}
           setCustomProducts={setCustomProducts}
@@ -235,6 +115,8 @@ function CartFavSidebar({
           favOrCart={favOrCart}
           officialFavorites={officialFavorites}
           setOfficialFavorites={setOfficialFavorites}
+          officialProducts={officialProducts}
+          setOfficialProducts={setOfficialProducts}
           //
           customFavorites={customFavorites}
           setCustomFavorites={setCustomFavorites}

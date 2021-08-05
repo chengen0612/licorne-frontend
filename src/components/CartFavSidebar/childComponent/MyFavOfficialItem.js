@@ -5,6 +5,7 @@ import { FiShoppingBag } from 'react-icons/fi'
 
 function MyFavOfficialItem({
   officialFavorites,
+  officialFavorite,
   setOfficialFavorites,
   id,
   name_zh,
@@ -13,7 +14,32 @@ function MyFavOfficialItem({
   img_id,
   series_name,
   volume,
+  officialProducts,
+  setOfficialProducts,
 }) {
+  function checkIsInCart() {
+    let currentID = id
+    for (let officialProduct of officialProducts) {
+      if (officialProduct.id === currentID) {
+        return true
+      }
+    }
+    return false
+  }
+
+  function switchIsInCart() {
+    if (checkIsInCart() === true) {
+      const newOfficialProducts = officialProducts.filter((v, i) => {
+        return v.id !== id
+      })
+      setOfficialProducts(newOfficialProducts)
+    } else {
+      let officialProductsCopy = [...officialProducts]
+      officialProductsCopy.push(officialFavorite)
+      setOfficialProducts(officialProductsCopy)
+    }
+  }
+
   return (
     <>
       <div className="cj-sidebar__fav__item__official-img">
@@ -26,15 +52,7 @@ function MyFavOfficialItem({
           <br />
           {series_name}系列
         </p>
-        <div>
-          {volume === '100ml' ? (
-            <p>瓶裝 100ML</p>
-          ) : volume === '50ml' ? (
-            <p>瓶裝 50ML</p>
-          ) : (
-            <p>資料不符合</p>
-          )}
-        </div>
+        <p>瓶裝 {volume}</p>
         <p>NT$ {price}</p>
         <p
           onClick={() => {
@@ -48,8 +66,17 @@ function MyFavOfficialItem({
         </p>
       </div>
       <div className="cj-sidebar__fav__item__official-btn">
-        <div>
-          <FiShoppingBag />
+        <div
+          className={
+            checkIsInCart()
+              ? 'cj-sidebar__fav__item__official-btn__circle--active'
+              : 'cj-sidebar__fav__item__official-btn__circle'
+          }
+          onClick={() => {
+            switchIsInCart()
+          }}
+        >
+          <FiShoppingBag className="cj-sidebar__fav__item__official-btn__FiShoppingBag" />
         </div>
       </div>
     </>

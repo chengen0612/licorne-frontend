@@ -9,6 +9,8 @@ function MyFav({
   favOrCart,
   officialFavorites,
   setOfficialFavorites,
+  officialProducts,
+  setOfficialProducts,
   customFavorites,
   setCustomFavorites,
   courseFavorites,
@@ -36,6 +38,7 @@ function MyFav({
             <div key={officialFavorite.id} className="cj-sidebar__fav__item">
               <MyFavOfficialItem
                 officialFavorites={officialFavorites}
+                officialFavorite={officialFavorite}
                 setOfficialFavorites={setOfficialFavorites}
                 id={officialFavorite.id}
                 name_zh={officialFavorite.name_zh}
@@ -44,6 +47,8 @@ function MyFav({
                 img_id={officialFavorite.img_id}
                 series_name={officialFavorite.series_name}
                 volume={officialFavorite.volume}
+                officialProducts={officialProducts}
+                setOfficialProducts={setOfficialProducts}
               />
             </div>
           )
