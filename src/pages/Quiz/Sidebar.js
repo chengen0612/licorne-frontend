@@ -3,8 +3,8 @@ import './style.css'
 // import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 import Start from './components/Start'
-import Question from './components/Question'
-import Result from './components/Result'
+import Questions from './components/Questions'
+import Results from './components/Results'
 
 function Sidebar({ sidebarIsOpen, closeSidebar }) {
   return (
@@ -36,8 +36,8 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
           />
         </div>
         <Start />
-        {/* <Question /> */}
-        {/* <Result /> */}
+        {/* <Questions /> */}
+        {/* <Results /> */}
       </div>
     </>
   )
