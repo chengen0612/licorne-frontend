@@ -3,7 +3,7 @@ import './style.css'
 import { FiCheck, FiArrowLeft } from 'react-icons/fi'
 import MemberOrderProduct from '../orderProduct'
 
-function MemberLeftCard() {
+function OrderPerfumeDetail() {
   return (
     <>
       <div className="memberOrderPerfume__detailOrderBox">
@@ -121,4 +121,4 @@ function MemberLeftCard() {
   )
 }
 
-export default MemberLeftCard
+export default OrderPerfumeDetail

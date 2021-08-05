@@ -151,6 +151,7 @@ function MemberHomePage(favOrCart, setFavOrCart) {
             <MyCartMake
               customCollectDatas={customCollectDatas}
               setCustomCollectDatas={setCustomCollectDatas}
+              setCustomProducts={setCustomProducts}
             />
           </div>
         </div>

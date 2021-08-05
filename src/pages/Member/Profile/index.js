@@ -32,8 +32,8 @@ function Profile(props) {
       icon: 'info',
       buttons: true,
       // dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
+    }).then((Change) => {
+      if (Change) {
         swal({
           title: '修改成功！',
           icon: 'success',

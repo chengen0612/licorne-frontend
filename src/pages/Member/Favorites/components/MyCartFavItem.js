@@ -53,10 +53,10 @@ function MyCartFavItem({
           刪除
         </p>
       </div>
-      <div className="memberProduct__fav__item__btn">
-        <div>
+      <div className="memberProduct__fav__item__btn__box">
+        <button className="memberProduct__fav__item__btn">
           <FiShoppingBag />
-        </div>
+        </button>
       </div>
     </>
   )

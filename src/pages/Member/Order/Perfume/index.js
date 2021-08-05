@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import OrderDetail from './components/orderDetail'
 
-function Perfume() {
+function OrderPerfume() {
   return (
     <>
       <OrderDetail />
@@ -10,4 +10,4 @@ function Perfume() {
   )
 }
 
-export default Perfume
+export default OrderPerfume

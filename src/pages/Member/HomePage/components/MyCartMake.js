@@ -8,6 +8,7 @@ import MyCartMakeItem from './MyCartFavMakeItem'
 function MyCartMake({
   customCollectDatas,
   setCustomCollectDatas,
+  setCustomProducts,
   id,
   cust_id,
   price,
@@ -31,6 +32,7 @@ function MyCartMake({
             <MyCartMakeItem
               customCollectDatas={customCollectDatas}
               setCustomCollectDatas={setCustomCollectDatas}
+              setCustomProducts={setCustomProducts}
               id={customCollectData.id}
               top_zh={customCollectData.top_zh}
               mid_zh={customCollectData.mid_zh}

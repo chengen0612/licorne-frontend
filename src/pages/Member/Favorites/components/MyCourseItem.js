@@ -4,6 +4,7 @@ import '../../style.css'
 import { FiShoppingBag } from 'react-icons/fi'
 import { imgPath } from '../../../../config'
 import swal from 'sweetalert'
+import { Link } from 'react-router-dom'
 
 function MyCourseItem({
   courseCollectDatas,
@@ -52,11 +53,13 @@ function MyCourseItem({
           >
             刪除
           </p>
-          <input
-            type="button"
-            className="memberFavorites__signUp signUp1"
-            value="報名"
-          />
+          <Link to="/course/list">
+            <input
+              type="button"
+              className="memberFavorites__signUp signUp1"
+              value="報名"
+            />
+          </Link>
         </div>
       </div>
       <hr className="memberFavorites__line" />
