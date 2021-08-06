@@ -9,15 +9,20 @@ import MainProduct from './MainProduct'
 
 function OfficialProd() {
   const [item, setItem] = useState([])
+  const [siblingItem, setSiblingItem] = useState([])
   const { id } = useParams()
-  console.log(id)
+  // console.log(id)
 
   const getDataFromServer = async (id) => {
     const url = `http://localhost:6005/officialid/${id}`
     const response = await axios.get(url)
     const productInfo = response.data
-    console.log(response.data)
-    setItem(productInfo)
+    const product = productInfo[0]
+    const sibling = productInfo[1]
+    console.log('product info', product)
+    console.log('diff vol + price', sibling)
+    setItem(product)
+    setSiblingItem(sibling)
   }
 
   useEffect(() => {
@@ -29,7 +34,7 @@ function OfficialProd() {
   return (
     <>
       <div className="pageWrapper">
-        <MainProduct item={item} />
+        <MainProduct id={id} item={item} siblingItem={siblingItem} />
         <Recommendation item={item} />
       </div>
     </>
