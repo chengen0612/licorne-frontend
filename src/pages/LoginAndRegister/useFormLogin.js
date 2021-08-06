@@ -57,7 +57,7 @@ const useForm = (validate) => {
       // 要等驗証過，再設定資料(簡單的直接設定)
       if (data.code === 0) {
         setTimeout(() => {
-          swal('登入成功！', {
+          swal('歡迎回來！', {
             buttons: false,
             timer: 2000,
           })

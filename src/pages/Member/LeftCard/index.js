@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
 import { imgPath } from '../../../config'
+import { useHistory } from 'react-router-dom'
+import swal from 'sweetalert'
 
 // styled-components套件
 // 按鈕 CSS 樣式
@@ -50,6 +52,27 @@ function MemberLeftCard() {
     member_pic: '',
   })
 
+  const history = useHistory()
+  function logOut() {
+    localStorage.clear()
+    history.push('/login')
+  }
+  function logOutCheck() {
+    swal({
+      title: '確定要登出嗎？',
+      buttons: true,
+    }).then((logout) => {
+      if (logout) {
+        swal('登出成功！', {
+          buttons: false,
+          timer: 1200,
+        })
+        setTimeout(() => {
+          logOut()
+        }, 1200)
+      }
+    })
+  }
   async function getUserFromServer() {
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/member/profile'
@@ -112,6 +135,7 @@ function MemberLeftCard() {
           {types.map((item, index) => (
             <Link to={item.link} key={index}>
               <ButtonToggle
+                className="memberHomePage__menuBtn"
                 active={active === item.name}
                 onClick={() => setActive(item.name)}
               >
@@ -119,7 +143,12 @@ function MemberLeftCard() {
               </ButtonToggle>
             </Link>
           ))}
-          <button className="memberHomePage__signOut">
+          <button
+            className="memberHomePage__signOut"
+            onClick={() => {
+              logOutCheck()
+            }}
+          >
             <h3>登出</h3>
           </button>
         </div>

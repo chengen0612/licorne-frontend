@@ -46,6 +46,7 @@ function MyCartFavCustomItem({
         </p>
         <p>NT$ {price}</p>
         <p
+          role="button"
           onClick={() => {
             askDelete()
           }}

@@ -26,6 +26,7 @@ function MyCartFavItem({
         </p>
         <p>NT$ {price}</p>
         <p
+          role="button"
           onClick={() => {
             const newCollectDatas = collectDatas.filter((v, i) => {
               return v.id !== id

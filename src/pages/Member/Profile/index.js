@@ -155,6 +155,9 @@ function Profile(props) {
             </div>
             <div className="memberData__introBox">
               <h3 className="memberData__intro">個人簡介</h3>
+              <button className="memberData__introEditBtn">
+                <FiEdit size={25} />
+              </button>
             </div>
             <div>
               <textarea

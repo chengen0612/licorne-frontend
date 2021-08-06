@@ -53,27 +53,27 @@ function OrderPerfumeDetail() {
               <div className="memberOrderPerfume__statusBox">
                 <h2 className="memberOrderPerfume__statusTitle">訂單狀態</h2>
                 <div className="memberOrderPerfume__statusIconBox">
+                  <div className="memberOrderPerfume__statusCircle_one">
+                    <FiCheck
+                      size={26}
+                      className="memberOrderPerfume__statusConfirm"
+                    />
+                  </div>
+                  <div className="memberOrderPerfume__leftLine"></div>
                   <div className="memberOrderPerfume__statusCircle">
                     <FiCheck
                       size={26}
                       className="memberOrderPerfume__statusConfirm"
                     />
                   </div>
-                  <div className="memberOrderPerfume__statusLine leftLine"></div>
+                  <div className="memberOrderPerfume__middleLine"></div>
                   <div className="memberOrderPerfume__statusCircle">
                     <FiCheck
                       size={26}
                       className="memberOrderPerfume__statusConfirm"
                     />
                   </div>
-                  <div className="memberOrderPerfume__statusLine middleLine"></div>
-                  <div className="memberOrderPerfume__statusCircle">
-                    <FiCheck
-                      size={26}
-                      className="memberOrderPerfume__statusConfirm"
-                    />
-                  </div>
-                  <div className="memberOrderPerfume__statusLine rightLine"></div>
+                  <div className="memberOrderPerfume__rightLine"></div>
                   <div className="memberOrderPerfume__statusCircle">
                     <FiCheck
                       size={26}
