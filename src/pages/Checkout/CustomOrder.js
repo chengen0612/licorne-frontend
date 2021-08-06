@@ -3,10 +3,23 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
-function CustomOrder({ setCustomTotal }) {
+function CustomOrder(props) {
+  const { setCustomTotal, setCustomOrder } = props
   const [customItems, setCustomItems] = useState([])
   const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
+
+  function getCustomOrder() {
+    // console.log('這是customItems', customItems)
+    const customOrder = { id: '', qty: '', total: 0 }
+    // const customorderitem = customItems
+    // const customorderquantities = quantities
+
+    customOrder.id = customItems
+    customOrder.qty = quantities
+    customOrder.total = customTotal
+    setCustomOrder(customOrder)
+  }
 
   async function getCustomInfoFromServer() {
     const url = 'http://localhost:6005/checkout/custom'
@@ -27,12 +40,13 @@ function CustomOrder({ setCustomTotal }) {
       return item.quantity
     })
 
-    console.log('custom quantities', quantities)
+    // console.log('custom quantities', quantities)
     setQuantities(quantities)
   }
 
   useEffect(() => {
     getCustomInfoFromServer()
+    getCustomOrder()
   }, [])
 
   const subtotals = customItems.map((item, i) => {
@@ -49,6 +63,7 @@ function CustomOrder({ setCustomTotal }) {
   useEffect(() => {
     let newQuantities = quantities
     setQuantities(newQuantities)
+    getCustomOrder()
   }, [customItems, quantities])
 
   const handleDelete = (id) => {
@@ -57,15 +72,16 @@ function CustomOrder({ setCustomTotal }) {
     })
     let newQuantities = quantities
     customItems.forEach((v, i) => {
-      console.log('this is v', v)
+      // console.log('this is v', v)
       if (v.id === id) {
         newQuantities.splice(i, 1)
         return
       }
     })
-    console.log('current quantity', newQuantities)
+    // console.log('current quantity', newQuantities)
     setCustomItems(newCustomItems)
     setQuantities(newQuantities)
+    getCustomOrder()
   }
 
   return (
@@ -137,8 +153,8 @@ function CustomOrder({ setCustomTotal }) {
                     return quantity
                   })
                   setQuantities(newQuantities)
-                  console.log('set custom quantities', newQuantities)
-                  console.log('current custom quantities', quantities)
+                  // console.log('set custom quantities', newQuantities)
+                  // console.log('current custom quantities', quantities)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()

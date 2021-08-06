@@ -186,7 +186,8 @@ const DeliveryMethod = ({
   )
 }
 
-function OrderDetail({ officialTotal, customTotal, courseTotal, value }) {
+function OrderDetail(props) {
+  const { setAddress, officialTotal, customTotal, courseTotal, value } = props
   const [memberName, setMemberName] = useState([])
   const [memberPhone, setMemberPhone] = useState([])
   const [memberAddress, setMemberAddress] = useState([])
@@ -223,6 +224,7 @@ function OrderDetail({ officialTotal, customTotal, courseTotal, value }) {
     // console.log('db member address', memberAddress)
     setMemberAddress(memberAddress)
     setRecipientAddress(memberAddress)
+    setAddress(memberAddress)
   }
 
   useEffect(() => {
@@ -357,21 +359,21 @@ function OrderDetail({ officialTotal, customTotal, courseTotal, value }) {
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
-          <Link
+          {/* <Link
             to={
               checkedValue === paymentMethod[0]
                 ? '/checkout/payment'
                 : '/member'
             }
+          > */}
+          <button
+            className="checkout__checkoutBtn"
+            type="submit"
+            disabled={total === 0}
           >
-            <button
-              className="checkout__checkoutBtn"
-              type="submit"
-              disabled={total === 0}
-            >
-              確認結帳
-            </button>
-          </Link>
+            確認結帳
+          </button>
+          {/* </Link> */}
         </div>
       </div>
     </>

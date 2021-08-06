@@ -3,8 +3,20 @@ import React, { useState, useEffect } from 'react'
 import { FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
-function CourseOrder({ setCourseTotal }) {
+function CourseOrder(props) {
+  const { setCourseTotal, setCourseOrder } = props
   const [courseItems, setCourseItems] = useState([])
+  const [clickDelete, setClickDelete] = useState(false)
+
+  function getCourseOrder() {
+    const courseOrder = { id: '', total: 0 }
+    const courseOrderitem = courseItems
+    // console.log('123', courseOrderitem)
+    courseOrder.id = courseOrderitem
+    courseOrder.total = courseTotal
+    setCourseOrder(courseOrder)
+  }
+
   async function getCourseInfoFromServer() {
     const url = 'http://localhost:6005/checkout/course'
     const request = new Request(url, {
@@ -17,32 +29,47 @@ function CourseOrder({ setCourseTotal }) {
 
     const response = await fetch(request)
     const data = await response.json()
-    // console.log('course info', data)
     setCourseItems(data)
+    console.log('data', data)
+    const orderData = {}
+    orderData.course_id = data[0].course_id
+    orderData.place = data[0].course_place
+    orderData.date = data[0].date
+    orderData.package = data[0].package
+    orderData.people = data[0].people
+    orderData.period = data[0].period
+    orderData.price = data[0].price
+    setCourseOrder(orderData)
   }
 
   const subtotal = courseItems.map((item, i) => {
     return +item.price * +item.quantity
   })
 
-  console.log('course subtotal', subtotal)
+  // console.log('course subtotal', subtotal)
 
   const courseTotal = subtotal.reduce(function (a, b) {
     return a + b
   }, 0)
   setCourseTotal(courseTotal)
-  console.log('course total', courseTotal)
+  // console.log('course total', courseTotal)
 
   useEffect(() => {
     getCourseInfoFromServer()
+    getCourseOrder()
   }, [])
+
+  useEffect(() => {
+    if (clickDelete) getCourseOrder()
+  }, [clickDelete])
 
   const handleDelete = (id) => {
     const newCourseItems = courseItems.filter((v, i) => {
       return v.id !== id
     })
-    console.log('current courseItems', newCourseItems)
+    // console.log('current courseItems', newCourseItems)
     setCourseItems(newCourseItems)
+    getCourseOrder()
   }
 
   return (
@@ -111,6 +138,7 @@ function CourseOrder({ setCourseTotal }) {
                 role="button"
                 onClick={() => {
                   handleDelete(courseItem.id)
+                  setClickDelete(true)
                 }}
               />
             </div>
