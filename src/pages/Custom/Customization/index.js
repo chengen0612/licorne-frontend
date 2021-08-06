@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './style.scss'
 
 // components
-import Spinner from '../../../components/Spinner'
+import Spinner from './Spinner'
 import Process from './Process'
 import Result from './Result'
 
