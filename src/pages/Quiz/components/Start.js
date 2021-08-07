@@ -2,17 +2,19 @@ import React, { useState } from 'react'
 import '../style.css'
 import { imgPath } from '../../../config'
 
-function Start({ isShowOne, setIsShowOne }) {
+function Start({ hideOne, setHideOne }) {
   const [none, setNone] = useState('')
 
   const fadeOut = {
     display: none,
     transform: '1s',
   }
+
   const handleClick = () => {
-    setIsShowOne(!isShowOne)
+    setHideOne(!hideOne)
     setNone('none')
   }
+
   return (
     <div className="" style={fadeOut}>
       <h3 className="quiz__start-title">氣味尋覓</h3>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../../style.scss'
 import { FiChevronLeft } from 'react-icons/fi'
 
-function QuestionThree({ q3, a3, b3, c3, d3, isShowFour, setIsShowFour }) {
+function QuestionThree({ q3, a3, b3, c3, d3, hideFour, setHideFour }) {
   const [none, setNone] = useState('')
 
   const fadeOut = {
@@ -10,7 +10,7 @@ function QuestionThree({ q3, a3, b3, c3, d3, isShowFour, setIsShowFour }) {
     transform: '1s',
   }
   const handleClick = () => {
-    setIsShowFour(!isShowFour)
+    setHideFour(!hideFour)
     setNone('none')
   }
   return (

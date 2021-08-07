@@ -8,7 +8,7 @@ import QuestionThree from './Questions/QuestionThree'
 import QuestionFour from './Questions/QuestionFour'
 import QuestionFive from './Questions/QuestionFive'
 
-function Question() {
+function Question({ showStart, setShowStart, hideOne, setHideOne }) {
   // QuestionOne
   const [q1, setQ1] = useState([])
   const [a1, setA1] = useState([])
@@ -134,60 +134,62 @@ function Question() {
     getDataFromServer()
   }, [])
 
-  const [isShowTwo, setIsShowTwo] = useState(true)
-  const [isShowThree, setIsShowThree] = useState(true)
-  const [isShowFour, setIsShowFour] = useState(true)
-  const [isShowFive, setIsShowFive] = useState(true)
+  const [hideTwo, setHideTwo] = useState(true)
+  const [hideThree, setHideThree] = useState(true)
+  const [hideFour, setHideFour] = useState(true)
+  const [hideFive, setHideFive] = useState(true)
 
   return (
     <>
-      <div className="quiz__back" role="button">
+      {/* <div className="quiz__back" role="button">
         <FiChevronLeft className="feather-s" />
         <span className="quiz__back-text">返回</span>
-      </div>
+      </div> */}
       <QuestionOne
         q1={q1}
         a1={a1}
         b1={b1}
         c1={c1}
         d1={d1}
-        isShowTwo={isShowTwo}
-        setIsShowTwo={setIsShowTwo}
+        hideTwo={hideTwo}
+        setHideTwo={setHideTwo}
+        // showStart={showStart}
+        // setShowStart={setShowStart}
       />
-      {!isShowTwo && (
+      {!hideTwo && (
         <QuestionTwo
           q2={q2}
           a2={a2}
           b2={b2}
           c2={c2}
           d2={d2}
-          isShowThree={isShowThree}
-          setIsShowThree={setIsShowThree}
+          hideThree={hideThree}
+          setHideThree={setHideThree}
         />
       )}
-      {!isShowThree && (
+      {!hideThree && (
         <QuestionThree
           q3={q3}
           a3={a3}
           b3={b3}
           c3={c3}
           d3={d3}
-          isShowFour={isShowFour}
-          setIsShowFour={setIsShowFour}
+          hideFour={hideFour}
+          setHideFour={setHideFour}
         />
       )}
-      {!isShowFour && (
+      {!hideFour && (
         <QuestionFour
           q4={q4}
           a4={a4}
           b4={b4}
           c4={c4}
           d4={d4}
-          isShowFive={isShowFive}
-          setIsShowFive={setIsShowFive}
+          hideFive={hideFive}
+          setHideFive={setHideFive}
         />
       )}
-      {!isShowFive && <QuestionFive q5={q5} a5={a5} b5={b5} c5={c5} d5={d5} />}
+      {!hideFive && <QuestionFive q5={q5} a5={a5} b5={b5} c5={c5} d5={d5} />}
     </>
   )
 }

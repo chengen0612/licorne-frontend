@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../../style.scss'
 import { FiChevronLeft } from 'react-icons/fi'
 
-function QuestionTwo({ q2, a2, b2, c2, d2, isShowThree, setIsShowThree }) {
+function QuestionTwo({ q2, a2, b2, c2, d2, hideThree, setHideThree }) {
   const [none, setNone] = useState('')
 
   const fadeOut = {
@@ -10,16 +10,26 @@ function QuestionTwo({ q2, a2, b2, c2, d2, isShowThree, setIsShowThree }) {
     transform: '1s',
   }
   const handleClick = () => {
-    setIsShowThree(!isShowThree)
+    setHideThree(!hideThree)
+    setNone('none')
+  }
+
+  const clickHandler = () => {
+    // setHideOne(hideOne)
     setNone('none')
   }
 
   return (
     <>
-      {/* <div className="quiz__back" role="button">
+      <div
+        className="quiz__back"
+        role="button"
+        onClick={clickHandler}
+        style={fadeOut}
+      >
         <FiChevronLeft className="feather-s" />
         <span className="quiz__back-text">返回</span>
-      </div> */}
+      </div>
       <div style={fadeOut}>
         <div className="quiz__question-number"> 2/5 </div>
         <p className="quiz__question">{q2}</p>

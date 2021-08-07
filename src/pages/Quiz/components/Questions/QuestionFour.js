@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import '../../style.scss'
 import { FiChevronLeft } from 'react-icons/fi'
-import { fade } from '@material-ui/core'
 
-function QuestionFour({ q4, a4, b4, c4, d4, isShowFive, setIsShowFive }) {
+function QuestionFour({ q4, a4, b4, c4, d4, hideFive, setHideFive }) {
   const [none, setNone] = useState('')
 
   const fadeOut = {
@@ -11,7 +10,7 @@ function QuestionFour({ q4, a4, b4, c4, d4, isShowFive, setIsShowFive }) {
     transform: '1s',
   }
   const handleClick = () => {
-    setIsShowFive(!isShowFive)
+    setHideFive(!hideFive)
     setNone('none')
   }
   return (

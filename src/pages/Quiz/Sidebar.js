@@ -7,7 +7,9 @@ import Questions from './components/Questions'
 import Results from './components/Results'
 
 function Sidebar({ sidebarIsOpen, closeSidebar }) {
-  const [isShowOne, setIsShowOne] = useState(true)
+  const [hideOne, setHideOne] = useState(true)
+  const [showStart, setShowStart] = useState(false)
+
   return (
     <>
       <div
@@ -36,9 +38,15 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
             }}
           />
         </div>
-        <Start isShowOne={isShowOne} setIsShowOne={setIsShowOne} />
-        {!isShowOne && <Questions />}
-        {/* <Questions /> */}
+        <Start hideOne={hideOne} setHideOne={setHideOne} />
+        {!hideOne && (
+          <Questions
+            showStart={showStart}
+            setShowStart={setShowStart}
+            hideOne={hideOne}
+            setHideOne={setHideOne}
+          />
+        )}
         {/* <Results /> */}
       </div>
     </>

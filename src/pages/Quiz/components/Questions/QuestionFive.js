@@ -10,7 +10,7 @@ function QuestionFive({ q5, a5, b5, c5, d5 }) {
     transform: '1s',
   }
   const handleClick = () => {
-    //  setIsShowFive(!isShowFive)
+    // setHideFive(!hideFive)
     setNone('none')
   }
 
