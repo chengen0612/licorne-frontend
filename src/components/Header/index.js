@@ -21,16 +21,6 @@ function Header(props) {
   const [totalAmountCustom, setTotalAmountCustom] = useState(0)
   const [totalAmountOfficial, setTotalAmountOfficial] = useState(0)
 
-  // useEffect(() => {
-  //   // 註解掉一陣子看有什麼影響
-  //   getOfficialProductFromServer()
-  //   getCustomProductFromServer()
-  //   getCourseProductsFromServer()
-  //   getOfficialCollectFromServer()
-  //   getCustomCollectFromServer()
-  //   getCourseCollectFromServer()
-  // }, [])
-
   useEffect(() => {
     calculateTotal()
   }, [officialProducts, customProducts, courseProducts])
@@ -120,20 +110,7 @@ function Header(props) {
     const customCollect = await responseCollect.json()
     setCustomFavorites(customCollect)
   }
-  // //收藏課程 API
-  // async function getCourseCollectFromServer() {
-  //   const urlCollect = 'http://localhost:6005/sidebar/courseCollect'
-  //   const requestCollect = new Request(urlCollect, {
-  //     method: 'GET',
-  //     headers: new Headers({
-  //       Accept: 'application/json',
-  //       'Content-Type': 'appliaction/json',
-  //     }),
-  //   })
-  //   const responseCollect = await fetch(requestCollect)
-  //   const courseCollect = await responseCollect.json()
-  //   setCourseFavorites(courseCollect)
-  // }
+
   // 官方產品 API
   async function getOfficialProductFromServer() {
     const urlCart = 'http://localhost:6005/sidebar/official'
@@ -176,6 +153,7 @@ function Header(props) {
     const courseProduct = await responseCourse.json()
     setCourseProducts(courseProduct)
   }
+
   // -------------------- 以上是晁榮的程式碼 --------------------
 
   return (

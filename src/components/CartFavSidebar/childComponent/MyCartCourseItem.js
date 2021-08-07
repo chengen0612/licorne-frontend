@@ -12,9 +12,7 @@ function MyCartCourseItem({
     <>
       <div className="cj-sidebar__cart__item__course-img">
         <img src={courseProduct.course_img} alt="" />
-        <div>
-          <FiHeart className="feather-s" role="button" />
-        </div>
+        <div>{/* <FiHeart className="feather-s" role="button" /> */}</div>
       </div>
       <div className="cj-sidebar__cart__item__course-desc">
         <p>{courseProduct.course_name_ch}</p>

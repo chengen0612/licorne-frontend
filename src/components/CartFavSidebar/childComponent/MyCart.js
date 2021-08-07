@@ -17,7 +17,6 @@ function MyCart({
   //
   customProducts,
   setCustomProducts,
-  totalAmountCustom,
   customFavorites,
   setCustomFavorites,
   //
@@ -26,6 +25,61 @@ function MyCart({
   //
   closeSidebar, // 承恩加的
 }) {
+  function getProductsAndQuantity(products) {
+    //Only for official and custom products!
+    let newProducts = [...products]
+    let idArray = []
+    for (let newProduct of newProducts) {
+      idArray.push(newProduct.id)
+    }
+    let productIds = idArray.join(',')
+    let qtyArray = []
+    for (let newProduct of newProducts) {
+      qtyArray.push(newProduct.quantity)
+    }
+    let productQuantitys = qtyArray.join(',')
+    let arr = {}
+    arr.productIds = productIds
+    arr.productQuantitys = productQuantitys
+    return arr
+  }
+
+  function getCollectDatas(collectDatas, hasQTY) {
+    //Only for official and custom favorites!
+    let newCollects = [...collectDatas]
+    let idArray = []
+    for (let newCollect of newCollects) {
+      idArray.push(newCollect.id)
+    }
+    let collectIDs = idArray.join(',')
+    if (hasQTY === true) {
+      let collectQTYArray = []
+      for (let newCollect of newCollects) {
+        collectQTYArray.push(1)
+      }
+      let collectQTYs = collectQTYArray.join(',')
+      let result = {}
+      result.customized_id = collectIDs
+      result.customized_quantity = collectQTYs
+      return result
+    }
+    return { product_id: collectIDs }
+  }
+
+  const updateDatabase = async (data, url) => {
+    const request = new Request(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+      }),
+    })
+    const response = await fetch(request)
+    const result = await response.json()
+    console.log('資料輸入成功: ', result.message)
+  }
+
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
       <div className="cj-sidebar__cart">
@@ -101,7 +155,7 @@ function MyCart({
 
       <div className="cj-sidebar__cart__price">
         <div>
-          <p>總金額：</p>
+          <p onClick={() => {}}>總金額：</p>
           <p>NT$ {totalAmountOfficial}</p>
         </div>
       </div>
@@ -112,6 +166,29 @@ function MyCart({
             onClick={() => {
               closeSidebar()
               document.body.style.overflow = 'visible'
+              //
+              //晁榮：以下是將資料傳到後端的程式碼！
+              let offProducts = getProductsAndQuantity(officialProducts)
+              let custProducts = getProductsAndQuantity(customProducts)
+              updateDatabase(
+                offProducts,
+                'http://localhost:6005/sidebar/updateOfficialCart'
+              )
+              updateDatabase(
+                custProducts,
+                'http://localhost:6005/sidebar/updateCustomCart'
+              )
+              let offiCollect = getCollectDatas(officialFavorites)
+              updateDatabase(
+                offiCollect,
+                'http://localhost:6005/sidebar/updateOfficialCollect'
+              )
+              let custCollect = getCollectDatas(customFavorites, true)
+              updateDatabase(
+                custCollect,
+                'http://localhost:6005/sidebar/updateCustomCollect'
+              )
+              //晁榮：以上是將資料傳到後端的程式碼！
             }}
           >
             前往結帳
