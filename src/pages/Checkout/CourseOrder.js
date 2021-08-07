@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import myswal from '../../utils/sweetalert'
 
 function CourseOrder(props) {
   const { setCourseTotal, setCourseOrder } = props
@@ -136,8 +137,9 @@ function CourseOrder(props) {
               <FiX
                 className="feather-s"
                 role="button"
-                onClick={() => {
-                  handleDelete(courseItem.id)
+                onClick={async () => {
+                  // handleDelete(courseItem.id)
+                  myswal.confirmDelete(handleDelete, courseItem.id)
                   setClickDelete(true)
                 }}
               />

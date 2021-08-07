@@ -21,4 +21,20 @@ swal.popUpMessage = (message) => {
   })
 }
 
+swal.confirmDelete = async (func, ...params) => {
+  const result = await swal({
+    title: '確定要刪除嗎？',
+    icon: 'warning',
+    buttons: true,
+    dangerMode: true,
+    timer: 1200,
+  })
+  if (!result) return
+  swal({
+    title: '刪除成功！',
+    icon: 'success',
+  })
+  func(...params)
+}
+
 export default swal

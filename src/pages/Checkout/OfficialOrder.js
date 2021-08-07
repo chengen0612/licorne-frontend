@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
+import myswal from '../../utils/sweetalert'
 
 function OfficialOrder(props) {
   const { setOfficialTotal, setOfficialOrder } = props
@@ -167,7 +168,8 @@ function OfficialOrder(props) {
                 className="feather-s"
                 role="button"
                 onClick={() => {
-                  handleDelete(officialItem.id)
+                  // handleDelete(officialItem.id)
+                  myswal.confirmDelete(handleDelete, officialItem.id)
                 }}
               />
             </div>

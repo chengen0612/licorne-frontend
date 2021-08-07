@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 // import { imgPath } from '../../config'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
+import myswal from '../../utils/sweetalert'
 
 function CustomOrder(props) {
   const { setCustomTotal, setCustomOrder } = props
@@ -169,7 +170,8 @@ function CustomOrder(props) {
                 className="feather-s"
                 role="button"
                 onClick={() => {
-                  handleDelete(customItem.id)
+                  // handleDelete(customItem.id)
+                  myswal.confirmDelete(handleDelete, customItem.id)
                 }}
               />
             </div>
