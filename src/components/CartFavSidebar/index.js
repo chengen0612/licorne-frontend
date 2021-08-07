@@ -20,8 +20,6 @@ function CartFavSidebar({
   setOfficialFavorites,
   customFavorites,
   setCustomFavorites,
-  courseFavorites,
-  setCourseFavorites,
   calculateTotal,
   totalAmountOfficial,
   totalAmountCustom,
@@ -124,9 +122,6 @@ function CartFavSidebar({
           setCustomFavorites={setCustomFavorites}
           customProducts={customProducts}
           setCustomProducts={setCustomProducts}
-          //
-          courseFavorites={courseFavorites}
-          setCourseFavorites={setCourseFavorites}
         />
       </div>
     </>

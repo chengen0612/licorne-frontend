@@ -16,7 +16,6 @@ function Header(props) {
   //
   const [officialFavorites, setOfficialFavorites] = useState([])
   const [customFavorites, setCustomFavorites] = useState([])
-  const [courseFavorites, setCourseFavorites] = useState([])
   //
   const [totalAmountCourse, setTotalAmountCourse] = useState(0)
   const [totalAmountCustom, setTotalAmountCustom] = useState(0)
@@ -75,7 +74,7 @@ function Header(props) {
     getCourseProductsFromServer()
     getOfficialCollectFromServer()
     getCustomCollectFromServer()
-    getCourseCollectFromServer()
+    // getCourseCollectFromServer()
   }
 
   function openSidebarCart() {
@@ -90,7 +89,7 @@ function Header(props) {
     getCourseProductsFromServer()
     getOfficialCollectFromServer()
     getCustomCollectFromServer()
-    getCourseCollectFromServer()
+    // getCourseCollectFromServer()
   }
 
   // 收藏官方 API
@@ -121,20 +120,20 @@ function Header(props) {
     const customCollect = await responseCollect.json()
     setCustomFavorites(customCollect)
   }
-  //收藏課程 API
-  async function getCourseCollectFromServer() {
-    const urlCollect = 'http://localhost:6005/sidebar/courseCollect'
-    const requestCollect = new Request(urlCollect, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const responseCollect = await fetch(requestCollect)
-    const courseCollect = await responseCollect.json()
-    setCourseFavorites(courseCollect)
-  }
+  // //收藏課程 API
+  // async function getCourseCollectFromServer() {
+  //   const urlCollect = 'http://localhost:6005/sidebar/courseCollect'
+  //   const requestCollect = new Request(urlCollect, {
+  //     method: 'GET',
+  //     headers: new Headers({
+  //       Accept: 'application/json',
+  //       'Content-Type': 'appliaction/json',
+  //     }),
+  //   })
+  //   const responseCollect = await fetch(requestCollect)
+  //   const courseCollect = await responseCollect.json()
+  //   setCourseFavorites(courseCollect)
+  // }
   // 官方產品 API
   async function getOfficialProductFromServer() {
     const urlCart = 'http://localhost:6005/sidebar/official'
@@ -197,8 +196,6 @@ function Header(props) {
         setOfficialFavorites={setOfficialFavorites}
         customFavorites={customFavorites}
         setCustomFavorites={setCustomFavorites}
-        courseFavorites={courseFavorites}
-        setCourseFavorites={setCourseFavorites}
         calculateTotal={calculateTotal}
         totalAmountOfficial={totalAmountOfficial}
         totalAmountCustom={totalAmountCustom}

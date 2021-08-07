@@ -3,7 +3,7 @@ import '../../../styles/global.css'
 import '../style.css'
 import MyFavOfficialItem from './MyFavOfficialItem'
 import MyFavCustomItem from './MyFavCustomItem'
-import MyFavCourseItem from './MyFavCourseItem'
+// import MyFavCourseItem from './MyFavCourseItem'
 
 function MyFav({
   favOrCart,
@@ -13,8 +13,6 @@ function MyFav({
   setOfficialProducts,
   customFavorites,
   setCustomFavorites,
-  courseFavorites,
-  setCourseFavorites,
   customProducts,
   setCustomProducts,
 }) {
@@ -24,10 +22,7 @@ function MyFav({
         className="cj-sidebar__fav"
         style={{ display: favOrCart === 'Fav' ? 'block' : 'none' }}
       >
-        {officialFavorites.length +
-          customFavorites.length +
-          courseFavorites.length >
-        0 ? (
+        {officialFavorites.length + customFavorites.length > 0 ? (
           ''
         ) : (
           <p className="cj-sidebar__cart__no-item-message">
@@ -70,7 +65,7 @@ function MyFav({
           )
         })}
         {/*  */}
-        {courseFavorites.map((courseFavorite, key) => {
+        {/* {courseFavorites.map((courseFavorite, key) => {
           return (
             <div
               key={courseFavorite.course_id}
@@ -83,7 +78,7 @@ function MyFav({
               />
             </div>
           )
-        })}
+        })} */}
       </div>
     </>
   )
