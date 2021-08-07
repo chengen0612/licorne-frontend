@@ -153,7 +153,10 @@
 
 .official__recommendation-group {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  // modify to fit design
+  justify-content: center;
+  column-gap: 180px;
   align-items: center;
   // border: 1px solid purple;
 }

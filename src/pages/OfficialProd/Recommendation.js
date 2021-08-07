@@ -11,9 +11,9 @@ function Recommendation() {
         <h4 className="official__recommendation-title">其他產品</h4>
         <div className="official__recommendation-group">
           {/* TODO: carousel */}
-          <FiChevronLeft className="feather-m" />
+          {/* <FiChevronLeft className="feather-m" /> */}
           <OtherProducts />
-          <FiChevronRight className="feather-m" />
+          {/* <FiChevronRight className="feather-m" /> */}
         </div>
       </section>
     </>
