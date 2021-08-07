@@ -2,21 +2,10 @@ import React, { useState } from 'react'
 import '../style.css'
 import { imgPath } from '../../../config'
 
-function Start({ hideOne, setHideOne }) {
-  const [none, setNone] = useState('')
-
-  const fadeOut = {
-    display: none,
-    transform: '1s',
-  }
-
-  const handleClick = () => {
-    setHideOne(!hideOne)
-    setNone('none')
-  }
+function Start({ changeHandler }) {
 
   return (
-    <div className="" style={fadeOut}>
+    <div className="">
       <h3 className="quiz__start-title">氣味尋覓</h3>
       <p className="quiz__start-text">
         張愛玲曾經說過「到人心裡的路是通過嗅覺， <br />
@@ -35,7 +24,7 @@ function Start({ hideOne, setHideOne }) {
         alt=""
       />
       <div className="d-flex justify-content-center">
-        <button className="quiz__start-btn" onClick={handleClick}>
+        <button className="quiz__start-btn" onClick={changeHandler}>
           開始測驗
         </button>
       </div>

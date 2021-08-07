@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import '../style.scss'
 import { FiChevronLeft } from 'react-icons/fi'
 import axios from 'axios'
+import Start from './Start'
 import QuestionOne from './Questions/QuestionOne'
 import QuestionTwo from './Questions/QuestionTwo'
 import QuestionThree from './Questions/QuestionThree'
 import QuestionFour from './Questions/QuestionFour'
 import QuestionFive from './Questions/QuestionFive'
 
-function Question({ showStart, setShowStart, hideOne, setHideOne }) {
+function Question({ page, setPage, returnHandler }) {
   // QuestionOne
   const [q1, setQ1] = useState([])
   const [a1, setA1] = useState([])
@@ -55,6 +56,8 @@ function Question({ showStart, setShowStart, hideOne, setHideOne }) {
     const question = questions.map((v, i) => {
       return v.topic
     })
+
+    console.log('questions', questions)
     setQ1(question[0])
     setQ2(question[1])
     setQ3(question[2])
@@ -69,7 +72,7 @@ function Question({ showStart, setShowStart, hideOne, setHideOne }) {
       return v.answer
     })
     console.log('answers', answer)
-    console.log('questions', questsArr)
+    // console.log('questions', questsArr)
 
     // returns index of the first answer in array of questions
     const index1 = questsArr.findIndex((quest) => quest === question[0])
@@ -78,6 +81,7 @@ function Question({ showStart, setShowStart, hideOne, setHideOne }) {
     const index4 = questsArr.findIndex((quest) => quest === question[3])
     const index5 = questsArr.findIndex((quest) => quest === question[4])
 
+    console.log('index', index1, index2, index3, index4, index5)
     /* answers */
     // QuestionOne
     const a1 = answer[index1]
@@ -134,62 +138,83 @@ function Question({ showStart, setShowStart, hideOne, setHideOne }) {
     getDataFromServer()
   }, [])
 
-  const [hideTwo, setHideTwo] = useState(true)
-  const [hideThree, setHideThree] = useState(true)
-  const [hideFour, setHideFour] = useState(true)
-  const [hideFive, setHideFive] = useState(true)
+  // change page between different questions
+  const [change, setChange] = useState(0)
+
+  // 往前到下一題
+  const nextHandler = () => {
+    setChange(change + 1)
+  }
+
+  // 往回到上一題
+  const backHandler = () => {
+    setChange(change - 1)
+  }
 
   return (
     <>
-      {/* <div className="quiz__back" role="button">
+      {/* {console.log('change', change)}
+      {console.log('page', page)} */}
+      <div
+        className="quiz__back"
+        role="button"
+        onClick={() => {
+          if (change === 0) {
+            returnHandler()
+          } else {
+            backHandler()
+          }
+        }}
+      >
         <FiChevronLeft className="feather-s" />
         <span className="quiz__back-text">返回</span>
-      </div> */}
-      <QuestionOne
-        q1={q1}
-        a1={a1}
-        b1={b1}
-        c1={c1}
-        d1={d1}
-        hideTwo={hideTwo}
-        setHideTwo={setHideTwo}
-        // showStart={showStart}
-        // setShowStart={setShowStart}
-      />
-      {!hideTwo && (
-        <QuestionTwo
-          q2={q2}
-          a2={a2}
-          b2={b2}
-          c2={c2}
-          d2={d2}
-          hideThree={hideThree}
-          setHideThree={setHideThree}
+      </div>
+      {change === 4 ? (
+        <QuestionFive
+          q5={q5}
+          a5={a5}
+          b5={b5}
+          c5={c5}
+          d5={d5}
+          nextHandler={nextHandler}
         />
-      )}
-      {!hideThree && (
-        <QuestionThree
-          q3={q3}
-          a3={a3}
-          b3={b3}
-          c3={c3}
-          d3={d3}
-          hideFour={hideFour}
-          setHideFour={setHideFour}
-        />
-      )}
-      {!hideFour && (
+      ) : change === 3 ? (
         <QuestionFour
           q4={q4}
           a4={a4}
           b4={b4}
           c4={c4}
           d4={d4}
-          hideFive={hideFive}
-          setHideFive={setHideFive}
+          nextHandler={nextHandler}
+        />
+      ) : change === 2 ? (
+        <QuestionThree
+          q3={q3}
+          a3={a3}
+          b3={b3}
+          c3={c3}
+          d3={d3}
+          nextHandler={nextHandler}
+        />
+      ) : change === 1 ? (
+        <QuestionTwo
+          q2={q2}
+          a2={a2}
+          b2={b2}
+          c2={c2}
+          d2={d2}
+          nextHandler={nextHandler}
+        />
+      ) : (
+        <QuestionOne
+          q1={q1}
+          a1={a1}
+          b1={b1}
+          c1={c1}
+          d1={d1}
+          nextHandler={nextHandler}
         />
       )}
-      {!hideFive && <QuestionFive q5={q5} a5={a5} b5={b5} c5={c5} d5={d5} />}
     </>
   )
 }

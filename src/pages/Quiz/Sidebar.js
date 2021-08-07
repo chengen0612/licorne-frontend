@@ -7,8 +7,21 @@ import Questions from './components/Questions'
 import Results from './components/Results'
 
 function Sidebar({ sidebarIsOpen, closeSidebar }) {
-  const [hideOne, setHideOne] = useState(true)
-  const [showStart, setShowStart] = useState(false)
+  // change page between Start and Questions
+  const [page, setPage] = useState(0)
+
+  // 往前到第一題
+  const changeHandler = () => {
+    setPage(page + 1)
+  }
+
+  // 往回到開始頁
+  const returnHandler = () => {
+    setPage(page - 1)
+    // if (page === -1) {
+    //   setPage(0)
+    // }
+  }
 
   return (
     <>
@@ -28,6 +41,7 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
           sidebarIsOpen ? 'quiz__sidebar' : 'quiz__sidebar quiz__sidebar-close'
         }
       >
+        {console.log('page', page)}
         <div className="quiz__close">
           <FiX
             className="feather-m"
@@ -38,13 +52,14 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
             }}
           />
         </div>
-        <Start hideOne={hideOne} setHideOne={setHideOne} />
-        {!hideOne && (
+        {page === 0 ? (
+          <Start changeHandler={changeHandler} />
+        ) : (
           <Questions
-            showStart={showStart}
-            setShowStart={setShowStart}
-            hideOne={hideOne}
-            setHideOne={setHideOne}
+            changeHandler={changeHandler}
+            returnHandler={returnHandler}
+            // page={page}
+            // setPage={setPage}
           />
         )}
         {/* <Results /> */}
