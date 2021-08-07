@@ -24,14 +24,25 @@ import SwitchCourse from './routes/SwitchCourse'
 import SwitchCustom from './routes/SwitchCustom'
 
 function Location() {
+  // states
   const location = useLocation()
   const [useHeader, setUseHeader] = useState(false)
+  const [isAmount, setIsAmount] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   // array to store pages not using header
   /* eslint-disable */
   const noSpinnerList = ['/custom/entrance', '/custom/introduction', '/custom/process', '/member', '/member/profile', '/member/order', '/member/favorites', '/official',]
   /* eslint-enable */
+
+  useEffect(() => {
+    setIsAmount(true)
+  }, [])
+
+  useEffect(() => {
+    handleHeader()
+    handleSpinner()
+  }, [location])
 
   const handleHeader = () => {
     const params = location.pathname.split('/')[1]
@@ -48,6 +59,7 @@ function Location() {
   }
 
   const handleSpinner = () => {
+    if (!isAmount) return
     const pathname = location.pathname
     const index = noSpinnerList.findIndex((value) => value === pathname)
     if (index > -1) return
@@ -56,11 +68,6 @@ function Location() {
       setIsLoading(false)
     }, 500)
   }
-
-  useEffect(() => {
-    handleHeader()
-    handleSpinner()
-  }, [location])
 
   const switchRoutes = () => {
     return (
