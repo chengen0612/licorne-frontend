@@ -30,9 +30,10 @@ function Location() {
   const [isAmount, setIsAmount] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  // array to store pages not using header
+  // array to store pages not using header or spinner
   /* eslint-disable */
   const noSpinnerList = ['/custom/entrance', '/custom/introduction', '/custom/process', '/member', '/member/profile', '/member/order', '/member/favorites', '/official',]
+  const noHeaderList = ['/custom/entrance', '/custom/introduction', '/custom/process', '/checkout/payment']
   /* eslint-enable */
 
   useEffect(() => {
@@ -45,17 +46,9 @@ function Location() {
   }, [location])
 
   const handleHeader = () => {
-    const params = location.pathname.split('/')[1]
-    // params !== 'custom' ? setUseHeader(true) : setUseHeader(false)
-    switch (params) {
-      case 'custom':
-      case 'official':
-        setUseHeader(false)
-        break
-      default:
-        setUseHeader(true)
-        break
-    }
+    const pathname = location.pathname
+    const index = noHeaderList.findIndex((value) => value === pathname)
+    index > -1 ? setUseHeader(false) : setUseHeader(true)
   }
 
   const handleSpinner = () => {

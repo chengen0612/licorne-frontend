@@ -7,7 +7,7 @@ import Materialfilter from './components/filter/Materialfilter.js'
 import Products from './components/product/Products.js'
 import Labels from './components/product/Labels.js'
 import Pages from './components/product/Pages.js'
-import Header from '../../components/Header'
+// import Header from '../../components/Header'
 import axios from 'axios'
 function Official() {
   const [products, setPrdoducts] = useState([]) //給商品顯示(出現有什麼商品)
@@ -296,7 +296,7 @@ function Official() {
   return (
     <>
       <div>
-        <Header />
+        {/* <Header /> */}
         <aside className="product__asideright ">
           {/* 組件Series */}
           <div className="product__asider_total_box">
