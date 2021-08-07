@@ -4,6 +4,7 @@ import 'react-calendar/dist/Calendar.css'
 import { FiHeart, FiRotateCcw } from 'react-icons/fi'
 import CourseMapModal from './CourseMapModal'
 import Backdrop from './Backdrop'
+import swal from 'sweetalert'
 
 const selectPrograms = [
   {
@@ -99,6 +100,10 @@ function CourseForm(props) {
     e.preventDefault()
     // console.log(JSON.stringify(formData));
     // ... submit to API or something
+    swal('報名成功!', {
+      button: false,
+      timer: 2000,
+    })
     sentCourseFromServer()
   }
 
@@ -200,6 +205,10 @@ function CourseForm(props) {
   }
   // 增加收藏
   function addCollect() {
+    swal('收藏成功!', {
+      button: false,
+      timer: 2000,
+    })
     sentCollect()
   }
   return (

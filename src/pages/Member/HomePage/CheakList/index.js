@@ -3,6 +3,8 @@ import './style.css'
 import { FiEdit } from 'react-icons/fi'
 import MyCartOffcialText from '../components/MyCartOffcialText'
 import MyCartCustomText from '../components/MyCartCustomText'
+import { Link, useHistory } from 'react-router-dom'
+import swal from 'sweetalert'
 
 function CheakList({
   officialProducts,
@@ -13,6 +15,20 @@ function CheakList({
   setCustomProducts,
   totalAmountCustom,
 }) {
+  function goPayCheck() {
+    swal('前往結帳頁...', {
+      buttons: false,
+      timer: 1200,
+    })
+    setTimeout(() => {
+      goPay()
+    }, 1200)
+  }
+
+  const history = useHistory()
+  function goPay() {
+    history.push('/checkout')
+  }
   return (
     <>
       <div className="memberHomePage__cheakListBox">
@@ -47,9 +63,16 @@ function CheakList({
             )
           })}
         </div>
-        {/* <div className="memberHomePage__goPay">
-          <button className="memberHomePage__goPayBtn">前往結帳</button>
-        </div> */}
+        <div className="memberHomePage__goPay">
+          <button
+            className="memberHomePage__goPayBtn"
+            onClick={() => {
+              goPayCheck()
+            }}
+          >
+            前往結帳
+          </button>
+        </div>
       </div>
     </>
   )

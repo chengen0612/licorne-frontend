@@ -157,23 +157,12 @@
   font-weight: var(--fw-light);
 }
 
-.cj-sidebar__fav__item__official-desc > div {
-  display: flex;
-  margin: 5px 0 5px 0;
-  border: 1px solid var(--c-primary);
-  width: 120px;
-  height: 25px;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.cj-sidebar__fav__item__official-desc > div > p {
-  padding-left: 10px;
-  background-color: transparent;
+.cj-sidebar__fav__item__official-desc > p:nth-child(3) {
+  /* margin: 5px 0 5px 0; */
+  /* padding-left: 10px; */
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
-  font-weight: var(--fw-light);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
   color: var(--c-primary);
 }
 
@@ -200,7 +189,7 @@
   justify-content: center;
 }
 
-.cj-sidebar__fav__item__official-btn div {
+.cj-sidebar__fav__item__official-btn__circle--active {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -210,7 +199,17 @@
   border-radius: 50%;
 }
 
-.cj-sidebar__fav__item__official-btn div:first-child {
+.cj-sidebar__fav__item__official-btn__circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c-gray);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.cj-sidebar__fav__item__official-btn__FiShoppingBag {
   color: white;
   cursor: pointer;
 }
@@ -252,23 +251,12 @@
   font-weight: var(--fw-light);
 }
 
-.cj-sidebar__fav__item__custom-desc > div {
-  display: flex;
-  margin: 5px 0 5px 0;
-  border: 1px solid var(--c-primary);
-  width: 120px;
-  height: 25px;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.cj-sidebar__fav__item__custom-desc > div > p {
-  padding-left: 10px;
-  background-color: transparent;
+.cj-sidebar__fav__item__custom-desc > p:nth-child(3) {
+  /* margin: 5px 0 5px 0; */
+  /* padding-left: 10px; */
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
-  font-weight: var(--fw-light);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
   color: var(--c-primary);
 }
 
@@ -438,8 +426,8 @@
   justify-content: center;
 }
 
-.cj-sidebar__cart__checkout p {
-  color: white;
+.cj-sidebar__cart__checkout a {
+  color: white !important;
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-h5);
 }
@@ -493,23 +481,12 @@
   font-weight: var(--fw-light);
 }
 
-.cj-sidebar__cart__item__official-desc > div {
-  display: flex;
-  margin: 5px 0 5px 0;
-  border: 1px solid var(--c-primary);
-  width: 120px;
-  height: 25px;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.cj-sidebar__cart__item__official-desc > div > p {
-  padding-left: 10px;
-  background-color: transparent;
+.cj-sidebar__cart__item__official-desc > p:nth-child(3) {
+  /* margin: 5px 0 5px 0; */
+  /* padding-left: 10px; */
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
-  font-weight: var(--fw-light);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
   color: var(--c-primary);
 }
 
@@ -562,6 +539,28 @@
   margin: 0 10px;
 }
 
+.feather-s {
+  width: var(--is-s);
+  height: var(--is-s);
+  stroke: var(--c-primary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  vertical-align: unset;
+}
+
+.feather-s--active {
+  width: var(--is-s);
+  height: var(--is-s);
+  stroke: #e2749a;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: #e2749a;
+  vertical-align: unset;
+}
+
 /* --------------- custom products --------------- */
 /* --------------- custom products --------------- */
 /* --------------- custom products --------------- */
@@ -607,23 +606,12 @@
   font-weight: var(--fw-light);
 }
 
-.cj-sidebar__cart__item__custom-desc > div {
-  display: flex;
-  margin: 5px 0 5px 0;
-  border: 1px solid var(--c-primary);
-  width: 120px;
-  height: 25px;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.cj-sidebar__cart__item__custom-desc > div > p {
-  padding-left: 10px;
-  background-color: transparent;
+.cj-sidebar__cart__item__custom-desc > p:nth-child(3) {
+  /* margin: 5px 0 5px 0; */
+  /* padding-left: 10px; */
   font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
-  font-weight: var(--fw-light);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
   color: var(--c-primary);
 }
 

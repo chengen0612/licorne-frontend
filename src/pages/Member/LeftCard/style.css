@@ -62,4 +62,15 @@
 }
 .memberHomePage__signOut h3 {
   font-weight: normal;
+  margin-top: 8px;
+}
+.memberHomePage__signOut:hover {
+  background-color: #c16e70;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.memberHomePage__menuBtn:hover {
+  filter: brightness(0.9);
+  transition: 0.3s;
 }

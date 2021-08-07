@@ -8,9 +8,12 @@
   position: absolute;
   top: 108px;
   left: 128px;
-  & h5 {
-    // font-size: 30px;
+  & h2 {
     font-weight: bold;
+    line-height: 4rem;
+  }
+  & p {
+    font-size: $fs-h5;
   }
 }
 

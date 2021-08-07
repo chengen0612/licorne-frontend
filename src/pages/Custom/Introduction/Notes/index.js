@@ -37,10 +37,10 @@ function Notes(props) {
     return (
       <>
         <section className="c-intro-notes__description">
-          <h4>
+          <h2>
             {topic.title} <br />
             {topic.titleEn}
-          </h4>
+          </h2>
           {/* TODO 在文字間加入斷行 */}
           <p>{topic.explanation}</p>
         </section>

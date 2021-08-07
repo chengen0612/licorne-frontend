@@ -41,16 +41,7 @@ function SwitchCourse(props) {
     setDisplay(result)
   }, [path])
 
-  return (
-    <>
-      {display && (
-        <>
-          <Header />
-          {display}
-        </>
-      )}
-    </>
-  )
+  return <>{display && <>{display}</>}</>
 }
 
 export default withRouter(SwitchCourse)

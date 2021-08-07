@@ -3,13 +3,14 @@
 .official {
   display: flex;
   // height: 100vh;
+  justify-content: space-evenly;
   margin-bottom: 200px;
   // border: 1px solid orange;
 }
 
 .official__img-wrapper {
-  width: 800px;
-  height: 750px;
+  width: 400px;
+  height: 600px;
   // border: 1px solid palevioletred;
 }
 
@@ -44,9 +45,9 @@
   justify-content: space-between;
   cursor: pointer;
 }
-.official__dropdown-menu {
+#official__dropdown-menu {
   width: 500px;
-  height: 60px; // value for toggle
+  // height: 60px; // value for toggle
   border: 1px solid $c-primary;
   border-radius: $br-s;
   overflow: hidden;
@@ -55,6 +56,11 @@
     margin-top: 30px;
   }
 }
+
+.official__dropdown-menu-active {
+  height: 60px;
+}
+
 .official__dropdown-title {
   @extend %option;
   & svg {
@@ -65,8 +71,9 @@
 
 .official__select-options {
   @extend %option;
+  // TODO: border between options?
   &:first-child {
-    border-top: 1px solid $c-primary;
+    // border-top: 1px solid $c-primary;
   }
   &:hover {
     filter: brightness(0.9);
@@ -146,7 +153,10 @@
 
 .official__recommendation-group {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  // modify to fit design
+  justify-content: center;
+  column-gap: 180px;
   align-items: center;
   // border: 1px solid purple;
 }
@@ -181,7 +191,7 @@
   &-en {
     font-weight: lighter;
   }
-  &-fragrance {
+  &-series {
     font-weight: lighter;
     font-size: $fs-span;
   }

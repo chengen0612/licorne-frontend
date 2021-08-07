@@ -43,7 +43,7 @@
   overflow: scroll;
   overflow-x: hidden;
   width: 215px;
-  height: 400px;
+  height: 300px;
 }
 .memberHomePage__productList__MyCartOffcialText,
 .memberHomePage__productList__MyCartCustomText {
@@ -56,4 +56,9 @@
 }
 .memberHomePage__cheakListLine {
   margin: 20px auto;
+}
+.memberHomePage__goPayBtn:hover,
+.memberProduct__fav__item__btn:hover {
+  filter: brightness(1.3);
+  transition: 0.3s;
 }

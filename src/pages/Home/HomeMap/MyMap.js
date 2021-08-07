@@ -1,29 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react'
-import { imgPath } from '../../../config/index'
 
-const MarkerIcon = () => {
-  return (
-    <>
-      <div
-        // className="modal__marker-box"
-        style={{ transform: 'translate(-50%, -100%)' }}
-      >
-        <img
-          src={imgPath + '/images/course/map-markersolid.svg'}
-          alt="marker"
-          className="map__marker"
-        />
-      </div>
-    </>
-  )
-}
+// component
+import MapMarkerIcon from './MapMarkerIcon'
 
 export default function MyMap(props) {
-  const { displayShops, selectedShop } = props
+  const { displayShops, selectedShop, setSelectedShop } = props
 
   // json 抓出經緯度
-  const [latLngList, setLatLngList] = useState([])
+  const [markerList, setMarkerList] = useState([])
   const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 })
 
   // 自動定位目前位置
@@ -56,13 +41,14 @@ export default function MyMap(props) {
 
   // handle map center and marker
   useEffect(() => {
-    const latLngList = displayShops.map((v, i) => {
+    const markerList = displayShops.map((item, i) => {
       return {
-        course_place_lat: v.course_place_lat,
-        course_place_lng: v.course_place_lng,
+        course_place_lat: item.course_place_lat,
+        course_place_lng: item.course_place_lng,
+        data: item,
       }
     })
-    setLatLngList(latLngList)
+    setMarkerList(markerList)
     // set up map center
     const lat = +displayShops[0].course_place_lat
     const lng = +displayShops[0].course_place_lng
@@ -106,13 +92,15 @@ export default function MyMap(props) {
           center={mapCenter}
           defaultZoom={defaultProps.zoom}
         >
-          <MarkerIcon lat={mapCenter.lat} lng={mapCenter.lng} />
-          {latLngList.map((value, index) => {
+          <MapMarkerIcon lat={mapCenter.lat} lng={mapCenter.lng} />
+          {markerList.map((item, index) => {
             return (
-              <MarkerIcon
+              <MapMarkerIcon
                 key={index}
-                lat={value.course_place_lat}
-                lng={value.course_place_lng}
+                lat={item.course_place_lat}
+                lng={item.course_place_lng}
+                data={item.data}
+                setSelectedShop={setSelectedShop}
               />
             )
           })}

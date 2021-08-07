@@ -23,11 +23,29 @@
   }
 }
 
-// custom bottle
-.custom__bottle {
+// notice message
+.custom__notice{
+  margin-left: -70px;
+  font-size: $fs-h3;
+  color: $c-important;
+  position: absolute;
+  top: 200px;
+  left: 50vw;
+}
+
+// beaker
+@mixin beakerImg($move) {
+  width: 240px;
+  position: absolute;
+  bottom: 0;
+  left: $move;
+  z-index: 0;
+}
+.custom__beaker {
   width: 500px;
   height: 500px;
   margin-left: -250px;
+  // background: url(http://localhost:3000/images/custom/beaker.png) center center / cover;
   border-radius: 0 0 80px 80px;
   border-right: 20px solid $c-primary;
   border-bottom: 20px solid $c-primary;
@@ -35,6 +53,16 @@
   position: absolute;
   top: 420px;
   left: 50vw;
+  overflow: hidden;
+  &__img0 {
+    @include beakerImg(0);
+  }
+  &__img1 {
+    @include beakerImg(120px);
+  }
+  &__img2 {
+    @include beakerImg(240px);
+  }
 }
 
 // sidebar top

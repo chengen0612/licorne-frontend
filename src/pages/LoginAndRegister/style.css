@@ -125,10 +125,6 @@
 .loginAndRegister__loading {
   padding: 350px 0 0 0;
 }
-.spinner-border {
-  width: 5rem;
-  height: 5rem;
-}
 .loginAndRegister__loadingBox {
   width: 1920px;
   height: 740px;

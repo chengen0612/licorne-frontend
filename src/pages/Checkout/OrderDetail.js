@@ -5,6 +5,7 @@ import Backdrop from './components/Backdrop'
 import AddressEditModal from './components/AddressEditModal'
 import StoreMapModal from './components/StoreMapModal'
 import DeliveryRadio from './components/DeliveryRadio'
+import PaymentRadio from './components/PaymentRadio'
 
 const DeliveryMethod = ({
   memberName,
@@ -22,8 +23,6 @@ const DeliveryMethod = ({
   storePhone,
   storeLat,
   storeLng,
-  setStoreLng,
-  setStoreLat,
   setStoreName,
   setStorePhone,
   setStoreAddress,
@@ -40,8 +39,8 @@ const DeliveryMethod = ({
       course_place_name: '高雄民益店',
       course_place_address: '高雄市小港區民益路13號',
       course_place_phone: '07-8012255',
-      course_place_lat: '22.5662669501168',
-      course_place_lng: '120.34782427919656',
+      course_place_lat: 22.5662669501168,
+      course_place_lng: 120.34782427919656,
     },
   ])
 
@@ -122,44 +121,35 @@ const DeliveryMethod = ({
       {/* 店鋪自取 */}
       {checkedValue === deliveryMethod[1] && (
         <>
-          {stores.map((store, index) => {
-            return (
-              <>
-                <div
-                  className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2"
-                  key={index}
-                >
-                  <div className="checkout__order-box-delivery-edit-wrapper">
-                    <span className="checkout__order-box-recipient">
-                      {/* 高雄民益店 */}
-                      {store.course_place_name}
-                      {/* {data.course_place_name} */}
-                    </span>
-                    <FiEdit
-                      className="feather-s"
-                      role="button"
-                      onClick={() => {
-                        showModalHandler(deliveryMethod[1])
-                      }}
-                    />
-                  </div>
-                  <span className="checkout__order-box-recipient-phone">
-                    {/* 07-8012255 */}
-                    {store.course_place_phone}
-                    {/* {data.course_place_phone} */}
-                  </span>
-                  <span className="checkout__order-box-recipient-address">
-                    {/* 高雄市小港區民益路13號 */}
-                    {store.course_place_address}
-                    {/* {data.course_place_address} */}
-                  </span>
-                  <span className="checkout__order-box-buyer">
-                    訂購人：{memberName}
-                  </span>
-                </div>
-              </>
-            )
-          })}
+          <div className="checkout__order-box-delivery-edit-bg p-3 mt-2 mb-2">
+            <div className="checkout__order-box-delivery-edit-wrapper">
+              <span className="checkout__order-box-recipient">
+                {/* 高雄民益店 */}
+                {storeName}
+                {/* {data.course_place_name} */}
+              </span>
+              <FiEdit
+                className="feather-s"
+                role="button"
+                onClick={() => {
+                  showModalHandler(deliveryMethod[1])
+                }}
+              />
+            </div>
+            <span className="checkout__order-box-recipient-phone">
+              {/* 07-8012255 */}
+              {storeAddress}
+              {/* {data.course_place_phone} */}
+            </span>
+            <span className="checkout__order-box-recipient-address">
+              {/* 高雄市小港區民益路13號 */}
+              {storePhone}
+              {/* {data.course_place_address} */}
+            </span>
+            <span className="checkout__order-box-buyer">
+              訂購人：{memberName}
+            </span>
+          </div>
         </>
       )}
       {showModal.length > 0 && <Backdrop onClick={closeModalHandler} />}
@@ -188,13 +178,15 @@ const DeliveryMethod = ({
           // storeAddress={storeAddress}
           // storePhone={storePhone}
           placeLatLng={placeLatLng}
+          stores={stores}
+          setStores={setStores}
         />
       )}
     </>
   )
 }
 
-function OrderDetail({ officialTotal, customTotal, courseTotal }) {
+function OrderDetail({ officialTotal, customTotal, courseTotal, value }) {
   const [memberName, setMemberName] = useState([])
   const [memberPhone, setMemberPhone] = useState([])
   const [memberAddress, setMemberAddress] = useState([])
@@ -257,21 +249,21 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
     const response = await fetch(request)
     const data = await response.json()
     const stores = data.place
-    const storeName = stores.map((item) => {
-      return item.course_place_name
-    })
-    const storeAddress = stores.map((item) => {
-      return item.course_place_address
-    })
-    const storePhone = stores.map((item) => {
-      return item.course_place_phone
-    })
-    const storeLat = stores.map((item) => {
-      return item.course_place_lat
-    })
-    const storeLng = stores.map((item) => {
-      return item.course_place_lng
-    })
+    // const storeName = stores.map((item, i) => {
+    //   return item.course_place_name
+    // })
+    // const storeAddress = stores.map((item) => {
+    //   return item.course_place_address
+    // })
+    // const storePhone = stores.map((item) => {
+    //   return item.course_place_phone
+    // })
+    // const storeLat = stores.map((item) => {
+    //   return item.course_place_lat
+    // })
+    // const storeLng = stores.map((item) => {
+    //   return item.course_place_lng
+    // })
     // console.log('store data', stores)
     // console.log('store name', storeName)
     // console.log('store address', storeAddress)
@@ -279,11 +271,11 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
     // console.log('store lat', storeLat)
     // console.log('store lng', storeLng)
     setPlaceLatLng(stores)
-    setStoreName(storeName)
-    setStoreAddress(storeAddress)
-    setStorePhone(storePhone)
-    setStoreLat(storeLat)
-    setStoreLng(storeLng)
+    setStoreName('高雄民益店')
+    setStoreAddress('高雄市小港區民益路13號')
+    setStorePhone('07-8012255')
+    setStoreLat('22.5662669501168')
+    setStoreLng('120.34782427919656')
   }
 
   useEffect(() => {
@@ -293,6 +285,9 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
   const productTotal = officialTotal + customTotal + courseTotal
   const deliveryFee = 0
   const total = productTotal + deliveryFee
+
+  const paymentMethod = ['信用卡', '貨到付款']
+  const [checkedValue, setCheckedValue] = useState(paymentMethod[0])
 
   return (
     <>
@@ -329,25 +324,11 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
         <div className="checkout__order-box-payment pr-4 pl-4 pb-4">
           <span className="checkout__order-box-payment-title">付款方式</span>
           <div className="checkout__order-box-payment-labels">
-            <label className="checkout__order-box-payment-card">
-              <input
-                className="radio"
-                type="radio"
-                name="payment"
-                value="信用卡"
-                defaultChecked="checked"
-              />
-              信用卡
-            </label>
-            <label className="checkout__order-box-payment-cash">
-              <input
-                className="radio"
-                type="radio"
-                name="payment"
-                value="貨到付款"
-              />
-              貨到付款
-            </label>
+            <PaymentRadio
+              checkedValue={checkedValue}
+              setCheckedValue={setCheckedValue}
+              paymentMethod={paymentMethod}
+            />
           </div>
         </div>
         <div className="checkout__order-box-amount pr-4 pl-4 pb-4">
@@ -376,7 +357,13 @@ function OrderDetail({ officialTotal, customTotal, courseTotal }) {
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
-          <Link to="/checkout/payment">
+          <Link
+            to={
+              checkedValue === paymentMethod[0]
+                ? '/checkout/payment'
+                : '/member'
+            }
+          >
             <button
               className="checkout__checkoutBtn"
               type="submit"

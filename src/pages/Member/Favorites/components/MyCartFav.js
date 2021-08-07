@@ -12,21 +12,21 @@ function MyCartFav({
 }) {
   return (
     <>
-      <div className="cj-sidebar__fav">
-        {
-          (officialCollectDatas,
-          customCollectDatas.length > 0 ? (
-            ''
-          ) : (
-            <h4 className="cj-sidebar__fav__no-item-message">
-              收藏清單中沒有任何商品
-            </h4>
-          ))
-        }
+      <div className="memberProduct__fav">
+        {officialCollectDatas.length + customCollectDatas.length > 0 ? (
+          ''
+        ) : (
+          <h4 className="memberProduct__fav__no-item-message">
+            收藏清單中沒有任何商品
+          </h4>
+        )}
 
         {officialCollectDatas.map((officialCollectData, key) => {
           return (
-            <div key={officialCollectData.id} className="cj-sidebar__fav__item">
+            <div
+              key={officialCollectData.id}
+              className="memberProduct__fav__item"
+            >
               <MyCartFavItem
                 officialCollectDatas={officialCollectDatas}
                 setOfficialCollectDatas={setOfficialCollectDatas}
@@ -41,7 +41,10 @@ function MyCartFav({
         })}
         {customCollectDatas.map((customCollectData, key) => {
           return (
-            <div key={customCollectData.id} className="cj-sidebar__fav__item">
+            <div
+              key={customCollectData.id}
+              className="memberProduct__fav__item"
+            >
               <MyCartFavCustomItem
                 customCollectDatas={customCollectDatas}
                 setCustomCollectDatas={setCustomCollectDatas}

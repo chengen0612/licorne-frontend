@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import { imgPath } from '../../config'
+import myswal from '../../utils/sweetalert'
 
 function ProductCard(props) {
   const { data } = props
@@ -31,7 +32,8 @@ function ProductCard(props) {
     const url = 'http://localhost:6005/bestseller/addcart'
     const response = await axios.post(url, { data: data })
     const result = response.data
-    // console.log(result.message)
+
+    if (result) myswal.addCart()
   }
 
   return (

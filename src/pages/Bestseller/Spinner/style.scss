@@ -1,0 +1,12 @@
+.best__spinner-wrapper {
+  width: 100vw;
+  height: calc(100vh - 128px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.spinner-border {
+  width: 5rem;
+  height: 5rem;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../../../styles/global.css'
 import '../style.css'
 import MyCartOffcialItem from './MyCartOffcialItem'
@@ -11,6 +12,8 @@ function MyCart({
   officialProducts,
   setOfficialProducts,
   totalAmountOfficial,
+  officialFavorites,
+  setOfficialFavorites,
   //
   customProducts,
   setCustomProducts,
@@ -18,6 +21,8 @@ function MyCart({
   //
   courseProducts,
   setCourseProducts,
+  //
+  closeSidebar, // 承恩加的
 }) {
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
@@ -39,6 +44,7 @@ function MyCart({
               <MyCartOffcialItem
                 id={officialProduct.id}
                 officialProducts={officialProducts}
+                officialProduct={officialProduct}
                 setOfficialProducts={setOfficialProducts}
                 img_id={officialProduct.img_id}
                 name_zh={officialProduct.name_zh}
@@ -47,6 +53,8 @@ function MyCart({
                 volume={officialProduct.volume}
                 quantity={officialProduct.quantity}
                 series_name={officialProduct.series_name}
+                officialFavorites={officialFavorites}
+                setOfficialFavorites={setOfficialFavorites}
               />
             </div>
           )
@@ -94,9 +102,15 @@ function MyCart({
       </div>
       <div className="cj-sidebar__cart__checkout">
         <div>
-          <p role="button" onClick={() => {}}>
+          <Link
+            to="/checkout"
+            onClick={() => {
+              closeSidebar()
+              document.body.style.overflow = 'visible'
+            }}
+          >
             前往結帳
-          </p>
+          </Link>
         </div>
       </div>
     </div>

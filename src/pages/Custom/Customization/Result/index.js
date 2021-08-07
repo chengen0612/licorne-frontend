@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fi'
 
 import { imgPath } from '../../../../config'
+import myswal from '../../../../utils/sweetalert'
 
 import './style.scss'
 
@@ -42,7 +43,8 @@ function Result(props) {
     // console.log(request)
     const response = await fetch(request)
     const result = await response.json()
-    // console.log('資料輸入成功: ', result.message)
+
+    if (result) myswal.addCart()
   }
 
   const collectHandler = async () => {
@@ -58,7 +60,8 @@ function Result(props) {
     // console.log(request)
     const response = await fetch(request)
     const result = await response.json()
-    // console.log('資料輸入成功: ', result.message)
+
+    if (result) myswal.addCollection()
   }
 
   return (
@@ -101,9 +104,9 @@ function Result(props) {
         <button className="product__btn-purchase" onClick={purchaseHandler}>
           <FiShoppingBag /> 訂購
         </button>
-        <button className="product__btn-share">
+        {/* <button className="product__btn-share">
           <FiUpload /> 分享
-        </button>
+        </button> */}
       </div>
     </>
   )

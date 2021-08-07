@@ -8,6 +8,7 @@ import MyCartMakeItem from './MyCartFavMakeItem'
 function MyCartMake({
   customCollectDatas,
   setCustomCollectDatas,
+  setCustomProducts,
   id,
   cust_id,
   price,
@@ -21,14 +22,17 @@ function MyCartMake({
       {customCollectDatas.length > 0 ? (
         ''
       ) : (
-        <h4 className="cj-sidebar__cart__no-item-message">沒有任何組合商品</h4>
+        <h4 className="memberProduct__cart__no-item-message">
+          沒有任何組合商品
+        </h4>
       )}
       {customCollectDatas.map((customCollectData, key) => {
         return (
-          <div key={customCollectData.id} className="cj-sidebar__make__item">
+          <div key={customCollectData.id} className="memberProduct__make__item">
             <MyCartMakeItem
               customCollectDatas={customCollectDatas}
               setCustomCollectDatas={setCustomCollectDatas}
+              setCustomProducts={setCustomProducts}
               id={customCollectData.id}
               top_zh={customCollectData.top_zh}
               mid_zh={customCollectData.mid_zh}

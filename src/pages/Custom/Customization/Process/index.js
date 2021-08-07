@@ -2,29 +2,33 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { FiX, FiRefreshCw, FiSkipBack, FiCheckSquare } from 'react-icons/fi'
+import myswal from '../../../../utils/sweetalert'
 
 import './style.scss'
-// import items_data from './data/sidebar_items.json'
-// import series_data from './data/sidebar_series.json'
 
 import SidebarSeries from './SidebarSeries'
 import SidebarItems from './SidebarItems'
-import ProgressBar from './ProgressBar'
+import ProgressNote from './ProgressNote'
+import Beaker from './Beaker'
 
 function Process(props) {
   // pass data of finished product
   const { setProductDetail } = props
+
+  // static resource
+  const noteList = ['前調', '中調', '後調']
 
   // store data from server
   const [itemsData, setItemsData] = useState([])
   const [seriesData, setSeriesData] = useState([])
 
   // states effect screen
-  const [displaySeries, setDisplaySeries] = useState('')
+  const [displaySerie, setDisplaySerie] = useState('')
   const [description, setDescription] = useState('')
   const [selectedItems, setSelectedItems] = useState([])
   const [selectedSeries, setSelectedSeries] = useState([])
-  const [noteStatus, setNoteStatus] = useState([false, false, false])
+  const [imageSrcs, setImageSrcs] = useState([])
+  const [currentNote, setCurrentNote] = useState(noteList[0])
 
   // get data
   async function getDataFromServer() {
@@ -39,7 +43,7 @@ function Process(props) {
 
     const reponse = await fetch(url, request)
     const data = await reponse.json()
-    console.log(data)
+    // console.log(data)
 
     setItemsData(data.ingredientData)
     setSeriesData(data.fragranceData)
@@ -52,31 +56,32 @@ function Process(props) {
 
   // handle description
   useEffect(() => {
-    if (!displaySeries) return setDescription('')
-    const response = seriesData.filter((item) => item.id === displaySeries)
+    if (!displaySerie) return setDescription('')
+    const response = seriesData.filter((item) => item.id === displaySerie)
     setDescription(response[0].description_zh)
-  }, [displaySeries])
+  }, [displaySerie])
 
   // handle progress bar
   useEffect(() => {
     const count = Math.min(selectedItems.length, 2)
-    const newProgressBar = [false, false, false]
-    newProgressBar[count] = true
-    setNoteStatus(newProgressBar)
+    setCurrentNote(noteList[count])
   }, [selectedItems])
 
   // refresh choices
   const resetExecutor = () => {
     setSelectedItems([])
     setSelectedSeries([])
+    setImageSrcs([])
   }
 
   // back to previous step
   const gobackExecuter = () => {
     const [lastItem, ...otherItems] = selectedItems.reverse()
-    setSelectedItems(otherItems)
+    setSelectedItems(otherItems.reverse())
     const [lastSerie, ...otherSeries] = selectedSeries.reverse()
-    setSelectedSeries(otherSeries)
+    setSelectedSeries(otherSeries.reverse())
+    const [lastImage, ...otherImages] = imageSrcs.reverse()
+    setImageSrcs(otherImages.reverse())
   }
 
   // pass product data
@@ -121,9 +126,6 @@ function Process(props) {
     setProductDetail(result)
   }
 
-  // from here
-  const getBottleOnLoad = (e) => {}
-
   return (
     <>
       <div className="custom">
@@ -132,8 +134,14 @@ function Process(props) {
         <div className="orange-blob"></div>
         <div className="yellow-blob"></div>
         {/* background blob end */}
-        <ProgressBar noteStatus={noteStatus} />
-        <Link to="/">
+        {/* progress bar */}
+        <div className="custom__progress-bar">
+          {noteList.map((value) => (
+            <ProgressNote note={value} currentNote={currentNote} />
+          ))}
+        </div>
+        {/* progress bar end */}
+        <Link to="/" draggable="false">
           <FiX className="close-btn" />
         </Link>
         <article className="description">
@@ -144,23 +152,28 @@ function Process(props) {
             </>
           )}
         </article>
-        <div className="custom__bottle" onLoad={getBottleOnLoad}></div>
+        {selectedItems.length < 3 ? (
+          <span className="custom__notice">{'請選擇' + currentNote}</span>
+        ) : (
+          myswal.popUpMessage('恭喜完成製作！')
+        )}
+        <Beaker
+          setDisplaySerie={setDisplaySerie}
+          selectedItems={selectedItems}
+          setSelectedItems={setSelectedItems}
+          selectedSeries={selectedSeries}
+          setSelectedSeries={setSelectedSeries}
+          imageSrcs={imageSrcs}
+          setImageSrcs={setImageSrcs}
+        />
         <aside className="custom__sidebar-wrapper">
-          {displaySeries && (
-            <SidebarItems
-              data={itemsData}
-              displaySeries={displaySeries}
-              setDisplaySeries={setDisplaySeries}
-              selectedItems={selectedItems}
-              setSelectedItems={setSelectedItems}
-              selectedSeries={selectedSeries}
-              setSelectedSeries={setSelectedSeries}
-            />
+          {displaySerie && (
+            <SidebarItems data={itemsData} displaySerie={displaySerie} />
           )}
           <SidebarSeries
             data={seriesData}
-            displaySeries={displaySeries}
-            setDisplaySeries={setDisplaySeries}
+            displaySerie={displaySerie}
+            setDisplaySerie={setDisplaySerie}
             selectedItems={selectedItems}
             selectedSeries={selectedSeries}
           />

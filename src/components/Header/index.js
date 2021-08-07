@@ -1,47 +1,212 @@
-import React, { useState } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { withRouter, Link, NavLink } from 'react-router-dom'
+
 import './style.css'
 import CartFavSidebar from '../CartFavSidebar'
 
-import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
+import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
 
 function Header(props) {
-  // console.log('header', props)
+  // -------------------- 以下是晁榮的程式碼 --------------------
   const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
-  // CJ：這個 state 是設定購物車側邊欄開關狀態
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
-  // CJ：這個 function 是用來關上購物車側邊欄
-  function closeSidebar() {
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false) //設定購物車側邊欄開關狀態
+  const [officialProducts, setOfficialProducts] = useState([])
+  const [customProducts, setCustomProducts] = useState([])
+  const [courseProducts, setCourseProducts] = useState([])
+  //
+  const [officialFavorites, setOfficialFavorites] = useState([])
+  const [customFavorites, setCustomFavorites] = useState([])
+  const [courseFavorites, setCourseFavorites] = useState([])
+  //
+  const [totalAmountCourse, setTotalAmountCourse] = useState(0)
+  const [totalAmountCustom, setTotalAmountCustom] = useState(0)
+  const [totalAmountOfficial, setTotalAmountOfficial] = useState(0)
+
+  // useEffect(() => {
+  //   // 註解掉一陣子看有什麼影響
+  //   getOfficialProductFromServer()
+  //   getCustomProductFromServer()
+  //   getCourseProductsFromServer()
+  //   getOfficialCollectFromServer()
+  //   getCustomCollectFromServer()
+  //   getCourseCollectFromServer()
+  // }, [])
+
+  useEffect(() => {
+    calculateTotal()
+  }, [officialProducts, customProducts, courseProducts])
+
+  function calculateTotal() {
+    //計算總金額函式
+    let officialTotal = 0
+    let customTotal = 0
+    let courseTotal = 0
+    let sumOfTotals = 0
+    for (let officialProduct of officialProducts) {
+      officialTotal += officialProduct.quantity * officialProduct.price
+    }
+    for (let customProduct of customProducts) {
+      customTotal += customProduct.quantity * customProduct.price
+    }
+
+    for (let courseProduct of courseProducts) {
+      courseTotal += courseProduct.quantity * courseProduct.price
+    }
+
+    sumOfTotals = officialTotal + customTotal + courseTotal
+    setTotalAmountOfficial(sumOfTotals)
+  }
+
+  const closeSidebar = () => {
+    // 關上購物車側邊欄的函式
     setSidebarIsOpen(false)
     document.body.style.width = '100%'
   }
 
-  const openSidebarFav = () => {
+  function openSidebarFav() {
+    // 打開側邊欄的函式（收藏）
     setSidebarIsOpen(true)
     setFavOrCart('Fav')
     const scrollbarWidth = window.innerWidth - document.body.offsetWidth
     document.body.style.overflow = 'hidden'
     document.body.style.width = `calc(100% - ${scrollbarWidth}px)`
+    getOfficialProductFromServer()
+    getCustomProductFromServer()
+    getCourseProductsFromServer()
+    getOfficialCollectFromServer()
+    getCustomCollectFromServer()
+    getCourseCollectFromServer()
   }
 
-  const openSidebarCart = () => {
+  function openSidebarCart() {
+    // 打開側邊欄的函式（購物車）
     setSidebarIsOpen(true)
     setFavOrCart('Cart')
     const scrollbarWidth = window.innerWidth - document.body.offsetWidth
     document.body.style.overflow = 'hidden'
     document.body.style.width = `calc(100% - ${scrollbarWidth}px)`
+    getOfficialProductFromServer()
+    getCustomProductFromServer()
+    getCourseProductsFromServer()
+    getOfficialCollectFromServer()
+    getCustomCollectFromServer()
+    getCourseCollectFromServer()
   }
+
+  // 收藏官方 API
+  async function getOfficialCollectFromServer() {
+    const urlCollect = 'http://localhost:6005/sidebar/officialCollect'
+    const requestCollect = new Request(urlCollect, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCollect = await fetch(requestCollect)
+    const officialFavorites = await responseCollect.json()
+    setOfficialFavorites(officialFavorites)
+  }
+  // 收藏客製化 API
+  async function getCustomCollectFromServer() {
+    const urlCollect = 'http://localhost:6005/sidebar/customCollect'
+    const requestCollect = new Request(urlCollect, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCollect = await fetch(requestCollect)
+    const customCollect = await responseCollect.json()
+    setCustomFavorites(customCollect)
+  }
+  //收藏課程 API
+  async function getCourseCollectFromServer() {
+    const urlCollect = 'http://localhost:6005/sidebar/courseCollect'
+    const requestCollect = new Request(urlCollect, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCollect = await fetch(requestCollect)
+    const courseCollect = await responseCollect.json()
+    setCourseFavorites(courseCollect)
+  }
+  // 官方產品 API
+  async function getOfficialProductFromServer() {
+    const urlCart = 'http://localhost:6005/sidebar/official'
+    const requestCart = new Request(urlCart, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCart = await fetch(requestCart)
+    const officialProduct = await responseCart.json()
+    setOfficialProducts(officialProduct)
+  }
+  //客製化產品 API
+  async function getCustomProductFromServer() {
+    const urlCart = 'http://localhost:6005/sidebar/custom'
+    const requestCart = new Request(urlCart, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCustom = await fetch(requestCart)
+    const customProduct = await responseCustom.json()
+    setCustomProducts(customProduct)
+  }
+  // 課程 API
+  async function getCourseProductsFromServer() {
+    const urlCourse = 'http://localhost:6005/sidebar/course'
+    const requestCourse = new Request(urlCourse, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const responseCourse = await fetch(requestCourse)
+    const courseProduct = await responseCourse.json()
+    setCourseProducts(courseProduct)
+  }
+  // -------------------- 以上是晁榮的程式碼 --------------------
 
   return (
     <>
-      {/* CJ：MyCart 原件，以及傳入兩個 prop */}
+      {/* -------------------- 以下是晁榮的程式碼 -------------------- */}
       <CartFavSidebar
         sidebarIsOpen={sidebarIsOpen}
         closeSidebar={closeSidebar}
         favOrCart={favOrCart}
         setFavOrCart={setFavOrCart}
+        officialProducts={officialProducts}
+        setOfficialProducts={setOfficialProducts}
+        customProducts={customProducts}
+        setCustomProducts={setCustomProducts}
+        courseProducts={courseProducts}
+        setCourseProducts={setCourseProducts}
+        officialFavorites={officialFavorites}
+        setOfficialFavorites={setOfficialFavorites}
+        customFavorites={customFavorites}
+        setCustomFavorites={setCustomFavorites}
+        courseFavorites={courseFavorites}
+        setCourseFavorites={setCourseFavorites}
+        calculateTotal={calculateTotal}
+        totalAmountOfficial={totalAmountOfficial}
+        totalAmountCustom={totalAmountCustom}
+        totalAmountCourse={totalAmountCourse}
       />
+      {/* -------------------- 以上是晁榮的程式碼 -------------------- */}
+
       <div className="header__line col-md col-sm"></div>
       <header className="header col-md col-sm">
         {/* -- logo -- */}
@@ -62,12 +227,18 @@ function Header(props) {
               </div>
               <div className="header__rwd-icon-2">
                 <div role="button">
-                  <FiHeart onClick={openSidebarFav} className="header-i" />
+                  <FiHeart
+                    onClick={() => {
+                      openSidebarFav()
+                    }}
+                    className="header-i"
+                  />
                 </div>
-                {/* CJ：給這個 featherIcon 加上 onClick 事件 => 開啟購物車側邊欄 */}
                 <div role="button">
                   <FiShoppingBag
-                    onClick={openSidebarCart}
+                    onClick={() => {
+                      openSidebarCart()
+                    }}
                     className="header-i"
                   />
                 </div>
@@ -79,19 +250,29 @@ function Header(props) {
         <div className="header__menu">
           <ul className="header__menu__list">
             <li>
-              <Link to="/custom/entrance">客製香水</Link>
+              <NavLink to="/custom/entrance" activeClassName="menu-foucs">
+                客製香水
+              </NavLink>
             </li>
             <li>
-              <Link to="/course">課程體驗</Link>
+              <NavLink to="/course" activeClassName="menu-foucs">
+                課程體驗
+              </NavLink>
             </li>
             <li>
-              <Link to="/bestseller">人氣熱銷</Link>
+              <NavLink to="/bestseller" activeClassName="menu-foucs">
+                人氣熱銷
+              </NavLink>
             </li>
             <li>
-              <Link to="/official">官方經典</Link>
+              <NavLink to="/official" activeClassName="menu-foucs">
+                官方經典
+              </NavLink>
             </li>
             <li>
-              <Link to="/quiz">專屬香氣</Link>
+              <NavLink to="/quiz" activeClassName="menu-foucs">
+                專屬香氣
+              </NavLink>
             </li>
           </ul>
         </div>

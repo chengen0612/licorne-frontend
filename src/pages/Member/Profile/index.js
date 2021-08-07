@@ -3,6 +3,7 @@ import './style.css'
 import { FiEdit } from 'react-icons/fi'
 import { imgPath } from '../../../config'
 import UploadPreview from '../components/UploadImgPreview'
+import swal from 'sweetalert'
 
 function Profile(props) {
   // const userid = props.match.params.userid
@@ -25,7 +26,22 @@ function Profile(props) {
     member_receive: '',
     member_pic: '',
   })
-
+  function askUpdate() {
+    swal({
+      title: '確定要修改嗎？',
+      icon: 'info',
+      buttons: true,
+      // dangerMode: true,
+    }).then((Change) => {
+      if (Change) {
+        swal({
+          title: '修改成功！',
+          icon: 'success',
+        })
+        updateUserToSever()
+      }
+    })
+  }
   const [errors, setErrors] = useState({})
 
   const handleChange = (e) => {
@@ -47,13 +63,14 @@ function Profile(props) {
     setDataLoading(true)
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/member/profile'
-
+    const jwtToken = localStorage.getItem('userId')
     // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
+        'Content-Type': 'application/json',
+        Authorization: jwtToken,
       }),
     })
 
@@ -76,14 +93,15 @@ function Profile(props) {
 
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/member/profile'
-
     // 注意資料格式要設定，伺服器才知道是json格式
+    const jwtToken = localStorage.getItem('userId')
     const request = new Request(url, {
       method: 'POST',
       body: JSON.stringify(userData),
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        Authorization: jwtToken,
       }),
     })
 
@@ -96,7 +114,6 @@ function Profile(props) {
     // 要等驗証過，再設定資料(簡單的直接設定)
     setTimeout(() => {
       setDataLoading(false)
-      alert('儲存完成')
     }, 500)
   }
 
@@ -111,7 +128,7 @@ function Profile(props) {
   const loading = (
     <>
       <div className="d-flex justify-content-center memberData_loading">
-        <div className="spinner-border" role="status">
+        <div id="spinner-border" className="spinner-border" role="status">
           <span className="sr-only">Loading...</span>
         </div>
       </div>
@@ -138,6 +155,9 @@ function Profile(props) {
             </div>
             <div className="memberData__introBox">
               <h3 className="memberData__intro">個人簡介</h3>
+              <button className="memberData__introEditBtn">
+                <FiEdit size={25} />
+              </button>
             </div>
             <div>
               <textarea
@@ -290,7 +310,7 @@ function Profile(props) {
                 </div>
                 <button
                   onClick={() => {
-                    updateUserToSever()
+                    askUpdate()
                   }}
                   className="memberData__updateBtn"
                 >

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import myswal from '../../utils/sweetalert'
 
 import './product-list.css'
 import CustomizedSlider from './components/filter/Pricefilter.js'
@@ -7,7 +8,7 @@ import Materialfilter from './components/filter/Materialfilter.js'
 import Products from './components/product/Products.js'
 import Labels from './components/product/Labels.js'
 import Pages from './components/product/Pages.js'
-import Header from '../../components/Header'
+// import Header from '../../components/Header'
 import axios from 'axios'
 function Official() {
   const [products, setPrdoducts] = useState([]) //給商品顯示(出現有什麼商品)
@@ -90,7 +91,7 @@ function Official() {
     newSearchList.splice(id, 1)
 
     setSearchList(newSearchList)
-    console.log(searchList)
+    // console.log(searchList)
 
     // postSearchToServer()
     // setSearchList()
@@ -99,12 +100,12 @@ function Official() {
 
   const handleBuy = (productId) => {
     postProductToCart(productId)
-    alert('成功加入購物車!')
+    myswal.addCart()
   }
 
   const handleCollect = (productId) => {
     postProductToCollect(productId)
-    alert('成功加入我的最愛!')
+    myswal.addCollection()
   }
 
   const handleSubmit = (e) => {
@@ -145,6 +146,7 @@ function Official() {
     let materialsTarget = data.material
     // console.log(materials)
     setMaterials(materialsTarget)
+    // console.log(searchMaterial)
   }
 
   async function getSeriesproductFromServer() {
@@ -218,7 +220,7 @@ function Official() {
       },
     }
     const response = await axios.post(url, params)
-    console.log(response)
+    // console.log(response)
   }
 
   const postProductToCollect = async (productId) => {
@@ -230,7 +232,7 @@ function Official() {
       },
     }
     const response = await axios.post(url, params)
-    console.log(response)
+    // console.log(response)
   }
 
   //使用第一生命周期載入資料
@@ -295,7 +297,7 @@ function Official() {
   return (
     <>
       <div>
-        <Header />
+        {/* <Header /> */}
         <aside className="product__asideright ">
           {/* 組件Series */}
           <div className="product__asider_total_box">
@@ -380,10 +382,10 @@ function Official() {
             <p className="product__filter_title">透過以下分類篩選</p>
           </div>
           <form>
-            <div class="product__price_filter_box">
-              <div class="product__price_filter">
-                <p class="">預算</p>
-                <div class="product__price_box">
+            <div className="product__price_filter_box">
+              <div className="product__price_filter">
+                <p className="">預算</p>
+                <div className="product__price_box">
                   {/* 組件CustomizedSlider */}
                   <CustomizedSlider
                     value={value}
