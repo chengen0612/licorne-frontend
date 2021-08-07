@@ -2,10 +2,21 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
-function OfficialOrder({ setOfficialTotal }) {
+function OfficialOrder(props) {
+  const { setOfficialTotal, setOfficialOrder } = props
   const [officialItems, setOfficialItems] = useState([])
   const [quantities, setQuantities] = useState([])
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
+
+  function getOrder() {
+    const officialorderitem = officialItems
+    const officialorderquantities = quantities
+    const officialOrder = { id: '', qty: '', total: 0 }
+    officialOrder.id = officialItems
+    officialOrder.qty = quantities
+    officialOrder.total = officialTotal
+    setOfficialOrder(officialOrder)
+  }
 
   async function getOfficialInfoFromServer() {
     const url = 'http://localhost:6005/checkout/official'
@@ -26,7 +37,7 @@ function OfficialOrder({ setOfficialTotal }) {
       return item.quantity
     })
 
-    console.log('official quantities', quantities)
+    // console.log('official quantities', quantities)
     setQuantities(quantities)
   }
 
@@ -41,11 +52,13 @@ function OfficialOrder({ setOfficialTotal }) {
 
   useEffect(() => {
     getOfficialInfoFromServer()
+    getOrder()
   }, [])
 
   useEffect(() => {
     let newQuantities = quantities
     setQuantities(newQuantities)
+    getOrder()
   }, [officialItems, quantities])
 
   const handleDelete = (id) => {
@@ -54,15 +67,16 @@ function OfficialOrder({ setOfficialTotal }) {
     })
     let newQuantities = quantities
     officialItems.forEach((v, i) => {
-      console.log('this is v', v)
+      // console.log('this is v', v)
       if (v.id === id) {
         newQuantities.splice(i, 1)
         return
       }
     })
-    console.log('current quantity', newQuantities)
+    // console.log('current quantity', newQuantities)
     setOfficialItems(newOfficialItems)
     setQuantities(newQuantities)
+    getOrder()
   }
 
   return (
@@ -136,8 +150,8 @@ function OfficialOrder({ setOfficialTotal }) {
                     return quantity
                   })
                   setQuantities(newQuantities)
-                  console.log('set official quantities', newQuantities)
-                  console.log('current official quantities', quantities)
+                  // console.log('set official quantities', newQuantities)
+                  // console.log('current official quantities', quantities)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
