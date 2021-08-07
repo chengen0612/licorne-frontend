@@ -6,6 +6,7 @@ import { FiHeart, FiChevronDown } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { GiWaterDrop } from 'react-icons/gi'
 import ProductAccordion from './components/ProductAccordion'
+import myswal from '../../utils/sweetalert'
 
 const Main = ({ item }) => {
   const [visibility, setVisibility] = useState('hidden')
@@ -134,10 +135,18 @@ function MainProduct({ id, item, siblingItem }) {
             </div>
           )}
           <div className="official__btn-group">
-            <button className="official__order-btn">訂購</button>
+            <button
+              className="official__order-btn"
+              onClick={() => myswal.addCart()}
+            >
+              訂購
+            </button>
             <div className="official__fav">
-              {' '}
-              <FiHeart className="official__fav-btn feather-s" role="button" />
+              <FiHeart
+                className="official__fav-btn feather-s"
+                role="button"
+                onClick={() => myswal.addCollection()}
+              />
             </div>
           </div>
           <ProductAccordion item={item} />
