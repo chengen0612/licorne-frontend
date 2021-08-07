@@ -155,7 +155,7 @@ function MyCart({
 
       <div className="cj-sidebar__cart__price">
         <div>
-          <p onClick={() => {}}>總金額：</p>
+          <p>總金額：</p>
           <p>NT$ {totalAmountOfficial}</p>
         </div>
       </div>
