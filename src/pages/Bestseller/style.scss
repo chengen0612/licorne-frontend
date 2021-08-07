@@ -2,6 +2,7 @@
 
 .best-wrapper {
   max-width: 1520px;
+  min-height: calc(100vh - 128px);
   margin: 100px auto 200px;
   // set up for sidebar filter
   position: relative;

@@ -91,7 +91,6 @@ function Location() {
           </Route>
           <Route path="/bestseller">
             <Bestseller />
-            <SecondaryFooter />
           </Route>
           <Route path="/quiz">
             <Quiz />

@@ -5,6 +5,7 @@ import './style.scss'
 
 // public components
 import Spinner from './Spinner'
+import SecondaryFooter from '../../components/SecondaryFooter'
 
 // components
 import ProductCard from './ProductCard'
@@ -84,6 +85,7 @@ function Bestseller() {
             />
             {!isLoading && renderProducts()}
           </div>
+          <SecondaryFooter />
         </>
       )}
     </>
