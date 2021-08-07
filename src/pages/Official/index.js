@@ -90,7 +90,7 @@ function Official() {
     newSearchList.splice(id, 1)
 
     setSearchList(newSearchList)
-    console.log(searchList)
+    // console.log(searchList)
 
     // postSearchToServer()
     // setSearchList()
@@ -145,6 +145,7 @@ function Official() {
     let materialsTarget = data.material
     // console.log(materials)
     setMaterials(materialsTarget)
+    // console.log(searchMaterial)
   }
 
   async function getSeriesproductFromServer() {
@@ -218,7 +219,7 @@ function Official() {
       },
     }
     const response = await axios.post(url, params)
-    console.log(response)
+    // console.log(response)
   }
 
   const postProductToCollect = async (productId) => {
@@ -230,7 +231,7 @@ function Official() {
       },
     }
     const response = await axios.post(url, params)
-    console.log(response)
+    // console.log(response)
   }
 
   //使用第一生命周期載入資料
@@ -380,10 +381,10 @@ function Official() {
             <p className="product__filter_title">透過以下分類篩選</p>
           </div>
           <form>
-            <div class="product__price_filter_box">
-              <div class="product__price_filter">
-                <p class="">預算</p>
-                <div class="product__price_box">
+            <div className="product__price_filter_box">
+              <div className="product__price_filter">
+                <p className="">預算</p>
+                <div className="product__price_box">
                   {/* 組件CustomizedSlider */}
                   <CustomizedSlider
                     value={value}
