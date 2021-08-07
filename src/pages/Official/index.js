@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import myswal from '../../utils/sweetalert'
 
 import './product-list.css'
 import CustomizedSlider from './components/filter/Pricefilter.js'
@@ -99,12 +100,12 @@ function Official() {
 
   const handleBuy = (productId) => {
     postProductToCart(productId)
-    alert('成功加入購物車!')
+    myswal.addCart()
   }
 
   const handleCollect = (productId) => {
     postProductToCollect(productId)
-    alert('成功加入我的最愛!')
+    myswal.addCollection()
   }
 
   const handleSubmit = (e) => {
