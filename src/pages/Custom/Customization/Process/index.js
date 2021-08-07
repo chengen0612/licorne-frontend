@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { FiX, FiRefreshCw, FiSkipBack, FiCheckSquare } from 'react-icons/fi'
+import myswal from '../../../../utils/sweetalert'
 
 import './style.scss'
 
@@ -151,10 +152,11 @@ function Process(props) {
             </>
           )}
         </article>
-        <span className="custom__notice">
-          {/* TODO 完成製作改成 alert */}
-          {selectedItems.length < 3 ? '請選擇' + currentNote : '恭喜完成製作'}
-        </span>
+        {selectedItems.length < 3 ? (
+          <span className="custom__notice">{'請選擇' + currentNote}</span>
+        ) : (
+          myswal.popUpMessage('恭喜完成製作！')
+        )}
         <Beaker
           setDisplaySerie={setDisplaySerie}
           selectedItems={selectedItems}
