@@ -5,6 +5,7 @@ import { FiHeart, FiRotateCcw } from 'react-icons/fi'
 import CourseMapModal from './CourseMapModal'
 import Backdrop from './Backdrop'
 import swal from 'sweetalert'
+import myswal from '../../../utils/sweetalert'
 
 const selectPrograms = [
   {
@@ -75,6 +76,9 @@ function CourseForm(props) {
 
   //-------------------------將表單資料送至資料庫
   async function sentCourseFromServer() {
+    const token = localStorage.getItem('jwt')
+    if (!token) return myswal.pleaseLogin()
+
     const url = `http://localhost:6005/getCourseForm`
     // 被用來複製一個或多個物件自身所有可數的屬性到另一個目標物件
     const formDataInfo = { ...formData }
@@ -88,6 +92,7 @@ function CourseForm(props) {
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: 'Bearer ' + token,
       }),
     })
     const response = await fetch(request)

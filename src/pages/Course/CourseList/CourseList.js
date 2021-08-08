@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './CourseList.css'
 import { imgPath } from '../../../config'
+import myswal from '../../../utils/sweetalert'
 import CourseContent from './CourseContent'
 import CourseForm from './CourseForm'
 
@@ -64,6 +65,9 @@ function CourseList() {
 
   //-------------------------將收藏送至資料庫
   async function sentCollect() {
+    const token = localStorage.getItem('jwt')
+    if (!token) return myswal.pleaseLogin()
+
     const url = `http://localhost:6005/getCollect`
 
     const request = new Request(url, {
@@ -72,6 +76,7 @@ function CourseList() {
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: 'Bearer ' + token,
       }),
     })
     const response = await fetch(request)

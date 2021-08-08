@@ -31,6 +31,9 @@ function Result(props) {
   } = productDetail
 
   const purchaseHandler = async () => {
+    const token = localStorage.getItem('jwt')
+    if (!token) return myswal.pleaseLogin()
+
     const url = 'http://localhost:6005/custom/addcart'
     const request = new Request(url, {
       method: 'POST',
@@ -38,6 +41,7 @@ function Result(props) {
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: 'Bearer ' + token,
       }),
     })
     // console.log(request)
@@ -48,6 +52,9 @@ function Result(props) {
   }
 
   const collectHandler = async () => {
+    const token = localStorage.getItem('jwt')
+    if (!token) return myswal.pleaseLogin()
+
     const url = 'http://localhost:6005/custom/addfavorite'
     const request = new Request(url, {
       method: 'POST',
@@ -55,6 +62,7 @@ function Result(props) {
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: 'Bearer ' + token,
       }),
     })
     // console.log(request)
