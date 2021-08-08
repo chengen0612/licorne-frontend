@@ -1,22 +1,25 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import '../style.css'
 import { imgPath } from '../../../config'
 import { FiRotateCcw } from 'react-icons/fi'
 
 function Results({ result }) {
+  const history = useHistory()
+  const handleRedirection = () => history.push('/official')
   return (
     <>
-      {result === 0 && <Tea />}
-      {result === 1 && <Animal />}
-      {result === 2 && <Nature />}
-      {result === 3 && <Cocktail />}
+      {result === 0 && <Tea handleRedirection={handleRedirection} />}
+      {result === 1 && <Animal handleRedirection={handleRedirection} />}
+      {result === 2 && <Nature handleRedirection={handleRedirection} />}
+      {result === 3 && <Cocktail handleRedirection={handleRedirection} />}
     </>
   )
 }
 export default Results
 
 // A
-const Tea = () => {
+const Tea = ({ handleRedirection }) => {
   return (
     <>
       <div className="quiz__restart" role="button">
@@ -36,12 +39,14 @@ const Tea = () => {
         來自各種最高級的茶品原料充滿清新的經典香氣， <br />
         融合了台灣獨特茶種，茗茶香水無疑是最適合您的香水。
       </p>
-      <button className="quiz__start-btn">前往香氣</button>
+      <button className="quiz__start-btn" onClick={handleRedirection}>
+        前往香氣
+      </button>
     </>
   )
 }
 
-const Animal = () => {
+const Animal = ({ handleRedirection }) => {
   return (
     <>
       <div className="quiz__restart" role="button">
@@ -60,13 +65,15 @@ const Animal = () => {
         適合您的系列為動物系列香水，充滿動物野性和性感的誘惑力香氣。 <br />
         動物香水無疑是最適合您的香水。
       </p>
-      <button className="quiz__start-btn">前往香氣</button>
+      <button className="quiz__start-btn" onClick={handleRedirection}>
+        前往香氣
+      </button>
     </>
   )
 }
 
 // C
-const Nature = () => {
+const Nature = ({ handleRedirection }) => {
   return (
     <>
       <div className="quiz__restart" role="button">
@@ -85,13 +92,15 @@ const Nature = () => {
         適合您的系列為大自然系列香水，擁抱高山森林的遼闊， <br />
         體驗山林的清新香氣是最適合您的香水。
       </p>
-      <button className="quiz__start-btn">前往香氣</button>
+      <button className="quiz__start-btn" onClick={handleRedirection}>
+        前往香氣
+      </button>
     </>
   )
 }
 
 // D
-const Cocktail = () => {
+const Cocktail = ({ handleRedirection }) => {
   return (
     <>
       <div className="quiz__restart" role="button">
@@ -112,7 +121,9 @@ const Cocktail = () => {
         <br />
         調酒香水無疑是最適合您的香水。
       </p>
-      <button className="quiz__start-btn">前往香氣</button>
+      <button className="quiz__start-btn" onClick={handleRedirection}>
+        前往香氣
+      </button>
     </>
   )
 }
