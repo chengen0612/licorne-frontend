@@ -46,6 +46,7 @@ function MyCourseItem({
         </div>
         <div className="memberFavorites__delAndSignup">
           <p
+            role="button"
             className="memberFavorites__delBtn"
             onClick={() => {
               askDelete()
