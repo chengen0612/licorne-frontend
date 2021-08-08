@@ -2,9 +2,9 @@ import React from 'react'
 import '../style.css'
 import { imgPath } from '../../../config'
 
-function Start() {
+function Start({ changeHandler }) {
   return (
-    <>
+    <div className="">
       <h3 className="quiz__start-title">氣味尋覓</h3>
       <p className="quiz__start-text">
         張愛玲曾經說過「到人心裡的路是通過嗅覺， <br />
@@ -22,8 +22,12 @@ function Start() {
         src={imgPath + '/images/quiz/quiz-start.jpg'}
         alt=""
       />
-      <button className="quiz__start-btn">開始測驗</button>
-    </>
+      <div className="d-flex justify-content-center">
+        <button className="quiz__start-btn" onClick={changeHandler}>
+          開始測驗
+        </button>
+      </div>
+    </div>
   )
 }
 export default Start
