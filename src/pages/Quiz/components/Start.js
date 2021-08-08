@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../style.css'
 import { imgPath } from '../../../config'
 
 function Start({ changeHandler }) {
-
   return (
     <div className="">
       <h3 className="quiz__start-title">氣味尋覓</h3>
