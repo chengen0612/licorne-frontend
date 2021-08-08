@@ -98,22 +98,22 @@ function CourseList() {
         <div className="content_down">
           <ul className="info_btn">
             <li>
-              <a
-                href="#/"
+              <span
+                role="button"
                 className={clickInfo}
                 onClick={clickInfoBtn(infoBtnClassName, defaultClassName)}
               >
                 課程內容
-              </a>
+              </span>
             </li>
             <li>
-              <a
-                href="#/"
+              <span
+                role="button"
                 className={click}
                 onClick={clickDescription(infoBtnClassName, defaultClassName)}
               >
                 報名須知
-              </a>
+              </span>
             </li>
           </ul>
         </div>
