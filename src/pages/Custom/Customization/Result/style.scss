@@ -1,7 +1,7 @@
 @import '../style.scss';
 
 // product name
-.top-bar {
+.cust-res__top-bar {
   width: 900px;
   height: 80px;
   margin-left: -450px;
@@ -17,20 +17,20 @@
 }
 
 // product image
-.product__image-top {
+.cust-res__image-top {
   margin-left: -175px;
   position: absolute;
   top: 230px;
   left: 50vw;
 }
-.product__image {
+.cust-res__image {
   width: 350px;
   height: 710px;
   filter: $ds-product;
 }
 
 // cost list
-.cost-list {
+.cust-res__cost-list {
   width: 380px;
   line-height: 4rem;
   font-size: $fs-h4;
@@ -81,7 +81,7 @@
     transition: 0.3s;
   }
 }
-.product {
+.cust-res {
   &__btn-reset {
     @extend %btn;
     @extend %btn-light;

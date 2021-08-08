@@ -38,7 +38,7 @@ function Beaker(props) {
   return (
     <>
       <div
-        className="custom__beaker"
+        className="cust__beaker"
         onDrop={dropHandler}
         onDragEnd={cancelDefault}
         onDragOver={cancelDefault}
@@ -48,7 +48,7 @@ function Beaker(props) {
             return (
               <img
                 key={i}
-                className={'custom__beaker__img' + i}
+                className={'cust__beaker__img' + i}
                 src={value}
                 alt=""
               />

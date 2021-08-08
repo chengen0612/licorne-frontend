@@ -133,32 +133,32 @@ function Process(props) {
 
   return (
     <>
-      <div className="custom">
+      <div className="cust">
         {/* background blob */}
-        <div className="pink-blob"></div>
-        <div className="orange-blob"></div>
-        <div className="yellow-blob"></div>
+        <div className="cust__pink-blob"></div>
+        <div className="cust__orange-blob"></div>
+        <div className="cust__yellow-blob"></div>
         {/* background blob end */}
         {/* progress bar */}
-        <div className="custom__progress-bar">
+        <div className="cust__progress-bar">
           {noteList.map((value) => (
             <ProgressNote note={value} currentNote={currentNote} />
           ))}
         </div>
         {/* progress bar end */}
         <Link to="/" draggable="false">
-          <FiX className="close-btn" />
+          <FiX className="cust__close-btn" />
         </Link>
-        <article className="description">
+        <article className="cust__description">
           {description && (
             <>
-              <p className="description__title">成分說明</p>
-              <span className="description__content">{description}</span>
+              <p className="cust__description__title">成分說明</p>
+              <span className="cust__description__content">{description}</span>
             </>
           )}
         </article>
         {selectedItems.length < 3 ? (
-          <span className="custom__notice">{'請選擇' + currentNote}</span>
+          <span className="cust__notice">{'請選擇' + currentNote}</span>
         ) : (
           missionComplete()
         )}
@@ -171,7 +171,7 @@ function Process(props) {
           imageSrcs={imageSrcs}
           setImageSrcs={setImageSrcs}
         />
-        <aside className="custom__sidebar-wrapper">
+        <aside className="cust__sidebar-wrapper">
           {displaySerie && (
             <SidebarItems data={itemsData} displaySerie={displaySerie} />
           )}
@@ -183,18 +183,18 @@ function Process(props) {
             selectedSeries={selectedSeries}
           />
         </aside>
-        <button className="custom__btn-reset" onClick={resetExecutor}>
+        <button className="cust__btn-reset" onClick={resetExecutor}>
           <FiRefreshCw /> 重做
         </button>
-        <button className="custom__btn-goback" onClick={gobackExecuter}>
+        <button className="cust__btn-goback" onClick={gobackExecuter}>
           {/* TODO pop up message after click*/}
           <FiSkipBack /> 退回
         </button>
         <button
           className={
             selectedItems.length === 3
-              ? 'custom__btn-complete active'
-              : 'custom__btn-complete'
+              ? 'cust__btn-complete active'
+              : 'cust__btn-complete'
           }
           onClick={completeExecuter}
         >

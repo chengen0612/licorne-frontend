@@ -8,8 +8,8 @@ function ProgressNote(props) {
       <div
         className={
           note === currentNote
-            ? 'custom__progress-note active'
-            : 'custom__progress-note'
+            ? 'cust__progress-note active'
+            : 'cust__progress-note'
         }
       >
         {note}

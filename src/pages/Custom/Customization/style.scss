@@ -1,15 +1,14 @@
 @import '../../../styles/global.scss';
 
 // wrapper on the top
-.custom,
-.product {
+.cust {
   height: 100vh;
   background: $c-white;
   position: relative;
   overflow: hidden;
 }
 
-.close-btn {
+.cust__close-btn {
   width: 60px;
   height: 60px;
   background: $c-secondary;
@@ -21,7 +20,7 @@
 }
 
 // description
-.description {
+.cust__description {
   width: 570px;
   height: 700px;
   padding: 130px 90px;
@@ -40,7 +39,7 @@
   }
 }
 
-.orange-blob {
+.cust__orange-blob {
   width: 596px;
   height: 713px;
   background: $c-blob-orange;
@@ -65,7 +64,7 @@
   }
 }
 
-.pink-blob {
+.cust__pink-blob {
   width: 613px;
   background: $c-blob-red;
   position: absolute;
@@ -93,7 +92,7 @@
   }
 }
 
-.yellow-blob {
+.cust__yellow-blob {
   width: 563px;
   height: 404px;
   background: $c-blob-yellow;

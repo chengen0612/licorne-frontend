@@ -23,12 +23,12 @@ function SidebarItems(props) {
 
   return (
     <>
-      <ul className="custom__items-menu">
+      <ul className="cust__items-menu">
         {seriesItems.map((item, i) => {
           return (
             <li key={item.id}>
               <img
-                className="custom__items-image"
+                className="cust__items-image"
                 src={imgPath + item.ingredient_img}
                 alt={item.name_zh}
                 draggable="true"

@@ -7,7 +7,7 @@ function CostList(props) {
 
   return (
     <>
-      <table className="cost-list">
+      <table className="cust-res__cost-list">
         <thead>
           <tr>
             <th></th>

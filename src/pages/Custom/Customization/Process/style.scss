@@ -1,7 +1,7 @@
 @import '../../../../styles/global.scss';
 
 // progress bar
-.custom__progress-bar {
+.cust__progress-bar {
   width: 900px;
   height: 80px;
   margin-left: -450px;
@@ -13,7 +13,7 @@
   top: 50px;
   left: 50vw;
 }
-.custom__progress-note {
+.cust__progress-note {
   height: 100%;
   padding: 18px 120px 22px;
   font-size: 30px;
@@ -24,7 +24,7 @@
 }
 
 // notice message
-.custom__notice{
+.cust__notice {
   margin-left: -70px;
   font-size: $fs-h3;
   color: $c-important;
@@ -41,7 +41,7 @@
   left: $move;
   z-index: 0;
 }
-.custom__beaker {
+.cust__beaker {
   width: 500px;
   height: 500px;
   margin-left: -250px;
@@ -66,7 +66,7 @@
 }
 
 // sidebar top
-.custom__sidebar-wrapper {
+.cust__sidebar-wrapper {
   // width: 400px;
   // width: 100px;
   height: 600px;
@@ -81,7 +81,7 @@
 }
 
 // sidebar items menu
-.custom__items-menu {
+.cust__items-menu {
   width: 300px;
   height: 100%;
   list-style: none;
@@ -90,7 +90,7 @@
   justify-content: start;
   align-items: center;
 }
-.custom__items-menu li {
+.cust__items-menu li {
   width: 100%;
   text-align: center;
   line-height: 200px;
@@ -98,17 +98,17 @@
   &:hover {
     background: rgba(200, 200, 200, 0.3);
   }
-  &:hover .custom__items-image {
+  &:hover .cust__items-image {
     transform: translateZ(0) scale(1.1);
   }
 }
-.custom__items-image {
+.cust__items-image {
   width: 130px;
   transition: 0.3s;
 }
 
 // sidebar series menu
-.custom__series-menu {
+.cust__series-menu {
   width: 100px;
   height: 100%;
   padding: 60px 0;
@@ -119,7 +119,7 @@
   justify-content: space-evenly;
   align-items: center;
 }
-.custom__series-menu li {
+.cust__series-menu li {
   width: 100%;
   text-align: center;
   line-height: 120px;
@@ -133,7 +133,7 @@
     transition: 0.3s;
   }
 }
-.custom__series {
+.cust__series {
   &-fruit {
     @include activeSerie(60px);
     // margin-top: 110px;
@@ -181,7 +181,7 @@
     transition: 0.3s;
   }
 }
-.custom {
+.cust {
   &__btn-reset {
     @extend %btn;
     @extend %btn-light;

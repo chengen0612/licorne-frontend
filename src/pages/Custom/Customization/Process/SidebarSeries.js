@@ -6,10 +6,10 @@ function SidebarSeries(props) {
     props
 
   const className = [
-    'custom__series-fruit',
-    'custom__series-flower',
-    'custom__series-leaf',
-    'custom__series-herb',
+    'cust__series-fruit',
+    'cust__series-flower',
+    'cust__series-leaf',
+    'cust__series-herb',
   ]
 
   const displayHandler = (item) => {
@@ -24,7 +24,7 @@ function SidebarSeries(props) {
 
   return (
     <>
-      <ul className="custom__series-menu">
+      <ul className="cust__series-menu">
         {data.map((item, i) => {
           return (
             <li
