@@ -252,3 +252,27 @@
     // padding-bottom: 60px;
   }
 }
+
+.quiz__result-btn {
+  width: 150px;
+  height: 60px;
+  border-radius: $br-s;
+  background: $c-primary;
+  color: $c-secondary;
+  border: 1px solid $c-primary;
+  font-size: 1rem;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.quiz__result-img-wrapper{
+  width: 520px;
+  height: 350px;
+}
+
+.quiz__result-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
