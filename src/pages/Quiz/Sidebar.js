@@ -23,6 +23,14 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
     // }
   }
 
+  const [hideQuestion, setHideQuestion] = useState(false)
+  const [result, setResult] = useState('')
+
+  const resultHandler = (result) => {
+    console.log('result', result)
+    setResult(result)
+  }
+
   return (
     <>
       <div
@@ -58,11 +66,14 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
           <Questions
             changeHandler={changeHandler}
             returnHandler={returnHandler}
-            // page={page}
-            // setPage={setPage}
+            hideQuestion={hideQuestion}
+            setHideQuestion={setHideQuestion}
+            resultHandler={resultHandler}
           />
         )}
-        {/* <Results /> */}
+        {!hideQuestion && (
+          <Results result={result} resultHandler={resultHandler} />
+        )}
       </div>
     </>
   )

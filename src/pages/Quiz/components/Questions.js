@@ -8,7 +8,12 @@ import QuestionThree from './Questions/QuestionThree'
 import QuestionFour from './Questions/QuestionFour'
 import QuestionFive from './Questions/QuestionFive'
 
-function Question({ page, setPage, returnHandler, newAns }) {
+function Question({
+  returnHandler,
+  hideQuestion,
+  setHideQuestion,
+  resultHandler,
+}) {
   const getDataFromServer = async () => {
     const url = 'http://localhost:6005/quiz'
     const response = await axios.get(url)
@@ -32,25 +37,25 @@ function Question({ page, setPage, returnHandler, newAns }) {
     const ansA = questions.map((v, i) => {
       return v.A
     })
-    console.log('ansA', ansA)
+    // console.log('ansA', ansA)
     setAnsA(ansA)
 
     const ansB = questions.map((v, i) => {
       return v.B
     })
-    console.log('ansB', ansB)
+    // console.log('ansB', ansB)
     setAnsB(ansB)
 
     const ansC = questions.map((v, i) => {
       return v.C
     })
-    console.log('ansC', ansC)
+    // console.log('ansC', ansC)
     setAnsC(ansC)
 
     const ansD = questions.map((v, i) => {
       return v.D
     })
-    console.log('ansD', ansD)
+    // console.log('ansD', ansD)
     setAnsD(ansD)
   }
 
@@ -86,10 +91,25 @@ function Question({ page, setPage, returnHandler, newAns }) {
   // count answers
   const [ans, setAns] = useState([0, 0, 0, 0])
 
+  const result = ans.indexOf(Math.max(...ans))
+  // console.log('index of greatest value in ans', result)
+
+  const [none, setNone] = useState('')
+
+  const fadeOut = {
+    display: none,
+    transform: '1s',
+  }
+
+  const displayHandler = () => {
+    setHideQuestion(hideQuestion)
+    setNone('none')
+  }
+
   return (
     <>
-      {/* {console.log('change', change)}
-      {console.log('page', page)} */}
+      {console.log('change', change)}
+      {console.log('ans after 5', ans)}
       <div
         className="quiz__back"
         role="button"
@@ -100,14 +120,26 @@ function Question({ page, setPage, returnHandler, newAns }) {
             backHandler()
             // FIXME: return to previous array result
             setAns([0, 0, 0, 0])
-            console.log('ans in return button', ans)
+            // console.log('ans in return button', ans)
           }
         }}
+        style={fadeOut}
       >
         <FiChevronLeft className="feather-s" />
         <span className="quiz__back-text">返回</span>
       </div>
-      {change === 4 ? (
+      {change === 5 ? (
+        <button
+          className="quiz__result-btn"
+          style={fadeOut}
+          onClick={() => {
+            resultHandler(result)
+            displayHandler()
+          }}
+        >
+          查看結果
+        </button>
+      ) : change === 4 ? (
         <QuestionFive
           q5={q5}
           ans={ans}
@@ -117,7 +149,6 @@ function Question({ page, setPage, returnHandler, newAns }) {
           ansC={ansC}
           ansD={ansD}
           nextHandler={nextHandler}
-          // countHandler={countHandler}
         />
       ) : change === 3 ? (
         <QuestionFour
