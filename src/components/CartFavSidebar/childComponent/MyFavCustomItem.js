@@ -2,6 +2,7 @@ import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import { FiShoppingBag } from 'react-icons/fi'
+import myswal from '../../../utils/sweetalert'
 
 function MyFavCustomItem({
   customFavorites,
@@ -51,7 +52,8 @@ function MyFavCustomItem({
             const newCustomFavorites = customFavorites.filter((v, i) => {
               return v.id !== customFavorite.id
             })
-            setCustomFavorites(newCustomFavorites)
+            // setCustomFavorites(newCustomFavorites)
+            myswal.confirmDelete(setCustomFavorites, newCustomFavorites)
           }}
         >
           刪除

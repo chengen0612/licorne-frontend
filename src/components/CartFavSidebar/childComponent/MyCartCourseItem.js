@@ -2,6 +2,7 @@ import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import { FiHeart } from 'react-icons/fi'
+import myswal from '../../../utils/sweetalert'
 
 function MyCartCourseItem({
   courseProducts,
@@ -34,7 +35,8 @@ function MyCartCourseItem({
             const newCourseProducts = courseProducts.filter((v, i) => {
               return v.course_id !== courseProduct.course_id
             })
-            setCourseProducts(newCourseProducts)
+            // setCourseProducts(newCourseProducts)
+            myswal.confirmDelete(setCourseProducts, newCourseProducts)
           }}
         >
           刪除{' '}

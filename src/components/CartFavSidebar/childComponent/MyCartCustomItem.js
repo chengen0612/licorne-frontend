@@ -2,6 +2,7 @@ import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import { FiHeart } from 'react-icons/fi'
+import myswal from '../../../utils/sweetalert'
 
 function MyCartCustomItem({
   customProducts,
@@ -90,7 +91,8 @@ function MyCartCustomItem({
             const newCustomProducts = customProducts.filter((v, i) => {
               return v.id !== id
             })
-            setCustomProducts(newCustomProducts)
+            // setCustomProducts(newCustomProducts)
+            myswal.confirmDelete(setCustomProducts, newCustomProducts)
           }}
         >
           刪除{' '}

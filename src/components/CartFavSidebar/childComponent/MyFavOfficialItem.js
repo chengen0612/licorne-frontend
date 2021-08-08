@@ -2,6 +2,7 @@ import React from 'react'
 import '../../../styles/global.css'
 import '../style.css'
 import { FiShoppingBag } from 'react-icons/fi'
+import myswal from '../../../utils/sweetalert'
 
 function MyFavOfficialItem({
   officialFavorites,
@@ -59,7 +60,8 @@ function MyFavOfficialItem({
             const newOfficialFavorites = officialFavorites.filter((v, i) => {
               return v.id !== id
             })
-            setOfficialFavorites(newOfficialFavorites)
+            // setOfficialFavorites(newOfficialFavorites)
+            myswal.confirmDelete(setOfficialFavorites, newOfficialFavorites)
           }}
         >
           刪除
