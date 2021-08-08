@@ -28,7 +28,6 @@ swal.confirmDelete = async (func, ...params) => {
     icon: 'warning',
     buttons: true,
     dangerMode: true,
-    timer: 1200,
   })
   if (!result) return
   swal({
