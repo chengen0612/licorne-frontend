@@ -436,7 +436,7 @@
   justify-content: center;
 }
 
-.cj-sidebar__cart__checkout a {
+.cj-sidebar__cart__checkout span {
   color: white !important;
   font-family: 'Noto Sans', sans-serif;
   font-size: var(--fs-h5);

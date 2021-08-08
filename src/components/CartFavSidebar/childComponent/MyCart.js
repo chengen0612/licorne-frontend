@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom' // 承恩加的
 import '../../../styles/global.css'
 import '../style.css'
 import MyCartOffcialItem from './MyCartOffcialItem'
@@ -25,6 +25,8 @@ function MyCart({
   //
   closeSidebar, // 承恩加的
 }) {
+  const history = useHistory() // 承恩加的
+
   function getProductsAndQuantity(products) {
     //Only for official and custom products!
     let newProducts = [...products]
@@ -78,6 +80,35 @@ function MyCart({
     const response = await fetch(request)
     const result = await response.json()
     console.log('資料輸入成功: ', result.message)
+  }
+
+  // 承恩加的
+  const handleSubmit = async () => {
+    //晁榮：以下是將資料傳到後端的程式碼！
+    let offProducts = getProductsAndQuantity(officialProducts)
+    let custProducts = getProductsAndQuantity(customProducts)
+    await updateDatabase(
+      offProducts,
+      'http://localhost:6005/sidebar/updateOfficialCart'
+    )
+    await updateDatabase(
+      custProducts,
+      'http://localhost:6005/sidebar/updateCustomCart'
+    )
+    let offiCollect = getCollectDatas(officialFavorites)
+    await updateDatabase(
+      offiCollect,
+      'http://localhost:6005/sidebar/updateOfficialCollect'
+    )
+    let custCollect = getCollectDatas(customFavorites, true)
+    await updateDatabase(
+      custCollect,
+      'http://localhost:6005/sidebar/updateCustomCollect'
+    )
+    //晁榮：以上是將資料傳到後端的程式碼！
+    closeSidebar()
+    document.body.style.overflow = 'visible'
+    history.push('/checkout')
   }
 
   return (
@@ -160,39 +191,9 @@ function MyCart({
         </div>
       </div>
       <div className="cj-sidebar__cart__checkout">
-        <div>
-          <Link
-            to="/checkout"
-            onClick={() => {
-              closeSidebar()
-              document.body.style.overflow = 'visible'
-              //
-              //晁榮：以下是將資料傳到後端的程式碼！
-              let offProducts = getProductsAndQuantity(officialProducts)
-              let custProducts = getProductsAndQuantity(customProducts)
-              updateDatabase(
-                offProducts,
-                'http://localhost:6005/sidebar/updateOfficialCart'
-              )
-              updateDatabase(
-                custProducts,
-                'http://localhost:6005/sidebar/updateCustomCart'
-              )
-              let offiCollect = getCollectDatas(officialFavorites)
-              updateDatabase(
-                offiCollect,
-                'http://localhost:6005/sidebar/updateOfficialCollect'
-              )
-              let custCollect = getCollectDatas(customFavorites, true)
-              updateDatabase(
-                custCollect,
-                'http://localhost:6005/sidebar/updateCustomCollect'
-              )
-              //晁榮：以上是將資料傳到後端的程式碼！
-            }}
-          >
-            前往結帳
-          </Link>
+        {/* 承恩加的 */}
+        <div role="button" onClick={handleSubmit}>
+          <span>前往結帳</span>
         </div>
       </div>
     </div>
