@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../style.css'
 import { imgPath } from '../../../config'
 import { FiRotateCcw } from 'react-icons/fi'
@@ -19,10 +19,7 @@ export default Results
 const Tea = () => {
   return (
     <>
-      <div
-        className="quiz__restart"
-        role="button"
-      >
+      <div className="quiz__restart" role="button">
         <FiRotateCcw className="feather-s" />
         <span className="quiz__restart-text">重測</span>
       </div>
