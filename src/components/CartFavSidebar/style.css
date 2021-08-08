@@ -283,7 +283,7 @@
   justify-content: center;
 }
 
-.cj-sidebar__fav__item__custom-btn div {
+.cj-sidebar__fav__item__custom-btn__circle--active {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -293,7 +293,17 @@
   border-radius: 50%;
 }
 
-.cj-sidebar__fav__item__custom-btn div:first-child {
+.cj-sidebar__fav__item__custom-btn__circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c-gray);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.cj-sidebar__fav__item__custom-btn__FiShoppingBag {
   color: white;
   cursor: pointer;
 }

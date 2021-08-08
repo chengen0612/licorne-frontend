@@ -7,7 +7,31 @@ function MyFavCustomItem({
   customFavorites,
   customFavorite,
   setCustomFavorites,
+  customProducts,
+  setCustomProducts,
 }) {
+  function checkIsInCart() {
+    for (let customProduct of customProducts) {
+      if (customProduct.id === customFavorite.id) {
+        return true
+      }
+    }
+    return false
+  }
+
+  function switchIsInCart() {
+    if (checkIsInCart() === true) {
+      const newCustomProducts = customProducts.filter((v, i) => {
+        return v.id !== customFavorite.id
+      })
+      setCustomProducts(newCustomProducts)
+    } else {
+      let customProductsCopy = [...customProducts]
+      customProductsCopy.push(customFavorite)
+      setCustomProducts(customProductsCopy)
+    }
+  }
+
   return (
     <>
       <div className="cj-sidebar__fav__item__custom-img">
@@ -34,8 +58,17 @@ function MyFavCustomItem({
         </p>
       </div>
       <div className="cj-sidebar__fav__item__custom-btn">
-        <div>
-          <FiShoppingBag />
+        <div
+          className={
+            checkIsInCart()
+              ? 'cj-sidebar__fav__item__custom-btn__circle--active'
+              : 'cj-sidebar__fav__item__custom-btn__circle'
+          }
+          onClick={() => {
+            switchIsInCart()
+          }}
+        >
+          <FiShoppingBag className="cj-sidebar__fav__item__custom-btn__FiShoppingBag" />
         </div>
       </div>
     </>
