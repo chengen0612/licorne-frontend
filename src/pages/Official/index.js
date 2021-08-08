@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import myswal from '../../utils/sweetalert'
 
 import './product-list.css'
+import Spinner from '../../components/Spinner'
 import CustomizedSlider from './components/filter/Pricefilter.js'
 import Materialfilter from './components/filter/Materialfilter.js'
 import Products from './components/product/Products.js'
@@ -33,17 +34,17 @@ function Official() {
   // heart = {id: number, selected:false}
   // const [selected,setSelected] =useState(false)
   // 載入指示的spinner動畫用的
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const spinner = (
-    <>
-      <div className="d-flex justify-content-center">
-        <div className="spinner-border text-success" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-      </div>
-    </>
-  )
+  // const spinner = (
+  //   <>
+  //     <div className="product-spinner">
+  //       <div className="spinner-border" role="status">
+  //         <span className="sr-only">Loading...</span>
+  //       </div>
+  //     </div>
+  //   </>
+  // )
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -248,55 +249,63 @@ function Official() {
     })
   }, [searchList])
   useEffect(() => {
-    setIsLoading(true)
+    // setIsLoading(true)
     if (clickdelete) {
       postSearchToServer()
     }
     setClickDelete(false)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 800)
+    // setTimeout(() => {
+    //   setIsLoading(false)
+    // }, 800)
   }, [searchList])
   //很怪問老師
   useEffect(() => {
-    setIsLoading(true)
+    // setIsLoading(true)
     if (click) {
       getPrdoductsFromServer()
     }
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 800)
+    // setTimeout(() => {
+    //   setIsLoading(false)
+    // }, 800)
   }, [clickPage, click])
   //很怪問老師
   useEffect(() => {
-    setIsLoading(true)
+    // setIsLoading(true)
     if (clickSeriesBlock) {
       getSeriesproductFromServer()
       if (click) {
         getSeriesproductFromServer()
       }
     }
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 800)
+    // setTimeout(() => {
+    //   setIsLoading(false)
+    // }, 800)
   }, [clickSeries, clickSeriesBlock, clickPage, click])
 
   useEffect(() => {
-    setIsLoading(true)
+    // setIsLoading(true)
     if (clicksearch) {
       postSearchToServer()
       if (click) {
         postSearchToServer()
       }
     }
+    // setTimeout(() => {
+    //   setIsLoading(false)
+    // }, 800)
+  }, [clicksearch, clickPage, click])
+
+  // handle spinner
+  useEffect(() => {
+    setIsLoading(true)
     setTimeout(() => {
       setIsLoading(false)
-    }, 800)
-  }, [clicksearch, clickPage, click])
+    }, 500)
+  }, [products])
 
   return (
     <>
-      <div>
+      <div className="product">
         {/* <Header /> */}
         <aside className="product__asideright ">
           {/* 組件Series */}
@@ -427,7 +436,7 @@ function Official() {
           </form>
         </aside>
         {isLoading ? (
-          spinner
+          <Spinner />
         ) : (
           <main className="product__main__content">
             <div className="product__total__ptoductitems ">
