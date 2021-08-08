@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../style.scss'
-import { FiChevronLeft } from 'react-icons/fi'
 
 function QuestionFive({
   q5,
@@ -12,10 +11,6 @@ function QuestionFive({
   ansD,
   nextHandler,
 }) {
-  const countHandler = () => {
-    ans.indexOf(Math.max(...ans))
-  }
-  console.log('index of greatest value in ans', ans.indexOf(Math.max(...ans)))
   return (
     <>
       {/* <div className="quiz__back" role="button" onClick="">
@@ -37,6 +32,7 @@ function QuestionFive({
               ans[0] += 1
               let newAns = ans
               setAns(newAns)
+              nextHandler()
             }}
           >
             {ansA[4]}
@@ -47,6 +43,7 @@ function QuestionFive({
               ans[1] += 1
               let newAns = ans
               setAns(newAns)
+              nextHandler()
             }}
           >
             {ansB[4]}{' '}

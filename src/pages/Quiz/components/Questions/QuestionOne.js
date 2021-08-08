@@ -1,8 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../style.scss'
-import { FiChevronLeft } from 'react-icons/fi'
-
-// onClick={()=>{setAns(ans[0]+=1)}}
 
 function QuestionOne({ q1, ans, setAns, ansA, ansB, ansC, ansD, nextHandler }) {
   return (

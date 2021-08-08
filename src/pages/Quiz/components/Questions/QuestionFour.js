@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../style.scss'
-import { FiChevronLeft } from 'react-icons/fi'
 
 function QuestionFour({
   q4,
