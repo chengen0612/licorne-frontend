@@ -1,24 +1,25 @@
 import swal from 'sweetalert'
 
 swal.addCart = () => {
-  swal('成功加入購物車', {
+  swal('成功加入購物車！', {
     button: false,
     timer: 1200,
   })
 }
 
 swal.addCollection = () => {
-  swal('成功加入收藏', {
+  swal('成功加入收藏！', {
     button: false,
     timer: 1200,
   })
 }
 
-swal.popUpMessage = (message) => {
-  swal(message, {
+swal.popUpMessage = async (message) => {
+  await swal(message, {
     button: false,
     timer: 1200,
   })
+  // return after message disappear
 }
 
 swal.confirmDelete = async (func, ...params) => {

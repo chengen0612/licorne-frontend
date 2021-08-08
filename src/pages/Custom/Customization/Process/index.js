@@ -67,6 +67,11 @@ function Process(props) {
     setCurrentNote(noteList[count])
   }, [selectedItems])
 
+  // alert after finish process
+  const missionComplete = () => {
+    myswal.popUpMessage('恭喜完成製作！')
+  }
+
   // refresh choices
   const resetExecutor = () => {
     setSelectedItems([])
@@ -155,7 +160,7 @@ function Process(props) {
         {selectedItems.length < 3 ? (
           <span className="custom__notice">{'請選擇' + currentNote}</span>
         ) : (
-          myswal.popUpMessage('恭喜完成製作！')
+          missionComplete()
         )}
         <Beaker
           setDisplaySerie={setDisplaySerie}

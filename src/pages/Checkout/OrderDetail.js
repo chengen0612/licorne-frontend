@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import myswal from '../../utils/sweetalert'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
@@ -294,10 +295,13 @@ function OrderDetail(props) {
   const paymentMethod = ['信用卡', '貨到付款']
   const [checkedValue, setCheckedValue] = useState(paymentMethod[0])
   // 重新導向
-  const handleRedirect = () => {
-    const path =
-      checkedValue === paymentMethod[0] ? '/checkout/payment' : '/member/order'
-    history.push(path)
+  const handleRedirect = async () => {
+    if (checkedValue === paymentMethod[0]) {
+      history.push('/checkout/payment')
+    } else {
+      await myswal.popUpMessage('訂購完成！')
+      history.push('/member/order')
+    }
   }
 
   return (
