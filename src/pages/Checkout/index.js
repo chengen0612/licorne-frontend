@@ -63,12 +63,10 @@ function Checkout() {
     const response = await axios.post(url, params)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(courseOrder)
+  const handleSubmit = () => {
     postCourse()
-    // postOfficial()
-    // postCustom()
+    postOfficial()
+    postCustom()
   }
 
   return (
@@ -78,7 +76,7 @@ function Checkout() {
           <div className="checkout__text">
             <span className="checkout__text-title">購物籃</span>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className="checkout__boxes d-flex justify-content-between">
               <div className="checkout__product-boxes">
                 <div className="checkout__official-box">
@@ -106,6 +104,7 @@ function Checkout() {
                   customTotal={customTotal}
                   courseTotal={courseTotal}
                   setAddress={setAddress}
+                  handleSubmit={handleSubmit}
                 />
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
 import Backdrop from './components/Backdrop'
@@ -187,7 +188,8 @@ const DeliveryMethod = ({
 }
 
 function OrderDetail(props) {
-  const { setAddress, officialTotal, customTotal, courseTotal, value } = props
+  const { setAddress, officialTotal, customTotal, courseTotal, handleSubmit } =
+    props
   const [memberName, setMemberName] = useState([])
   const [memberPhone, setMemberPhone] = useState([])
   const [memberAddress, setMemberAddress] = useState([])
@@ -288,8 +290,15 @@ function OrderDetail(props) {
   const deliveryFee = 0
   const total = productTotal + deliveryFee
 
+  const history = useHistory()
   const paymentMethod = ['信用卡', '貨到付款']
   const [checkedValue, setCheckedValue] = useState(paymentMethod[0])
+  // 重新導向
+  const handleRedirect = () => {
+    const path =
+      checkedValue === paymentMethod[0] ? '/checkout/payment' : '/member/order'
+    history.push(path)
+  }
 
   return (
     <>
@@ -359,21 +368,18 @@ function OrderDetail(props) {
           </div>
         </div>
         <div className="d-flex justify-content-center pb-4">
-          {/* <Link
-            to={
-              checkedValue === paymentMethod[0]
-                ? '/checkout/payment'
-                : '/member'
-            }
-          > */}
           <button
             className="checkout__checkoutBtn"
             type="submit"
             disabled={total === 0}
+            onClick={() => {
+              // 訂單提交和導頁
+              handleSubmit()
+              handleRedirect()
+            }}
           >
             確認結帳
           </button>
-          {/* </Link> */}
         </div>
       </div>
     </>
