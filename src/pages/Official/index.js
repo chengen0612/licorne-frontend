@@ -103,13 +103,11 @@ function Official() {
   const handleBuy = (productId) => {
     // postProductToCart(productId, token)
     authentication(postProductToCart, productId)
-    myswal.addCart()
   }
 
   const handleCollect = (productId) => {
     // postProductToCollect(productId)
     authentication(postProductToCollect, productId)
-    myswal.addCollection()
   }
 
   const handleSubmit = (e) => {
@@ -226,6 +224,7 @@ function Official() {
     }
     const response = await axios.post(url, params)
     // console.log(response)
+    myswal.addCart()
   }
 
   const postProductToCollect = async (productId, token) => {
@@ -239,6 +238,7 @@ function Official() {
     }
     const response = await axios.post(url, params)
     // console.log(response)
+    myswal.addCollection()
   }
 
   //使用第一生命周期載入資料
