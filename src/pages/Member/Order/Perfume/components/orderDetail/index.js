@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './style.css'
 import { FiCheck, FiArrowLeft } from 'react-icons/fi'
 import MemberOrderProduct from '../orderProduct'
+import axios from 'axios'
 
 function OrderPerfumeDetail() {
+  const [order, setOrder] = useState([])
+  const [total, setTotal] = useState(0)
+  const [address, setAddress] = useState('')
+  const [orderId, setOrderId] = useState('')
+  const getProductOrder = async () => {
+    let url = `http://localhost:6005/memberOrder`
+    const response = await axios.get(url)
+    let product = await response.data.product
+    let total = await response.data.total
+    let address = await response.data.address
+    let orderId = await response.data.order_id
+    setOrder(product)
+    setTotal(total)
+    setAddress(address)
+    setOrderId(orderId)
+  }
+
+  useEffect(() => {
+    getProductOrder()
+  }, [])
+
   return (
     <>
       <div className="memberOrderPerfume__detailOrderBox">
@@ -18,7 +40,7 @@ function OrderPerfumeDetail() {
             <h5>訂單編號</h5>
           </div>
           <div className="memberOrderPerfume__detailNumber">
-            <h5>20210608168LCR</h5>
+            <h5>{orderId}</h5>
           </div>
         </div>
         <hr className="memberOrderPerfume__detailTopLine" />
@@ -27,12 +49,25 @@ function OrderPerfumeDetail() {
             <div className="memberOrderPerfume__detailItemTitle">
               <h2 className="memberOrderPerfume__orderTitle">訂單內容</h2>
             </div>
-            <div className="memberOrderPerfume__orderTopItem orderItem">
+            {order.map((order, i) => {
+              return (
+                <div className="memberOrderPerfume__orderTopItem orderItem">
+                  <MemberOrderProduct
+                    key={i}
+                    name_zh={order.name_zh}
+                    name_en={order.name_en}
+                    img_id={order.img_id}
+                    seriesName={order.seriesName}
+                    price={order.price}
+                    volume={order.volume}
+                    quantity={order.quantity}
+                  />
+                </div>
+              )
+            })}
+            {/* <div className="memberOrderPerfume__orderBottomItem orderItem">
               <MemberOrderProduct />
-            </div>
-            <div className="memberOrderPerfume__orderBottomItem orderItem">
-              <MemberOrderProduct />
-            </div>
+            </div> */}
           </div>
           <div className="memberOrderPerfume__detailRightBox">
             <div className="memberOrderPerfume__rightTopBox">
@@ -42,7 +77,7 @@ function OrderPerfumeDetail() {
                   哭肉狗狗
                 </h3>
                 <h3 className="memberOrderPerfume__receiveAddress receiveText">
-                  桃園市桃園區中正路100巷100號101樓
+                  {address}
                 </h3>
                 <h3 className="memberOrderPerfume__receivePhone receiveText">
                   0912 345 678
@@ -113,7 +148,7 @@ function OrderPerfumeDetail() {
             <h5>總計</h5>
           </div>
           <div className="memberOrderPerfume__detailTotalNumber">
-            <h5>NT$ 7,300 </h5>
+            <h5>NT$ {total} </h5>
           </div>
         </div>
       </div>

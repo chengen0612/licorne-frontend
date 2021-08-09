@@ -3,36 +3,40 @@ import './style.css'
 import { FiEdit } from 'react-icons/fi'
 import { imgPath } from '../../../../../../config'
 
-function MemberLeftCard() {
+function MemberLeftCard(props) {
+  const { name_zh, name_en, img_id, seriesName, price, volume, quantity } =
+    props
   return (
     <>
       <div className="memberOrderPerfume__productBox">
         <div className="memberOrderPerfume__productImageBox">
           <img
             className="memberOrderPerfume__productImage"
-            src={imgPath + '/images/member/cocktail_100ml.png'}
+            src={imgPath + img_id}
             alt=""
           />
         </div>
         <div className="memberOrderPerfume__productNameBox">
           <h5 className="memberOrderPerfume__productNameTitle cnName">
-            玉露綠茶
+            {name_zh}
           </h5>
           <h6 className="memberOrderPerfume__productNameTitle enName">
-            Gyokuro Green Tea
+            {name_en}
           </h6>
           <h6 className="memberOrderPerfume__productNameTitle series">
-            茗茶香氛系列
+            {seriesName}
           </h6>
         </div>
         <div className="memberOrderPerfume__productCapacityBox">
-          <h5 className="memberOrderPerfume__productCapacity">100ml</h5>
+          <h5 className="memberOrderPerfume__productCapacity">{volume}</h5>
         </div>
         <div className="memberOrderPerfume__productCountBox">
-          <h5 className="memberOrderPerfume__productCount">x 1</h5>
+          <h5 className="memberOrderPerfume__productCount">x {quantity}</h5>
         </div>
         <div className="memberOrderPerfume__productPriceBox">
-          <h5 className="memberOrderPerfume__productPrice">NT$ 4,800 </h5>
+          <h5 className="memberOrderPerfume__productPrice">
+            NT${price * quantity}
+          </h5>
         </div>
       </div>
     </>
