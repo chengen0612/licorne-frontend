@@ -378,9 +378,9 @@ function OrderDetail(props) {
             className="checkout__checkoutBtn"
             type="submit"
             disabled={total === 0}
-            onClick={() => {
+            onClick={async () => {
               // 訂單提交和導頁
-              handleSubmit()
+              await handleSubmit()
               handleRedirect()
             }}
           >
