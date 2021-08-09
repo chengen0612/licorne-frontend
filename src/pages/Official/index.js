@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import myswal from '../../utils/sweetalert'
+import authentication from '../../utils/authentication'
 
 import './product-list.css'
 import Spinner from '../../components/Spinner'
@@ -100,12 +101,14 @@ function Official() {
   }
 
   const handleBuy = (productId) => {
-    postProductToCart(productId)
+    // postProductToCart(productId, token)
+    authentication(postProductToCart, productId)
     myswal.addCart()
   }
 
   const handleCollect = (productId) => {
-    postProductToCollect(productId)
+    // postProductToCollect(productId)
+    authentication(postProductToCollect, productId)
     myswal.addCollection()
   }
 
@@ -211,26 +214,28 @@ function Official() {
   //productId點擊的商品id
   //productQuantity商品數量固定為1
 
-  const postProductToCart = async (productId) => {
+  const postProductToCart = async (productId, token) => {
     let url = `http://localhost:6005/buyProduct`
     let params = {
       params: {
-        memberId: 1, //這邊要改成session.id
+        // memberId: 1, //這邊要改成session.id
         productId: productId,
         productQuantity: 1,
       },
+      headers: { Authorization: 'Bearer ' + token },
     }
     const response = await axios.post(url, params)
     // console.log(response)
   }
 
-  const postProductToCollect = async (productId) => {
+  const postProductToCollect = async (productId, token) => {
     let url = `http://localhost:6005/collectProduct`
     let params = {
       params: {
-        memberId: 2,
+        // memberId: 2,
         productId: productId,
       },
+      headers: { Authorization: 'Bearer ' + token },
     }
     const response = await axios.post(url, params)
     // console.log(response)
