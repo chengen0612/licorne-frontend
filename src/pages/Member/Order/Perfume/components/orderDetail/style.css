@@ -61,7 +61,9 @@
   height: 385px;
 }
 .memberOrderPerfume__detailLeftBox {
-  width: 700px;
+  width: 720px;
+  height: 350px;
+  overflow: auto;
 }
 .memberOrderPerfume__detailRightBox {
   width: 530px;
