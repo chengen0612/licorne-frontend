@@ -37,4 +37,10 @@ swal.confirmDelete = async (func, ...params) => {
   func(...params)
 }
 
+swal.pleaseLogin = () => {
+  swal({
+    title: '請登錄會員！',
+  })
+}
+
 export default swal
