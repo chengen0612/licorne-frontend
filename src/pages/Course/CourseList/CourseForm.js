@@ -5,7 +5,7 @@ import { FiHeart, FiRotateCcw } from 'react-icons/fi'
 import CourseMapModal from './CourseMapModal'
 import Backdrop from './Backdrop'
 import swal from 'sweetalert'
-import myswal from '../../../utils/sweetalert'
+import authentication from '../../../utils/authentication'
 
 const selectPrograms = [
   {
@@ -76,28 +76,28 @@ function CourseForm(props) {
 
   //-------------------------將表單資料送至資料庫
   async function sentCourseFromServer() {
-    const token = localStorage.getItem('jwt')
-    if (!token) return myswal.pleaseLogin()
+    const executor = async (token) => {
+      const url = `http://localhost:6005/getCourseForm`
+      // 被用來複製一個或多個物件自身所有可數的屬性到另一個目標物件
+      const formDataInfo = { ...formData }
+      //處理日期格式
+      formDataInfo.form__calendar = formatDate(formDataInfo.form__calendar)
 
-    const url = `http://localhost:6005/getCourseForm`
-    // 被用來複製一個或多個物件自身所有可數的屬性到另一個目標物件
-    const formDataInfo = { ...formData }
-    //處理日期格式
-    formDataInfo.form__calendar = formatDate(formDataInfo.form__calendar)
-
-    console.log(JSON.stringify(formDataInfo))
-    const request = new Request(url, {
-      method: 'POST',
-      body: JSON.stringify(formDataInfo),
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json; charset=UTF-8',
-        Authorization: 'Bearer ' + token,
-      }),
-    })
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('報名成功!', data)
+      console.log(JSON.stringify(formDataInfo))
+      const request = new Request(url, {
+        method: 'POST',
+        body: JSON.stringify(formDataInfo),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json; charset=UTF-8',
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      console.log('報名成功!', data)
+    }
+    authentication(executor)
   }
   //-------------------------------------------------
   //點選報名按鈕
