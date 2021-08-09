@@ -10,8 +10,10 @@ function OrderPerfumeDetail() {
   const [address, setAddress] = useState('')
   const [orderId, setOrderId] = useState('')
   const getProductOrder = async () => {
+    const token = localStorage.getItem('jwt')
     let url = `http://localhost:6005/memberOrder`
-    const response = await axios.get(url)
+    const params = { headers: { Authorization: 'Bearer ' + token } }
+    const response = await axios.get(url, params)
     let product = await response.data.product
     let total = await response.data.total
     let address = await response.data.address
