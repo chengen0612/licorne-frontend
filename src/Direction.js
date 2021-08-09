@@ -29,6 +29,7 @@ function Location() {
   const [useHeader, setUseHeader] = useState(false)
   const [isAmount, setIsAmount] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [didLogin, setDidLogin] = useState(false)
 
   // array to store pages not using header or spinner
   /* eslint-disable */
@@ -96,10 +97,10 @@ function Location() {
             <SecondaryFooter />
           </Route>
           <Route path="/member">
-            <Member />
+            <Member setDidLogin={setDidLogin} />
           </Route>
           <Route path="/login">
-            <LoginAndRegister />
+            <LoginAndRegister setDidLogin={setDidLogin} />
             <SecondaryFooter />
           </Route>
           <Route exact path="/">
@@ -122,7 +123,7 @@ function Location() {
 
   return (
     <>
-      {useHeader && <Header />}
+      {useHeader && <Header didLogin={didLogin} />}
       {isLoading ? <Spinner /> : switchRoutes()}
     </>
   )
