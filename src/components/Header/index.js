@@ -85,12 +85,14 @@ function Header(props) {
 
   // 收藏官方 API
   async function getOfficialCollectFromServer() {
+    const token = localStorage.getItem('jwt')
     const urlCollect = 'http://localhost:6005/sidebar/officialCollect'
     const requestCollect = new Request(urlCollect, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: 'Bearer ' + token,
       }),
     })
     const responseCollect = await fetch(requestCollect)
@@ -99,12 +101,14 @@ function Header(props) {
   }
   // 收藏客製化 API
   async function getCustomCollectFromServer() {
+    const token = localStorage.getItem('jwt')
     const urlCollect = 'http://localhost:6005/sidebar/customCollect'
     const requestCollect = new Request(urlCollect, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: 'Bearer ' + token,
       }),
     })
     const responseCollect = await fetch(requestCollect)
@@ -114,12 +118,14 @@ function Header(props) {
 
   // 官方產品 API
   async function getOfficialProductFromServer() {
+    const token = localStorage.getItem('jwt')
     const urlCart = 'http://localhost:6005/sidebar/official'
     const requestCart = new Request(urlCart, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: 'Bearer ' + token,
       }),
     })
     const responseCart = await fetch(requestCart)
@@ -128,12 +134,14 @@ function Header(props) {
   }
   //客製化產品 API
   async function getCustomProductFromServer() {
+    const token = localStorage.getItem('jwt')
     const urlCart = 'http://localhost:6005/sidebar/custom'
     const requestCart = new Request(urlCart, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: 'Bearer ' + token,
       }),
     })
     const responseCustom = await fetch(requestCart)
@@ -142,12 +150,14 @@ function Header(props) {
   }
   // 課程 API
   async function getCourseProductsFromServer() {
+    const token = localStorage.getItem('jwt')
     const urlCourse = 'http://localhost:6005/sidebar/course'
     const requestCourse = new Request(urlCourse, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: 'Bearer ' + token,
       }),
     })
     const responseCourse = await fetch(requestCourse)

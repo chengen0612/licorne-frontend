@@ -72,12 +72,14 @@ function CartFavSidebar({
   }
 
   async function updateDatabase(data, url) {
+    const token = localStorage.getItem('jwt')
     const request = new Request(url, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: 'Bearer ' + token,
       }),
     })
     const response = await fetch(request)
