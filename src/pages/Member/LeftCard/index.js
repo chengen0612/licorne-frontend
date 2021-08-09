@@ -76,14 +76,14 @@ function MemberLeftCard() {
   async function getUserFromServer() {
     // 連接的伺服器資料網址
     const url = 'http://localhost:6005/member/profile'
-    const jwtToken = localStorage.getItem('userId')
+    const token = localStorage.getItem('jwt')
     // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
-        Authorization: jwtToken,
+        Authorization: 'Bearer ' + token,
       }),
     })
 
