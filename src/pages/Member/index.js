@@ -13,6 +13,9 @@ import Order from './Order'
 function Member(props) {
   // because getting props from withRouter, it would update after any click on the buttons of the left card
 
+  // state to set login status of app
+  const { setDidLogin } = props
+
   // get last word of pathname
   const pathname = props.location.pathname
   const condition = pathname.split('/').pop()
@@ -44,7 +47,7 @@ function Member(props) {
   return (
     <>
       <div className="member-wrapper">
-        <LeftCard />
+        <LeftCard setDidLogin={setDidLogin} />
         {rightCard}
       </div>
     </>

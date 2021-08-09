@@ -14,11 +14,12 @@ import swal from 'sweetalert'
 const eyeOn = <FiEye size={25} />
 const eyeOff = <FiEyeOff size={25} />
 
-function LoginAndRegister() {
+function LoginAndRegister(props) {
+  const { setDidLogin } = props // 變更 app 登入狀態
   const [isLoading, setIsLoading] = useState(false)
   const { handleChange, handleSubmit, values, errors } = useForm(validate)
   const { handleLoginChange, handleLoginSubmit, loginValues, loginErrors } =
-    useFormLogin(validateLogin)
+    useFormLogin(validateLogin, setDidLogin)
   // 註冊密碼顯示/隱藏
   const [regPasswordShown, setRegPasswordShown] = useState(false)
   const regTogglePasswordVisiblity = () => {
@@ -166,6 +167,7 @@ function LoginAndRegister() {
           <form
             className="loginAndRegister__login"
             onSubmit={handleLoginSubmit}
+            // setDidLogin
           >
             <div className="loginAndRegister__rightBox">
               <h1 className="loginAndRegister__rightTitle">會員登入</h1>

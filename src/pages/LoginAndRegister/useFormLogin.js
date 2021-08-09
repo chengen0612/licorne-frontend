@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert'
 import swal from 'sweetalert'
 
-const useForm = (validate) => {
+const useForm = (validate, setDidLogin) => {
   const [loginValues, setLoginValues] = useState({
     loginPhone: '',
     loginPassword: '',
@@ -56,6 +56,8 @@ const useForm = (validate) => {
       console.log('伺服器回傳的json資料', data)
       // 要等驗証過，再設定資料(簡單的直接設定)
       if (data.code === 0) {
+        localStorage.setItem('jwt', data.token)
+        setDidLogin(true) // 變更 app 狀態為登入
         setTimeout(() => {
           swal('歡迎回來！', {
             buttons: false,
@@ -63,7 +65,6 @@ const useForm = (validate) => {
           })
           history.push('/member')
         }, 500)
-        localStorage.setItem('jwt', data.token)
         // localStorage.setItem('code', data.code)
         // localStorage.setItem('userId', data.userId)
       } else

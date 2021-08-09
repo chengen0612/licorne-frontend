@@ -37,7 +37,10 @@ const types = [
   { name: '訂單查詢', link: '/member/order' },
 ]
 
-function MemberLeftCard() {
+function MemberLeftCard(props) {
+  // state to set login status of app
+  const { setDidLogin } = props
+
   const [values, setValues] = useState({
     member_profiles: '',
     member_account: '',
@@ -54,6 +57,7 @@ function MemberLeftCard() {
 
   const history = useHistory()
   function logOut() {
+    setDidLogin(false)
     localStorage.clear()
     history.push('/login')
   }
