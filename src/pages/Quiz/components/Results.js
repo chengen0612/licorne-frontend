@@ -53,7 +53,7 @@ const Animal = ({ handleRedirection }) => {
         <FiRotateCcw className="feather-s" />
         <span className="quiz__restart-text">重測</span>
       </div>
-      <h4 className="quiz__result">茗茶系列</h4>
+      <h4 className="quiz__result">動物系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"
@@ -80,7 +80,7 @@ const Nature = ({ handleRedirection }) => {
         <FiRotateCcw className="feather-s" />
         <span className="quiz__restart-text">重測</span>
       </div>
-      <h4 className="quiz__result">動物系列</h4>
+      <h4 className="quiz__result">大自然系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"

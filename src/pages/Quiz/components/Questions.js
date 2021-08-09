@@ -129,16 +129,24 @@ function Question({
         <span className="quiz__back-text">返回</span>
       </div>
       {change === 5 ? (
-        <button
-          className="quiz__result-btn"
+        <div
+          className="d-flex justify-content-center align-items-center flex-column"
           style={fadeOut}
-          onClick={() => {
-            resultHandler(result)
-            displayHandler()
-          }}
         >
-          查看結果
-        </button>
+          <h5 className="pb-4" style={fadeOut}>
+            分數計算中，點擊按鈕查看結果
+          </h5>
+          <button
+            className="quiz__result-btn"
+            onClick={() => {
+              resultHandler(result)
+              displayHandler()
+            }}
+            style={fadeOut}
+          >
+            查看結果
+          </button>
+        </div>
       ) : change === 4 ? (
         <QuestionFive
           q5={q5}
