@@ -200,12 +200,14 @@ function OrderDetail(props) {
 
   // 會員資料
   async function getMemberInfoFromServer() {
+    const token = localStorage.getItem('jwt')
     const url = 'http://localhost:6005/checkout/member'
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       }),
     })
 

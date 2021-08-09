@@ -24,7 +24,7 @@ function Checkout() {
   const [address, setAddress] = useState('')
   // console.log('這是訂單地址', address)
 
-  async function postOfficial() {
+  async function postOfficial(token) {
     const officialOrderData = {}
     let indexLength = officialOrder.id
     let number = []
@@ -38,10 +38,11 @@ function Checkout() {
     officialOrderData.address = address
     let url = `http://localhost:6005/officialorder`
     let params = officialOrderData
+    params.headers = { Authorization: 'Bearer ' + token }
     const response = await axios.post(url, params)
   }
 
-  async function postCustom() {
+  async function postCustom(token) {
     const CustomOrderData = {}
     let indexLength = customOrder.id
     let number = []
@@ -54,19 +55,22 @@ function Checkout() {
     CustomOrderData.address = address
     let url = `http://localhost:6005/customorder`
     let params = CustomOrderData
+    params.headers = { Authorization: 'Bearer ' + token }
     const response = await axios.post(url, params)
   }
 
-  async function postCourse() {
+  async function postCourse(token) {
     let url = `http://localhost:6005/courseorder`
     let params = courseOrder
+    params.headers = { Authorization: 'Bearer ' + token }
     const response = await axios.post(url, params)
   }
 
   const handleSubmit = () => {
-    postCourse()
-    postOfficial()
-    postCustom()
+    const token = localStorage.getItem('jwt')
+    postCourse(token)
+    postOfficial(token)
+    postCustom(token)
   }
 
   return (

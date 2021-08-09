@@ -23,12 +23,14 @@ function CustomOrder(props) {
   }
 
   async function getCustomInfoFromServer() {
+    const token = localStorage.getItem('jwt')
     const url = 'http://localhost:6005/checkout/custom'
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       }),
     })
 

@@ -20,12 +20,14 @@ function OfficialOrder(props) {
   }
 
   async function getOfficialInfoFromServer() {
+    const token = localStorage.getItem('jwt')
     const url = 'http://localhost:6005/checkout/official'
     const request = new Request(url, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       }),
     })
 
