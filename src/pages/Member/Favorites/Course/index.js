@@ -4,6 +4,7 @@ import { FiEdit } from 'react-icons/fi'
 import { imgPath } from '../../../../config'
 import { Link } from 'react-router-dom'
 import MyCourseFav from '../components/MyCourseFav'
+import authentication from '../../../../utils/authentication'
 
 function FavoriteCourse(props) {
   const [dataLoading, setDataLoading] = useState(false)
@@ -12,21 +13,25 @@ function FavoriteCourse(props) {
 
   async function getCourseCollectFromServer() {
     setDataLoading(true)
-    const urlCollect = 'http://localhost:6005/member/favorites/course'
-    const jwtToken = localStorage.getItem('userId')
-    const requestCollect = new Request(urlCollect, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-        Authorization: jwtToken,
-      }),
-    })
-    const responseCollect = await fetch(requestCollect)
-    const courseCollectDatas = await responseCollect.json()
-    setCourseCollectDatas(courseCollectDatas)
-    console.log('課程資訊：', courseCollectDatas)
+
+    const executor = async (token) => {
+      const urlCollect = 'http://localhost:6005/member/favorites/course'
+      const requestCollect = new Request(urlCollect, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'appliaction/json',
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      const responseCollect = await fetch(requestCollect)
+      const courseCollectDatas = await responseCollect.json()
+      setCourseCollectDatas(courseCollectDatas)
+      console.log('課程資訊：', courseCollectDatas)
+    }
+    authentication(executor)
   }
+
   // 一開始就會開始載入資料
   useEffect(() => {
     getCourseCollectFromServer()

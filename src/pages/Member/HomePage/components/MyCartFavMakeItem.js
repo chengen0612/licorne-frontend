@@ -3,6 +3,7 @@ import '../../../../styles/global.css'
 import '../../style.css'
 import { FiShoppingBag } from 'react-icons/fi'
 import swal from 'sweetalert'
+import authentication from '../../../../utils/authentication'
 
 function MyCartMakeItem({
   customCollectDatas,
@@ -24,43 +25,48 @@ function MyCartMakeItem({
     })
     const userData = { id }
 
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/member/cart'
-    // 注意資料格式要設定，伺服器才知道是json格式
-    const jwtToken = localStorage.getItem('userId')
-    const request = new Request(url, {
-      method: 'POST',
-      body: JSON.stringify(userData),
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: jwtToken,
-      }),
-    })
+    const executor = async (token) => {
+      // 連接的伺服器資料網址
+      const url = 'http://localhost:6005/member/cart'
+      // 注意資料格式要設定，伺服器才知道是json格式
+      const request = new Request(url, {
+        method: 'POST',
+        body: JSON.stringify(userData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        }),
+      })
 
-    console.log(JSON.stringify(userData))
+      console.log(JSON.stringify(userData))
 
-    const response = await fetch(request)
-    const data = await response.json()
+      const response = await fetch(request)
+      const data = await response.json()
 
-    console.log('伺服器回傳的json資料', data)
-    getCustomProductFromServer()
+      console.log('伺服器回傳的json資料', data)
+      getCustomProductFromServer()
+    }
+    authentication(executor)
   }
+
   async function getCustomProductFromServer() {
-    const urlCart = 'http://localhost:6005/member/custom'
-    const jwtToken = localStorage.getItem('userId')
-    const requestCart = new Request(urlCart, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-        Authorization: jwtToken,
-      }),
-    })
-    const responseCustom = await fetch(requestCart)
-    const customProduct = await responseCustom.json()
-    setCustomProducts(customProduct)
-    console.log('客製產品：', customProduct)
+    const executor = async (token) => {
+      const urlCart = 'http://localhost:6005/member/custom'
+      const requestCart = new Request(urlCart, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'appliaction/json',
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      const responseCustom = await fetch(requestCart)
+      const customProduct = await responseCustom.json()
+      setCustomProducts(customProduct)
+      console.log('客製產品：', customProduct)
+    }
+    authentication(executor)
   }
 
   function askDelete() {

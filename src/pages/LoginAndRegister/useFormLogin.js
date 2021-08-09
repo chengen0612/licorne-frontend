@@ -64,8 +64,8 @@ const useForm = (validate) => {
           history.push('/member')
         }, 500)
         localStorage.setItem('jwt', data.token)
-        localStorage.setItem('code', data.code)
-        localStorage.setItem('userId', data.userId)
+        // localStorage.setItem('code', data.code)
+        // localStorage.setItem('userId', data.userId)
       } else
         swal('登入失敗！', {
           buttons: false,

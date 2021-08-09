@@ -4,6 +4,7 @@ import { FiEdit } from 'react-icons/fi'
 import { imgPath } from '../../../config'
 import UploadPreview from '../components/UploadImgPreview'
 import swal from 'sweetalert'
+import authentication from '../../../utils/authentication'
 
 function Profile(props) {
   // const userid = props.match.params.userid
@@ -61,60 +62,66 @@ function Profile(props) {
 
   async function getUserFromServer() {
     setDataLoading(true)
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/member/profile'
-    const jwtToken = localStorage.getItem('userId')
-    // 注意header資料格式要設定，伺服器才知道是json格式
-    const request = new Request(url, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: jwtToken,
-      }),
-    })
 
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('會員資訊：', data)
-    setValues(data)
-    // 設定資料
+    const executor = async (token) => {
+      // 連接的伺服器資料網址
+      const url = 'http://localhost:6005/member/profile'
+      // 注意header資料格式要設定，伺服器才知道是json格式
+      const request = new Request(url, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        }),
+      })
 
-    // 如果從伺服器回傳的資料沒有id值
-    // if (!data.id) {
-    //   setUserDataIsExist(false)
-    //   return
-    // }
+      const response = await fetch(request)
+      const data = await response.json()
+      console.log('會員資訊：', data)
+      setValues(data)
+      // 設定資料
+
+      // 如果從伺服器回傳的資料沒有id值
+      // if (!data.id) {
+      //   setUserDataIsExist(false)
+      //   return
+      // }
+    }
+    authentication(executor)
   }
 
   async function updateUserToSever() {
     setDataLoading(true)
-    const userData = { values }
 
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:6005/member/profile'
-    // 注意資料格式要設定，伺服器才知道是json格式
-    const jwtToken = localStorage.getItem('userId')
-    const request = new Request(url, {
-      method: 'POST',
-      body: JSON.stringify(userData),
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: jwtToken,
-      }),
-    })
+    const executor = async (token) => {
+      const userData = { values }
 
-    console.log(JSON.stringify(userData))
+      // 連接的伺服器資料網址
+      const url = 'http://localhost:6005/member/profile'
+      // 注意資料格式要設定，伺服器才知道是json格式
+      const request = new Request(url, {
+        method: 'POST',
+        body: JSON.stringify(userData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        }),
+      })
 
-    const response = await fetch(request)
-    const data = await response.json()
+      console.log(JSON.stringify(userData))
 
-    console.log('伺服器回傳的json資料', data)
-    // 要等驗証過，再設定資料(簡單的直接設定)
-    setTimeout(() => {
-      setDataLoading(false)
-    }, 500)
+      const response = await fetch(request)
+      const data = await response.json()
+
+      console.log('伺服器回傳的json資料', data)
+      // 要等驗証過，再設定資料(簡單的直接設定)
+      setTimeout(() => {
+        setDataLoading(false)
+      }, 500)
+    }
+    authentication(executor)
   }
 
   // 一開始就會開始載入資料

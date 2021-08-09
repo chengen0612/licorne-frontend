@@ -4,6 +4,7 @@ import './style.css'
 import { FiEdit } from 'react-icons/fi'
 import styled from 'styled-components'
 import MyCartFav from '../components/MyCartFav'
+import authentication from '../../../../utils/authentication'
 
 function FavoritePerfume(props) {
   const [officialCollectDatas, setOfficialCollectDatas] = useState([])
@@ -13,36 +14,43 @@ function FavoritePerfume(props) {
 
   async function getOfficialCollectFromServer() {
     setDataLoading(true)
-    const urlCollect = 'http://localhost:6005/member/officialCollect'
-    const jwtToken = localStorage.getItem('userId')
-    const requestCollect = new Request(urlCollect, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-        Authorization: jwtToken,
-      }),
-    })
-    const responseCollect = await fetch(requestCollect)
-    const officialCollectDatas = await responseCollect.json()
-    setOfficialCollectDatas(officialCollectDatas)
+
+    const executor = async (token) => {
+      const urlCollect = 'http://localhost:6005/member/officialCollect'
+      const requestCollect = new Request(urlCollect, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'appliaction/json',
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      const responseCollect = await fetch(requestCollect)
+      const officialCollectDatas = await responseCollect.json()
+      setOfficialCollectDatas(officialCollectDatas)
+    }
+    authentication(executor)
   }
+
   async function getCustomCollectFromServer() {
-    const urlCollect = 'http://localhost:6005/member/customCollect'
-    const jwtToken = localStorage.getItem('userId')
-    const requestCollect = new Request(urlCollect, {
-      method: 'GET',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-        Authorization: jwtToken,
-      }),
-    })
-    const responseCollect = await fetch(requestCollect)
-    const customCollectDatas = await responseCollect.json()
-    setCustomCollectDatas(customCollectDatas)
-    console.log('客製資訊：', customCollectDatas)
+    const executor = async (token) => {
+      const urlCollect = 'http://localhost:6005/member/customCollect'
+      const requestCollect = new Request(urlCollect, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'appliaction/json',
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      const responseCollect = await fetch(requestCollect)
+      const customCollectDatas = await responseCollect.json()
+      setCustomCollectDatas(customCollectDatas)
+      console.log('客製資訊：', customCollectDatas)
+    }
+    authentication(executor)
   }
+
   useEffect(() => {
     getOfficialCollectFromServer()
     getCustomCollectFromServer()
