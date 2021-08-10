@@ -351,10 +351,12 @@ header {
   border-radius: var(--br-s);
   color: var(--c-white);
   font-size: var(--fs-span);
+  font-weight: var(--fw-light);
   position: absolute;
   right: 28px;
   bottom: 35px;
 }
+
 .modal__map {
   width: 800px;
   height: 550px;
