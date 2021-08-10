@@ -44,6 +44,11 @@ function ProductCard(props) {
     authentication(executor)
   }
 
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="best__prod-card">
@@ -58,13 +63,21 @@ function ProductCard(props) {
         >
           <img src={imgPath + bottle_img} alt={cust_id} />
           <h3 className="best__prod-title">{cust_id}</h3>
-          <span className="best__prod-price">NT ${price}</span>
+          <span className="best__prod-price">
+            NT ${numberWithCommas(price)}
+          </span>
           <div className="best__prod-shadow"></div>
           <div className="best__prod-detail">
             {/* eslint-disable */}
-            <span>前調：{top_zh} {top_id}</span>
-            <span>中調：{mid_zh} {mid_id}</span>
-            <span>後調：{base_zh} {base_id}</span>
+            <span>
+              前調：{top_zh} {top_id}
+            </span>
+            <span>
+              中調：{mid_zh} {mid_id}
+            </span>
+            <span>
+              後調：{base_zh} {base_id}
+            </span>
             {/* eslint-enable */}
           </div>
         </div>
