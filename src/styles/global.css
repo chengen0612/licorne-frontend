@@ -79,8 +79,8 @@ input {
 
 a,
 a:link {
-  text-decoration: none !important;
-  color: var(--c-primary) !important;
+  text-decoration: none;
+  color: var(--c-primary);
 }
 
 a:focus,
