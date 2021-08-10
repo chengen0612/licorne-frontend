@@ -29,13 +29,19 @@ function CheakList({
   function goPay() {
     history.push('/checkout')
   }
+
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="memberHomePage__cheakListBox">
         <div className="memberHomePage__totalBox">
           <h5 className="memberHomePage__totalAmount">總金額：</h5>
           <h5 className="memberHomePage__totalNumber">
-            NT$<p>{totalAmountOfficial}</p>
+            NT$<p>{numberWithCommas(totalAmountOfficial)}</p>
           </h5>
         </div>
         <hr className="memberHomePage__cheakListLine"></hr>

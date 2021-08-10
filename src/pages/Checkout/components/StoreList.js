@@ -21,9 +21,9 @@ function StoreList(props) {
           <br />
           營業時間：週二至週日 10:00 - 20:00
         </span>
-        <a href="/" className="modal__route-link" onClick={routeLinkHandler}>
+        {/* <a href="/" className="modal__route-link" onClick={routeLinkHandler}>
           前往路線
-        </a>
+        </a> */}
         <input
           type="button"
           className="modal__store-btn"

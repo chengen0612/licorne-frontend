@@ -35,6 +35,7 @@ function MyCartFav({
                 name_en={officialCollectData.name_en}
                 price={officialCollectData.price}
                 img_id={officialCollectData.img_id}
+                series_name={officialCollectData.series_name}
               />
             </div>
           )

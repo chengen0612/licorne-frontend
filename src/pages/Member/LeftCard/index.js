@@ -149,7 +149,7 @@ function MemberLeftCard() {
               logOutCheck()
             }}
           >
-            <h3>登出</h3>
+            <h3 className="memberHomePage__signOut-text">登出</h3>
           </button>
         </div>
       </div>

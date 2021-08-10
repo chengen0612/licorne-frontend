@@ -133,7 +133,9 @@ export default class App extends React.Component {
             <input type="hidden" name="issuer" value={issuer} />
             <Link to="/member/order">
               <div className="form-actions d-flex justify-content-center">
-                <button className="btn btn-primary btn-block">付款</button>
+                <button className="payment__btn btn btn-primary btn-block">
+                  付款
+                </button>
               </div>
             </Link>
           </form>

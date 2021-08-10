@@ -21,3 +21,7 @@
 .App-highlight > div {
   padding-left: 40px;
 }
+
+.payment__btn:hover{
+  background: var(--c-btn-hover) !important;
+}

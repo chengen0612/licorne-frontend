@@ -20,7 +20,7 @@ function MyCartOffcialItem({
     <>
       <div className="memberHomePage__productList__MyCartOffcialText">
         <p>
-          {series_name}系列 {name_zh}
+          {series_name} {name_zh}
         </p>
         <p>x {quantity}</p>
       </div>

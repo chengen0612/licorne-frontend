@@ -14,6 +14,10 @@ function Products(props) {
     handleCollect,
   } = props
   const imgURL = ` http://localhost:6005/${img} `
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
   return (
     <>
       <div className="product__total__box">
@@ -29,7 +33,7 @@ function Products(props) {
             </button>
           </div>
           <Link to={`/official/${id}`}>
-            <div className="product__img__heart d-flex justify-content-center">
+            <div className="d-flex justify-content-center">
               <figure className="product__img__box">
                 <img className="product__img" src={imgURL} alt="" />
               </figure>
@@ -44,7 +48,7 @@ function Products(props) {
               <br />
               後調：{base}
               <br />
-              NT{price}元
+              NT{numberWithCommas(price)}元
             </div>
           </Link>
         </div>

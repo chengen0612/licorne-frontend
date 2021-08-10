@@ -25,6 +25,7 @@ header {
 .title {
   margin: 0 0 5px 0;
   color: var(--c-primary);
+  font-size: var(--fs-h3);
 }
 .title_content {
   margin: 0;
@@ -122,14 +123,19 @@ header {
   margin-right: 20px;
   border: 1px solid var(--c-primary);
   background: var(--c-primary);
-  font-size: 15px;
+  font-size: 16px;
+  /* font-weight: var(--fw-light); */
   color: #fff;
   border-radius: 30px;
+  outline: none;
 }
 .btn:hover {
-  transition: 0.5s;
-  border: 1px solid #506a77;
-  background: #506a77;
+  color: var(--c-secondary);
+  opacity: 0.9;
+  font-weight: var(--fw-medium);
+  /* transition: 0.5s; */
+  /* border: 1px solid #506a77; */
+  /* background: #506a77; */
 }
 .loveBox {
   width: 50px;
@@ -375,6 +381,10 @@ header {
   bottom: 15px;
   color: var(--c-white);
   font-size: var(--fs-span);
+}
+
+.check__place-btn:hover{
+  opacity: 0.9;
 }
 
 .modal__marker {

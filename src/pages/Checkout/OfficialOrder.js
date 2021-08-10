@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 import myswal from '../../utils/sweetalert'
+import axios from 'axios'
 
 function OfficialOrder(props) {
   const { setOfficialTotal, setOfficialOrder } = props
@@ -101,14 +102,20 @@ function OfficialOrder(props) {
           <React.Fragment key={officialItem.id}>
             <div className="checkout__official-box-list p-4">
               {/* TODO: add corresponding link to product */}
-              <Link to="/" className="checkout__official-box-img-wrapper">
+              <Link
+                to="/official:id"
+                className="checkout__official-box-img-wrapper"
+              >
                 <img
                   className="checkout__official-box-img"
                   src={officialItem.img_id}
                   alt=""
                 />
               </Link>
-              <Link to="/" className="checkout__official-box-details w-25 pl-4">
+              <Link
+                to="/official:id"
+                className="checkout__official-box-details w-25 pl-4"
+              >
                 <span className="checkout__official-box-name-zh">
                   {/* 夜鶯 */}
                   {officialItem.name_zh}
