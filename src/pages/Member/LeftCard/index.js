@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
 import { imgPath } from '../../../config'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import swal from 'sweetalert'
 
 // styled-components套件
@@ -52,6 +52,7 @@ function MemberLeftCard() {
     member_pic: '',
   })
 
+  const location = useLocation()
   const history = useHistory()
   function logOut() {
     localStorage.clear()
@@ -99,11 +100,17 @@ function MemberLeftCard() {
     //   return
     // }
   }
+  const [active, setActive] = useState(null)
+
   useEffect(() => {
     getUserFromServer()
   }, [])
 
-  const [active, setActive] = useState(types[0].name)
+  useEffect(() => {
+    const pathname = location.pathname
+    const index = types.findIndex((item) => item.link === pathname)
+    setActive(types[index].name)
+  }, [location])
 
   return (
     <>
@@ -137,7 +144,7 @@ function MemberLeftCard() {
               <ButtonToggle
                 className="memberHomePage__menuBtn"
                 active={active === item.name}
-                onClick={() => setActive(item.name)}
+                // onClick={() => setActive(item.name)}
               >
                 {item.name}
               </ButtonToggle>
