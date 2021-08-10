@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter, Link, NavLink } from 'react-router-dom'
+import { withRouter, Link, NavLink, useLocation } from 'react-router-dom'
 import myswal from '../../utils/sweetalert'
 
 import './style.css'
@@ -8,8 +8,9 @@ import CartFavSidebar from '../CartFavSidebar'
 import { FiUser, FiUserCheck, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
 
-function Header(props) {
-  const { didLogin } = props
+function Header() {
+  const location = useLocation()
+  const [didLogin, setDidLogin] = useState(false)
   // -------------------- 以下是晁榮的程式碼 --------------------
   const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false) //設定購物車側邊欄開關狀態
@@ -168,6 +169,10 @@ function Header(props) {
   }
 
   // -------------------- 以上是晁榮的程式碼 --------------------
+  useEffect(() => {
+    const auth = localStorage.getItem('jwt')
+    auth ? setDidLogin(true) : setDidLogin(false)
+  }, [location])
 
   return (
     <>
@@ -222,8 +227,7 @@ function Header(props) {
                 <div role="button">
                   <FiHeart
                     onClick={() => {
-                      if (!didLogin) return myswal.pleaseLogin()
-                      openSidebarFav()
+                      didLogin ? openSidebarFav() : myswal.pleaseLogin()
                     }}
                     className="header-i"
                   />
@@ -231,8 +235,7 @@ function Header(props) {
                 <div role="button">
                   <FiShoppingBag
                     onClick={() => {
-                      if (!didLogin) return myswal.pleaseLogin()
-                      openSidebarCart()
+                      didLogin ? openSidebarCart() : myswal.pleaseLogin()
                     }}
                     className="header-i"
                   />

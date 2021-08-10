@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert'
 import swal from 'sweetalert'
 
-const useForm = (validate, setDidLogin) => {
+const useForm = (validate) => {
   const [loginValues, setLoginValues] = useState({
     loginPhone: '',
     loginPassword: '',
@@ -57,7 +57,6 @@ const useForm = (validate, setDidLogin) => {
       // 要等驗証過，再設定資料(簡單的直接設定)
       if (data.code === 0) {
         localStorage.setItem('jwt', data.token)
-        setDidLogin(true) // 變更 app 狀態為登入
         setTimeout(() => {
           swal('歡迎回來！', {
             buttons: false,
