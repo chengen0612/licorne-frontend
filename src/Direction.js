@@ -18,20 +18,18 @@ import Official from './pages/Official'
 import OfficialProd from './pages/OfficialProd'
 import Quiz from './pages/Quiz'
 
-// 分頁子路由器
-// import SwitchMember from './routes/SwitchMember'
-// import SwitchOfficial from './routes/SwitchOfficial'
+// 分頁路由表
 import SwitchCourse from './routes/SwitchCourse'
 import SwitchCustom from './routes/SwitchCustom'
 
-function Location() {
+function Direction() {
   // path
   const location = useLocation()
   const history = useHistory()
   const pathname = location.pathname
   // states
   const [useHeader, setUseHeader] = useState(false)
-  const [isAmount, setIsAmount] = useState(false)
+  const [didMount, setDidMount] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   // array to store pages not using header or spinner
@@ -42,7 +40,7 @@ function Location() {
   /* eslint-enable */
 
   useEffect(() => {
-    setIsAmount(true)
+    setDidMount(true)
   }, [])
 
   // verify identity
@@ -70,7 +68,7 @@ function Location() {
   }
 
   const handleSpinner = () => {
-    if (!isAmount) return
+    if (!didMount) return
     const index = noSpinnerList.findIndex((value) => value === pathname)
     if (index > -1) return
     setIsLoading(true)
@@ -83,7 +81,7 @@ function Location() {
     return (
       <>
         <Switch>
-          {/* middleware */}
+          {/* sub router */}
           <Route path="/course">
             <SwitchCourse />
           </Route>
@@ -91,7 +89,7 @@ function Location() {
             <SwitchCustom />
           </Route>
 
-          {/* direct path */}
+          {/* current path */}
           <Route path="/official/:id">
             <OfficialProd />
             <SecondaryFooter />
@@ -104,6 +102,7 @@ function Location() {
           </Route>
           <Route path="/quiz">
             <Quiz />
+            <SecondaryFooter />
           </Route>
           <Route path="/checkout/payment">
             <Payment />
@@ -122,16 +121,6 @@ function Location() {
           <Route exact path="/">
             <Home />
           </Route>
-
-          {/* abandoned */}
-          {/* switch member */}
-          {/* <Route path="/member">
-            <SwitchMember />
-          </Route> */}
-          {/* switch official */}
-          {/* <Route path="/official">
-            <SwitchOfficial />
-          </Route> */}
         </Switch>
       </>
     )
@@ -145,4 +134,4 @@ function Location() {
   )
 }
 
-export default Location
+export default Direction

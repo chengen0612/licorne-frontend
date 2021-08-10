@@ -5,17 +5,18 @@ import Direction from './Direction'
 import Water from './animations/Water'
 
 function App() {
-  const [isAmount, setIsAmount] = useState(false)
+  const [didMount, setDidMount] = useState(false)
 
   useEffect(() => {
     setTimeout(() => {
-      setIsAmount(true)
+      setDidMount(true)
     }, 3000)
   }, [])
+
   return (
     <>
-      {!isAmount && <Water />}
-      {isAmount && (
+      {!didMount && <Water />}
+      {didMount && (
         <Router>
           <Route path="*">
             <Direction />
