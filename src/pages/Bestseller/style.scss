@@ -112,7 +112,7 @@
   z-index: 1;
   & img {
     height: 120px;
-    filter: drop-shadow(5px 5px 1px rgba(0,0,0,0.3));
+    filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.3));
   }
 }
 // product's introduction
@@ -179,8 +179,22 @@
   position: absolute;
   right: 75px;
   bottom: 0;
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-light);
+  color: var(--c-primary);
   &:hover {
-    filter: brightness(0.95);
+    // filter: brightness(0.95);
+    opacity: 0.8;
+    font-weight: var(--fw-medium);
   }
 }
+
 /****** product card end ******/
+
+// .best__prod-title{
+//   margin-top: 10px;
+//   font-size: $fs-h3;
+// }
+.best__prod-price{
+  font-size: $fs-h5;
+}

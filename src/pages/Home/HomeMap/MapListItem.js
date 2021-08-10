@@ -15,9 +15,9 @@ export default function MapListItem(props) {
           電話：{course_place_phone} <br />
           營業時間：週二至週日 10:00 - 20:00
         </span>
-        <a href="/" className="map__route-link" onClick={routeLinkHandler}>
+        {/* <a href="/" className="map__route-link" onClick={routeLinkHandler}>
           前往路線
-        </a>
+        </a> */}
         <button
           className="map__store-btn"
           onClick={() => setSelectedShop(data)}

@@ -22,10 +22,10 @@ export default Results
 const Tea = ({ handleRedirection }) => {
   return (
     <>
-      <div className="quiz__restart" role="button">
+      {/* <div className="quiz__restart" role="button">
         <FiRotateCcw className="feather-s" />
         <span className="quiz__restart-text">重測</span>
-      </div>
+      </div> */}
       <h4 className="quiz__result">茗茶系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
@@ -39,7 +39,13 @@ const Tea = ({ handleRedirection }) => {
         來自各種最高級的茶品原料充滿清新的經典香氣， <br />
         融合了台灣獨特茶種，茗茶香水無疑是最適合您的香水。
       </p>
-      <button className="quiz__start-btn" onClick={handleRedirection}>
+      <button
+        className="quiz__start-btn"
+        onClick={() => {
+          handleRedirection()
+          document.body.style.overflow = 'visible'
+        }}
+      >
         前往香氣
       </button>
     </>
@@ -49,10 +55,10 @@ const Tea = ({ handleRedirection }) => {
 const Animal = ({ handleRedirection }) => {
   return (
     <>
-      <div className="quiz__restart" role="button">
+      {/* <div className="quiz__restart" role="button">
         <FiRotateCcw className="feather-s" />
         <span className="quiz__restart-text">重測</span>
-      </div>
+      </div> */}
       <h4 className="quiz__result">動物系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
@@ -65,7 +71,13 @@ const Animal = ({ handleRedirection }) => {
         適合您的系列為動物系列香水，充滿動物野性和性感的誘惑力香氣。 <br />
         動物香水無疑是最適合您的香水。
       </p>
-      <button className="quiz__start-btn" onClick={handleRedirection}>
+      <button
+        className="quiz__start-btn"
+        onClick={() => {
+          handleRedirection()
+          document.body.style.overflow = 'visible'
+        }}
+      >
         前往香氣
       </button>
     </>
@@ -76,10 +88,10 @@ const Animal = ({ handleRedirection }) => {
 const Nature = ({ handleRedirection }) => {
   return (
     <>
-      <div className="quiz__restart" role="button">
+      {/* <div className="quiz__restart" role="button">
         <FiRotateCcw className="feather-s" />
         <span className="quiz__restart-text">重測</span>
-      </div>
+      </div> */}
       <h4 className="quiz__result">大自然系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
@@ -92,7 +104,13 @@ const Nature = ({ handleRedirection }) => {
         適合您的系列為大自然系列香水，擁抱高山森林的遼闊， <br />
         體驗山林的清新香氣是最適合您的香水。
       </p>
-      <button className="quiz__start-btn" onClick={handleRedirection}>
+      <button
+        className="quiz__start-btn"
+        onClick={() => {
+          handleRedirection()
+          document.body.style.overflow = 'visible'
+        }}
+      >
         前往香氣
       </button>
     </>
@@ -103,10 +121,10 @@ const Nature = ({ handleRedirection }) => {
 const Cocktail = ({ handleRedirection }) => {
   return (
     <>
-      <div className="quiz__restart" role="button">
+      {/* <div className="quiz__restart" role="button">
         <FiRotateCcw className="feather-s" />
         <span className="quiz__restart-text">重測</span>
-      </div>
+      </div> */}
       <h4 className="quiz__result">調酒系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
@@ -121,7 +139,13 @@ const Cocktail = ({ handleRedirection }) => {
         <br />
         調酒香水無疑是最適合您的香水。
       </p>
-      <button className="quiz__start-btn" onClick={handleRedirection}>
+      <button
+        className="quiz__start-btn"
+        onClick={() => {
+          handleRedirection()
+          document.body.style.overflow = 'visible'
+        }}
+      >
         前往香氣
       </button>
     </>

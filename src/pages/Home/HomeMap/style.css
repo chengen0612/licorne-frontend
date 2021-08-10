@@ -30,7 +30,8 @@
 }
 
 .map__top-title {
-  font: 600 28px;
+  /* font: 600 28px; */
+  font-size: var(--fs-h3);
 }
 
 .map__search-bar {
@@ -50,6 +51,7 @@
 .map__input {
   flex-grow: 1;
   border: none;
+  color: var(--c-primary);
 }
 
 /* remove border after focus */
@@ -127,6 +129,7 @@
   border-radius: var(--br-s);
   color: var(--c-white);
   font-size: var(--fs-span);
+  font-weight: lighter;
   position: absolute;
   right: 28px;
   bottom: 51px;

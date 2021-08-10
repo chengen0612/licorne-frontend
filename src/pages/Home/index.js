@@ -31,7 +31,7 @@ function Home() {
               <HomeBestseller />
               <HomeMap />
               <HomeFooter />
-              <HomeAside />
+              {/* <HomeAside /> */}
             </>
           )}
         </div>

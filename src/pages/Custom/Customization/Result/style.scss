@@ -38,14 +38,14 @@
   text-align: center;
   text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   position: absolute;
-  top: 450px;
+  top: 350px;
   right: 150px;
   & th {
     width: 33%;
     font-weight: 300;
   }
   & tbody {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3); 
   }
 }
 
@@ -108,4 +108,13 @@
   //   bottom: 50px;
   //   right: 100px;
   // }
+}
+
+// update by wen
+.cust-res__btn-reset{
+  color: $c-primary;
+}
+
+.cust-res__price {
+  text-align: right;
 }

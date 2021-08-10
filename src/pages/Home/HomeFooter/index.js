@@ -32,7 +32,7 @@ function Footer() {
               <Link to="/official">官方經典</Link>
             </li>
             <li>
-              <Link to="/">專屬香氣</Link>
+              <Link to="/quiz">專屬香氣</Link>
             </li>
             <li>
               <Link to="/">實體店舖</Link>
@@ -53,7 +53,7 @@ function Footer() {
         </div>
         <div className="footer__Text">
           <p className="footer__copyRight">
-            Copyright © Licorne Co.,2021.All rights reserved.
+            Copyright © Licorne Co., 2021. All rights reserved.
           </p>
         </div>
       </footer>

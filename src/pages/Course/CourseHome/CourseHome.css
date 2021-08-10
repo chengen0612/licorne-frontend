@@ -66,6 +66,7 @@
   height: 300px;
   opacity: 0.8;
   text-shadow: 1px 1px 2px #262d33;
+  font-weight: lighter !important;
 }
 .Text:hover {
   transition: 0.5s;

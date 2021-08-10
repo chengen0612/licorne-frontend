@@ -14,11 +14,12 @@
 }
 
 .course__title {
-  font-size: var(--fs-h2);
+  font-size: var(--fs-h3);
 }
 
 .course__sentence {
-  font-size: var(--fs-h4);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-light) !important;
   padding-top: 20px;
 }
 
@@ -32,16 +33,16 @@
 }
 
 .course__card {
-  width: 500px;
-  height: 600px;
+  width: 380px;
+  height: 500px;
   border-radius: var(--br-m);
   filter: var(--ds-card);
   background: var(--c-primary);
 }
 
 .course__card-image-wrapper {
-  width: 500px;
-  height: 450px;
+  width: 380px;
+  height: 350px;
   border-radius: 20px 20px 0 0;
   background: var(--c-black);
   overflow: hidden;
@@ -64,9 +65,10 @@
   position: absolute;
   color: var(--c-white);
   font-size: var(--fs-h4);
+  font-weight: var(--fw-light);
   z-index: 5;
-  top: 33%;
-  right: 25%;
+  top: 30%;
+  left: 20%;
   opacity: 0;
 }
 
@@ -85,9 +87,9 @@
 }
 
 .course__card-title {
-  font-size: var(--fs-h3);
+  font-size: var(--fs-h4);
 }
 
 .course__card-price {
-  font-size: var(--fs-h4);
+  font-size: var(--fs-h5);
 }
