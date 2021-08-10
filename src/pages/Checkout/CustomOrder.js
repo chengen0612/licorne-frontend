@@ -97,7 +97,7 @@ function CustomOrder(props) {
       {customItems.length === 0 && (
         <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
           <span>購物籃中沒有任何商品</span>
-          <Link to="/custom">前往頁面製作商品</Link>
+          <Link to="/custom/entrance">前往頁面製作商品</Link>
         </div>
       )}
       {/* send to db: 客製化商品細節 */}
@@ -106,14 +106,20 @@ function CustomOrder(props) {
           <React.Fragment key={customItem.id}>
             <div className="checkout__custom-box-list p-4">
               {/* TODO: add corresponding link to product */}
-              <Link to="/" className="checkout__custom-box-img-wrapper">
+              <Link
+                to="/bestseller"
+                className="checkout__custom-box-img-wrapper"
+              >
                 <img
                   className="checkout__custom-box-img"
                   src={customItem.bottle_img}
                   alt=""
                 />
               </Link>
-              <Link to="/" className="checkout__custom-box-details w-25 pl-4">
+              <Link
+                to="/bestseller"
+                className="checkout__custom-box-details w-25 pl-4"
+              >
                 <span className="checkout__custom-box-name-zh">
                   {/* MTLALM */}
                   {customItem.cust_id}

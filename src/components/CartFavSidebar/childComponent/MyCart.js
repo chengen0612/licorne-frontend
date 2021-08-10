@@ -194,7 +194,7 @@ function MyCart({
       </div>
       <div className="cj-sidebar__cart__checkout">
         {/* 承恩加的 */}
-        <div role="button" onClick={handleSubmit}>
+        <div className="myCart__btn" role="button" onClick={handleSubmit}>
           <span>前往結帳</span>
         </div>
       </div>

@@ -18,6 +18,9 @@
   top: 65px;
   right: 125px;
   cursor: pointer;
+  &:hover{
+    filter: brightness(0.9);
+  }
 }
 
 %pageBtn {

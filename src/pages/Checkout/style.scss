@@ -219,6 +219,9 @@
   border-radius: $br-b;
   text-align: center;
   font-size: $fs-p;
+  &:hover{
+    opacity: 0.9;
+  }
 }
 
 // address edit modal
@@ -268,6 +271,9 @@
   border: none;
   background: $c-modal-button;
   color: $c-white;
+  &:hover{
+    opacity: 0.9;
+  }
 }
 
 .checkout__backdrop{

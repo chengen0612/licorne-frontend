@@ -22,6 +22,7 @@ function MyCartFavItem({
         <p>
           {name_en}
           <br />
+          {/* {series_name} */}
           XXXX系列
         </p>
         <p>NT$ {price}</p>

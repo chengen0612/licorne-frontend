@@ -1,6 +1,7 @@
 .member-wrapper {
   width: 100vw;
-  height: calc(100vh - 128px);
+  height: 100vh;
+  /* height: calc(100vh - 128px); */
   background: var(--c-secondary);
   /* align leftcard and right card */
   padding: 26px;

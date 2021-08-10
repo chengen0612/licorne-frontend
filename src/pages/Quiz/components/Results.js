@@ -30,7 +30,7 @@ const Tea = ({ handleRedirection }) => {
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"
-          src={imgPath + '/images/quiz/result_tea.jpeg'}
+          src={imgPath + '/images/quiz/result_tea.png'}
           alt=""
         />
       </div>
@@ -63,7 +63,7 @@ const Animal = ({ handleRedirection }) => {
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"
-          src={imgPath + '/images/quiz/result_animal.jpeg'}
+          src={imgPath + '/images/quiz/result_animal.png'}
           alt=""
         />
       </div>
@@ -129,7 +129,7 @@ const Cocktail = ({ handleRedirection }) => {
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"
-          src={imgPath + '/images/quiz/result_cocktail.jpeg'}
+          src={imgPath + '/images/quiz/result_cocktail.png'}
           alt=""
         />
       </div>

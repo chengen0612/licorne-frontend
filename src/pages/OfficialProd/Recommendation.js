@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.scss'
 // import { imgPath } from '../../config'
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+// import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import OtherProducts from './components/OtherProducts'
 
 function Recommendation() {

@@ -38,7 +38,7 @@ function SecondaryFooter() {
               <Link to="/official">官方經典</Link>
             </li>
             <li>
-              <Link to="/">專屬香氣</Link>
+              <Link to="/quiz">專屬香氣</Link>
             </li>
             <li>
               <Link to="/">實體店舖</Link>
@@ -59,7 +59,7 @@ function SecondaryFooter() {
         </div>
         <div className="secondaryFooter__Text">
           <p className="secondaryFooter__copyRight">
-            Copyright © Licorne Co.,2021.All rights reserved.
+            Copyright © Licorne Co., 2021. All rights reserved.
           </p>
         </div>
         <div className="secondaryFooter__icon">

@@ -12,6 +12,7 @@ function MyCartFavItem({
   name_en,
   price,
   img_id,
+  series_name,
 }) {
   function askDelete() {
     swal({
@@ -42,7 +43,7 @@ function MyCartFavItem({
         <p>
           {name_en}
           <br />
-          XXXX系列
+         {series_name}
         </p>
         <p>NT$ {price}</p>
         <p

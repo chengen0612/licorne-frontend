@@ -775,3 +775,7 @@
   font-weight: var(--fw-medium);
   margin: 0 10px;
 }
+
+.myCart__btn:hover{
+  opacity: 0.9;
+}
