@@ -207,3 +207,13 @@
     color: $c-secondary;
   }
 }
+
+// update by wen
+.cust__btn-reset,
+.cust__btn-goback{
+  color: $c-primary;
+}
+
+.cust__close-btn:hover{
+  filter: brightness(0.9);
+}
