@@ -1,15 +1,16 @@
 /* 晁榮：以下是我自己的 CSS Code */
 .homeCustomWrapper {
-  padding: 160px;
+  justify-content: center;
 }
 
 h2.homeCustom {
-  font-size: var(--fs-h2);
+  font-size: var(--fs-h3);
   font-family: 'Noto Sans', sans-serif;
   color: var(--c-primary);
 }
 h4.homeCustom {
-  font-size: var(--fs-h4);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-light) !important;
 }
 
 .homeCustomWrapper {
@@ -21,7 +22,6 @@ h2.homeCustomWraperH2 {
 }
 
 h4.homeCustomWraperH4 {
-  font-family: var(--ff-didot);
   font-weight: normal;
   color: var(--c-primary);
 }
@@ -29,4 +29,55 @@ h4.homeCustomWraperH4 {
 .homeCustomWrapperImage {
   width: 550px;
   height: 550px;
+   animation: floating 2s infinite ease-in-out;
 }
+
+/* animation for customized image */
+.fade-in-image {
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.floating {  
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    /* margin-left: 30px; */
+    /* margin-top: 5px; */
+}
+
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }    
+}
+/* animation for customized image */

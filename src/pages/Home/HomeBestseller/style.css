@@ -6,10 +6,11 @@
 }
 
 .popular__title {
-  font-size: var(--fs-h2);
+  font-size: var(--fs-h3);
 }
 .popular__text {
-  font-size: var(--fs-h4);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-light);
 }
 .popular__ranking {
   width: 1635px;
@@ -53,6 +54,11 @@
   width: 100%;
   height: 100%;
 }
+
+.popular__custom-wrapper{
+  margin-top: -30px;
+}
+
 .popular__customImgBox {
   width: 150px;
   height: 310px;
@@ -65,24 +71,25 @@
   height: 100%;
 }
 .popular__code {
-  font-size: 32px;
-  font-family: linotype-didot, serif;
+  font-size: var(--fs-h3);
 }
 .popular__price {
-  font-size: 24px;
-  font-family: linotype-didot, serif;
+  font-size: var(--fs-h5);
 }
 .popular__buyBtn {
   width: 180px;
   height: 60px;
   margin-top: 45px;
   border: unset;
-  font-size: 15px;
-  color: rgb(0, 0, 0);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-light);
+  color: var(--c-primary);
   border-radius: 30px;
 }
 .popular__buyBtn:hover {
-  filter: brightness(0.9);
+  /* filter: brightness(0.9); */
+  opacity: 0.8;
+  font-weight: var(--fw-medium);
 }
 .popular__aArrow {
   font-size: 24px;
@@ -93,7 +100,7 @@
 .popular__aArrow svg {
   transform: translateX(2px) translateY(-3px) scale(1.5);
 }
-.popular__aArrow:hover{
+.popular__aArrow:hover {
   filter: brightness(1.8);
   color: #2e6e90;
 }
@@ -113,7 +120,7 @@
   transition: 0.7s;
   cursor: pointer;
 }
-.popular__prod-detail span{
+.popular__prod-detail span {
   padding: 5px 0;
   font-size: 20px;
   display: inline-block;
@@ -127,9 +134,9 @@
   opacity: 0;
   transition: 0.3s;
 }
-.popular__customProduct:hover .popular__prod-detail{
+.popular__customProduct:hover .popular__prod-detail {
   opacity: 0.85;
 }
-.popular__customProduct:hover .popular__prod-shadow{
+.popular__customProduct:hover .popular__prod-shadow {
   opacity: 1;
 }

@@ -9,15 +9,14 @@ function HomeCourse() {
   return (
     <section className="course">
       <div className="course__text">
-        <div className="course__title">工作方體驗課程</div>
-        <div className="course__sentence">
+        <div className="course__title">工作坊體驗課程</div>
+        <h5 className="course__sentence">
           Licorne
           提供有世界級名師指導的優質體驗課程。課程結束還可以拿到國際認證證書，有趣又好玩！
-        </div>
+        </h5>
       </div>
       <div className="course__cards">
         <div className="course__card">
-          {/* TODO: change to Link? */}
           <Link className="course__card-link" to="/course/exhibition">
             {/* FIXME: unnatural transition */}
             <div className="course__card-image-wrapper">
@@ -36,10 +35,10 @@ function HomeCourse() {
           </Link>
         </div>
         <div className="course__card">
-          {/* TODO: change to Link? */}
           <Link className="course__card-link" to="/course/diffuser">
             {/* FIXME: unnatural transition */}
-            <div className="course__card-image-wrapper">
+            {/* TODO: change photo */}
+            <div className="course__card-image-wrapper diffuser">
               <img className="course__card-image" src={diffuser} alt="" />
               <span className="course__card-image-text">
                 讓濃郁香氣
@@ -49,12 +48,11 @@ function HomeCourse() {
             </div>
             <div className="course__card-text">
               <div className="course__card-title">擴香製作體驗</div>
-              <span className="course__card-price">NT$ 1280 起</span>
+              <span className="course__card-price">NT$ 1,480 起</span>
             </div>
           </Link>
         </div>
         <div className="course__card">
-          {/* TODO: change to Link? */}
           <Link className="course__card-link" to="/course/list">
             {/* FIXME: unnatural transition */}
             <div className="course__card-image-wrapper">
@@ -67,7 +65,7 @@ function HomeCourse() {
             </div>
             <div className="course__card-text">
               <div className="course__card-title">香水調製工作坊</div>
-              <span className="course__card-price">NT$ 2400 起</span>
+              <span className="course__card-price">NT$ 1,200 起</span>
             </div>
           </Link>
         </div>
