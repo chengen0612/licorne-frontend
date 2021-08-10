@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Route, Switch, useLocation } from 'react-router-dom'
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom'
+import myswal from './utils/sweetalert'
 
 // 共通元件
 import Header from './components/Header'
@@ -24,8 +25,11 @@ import SwitchCourse from './routes/SwitchCourse'
 import SwitchCustom from './routes/SwitchCustom'
 
 function Location() {
-  // states
+  // path
   const location = useLocation()
+  const history = useHistory()
+  const pathname = location.pathname
+  // states
   const [useHeader, setUseHeader] = useState(false)
   const [isAmount, setIsAmount] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -34,11 +38,26 @@ function Location() {
   /* eslint-disable */
   const noSpinnerList = ['/custom/entrance', '/custom/introduction', '/custom/process', '/member', '/member/profile', '/member/order', '/member/favorites', '/official',]
   const noHeaderList = ['/custom/entrance', '/custom/introduction', '/custom/process', '/checkout/payment']
+  const authRequiredList = ['member', 'checkout']
   /* eslint-enable */
 
   useEffect(() => {
     setIsAmount(true)
   }, [])
+
+  // verify identity
+  useEffect(() => {
+    // require auth ?
+    const params = pathname.split('/')[1]
+    const index = authRequiredList.findIndex((value) => value === params)
+    if (index === -1) return
+    // logged or not
+    const auth = localStorage.getItem('jwt')
+    if (!auth) {
+      history.push('/')
+      myswal.pleaseLogin()
+    }
+  }, [location])
 
   useEffect(() => {
     handleHeader()
@@ -46,14 +65,12 @@ function Location() {
   }, [location])
 
   const handleHeader = () => {
-    const pathname = location.pathname
     const index = noHeaderList.findIndex((value) => value === pathname)
     index > -1 ? setUseHeader(false) : setUseHeader(true)
   }
 
   const handleSpinner = () => {
     if (!isAmount) return
-    const pathname = location.pathname
     const index = noSpinnerList.findIndex((value) => value === pathname)
     if (index > -1) return
     setIsLoading(true)
