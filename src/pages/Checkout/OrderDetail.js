@@ -299,10 +299,10 @@ function OrderDetail(props) {
   // 重新導向
   const handleRedirect = async () => {
     if (checkedValue === paymentMethod[0]) {
-      history.push('/checkout/payment')
+      window.location.replace('/checkout/payment')
     } else {
       await myswal.popUpMessage('訂購完成！')
-      history.push('/member/order')
+      window.location.replace('/member/order')
     }
   }
 
