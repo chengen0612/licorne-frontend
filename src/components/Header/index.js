@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter, Link, NavLink } from 'react-router-dom'
+import { withRouter, Link, NavLink, useLocation } from 'react-router-dom'
+import myswal from '../../utils/sweetalert'
 
 import './style.css'
 import CartFavSidebar from '../CartFavSidebar'
 
-import { FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi'
+import { FiUser, FiUserCheck, FiHeart, FiShoppingBag } from 'react-icons/fi'
 // import { set } from 'immer/dist/internal'
 
-function Header(props) {
+function Header() {
+  const location = useLocation()
+  const [didLogin, setDidLogin] = useState(false)
   // -------------------- 以下是晁榮的程式碼 --------------------
   const [favOrCart, setFavOrCart] = useState('Fav') // 切換側邊欄購物車及收藏清單
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false) //設定購物車側邊欄開關狀態
@@ -166,30 +169,36 @@ function Header(props) {
   }
 
   // -------------------- 以上是晁榮的程式碼 --------------------
+  useEffect(() => {
+    const auth = localStorage.getItem('jwt')
+    auth ? setDidLogin(true) : setDidLogin(false)
+  }, [location])
 
   return (
     <>
       {/* -------------------- 以下是晁榮的程式碼 -------------------- */}
-      <CartFavSidebar
-        sidebarIsOpen={sidebarIsOpen}
-        closeSidebar={closeSidebar}
-        favOrCart={favOrCart}
-        setFavOrCart={setFavOrCart}
-        officialProducts={officialProducts}
-        setOfficialProducts={setOfficialProducts}
-        customProducts={customProducts}
-        setCustomProducts={setCustomProducts}
-        courseProducts={courseProducts}
-        setCourseProducts={setCourseProducts}
-        officialFavorites={officialFavorites}
-        setOfficialFavorites={setOfficialFavorites}
-        customFavorites={customFavorites}
-        setCustomFavorites={setCustomFavorites}
-        calculateTotal={calculateTotal}
-        totalAmountOfficial={totalAmountOfficial}
-        totalAmountCustom={totalAmountCustom}
-        totalAmountCourse={totalAmountCourse}
-      />
+      {didLogin && (
+        <CartFavSidebar
+          sidebarIsOpen={sidebarIsOpen}
+          closeSidebar={closeSidebar}
+          favOrCart={favOrCart}
+          setFavOrCart={setFavOrCart}
+          officialProducts={officialProducts}
+          setOfficialProducts={setOfficialProducts}
+          customProducts={customProducts}
+          setCustomProducts={setCustomProducts}
+          courseProducts={courseProducts}
+          setCourseProducts={setCourseProducts}
+          officialFavorites={officialFavorites}
+          setOfficialFavorites={setOfficialFavorites}
+          customFavorites={customFavorites}
+          setCustomFavorites={setCustomFavorites}
+          calculateTotal={calculateTotal}
+          totalAmountOfficial={totalAmountOfficial}
+          totalAmountCustom={totalAmountCustom}
+          totalAmountCourse={totalAmountCourse}
+        />
+      )}
       {/* -------------------- 以上是晁榮的程式碼 -------------------- */}
 
       <div className="header__line col-md col-sm"></div>
@@ -206,15 +215,19 @@ function Header(props) {
                 {/* <div role="button">
                   <FiSearch className="header-i" />
                 </div> */}
-                <Link to="/login">
-                  <FiUser className="header-i" />
+                <Link to={didLogin ? '/member' : '/login'}>
+                  {didLogin ? (
+                    <FiUserCheck className="header-i" />
+                  ) : (
+                    <FiUser className="header-i" />
+                  )}
                 </Link>
               </div>
               <div className="header__rwd-icon-2">
                 <div role="button">
                   <FiHeart
                     onClick={() => {
-                      openSidebarFav()
+                      didLogin ? openSidebarFav() : myswal.pleaseLogin()
                     }}
                     className="header-i"
                   />
@@ -222,7 +235,7 @@ function Header(props) {
                 <div role="button">
                   <FiShoppingBag
                     onClick={() => {
-                      openSidebarCart()
+                      didLogin ? openSidebarCart() : myswal.pleaseLogin()
                     }}
                     className="header-i"
                   />

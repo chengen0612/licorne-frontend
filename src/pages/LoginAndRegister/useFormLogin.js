@@ -56,6 +56,7 @@ const useForm = (validate) => {
       console.log('伺服器回傳的json資料', data)
       // 要等驗証過，再設定資料(簡單的直接設定)
       if (data.code === 0) {
+        localStorage.setItem('jwt', data.token)
         setTimeout(() => {
           swal('歡迎回來！', {
             buttons: false,
@@ -63,7 +64,6 @@ const useForm = (validate) => {
           })
           history.push('/member')
         }, 500)
-        localStorage.setItem('jwt', data.token)
         // localStorage.setItem('code', data.code)
         // localStorage.setItem('userId', data.userId)
       } else

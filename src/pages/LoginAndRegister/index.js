@@ -166,6 +166,7 @@ function LoginAndRegister() {
           <form
             className="loginAndRegister__login"
             onSubmit={handleLoginSubmit}
+            // setDidLogin
           >
             <div className="loginAndRegister__rightBox">
               <h1 className="loginAndRegister__rightTitle">會員登入</h1>
