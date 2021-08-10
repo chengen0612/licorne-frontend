@@ -15,7 +15,7 @@ import authentication from '../../../../utils/authentication'
 
 import './style.scss'
 
-import CostList from './OfferList'
+import CostList from './CostList'
 
 function Result(props) {
   const { productDetail, setProductDetail } = props
