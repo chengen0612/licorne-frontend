@@ -62,6 +62,11 @@ function MyCartCustomItem({
     }
   }
 
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="cj-sidebar__cart__item__custom-img">
@@ -84,7 +89,7 @@ function MyCartCustomItem({
           {fragrance_name}
         </p>
         <p>瓶裝 100ML</p>
-        <p>NT$ {price}</p>
+        <p>NT$ {numberWithCommas(price)}</p>
         <p
           role="button"
           onClick={() => {

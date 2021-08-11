@@ -9,6 +9,10 @@ function MyCartCourseItem({
   courseProduct,
   setCourseProducts,
 }) {
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
   return (
     <>
       <div className="cj-sidebar__cart__item__course-img">
@@ -28,7 +32,7 @@ function MyCartCourseItem({
           {courseProduct.period}
         </p>
         <p>{courseProduct.place}</p>
-        <p>NT$ {courseProduct.price}</p>
+        <p>NT$ {numberWithCommas(courseProduct.price)}</p>
         <p
           role="button"
           onClick={() => {

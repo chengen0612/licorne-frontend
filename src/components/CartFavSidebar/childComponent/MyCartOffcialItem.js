@@ -65,6 +65,11 @@ function MyCartOffcialItem({
     }
   }
 
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="cj-sidebar__cart__item__official-img">
@@ -89,7 +94,7 @@ function MyCartOffcialItem({
 
         <p>瓶裝 {volume}</p>
 
-        <p>NT$ {price}</p>
+        <p>NT$ {numberWithCommas(price)}</p>
         <p
           role="button"
           onClick={() => {

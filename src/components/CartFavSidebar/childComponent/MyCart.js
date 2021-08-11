@@ -113,6 +113,11 @@ function MyCart({
     history.push('/checkout')
   }
 
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <div style={{ display: favOrCart === 'Cart' ? 'block' : 'none' }}>
       <div className="cj-sidebar__cart">
@@ -189,7 +194,7 @@ function MyCart({
       <div className="cj-sidebar__cart__price">
         <div>
           <p>總金額：</p>
-          <p>NT$ {totalAmountOfficial}</p>
+          <p>NT$ {numberWithCommas(totalAmountOfficial)}</p>
         </div>
       </div>
       <div className="cj-sidebar__cart__checkout">

@@ -33,6 +33,11 @@ function MyFavCustomItem({
     }
   }
 
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="cj-sidebar__fav__item__custom-img">
@@ -46,7 +51,7 @@ function MyFavCustomItem({
           {customFavorite.fragrance_name}
         </p>
         <p>瓶裝 100ML</p>
-        <p>NT$ {customFavorite.price}</p>
+        <p>NT$ {numberWithCommas(customFavorite.price)}</p>
         <p
           onClick={() => {
             const newCustomFavorites = customFavorites.filter((v, i) => {

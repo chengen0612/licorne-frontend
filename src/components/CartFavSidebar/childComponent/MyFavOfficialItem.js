@@ -41,6 +41,11 @@ function MyFavOfficialItem({
     }
   }
 
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="cj-sidebar__fav__item__official-img">
@@ -54,7 +59,7 @@ function MyFavOfficialItem({
           {series_name}
         </p>
         <p>瓶裝 {volume}</p>
-        <p>NT$ {price}</p>
+        <p>NT$ {numberWithCommas(price)}</p>
         <p
           onClick={() => {
             const newOfficialFavorites = officialFavorites.filter((v, i) => {
