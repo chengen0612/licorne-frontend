@@ -10,8 +10,8 @@ function CourseOrder(props) {
 
   function getCourseOrder() {
     const courseOrder = { id: '', total: 0 }
-    const courseOrderitem = courseItems
-    courseOrder.id = courseOrderitem
+    const courseOrderItem = courseItems
+    courseOrder.id = courseOrderItem
     courseOrder.total = courseTotal
     setCourseOrder(courseOrder)
   }

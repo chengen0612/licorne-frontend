@@ -10,8 +10,6 @@ function OfficialOrder(props) {
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
   function getOrder() {
-    const officialorderitem = officialItems
-    const officialorderquantities = quantities
     const officialOrder = { id: '', qty: '', total: 0 }
     officialOrder.id = officialItems
     officialOrder.qty = quantities
@@ -97,7 +95,6 @@ function OfficialOrder(props) {
         return (
           <React.Fragment key={officialItem.id}>
             <div className="checkout__official-box-list p-4">
-              {/* TODO: add corresponding link to product */}
               <div className="checkout__official-box-img-wrapper">
                 <img
                   className="checkout__official-box-img"
