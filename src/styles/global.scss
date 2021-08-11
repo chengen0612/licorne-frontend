@@ -176,6 +176,14 @@ input[type='radio']:checked {
   background-color: $c-primary;
 }
 
+input[type='number'],
+input[type='text'],
+input[type='date'],
+input[type='email'],
+textarea {
+  outline: none;
+}
+
 // 頁面左右及上方間距
 .pageWrapper {
   width: 1520px;

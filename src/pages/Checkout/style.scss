@@ -254,6 +254,9 @@
   border-radius: 5px;
   color: $c-primary;
   border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  resize: none;
 }
 
 .checkout__order-box-delivery-store{
@@ -284,4 +287,9 @@
   height: 100vh;
   top: 0;
   left: 0;
+}
+
+.checkout__link:hover{
+  border-bottom: 1px solid $c-btn-hover;
+  color: $c-btn-hover;
 }

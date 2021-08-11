@@ -306,6 +306,11 @@ function OrderDetail(props) {
     }
   }
 
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="checkout__order-box-top pl-4 pt-3 pb-3">
@@ -354,7 +359,7 @@ function OrderDetail(props) {
             <span className="checkout__order-box-subtotal-text">商品總計</span>
             <span className="checkout__order-box-subtotal-price">
               {/* NT$ 26,190 */}
-              NT$ {productTotal}
+              NT$ {numberWithCommas(productTotal)}
             </span>
           </div>
           <div className="checkout__order-box-delivery-fee pl-4 pr-4">
@@ -369,7 +374,7 @@ function OrderDetail(props) {
             <span className="checkout__order-box-total-price">
               {' '}
               {/* send to db: 訂單總金額 */}
-              NT$ {total}
+              NT$ {numberWithCommas(total)}
             </span>
           </div>
         </div>

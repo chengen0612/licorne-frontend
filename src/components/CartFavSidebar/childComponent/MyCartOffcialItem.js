@@ -84,7 +84,7 @@ function MyCartOffcialItem({
         <p>
           {name_en}
           <br />
-          {series_name}系列
+          {series_name}
         </p>
 
         <p>瓶裝 {volume}</p>
