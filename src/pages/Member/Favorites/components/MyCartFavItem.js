@@ -33,6 +33,12 @@ function MyCartFavItem({
       }
     })
   }
+
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="memberProduct__fav__item__img">
@@ -43,9 +49,9 @@ function MyCartFavItem({
         <p>
           {name_en}
           <br />
-         {series_name}
+          {series_name}
         </p>
-        <p>NT$ {price}</p>
+        <p>NT$ {numberWithCommas(price)}</p>
         <p
           role="button"
           onClick={() => {

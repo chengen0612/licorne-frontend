@@ -6,6 +6,11 @@ import { imgPath } from '../../../../../../config'
 function MemberLeftCard(props) {
   const { name_zh, name_en, img_id, seriesName, price, volume, quantity } =
     props
+
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
   return (
     <>
       <div className="memberOrderPerfume__productBox">
@@ -35,7 +40,7 @@ function MemberLeftCard(props) {
         </div>
         <div className="memberOrderPerfume__productPriceBox">
           <h5 className="memberOrderPerfume__productPrice">
-            NT${price * quantity}
+            NT${numberWithCommas(price * quantity)}
           </h5>
         </div>
       </div>

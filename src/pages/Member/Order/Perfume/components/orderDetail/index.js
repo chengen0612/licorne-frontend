@@ -28,6 +28,11 @@ function OrderPerfumeDetail() {
     getProductOrder()
   }, [])
 
+  // add comma to price
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   return (
     <>
       <div className="memberOrderPerfume__detailOrderBox">
@@ -150,7 +155,7 @@ function OrderPerfumeDetail() {
             <h5>總計</h5>
           </div>
           <div className="memberOrderPerfume__detailTotalNumber">
-            <h5>NT$ {total} </h5>
+            <h5>NT$ {numberWithCommas(total)} </h5>
           </div>
         </div>
       </div>
