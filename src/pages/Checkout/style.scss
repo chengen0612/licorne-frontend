@@ -41,7 +41,7 @@
   border-bottom: 1px solid $c-primary;
 }
 
-.checkout__box-none{
+.checkout__box-none {
   font-size: $fs-h5;
 }
 
@@ -107,13 +107,18 @@
 }
 
 .checkout__official-box-product-price,
-.checkout__official-box-product-subtotal,
 .checkout__custom-box-product-price,
-.checkout__custom-box-product-subtotal,
 .checkout__course-box-product-price,
-.checkout__course-box-product-quantity,
+.checkout__course-box-product-quantity {
+  font-size: $fs-p;
+}
+
+.checkout__official-box-product-subtotal,
+.checkout__custom-box-product-subtotal,
 .checkout__course-box-product-subtotal {
   font-size: $fs-p;
+  width: 120px;
+  text-align: right;
 }
 
 // number
@@ -156,7 +161,6 @@
 .checkout__order-box-delivery-labels,
 .checkout__order-box-payment-labels {
   font-size: $fs-h5;
-  // border: 1px solid salmon;
 }
 
 .checkout__order-box-delivery-label {
@@ -179,13 +183,11 @@
 .checkout__order-box-delivery-edit-wrapper {
   display: flex;
   justify-content: space-between;
-  // border: 1px solid gold;
 }
 
 .checkout__order-box-recipient-phone,
 .checkout__order-box-recipient-address,
 .checkout__order-box-buyer {
-  // border: 1px solid pink;
   font-weight: $fw-light;
 }
 
@@ -210,10 +212,11 @@
   border-radius: $br-b;
   text-align: center;
   font-size: $fs-p;
-  &:hover{
+  &:hover {
     opacity: 0.9;
   }
-  &:disabled, [disabled]{
+  &:disabled,
+  [disabled] {
     opacity: 1;
   }
 }
@@ -231,7 +234,7 @@
   position: fixed;
 }
 
-.checkout__address-edit-modal-title{
+.checkout__address-edit-modal-title {
   font-size: $fs-h4;
 }
 
@@ -253,16 +256,17 @@
   padding-top: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
-  &:disabled, [disabled]{
+  &:disabled,
+  [disabled] {
     background: transparent;
   }
 }
 
-.checkout__order-box-delivery-store{
+.checkout__order-box-delivery-store {
   padding-left: 100px;
 }
 
-.checkout__order-box-payment-cash{
+.checkout__order-box-payment-cash {
   padding-left: 120px;
 }
 
@@ -273,12 +277,12 @@
   border: none;
   background: $c-modal-button;
   color: $c-white;
-  &:hover{
+  &:hover {
     opacity: 0.9;
   }
 }
 
-.checkout__backdrop{
+.checkout__backdrop {
   background: $c-backdrop;
   position: fixed;
   z-index: 1;
@@ -288,6 +292,6 @@
   left: 0;
 }
 
-.checkout__link:hover{
+.checkout__link:hover {
   color: $c-primary-hover;
 }
