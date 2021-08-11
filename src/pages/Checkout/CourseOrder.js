@@ -85,7 +85,9 @@ function CourseOrder(props) {
       {courseItems.length === 0 && (
         <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
           <span>購物籃中沒有任何商品</span>
-          <Link to="/course">前往頁面報名課程</Link>
+          <Link className="checkout__link" to="/course">
+            前往頁面報名課程
+          </Link>
         </div>
       )}
       {/* send to db: 課程商品細節 */}

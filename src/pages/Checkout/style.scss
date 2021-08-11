@@ -1,14 +1,5 @@
 @import '../../styles/global.scss';
 
-/* global */
-// text
-// input[type='text'] {
-//   font-size: $fs-h5;
-//   border-radius: 5px;
-//   color: $c-primary;
-//   border: none;
-// }
-
 // TODO: organize class names
 /* checkout */
 .checkout {
@@ -222,6 +213,9 @@
   &:hover{
     opacity: 0.9;
   }
+  &:disabled, [disabled]{
+    opacity: 1;
+  }
 }
 
 // address edit modal
@@ -253,10 +247,15 @@
   font-size: $fs-h5;
   border-radius: 5px;
   color: $c-primary;
+  background: $c-secondary;
   border: none;
   border-radius: 10px;
-  margin-bottom: 20px;
-  resize: none;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  &:disabled, [disabled]{
+    background: transparent;
+  }
 }
 
 .checkout__order-box-delivery-store{
@@ -290,6 +289,5 @@
 }
 
 .checkout__link:hover{
-  border-bottom: 1px solid $c-btn-hover;
-  color: $c-btn-hover;
+  color: $c-primary-hover;
 }

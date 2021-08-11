@@ -97,7 +97,7 @@ function CustomOrder(props) {
       {customItems.length === 0 && (
         <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
           <span>購物籃中沒有任何商品</span>
-          <Link to="/custom/entrance">前往頁面製作商品</Link>
+          <Link className="checkout__link" to="/custom/entrance">前往頁面製作商品</Link>
         </div>
       )}
       {/* send to db: 客製化商品細節 */}

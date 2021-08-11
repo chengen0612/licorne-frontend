@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 import myswal from '../../utils/sweetalert'
-import axios from 'axios'
 
 function OfficialOrder(props) {
   const { setOfficialTotal, setOfficialOrder } = props
@@ -93,7 +92,9 @@ function OfficialOrder(props) {
       {officialItems.length === 0 && (
         <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
           <span>購物籃中沒有任何商品</span>
-          <Link to="/official">前往頁面繼續購物</Link>
+          <Link className="checkout__link" to="/official">
+            前往頁面繼續購物
+          </Link>
         </div>
       )}
       {/* send to db: 官方商品細節 */}
