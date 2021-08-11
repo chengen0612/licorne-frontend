@@ -26,12 +26,13 @@ swal.confirmDelete = async (func, ...params) => {
   const result = await swal({
     title: '確定要刪除嗎？',
     icon: 'warning',
-    buttons: true,
+    buttons: ['取消', '確定'],
     dangerMode: true,
   })
   if (!result) return
   swal({
     title: '刪除成功！',
+    button: '確定',
     icon: 'success',
   })
   func(...params)
