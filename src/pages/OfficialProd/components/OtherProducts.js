@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
 import '../style.scss'
-// import { imgPath } from '../../../config'
 import { FiChevronRight } from 'react-icons/fi'
 
 function OtherProducts() {
   const [recommendations, setRecommendations] = useState([])
   const { id } = useParams()
-  // console.log(id)
 
   const getDataFromServer = async (id) => {
     const url = `http://localhost:6005/officialid/${id}/recommend`
@@ -20,8 +18,6 @@ function OtherProducts() {
 
   useEffect(() => {
     getDataFromServer(id)
-    // get data from server
-    // set response to state
   }, [id])
 
   return (
@@ -36,7 +32,6 @@ function OtherProducts() {
               <div className="official__product-img-wrapper">
                 <img
                   className="official__product-img"
-                  // src={imgPath + '/images/official/cocktail_100ml.png'}
                   src={recommendation.img_id}
                   alt=""
                 />

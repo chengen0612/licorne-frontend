@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import myswal from '../../utils/sweetalert'
@@ -12,7 +11,6 @@ function CourseOrder(props) {
   function getCourseOrder() {
     const courseOrder = { id: '', total: 0 }
     const courseOrderitem = courseItems
-    // console.log('123', courseOrderitem)
     courseOrder.id = courseOrderitem
     courseOrder.total = courseTotal
     setCourseOrder(courseOrder)
@@ -33,7 +31,6 @@ function CourseOrder(props) {
     const response = await fetch(request)
     const data = await response.json()
     setCourseItems(data)
-    console.log('data', data)
     const orderData = {}
     orderData.course_id = data[0].course_id
     orderData.place = data[0].course_place
@@ -49,13 +46,10 @@ function CourseOrder(props) {
     return +item.price * +item.quantity
   })
 
-  // console.log('course subtotal', subtotal)
-
   const courseTotal = subtotal.reduce(function (a, b) {
     return a + b
   }, 0)
   setCourseTotal(courseTotal)
-  // console.log('course total', courseTotal)
 
   useEffect(() => {
     getCourseInfoFromServer()
@@ -70,7 +64,6 @@ function CourseOrder(props) {
     const newCourseItems = courseItems.filter((v, i) => {
       return v.id !== id
     })
-    // console.log('current courseItems', newCourseItems)
     setCourseItems(newCourseItems)
     getCourseOrder()
   }
@@ -90,7 +83,6 @@ function CourseOrder(props) {
           </Link>
         </div>
       )}
-      {/* send to db: 課程商品細節 */}
       {courseItems.map((courseItem, i) => {
         return (
           <React.Fragment key={i}>
@@ -135,14 +127,12 @@ function CourseOrder(props) {
               </span>
               <span className="checkout__course-box-product-subtotal">
                 {/* NT $1200 */}
-                {/* 課程小計 */}
                 NT$ {courseTotal}
               </span>
               <FiX
                 className="feather-s"
                 role="button"
                 onClick={async () => {
-                  // handleDelete(courseItem.id)
                   myswal.confirmDelete(handleDelete, courseItem.id)
                   setClickDelete(true)
                 }}

@@ -18,7 +18,6 @@ function Question({
     const url = 'http://localhost:6005/quiz'
     const response = await axios.get(url)
     const quiz = response.data
-    console.log('quiz', quiz)
 
     /* questions */
     const questions = quiz.question
@@ -26,7 +25,6 @@ function Question({
       return v.topic
     })
 
-    console.log('questions', questions)
     setQ1(question[0])
     setQ2(question[1])
     setQ3(question[2])
@@ -37,25 +35,21 @@ function Question({
     const ansA = questions.map((v, i) => {
       return v.A
     })
-    // console.log('ansA', ansA)
     setAnsA(ansA)
 
     const ansB = questions.map((v, i) => {
       return v.B
     })
-    // console.log('ansB', ansB)
     setAnsB(ansB)
 
     const ansC = questions.map((v, i) => {
       return v.C
     })
-    // console.log('ansC', ansC)
     setAnsC(ansC)
 
     const ansD = questions.map((v, i) => {
       return v.D
     })
-    // console.log('ansD', ansD)
     setAnsD(ansD)
   }
 
@@ -92,7 +86,6 @@ function Question({
   const [ans, setAns] = useState([0, 0, 0, 0])
 
   const result = ans.indexOf(Math.max(...ans))
-  // console.log('index of greatest value in ans', result)
 
   const [none, setNone] = useState('')
 
@@ -108,8 +101,6 @@ function Question({
 
   return (
     <>
-      {console.log('change', change)}
-      {console.log('ans after 5', ans)}
       <div
         className="quiz__back"
         role="button"
@@ -120,7 +111,6 @@ function Question({
             backHandler()
             // FIXME: return to previous array result
             setAns([0, 0, 0, 0])
-            // console.log('ans in return button', ans)
           }
         }}
         style={fadeOut}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './style.css'
-// import { imgPath } from '../../config'
 import { FiX } from 'react-icons/fi'
 import Start from './components/Start'
 import Questions from './components/Questions'
@@ -27,7 +26,6 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
   const [result, setResult] = useState('')
 
   const resultHandler = (result) => {
-    console.log('result', result)
     setResult(result)
   }
 
@@ -49,7 +47,6 @@ function Sidebar({ sidebarIsOpen, closeSidebar }) {
           sidebarIsOpen ? 'quiz__sidebar' : 'quiz__sidebar quiz__sidebar-close'
         }
       >
-        {console.log('page', page)}
         <div className="quiz__close">
           <FiX
             className="feather-m"

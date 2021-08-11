@@ -20,7 +20,6 @@ const MarkerIcon = (props) => {
           className="modal__marker"
         />
       </div>
-      {/* <FiMapPin className="modal__marker" /> */}
     </>
   )
 }
@@ -39,7 +38,6 @@ const MarkerCurrentPosition = (props) => {
           className="modal__marker"
         />
       </div>
-      {/* <FiMapPin className="modal__marker" /> */}
     </>
   )
 }
@@ -59,16 +57,6 @@ function StoreMapModal(props) {
 
   // 判斷有沒有執行過搜尋功能
   const [search, setSearch] = useState(false)
-  //預設顯示資訊
-  // const [shops, setShops] = useState([
-  //   {
-  //     course_place_name: '高雄民益店',
-  //     course_place_address: '高雄市小港區民益路13號',
-  //     course_place_phone: '07-8012255',
-  //     course_place_lat: 22.5662669501168,
-  //     course_place_lng: 120.34782427919656,
-  //   },
-  // ])
 
   //搜尋功能
   const queryString = useRef(null)
@@ -102,8 +90,6 @@ function StoreMapModal(props) {
 
       // 使用者允許抓目前位置，回傳經緯度
       function success(position) {
-        // setLat(position.coords.latitude);
-        // setLng(position.coords.longitude);
         setDefaultLatLng({
           lat: position.coords.latitude,
           lng: position.coords.longitude,

@@ -13,11 +13,6 @@ function QuestionFive({
 }) {
   return (
     <>
-      {/* <div className="quiz__back" role="button" onClick="">
-        <FiChevronLeft className="feather-s" />
-        <span className="quiz__back-text">返回</span>
-      </div> */}
-      {console.log('ans after 4', ans)}
       <div>
         <div className="quiz__question-number"> 5/5 </div>
         <p className="quiz__question">{q5}</p>

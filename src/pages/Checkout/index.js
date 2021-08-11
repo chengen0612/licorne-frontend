@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './style.scss'
 import axios from 'axios'
-// import { imgPath } from '../../config'
 import OfficialOrder from './OfficialOrder'
 import CustomOrder from './CustomOrder'
 import CourseOrder from './CourseOrder'
@@ -13,16 +12,12 @@ function Checkout() {
   const [courseTotal, setCourseTotal] = useState(0)
   //商品訂單
   const [officialOrder, setOfficialOrder] = useState({})
-  // console.log('這是商品訂單')
   //客製化訂單
   const [customOrder, setCustomOrder] = useState({})
-  // console.log('這是客製化訂單', customOrder)
   //課程訂單
   const [courseOrder, setCourseOrder] = useState({})
-  // console.log('這是課程訂單', courseOrder)
   //訂單地址
   const [address, setAddress] = useState('')
-  // console.log('這是訂單地址', address)
 
   async function postOfficial(token) {
     const officialOrderData = {}

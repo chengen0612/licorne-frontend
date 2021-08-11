@@ -2,7 +2,6 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import '../style.css'
 import { imgPath } from '../../../config'
-import { FiRotateCcw } from 'react-icons/fi'
 
 function Results({ result }) {
   const history = useHistory()
@@ -22,10 +21,6 @@ export default Results
 const Tea = ({ handleRedirection }) => {
   return (
     <>
-      {/* <div className="quiz__restart" role="button">
-        <FiRotateCcw className="feather-s" />
-        <span className="quiz__restart-text">重測</span>
-      </div> */}
       <h4 className="quiz__result">茗茶系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
@@ -55,10 +50,6 @@ const Tea = ({ handleRedirection }) => {
 const Animal = ({ handleRedirection }) => {
   return (
     <>
-      {/* <div className="quiz__restart" role="button">
-        <FiRotateCcw className="feather-s" />
-        <span className="quiz__restart-text">重測</span>
-      </div> */}
       <h4 className="quiz__result">動物系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
@@ -88,10 +79,6 @@ const Animal = ({ handleRedirection }) => {
 const Nature = ({ handleRedirection }) => {
   return (
     <>
-      {/* <div className="quiz__restart" role="button">
-        <FiRotateCcw className="feather-s" />
-        <span className="quiz__restart-text">重測</span>
-      </div> */}
       <h4 className="quiz__result">大自然系列</h4>
       <div className="quiz__result-img-wrapper">
         <img
@@ -121,10 +108,6 @@ const Nature = ({ handleRedirection }) => {
 const Cocktail = ({ handleRedirection }) => {
   return (
     <>
-      {/* <div className="quiz__restart" role="button">
-        <FiRotateCcw className="feather-s" />
-        <span className="quiz__restart-text">重測</span>
-      </div> */}
       <h4 className="quiz__result">調酒系列</h4>
       <div className="quiz__result-img-wrapper">
         <img

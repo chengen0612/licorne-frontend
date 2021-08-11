@@ -4,11 +4,6 @@ import '../../style.scss'
 function QuestionTwo({ q2, ans, setAns, ansA, ansB, ansC, ansD, nextHandler }) {
   return (
     <>
-      {/* <div className="quiz__back" role="button" onClick={clickHandler}>
-        <FiChevronLeft className="feather-s" />
-        <span className="quiz__back-text">返回</span>
-      </div> */}
-      {console.log('ans after 1', ans)}
       <div>
         <div className="quiz__question-number"> 2/5 </div>
         <p className="quiz__question">{q2}</p>

@@ -24,16 +24,11 @@ function AddressEditModal(props) {
 
   const [data, updateData] = useState(initialData)
 
-  console.log('recipient name', data.recipientName)
-  console.log('recipient phone', data.recipientPhone)
-  console.log('recipient address', data.recipientAddress)
-
   const updateRecipientName = (e) => {
     updateData({
       ...data,
       [e.target.name]: e.target.value.trimStart(),
     })
-    // console.log('current recipientName', Object.values(data)[0])
   }
 
   const updateRecipientPhone = (e) => {
@@ -41,7 +36,6 @@ function AddressEditModal(props) {
       ...data,
       [e.target.name]: e.target.value.trim(),
     })
-    // console.log('current recipientPhone', Object.values(data)[1])
   }
 
   const updateRecipientAddress = (e) => {
@@ -49,20 +43,15 @@ function AddressEditModal(props) {
       ...data,
       [e.target.name]: e.target.value.trim(),
     })
-    // console.log('current recipientAddress', Object.values(data)[2])
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('edited recipient info', data)
     setRecipientName(Object.values(data)[0])
     setRecipientPhone(Object.values(data)[1])
     setRecipientAddress(Object.values(data)[2])
     closeHandler()
-    // ... submit to API or something
   }
-
-  // const [checked, setChecked] = useState(true)
 
   function closeHandler() {
     props.onClose()
@@ -125,7 +114,7 @@ function AddressEditModal(props) {
           />
         </label>
         {/* 收件人 */}
-        {/* TODO: html5 validation for each input field */}
+        {/* TODO: validation for each input field when format is not correct */}
         <span className="checkout__address-edit-modal-title">收件人</span>
         <label className="checkout__address-edit-modal-label" htmlFor="">
           姓名

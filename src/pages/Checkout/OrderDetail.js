@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import myswal from '../../utils/sweetalert'
 import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import { FiEdit } from 'react-icons/fi'
 import Backdrop from './components/Backdrop'
 import AddressEditModal from './components/AddressEditModal'
@@ -32,8 +31,6 @@ const DeliveryMethod = ({
   const deliveryMethod = ['指定地址', '店鋪自取']
   const [checked, setChecked] = useState(true)
   const [checkedValue, setCheckedValue] = useState(deliveryMethod[0])
-
-  // console.log('what is this', storeName[10])
 
   //預設顯示資訊
   const [stores, setStores] = useState([
@@ -95,7 +92,6 @@ const DeliveryMethod = ({
           <div className="checkout__order-box-delivery-edit-wrapper">
             <span className="checkout__order-box-recipient">
               {/* 哭肉狗狗 */}
-              {/* send to db: 收件人姓名 */}
               {recipientName}
             </span>
             <FiEdit
@@ -106,16 +102,13 @@ const DeliveryMethod = ({
           </div>
           <span className="checkout__order-box-recipient-phone">
             {/* 0912345678 */}
-            {/* send to db: 收件人電話 */}
             {recipientPhone}
           </span>
           <span className="checkout__order-box-recipient-address">
             {/* 29850桃園市桃園區中正路100巷100號 */}
-            {/* send to db: 收件人地址 */}
             {recipientAddress}
           </span>
           <span className="checkout__order-box-buyer">
-            {/* send to db: 會員姓名 */}
             訂購人：{memberName}
           </span>
         </div>
@@ -128,7 +121,6 @@ const DeliveryMethod = ({
               <span className="checkout__order-box-recipient">
                 {/* 高雄民益店 */}
                 {storeName}
-                {/* {data.course_place_name} */}
               </span>
               <FiEdit
                 className="feather-s"
@@ -141,12 +133,10 @@ const DeliveryMethod = ({
             <span className="checkout__order-box-recipient-phone">
               {/* 07-8012255 */}
               {storeAddress}
-              {/* {data.course_place_phone} */}
             </span>
             <span className="checkout__order-box-recipient-address">
               {/* 高雄市小港區民益路13號 */}
               {storePhone}
-              {/* {data.course_place_address} */}
             </span>
             <span className="checkout__order-box-buyer">
               訂購人：{memberName}
@@ -174,11 +164,7 @@ const DeliveryMethod = ({
       {showModal === deliveryMethod[1] && (
         <StoreMapModal
           closeModalHandler={closeModalHandler}
-          // setSelectForm={setPlace}
           onPlaceChange={onPlaceChange}
-          // storeName={storeName}
-          // storeAddress={storeAddress}
-          // storePhone={storePhone}
           placeLatLng={placeLatLng}
           stores={stores}
           setStores={setStores}
@@ -213,20 +199,16 @@ function OrderDetail(props) {
 
     const response = await fetch(request)
     const data = await response.json()
-    // console.log('member info', data)
 
     const memberName = data[0].member_name
-    // console.log('db member name', memberName)
     setMemberName(memberName)
     setRecipientName(memberName)
 
     const memberPhone = data[0].member_phone
-    // console.log('db member phone', memberPhone)
     setRecipientPhone(memberPhone)
     setMemberPhone(memberPhone)
 
     const memberAddress = data[0].member_address
-    // console.log('db member address', memberAddress)
     setMemberAddress(memberAddress)
     setRecipientAddress(memberAddress)
     setAddress(memberAddress)
@@ -256,27 +238,6 @@ function OrderDetail(props) {
     const response = await fetch(request)
     const data = await response.json()
     const stores = data.place
-    // const storeName = stores.map((item, i) => {
-    //   return item.course_place_name
-    // })
-    // const storeAddress = stores.map((item) => {
-    //   return item.course_place_address
-    // })
-    // const storePhone = stores.map((item) => {
-    //   return item.course_place_phone
-    // })
-    // const storeLat = stores.map((item) => {
-    //   return item.course_place_lat
-    // })
-    // const storeLng = stores.map((item) => {
-    //   return item.course_place_lng
-    // })
-    // console.log('store data', stores)
-    // console.log('store name', storeName)
-    // console.log('store address', storeAddress)
-    // console.log('store phone', storePhone)
-    // console.log('store lat', storeLat)
-    // console.log('store lng', storeLng)
     setPlaceLatLng(stores)
     setStoreName('高雄民益店')
     setStoreAddress('高雄市小港區民益路13號')
@@ -342,7 +303,6 @@ function OrderDetail(props) {
             setStoreLat={setStoreLat}
           />
         </div>
-        {/* send to db: 付款方式（尚未完成） */}
         <div className="checkout__order-box-payment pr-4 pl-4 pb-4">
           <span className="checkout__order-box-payment-title">付款方式</span>
           <div className="checkout__order-box-payment-labels">
@@ -373,7 +333,6 @@ function OrderDetail(props) {
             <span className="checkout__order-box-total-text">結帳金額：</span>
             <span className="checkout__order-box-total-price">
               {' '}
-              {/* send to db: 訂單總金額 */}
               NT$ {numberWithCommas(total)}
             </span>
           </div>

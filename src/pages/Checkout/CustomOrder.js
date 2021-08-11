@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import { imgPath } from '../../config'
 import { Link } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 import myswal from '../../utils/sweetalert'
@@ -11,10 +10,7 @@ function CustomOrder(props) {
   const [symbolsArr] = useState(['e', 'E', '+', '-', '.'])
 
   function getCustomOrder() {
-    // console.log('這是customItems', customItems)
     const customOrder = { id: '', qty: '', total: 0 }
-    // const customorderitem = customItems
-    // const customorderquantities = quantities
 
     customOrder.id = customItems
     customOrder.qty = quantities
@@ -36,14 +32,12 @@ function CustomOrder(props) {
 
     const response = await fetch(request)
     const data = await response.json()
-    // console.log('custom info', data)
     setCustomItems(data)
 
     const quantities = data.map((item) => {
       return item.quantity
     })
 
-    // console.log('custom quantities', quantities)
     setQuantities(quantities)
   }
 
@@ -75,13 +69,11 @@ function CustomOrder(props) {
     })
     let newQuantities = quantities
     customItems.forEach((v, i) => {
-      // console.log('this is v', v)
       if (v.id === id) {
         newQuantities.splice(i, 1)
         return
       }
     })
-    // console.log('current quantity', newQuantities)
     setCustomItems(newCustomItems)
     setQuantities(newQuantities)
     getCustomOrder()
@@ -97,29 +89,23 @@ function CustomOrder(props) {
       {customItems.length === 0 && (
         <div className="checkout__box-none d-flex flex-column align-items-center pt-4 pb-4">
           <span>購物籃中沒有任何商品</span>
-          <Link className="checkout__link" to="/custom/entrance">前往頁面製作商品</Link>
+          <Link className="checkout__link" to="/custom/entrance">
+            前往頁面製作商品
+          </Link>
         </div>
       )}
-      {/* send to db: 客製化商品細節 */}
       {customItems.map((customItem, i) => {
         return (
           <React.Fragment key={customItem.id}>
             <div className="checkout__custom-box-list p-4">
-              {/* TODO: add corresponding link to product */}
-              <Link
-                to="/bestseller"
-                className="checkout__custom-box-img-wrapper"
-              >
+              <div className="checkout__custom-box-img-wrapper">
                 <img
                   className="checkout__custom-box-img"
                   src={customItem.bottle_img}
                   alt=""
                 />
-              </Link>
-              <Link
-                to="/bestseller"
-                className="checkout__custom-box-details w-25 pl-4"
-              >
+              </div>
+              <div className="checkout__custom-box-details w-25 pl-4">
                 <span className="checkout__custom-box-name-zh">
                   {/* MTLALM */}
                   {customItem.cust_id}
@@ -136,7 +122,7 @@ function CustomOrder(props) {
                   {/* 100ML */}
                   {volume}
                 </span>
-              </Link>
+              </div>
               <span className="checkout__custom-box-product-price">
                 {/* NT $2000 */}
                 NT$ {customItem.price}
@@ -162,23 +148,19 @@ function CustomOrder(props) {
                     return quantity
                   })
                   setQuantities(newQuantities)
-                  // console.log('set custom quantities', newQuantities)
-                  // console.log('current custom quantities', quantities)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
                 }
               />
-              <span className="checkout__custom-box-product-subtotal">
+              <div className="checkout__custom-box-product-subtotal">
                 {/* NT $6000 */}
-                {/* 客製化小計 */}
                 NT$ {subtotals[i]}
-              </span>
+              </div>
               <FiX
                 className="feather-s"
                 role="button"
                 onClick={() => {
-                  // handleDelete(customItem.id)
                   myswal.confirmDelete(handleDelete, customItem.id)
                 }}
               />

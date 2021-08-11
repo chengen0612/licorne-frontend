@@ -33,14 +33,12 @@ function OfficialOrder(props) {
 
     const response = await fetch(request)
     const data = await response.json()
-    // console.log('official info', data)
     setOfficialItems(data)
 
     const quantities = data.map((item) => {
       return item.quantity
     })
 
-    // console.log('official quantities', quantities)
     setQuantities(quantities)
   }
 
@@ -70,13 +68,11 @@ function OfficialOrder(props) {
     })
     let newQuantities = quantities
     officialItems.forEach((v, i) => {
-      // console.log('this is v', v)
       if (v.id === id) {
         newQuantities.splice(i, 1)
         return
       }
     })
-    // console.log('current quantity', newQuantities)
     setOfficialItems(newOfficialItems)
     setQuantities(newQuantities)
     getOrder()
@@ -97,26 +93,19 @@ function OfficialOrder(props) {
           </Link>
         </div>
       )}
-      {/* send to db: 官方商品細節 */}
       {officialItems.map((officialItem, i) => {
         return (
           <React.Fragment key={officialItem.id}>
             <div className="checkout__official-box-list p-4">
               {/* TODO: add corresponding link to product */}
-              <Link
-                to="/official:id"
-                className="checkout__official-box-img-wrapper"
-              >
+              <div className="checkout__official-box-img-wrapper">
                 <img
                   className="checkout__official-box-img"
                   src={officialItem.img_id}
                   alt=""
                 />
-              </Link>
-              <Link
-                to="/official:id"
-                className="checkout__official-box-details w-25 pl-4"
-              >
+              </div>
+              <div className="checkout__official-box-details w-25 pl-4">
                 <span className="checkout__official-box-name-zh">
                   {/* 夜鶯 */}
                   {officialItem.name_zh}
@@ -133,7 +122,7 @@ function OfficialOrder(props) {
                   {/* 100ML */}
                   {officialItem.volume}
                 </span>
-              </Link>
+              </div>
               <span className="checkout__official-box-product-price">
                 {/* NT $2000 */}
                 NT$ {officialItem.price}
@@ -161,8 +150,6 @@ function OfficialOrder(props) {
                     return quantity
                   })
                   setQuantities(newQuantities)
-                  // console.log('set official quantities', newQuantities)
-                  // console.log('current official quantities', quantities)
                 }}
                 onKeyDown={(e) =>
                   symbolsArr.includes(e.key) && e.preventDefault()
@@ -178,7 +165,6 @@ function OfficialOrder(props) {
                 className="feather-s"
                 role="button"
                 onClick={() => {
-                  // handleDelete(officialItem.id)
                   myswal.confirmDelete(handleDelete, officialItem.id)
                 }}
               />

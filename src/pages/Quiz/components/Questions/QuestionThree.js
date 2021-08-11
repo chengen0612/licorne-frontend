@@ -13,11 +13,6 @@ function QuestionThree({
 }) {
   return (
     <>
-      {/* <div className="quiz__back" role="button">
-        <FiChevronLeft className="feather-s" />
-        <span className="quiz__back-text">返回</span>
-      </div> */}
-      {console.log('ans after 2', ans)}
       <div>
         <div className="quiz__question-number"> 3/5 </div>
         <p className="quiz__question">{q3}</p>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './style.scss'
 import 'bootstrap/dist/css/bootstrap.css'
-// import { imgPath } from '../../config'
 import { FiHeart, FiChevronDown } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { GiWaterDrop } from 'react-icons/gi'
@@ -77,19 +76,13 @@ function MainProduct({ id, item, siblingItem }) {
     <>
       <section className="official">
         <div className="official__img-wrapper">
-          <img
-            className="official__img"
-            // src={imgPath + '/images/official/animal_100ml.png'}
-            src={item.img_id}
-            alt=""
-          />
+          <img className="official__img" src={item.img_id} alt="" />
         </div>
         <div className="official__info">
           <h3 className="official__title">
             {/* 森林 Forest */}
             {item.name_zh} {item.name_en}
           </h3>
-          {/* TODO: add link directing to series page */}
           <span className="official__subtitle">
             {/* 大自然香氛 */}
             {item.series_name}
