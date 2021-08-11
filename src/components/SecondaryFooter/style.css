@@ -28,7 +28,7 @@
 }
 .secondaryFooter__listBox li:hover {
   filter: brightness(1.8);
-  color: var(--c-btn-hover);
+  color: var(--c-primary-hover);
 }
 
 .secondaryFooter__topList {

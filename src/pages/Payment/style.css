@@ -23,5 +23,5 @@
 }
 
 .payment__btn:hover{
-  background: var(--c-btn-hover) !important;
+  background: var(--c-primary-hover) !important;
 }
