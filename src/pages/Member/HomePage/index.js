@@ -51,7 +51,7 @@ function MemberHomePage(favOrCart, setFavOrCart) {
       })
       const responseCart = await fetch(requestCart)
       const officialProduct = await responseCart.json()
-      console.log('官方產品：', officialProduct)
+      // console.log('官方產品：', officialProduct)
       setOfficialProducts(officialProduct)
     }
     authentication(executor)
@@ -73,7 +73,7 @@ function MemberHomePage(favOrCart, setFavOrCart) {
       const responseCustom = await fetch(requestCart)
       const customProduct = await responseCustom.json()
       setCustomProducts(customProduct)
-      console.log('客製產品：', customProduct)
+      // console.log('客製產品：', customProduct)
     }
     authentication(executor)
   }

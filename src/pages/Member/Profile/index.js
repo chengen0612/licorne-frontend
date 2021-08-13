@@ -51,7 +51,7 @@ function Profile(props) {
       ...values,
       [name]: value,
     })
-    console.log(value)
+    // console.log(value)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -78,7 +78,7 @@ function Profile(props) {
 
       const response = await fetch(request)
       const data = await response.json()
-      console.log('會員資訊：', data)
+      // console.log('會員資訊：', data)
       setValues(data)
       // 設定資料
 
@@ -110,12 +110,12 @@ function Profile(props) {
         }),
       })
 
-      console.log(JSON.stringify(userData))
+      // console.log(JSON.stringify(userData))
 
       const response = await fetch(request)
       const data = await response.json()
 
-      console.log('伺服器回傳的json資料', data)
+      // console.log('伺服器回傳的json資料', data)
       // 要等驗証過，再設定資料(簡單的直接設定)
       setTimeout(() => {
         setDataLoading(false)

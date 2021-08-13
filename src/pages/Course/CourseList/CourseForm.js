@@ -83,7 +83,7 @@ function CourseForm(props) {
       //處理日期格式
       formDataInfo.form__calendar = formatDate(formDataInfo.form__calendar)
 
-      console.log(JSON.stringify(formDataInfo))
+      // console.log(JSON.stringify(formDataInfo))
       const request = new Request(url, {
         method: 'POST',
         body: JSON.stringify(formDataInfo),
@@ -95,7 +95,7 @@ function CourseForm(props) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      console.log('報名成功!', data)
+      // console.log('報名成功!', data)
     }
     authentication(executor)
   }

@@ -21,8 +21,8 @@ const useForm = (validate) => {
     e.preventDefault()
     setLoginErrors(validate(loginValues))
     const data = new FormData(e.target)
-    console.log(data.get('loginPhone'))
-    console.log(data.get('loginPassword'))
+    // console.log(data.get('loginPhone'))
+    // console.log(data.get('loginPassword'))
 
     async function loginToSever() {
       // 開啟載入指示
@@ -48,12 +48,12 @@ const useForm = (validate) => {
         }),
       })
 
-      console.log(JSON.stringify(user))
+      // console.log(JSON.stringify(user))
 
       const response = await fetch(request)
       const data = await response.json()
 
-      console.log('伺服器回傳的json資料', data)
+      // console.log('伺服器回傳的json資料', data)
       // 要等驗証過，再設定資料(簡單的直接設定)
       if (data.code === 0) {
         localStorage.setItem('jwt', data.token)

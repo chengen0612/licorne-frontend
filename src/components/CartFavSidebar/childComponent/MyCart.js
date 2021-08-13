@@ -81,7 +81,7 @@ function MyCart({
     })
     const response = await fetch(request)
     const result = await response.json()
-    console.log('資料輸入成功: ', result.message)
+    // console.log('資料輸入成功: ', result.message)
   }
 
   // 承恩加的

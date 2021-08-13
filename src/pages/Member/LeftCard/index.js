@@ -90,7 +90,7 @@ function MemberLeftCard() {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log('會員資訊：', data)
+    // console.log('會員資訊：', data)
     setValues(data)
     // 設定資料
 

@@ -27,7 +27,7 @@ function FavoriteCourse(props) {
       const responseCollect = await fetch(requestCollect)
       const courseCollectDatas = await responseCollect.json()
       setCourseCollectDatas(courseCollectDatas)
-      console.log('課程資訊：', courseCollectDatas)
+      // console.log('課程資訊：', courseCollectDatas)
     }
     authentication(executor)
   }

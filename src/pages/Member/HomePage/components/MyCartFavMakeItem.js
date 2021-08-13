@@ -39,12 +39,12 @@ function MyCartMakeItem({
         }),
       })
 
-      console.log(JSON.stringify(userData))
+      // console.log(JSON.stringify(userData))
 
       const response = await fetch(request)
       const data = await response.json()
 
-      console.log('伺服器回傳的json資料', data)
+      // console.log('伺服器回傳的json資料', data)
       getCustomProductFromServer()
     }
     authentication(executor)
@@ -64,7 +64,7 @@ function MyCartMakeItem({
       const responseCustom = await fetch(requestCart)
       const customProduct = await responseCustom.json()
       setCustomProducts(customProduct)
-      console.log('客製產品：', customProduct)
+      // console.log('客製產品：', customProduct)
     }
     authentication(executor)
   }

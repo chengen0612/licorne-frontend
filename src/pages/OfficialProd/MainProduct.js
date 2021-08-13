@@ -68,9 +68,9 @@ function MainProduct({ id, item, siblingItem }) {
     else return value + 1
   }
   const siblingId = isEven(Number(id))
-  console.log('siblingId', siblingId)
+  // console.log('siblingId', siblingId)
   const mainId = Number(id)
-  console.log('id', mainId)
+  // console.log('id', mainId)
 
   return (
     <>

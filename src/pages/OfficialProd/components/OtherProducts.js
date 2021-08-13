@@ -12,7 +12,7 @@ function OtherProducts() {
     const url = `http://localhost:6005/officialid/${id}/recommend`
     const response = await axios.get(url)
     const otherProducts = response.data
-    console.log('response.data', otherProducts)
+    // console.log('response.data', otherProducts)
     setRecommendations(otherProducts)
   }
 

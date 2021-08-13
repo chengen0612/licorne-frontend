@@ -4,7 +4,7 @@ import '../../style.css'
 import MyCartFavCustomItem from './MyCourseItem'
 
 function MyCourseFav({ courseCollectDatas, setCourseCollectDatas }) {
-  console.log(courseCollectDatas.id)
+  // console.log(courseCollectDatas.id)
   return (
     <>
       <div className="">

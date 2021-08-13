@@ -80,12 +80,12 @@ function LoginAndRegister() {
       }),
     })
 
-    console.log(JSON.stringify(regData))
+    // console.log(JSON.stringify(regData))
 
     const response = await fetch(request)
     const data = await response.json()
 
-    console.log('伺服器回傳的json資料', data)
+    // console.log('伺服器回傳的json資料', data)
     setTimeout(() => {
       setIsLoading(false)
       swal('註冊成功！', {

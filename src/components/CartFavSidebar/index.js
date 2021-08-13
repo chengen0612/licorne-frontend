@@ -84,7 +84,7 @@ function CartFavSidebar({
     })
     const response = await fetch(request)
     const result = await response.json()
-    console.log('資料輸入成功: ', result.message)
+    // console.log('資料輸入成功: ', result.message)
   }
   //晁榮：以上是將資料傳到後端的程式碼！
 

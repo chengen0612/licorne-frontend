@@ -17,8 +17,8 @@ function OfficialProd() {
     const productInfo = response.data
     const product = productInfo[0]
     const sibling = productInfo[1]
-    console.log('product info', product)
-    console.log('diff vol + price', sibling)
+    // console.log('product info', product)
+    // console.log('diff vol + price', sibling)
     setItem(product)
     setSiblingItem(sibling)
   }

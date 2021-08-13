@@ -46,7 +46,7 @@ function FavoritePerfume(props) {
       const responseCollect = await fetch(requestCollect)
       const customCollectDatas = await responseCollect.json()
       setCustomCollectDatas(customCollectDatas)
-      console.log('客製資訊：', customCollectDatas)
+      // console.log('客製資訊：', customCollectDatas)
     }
     authentication(executor)
   }
