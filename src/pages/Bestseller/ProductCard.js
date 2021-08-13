@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { imgPath } from '../../config'
+import { baseUrl } from '../../config'
 import myswal from '../../utils/sweetalert'
 import authentication from '../../utils/authentication'
 
@@ -53,7 +53,7 @@ function ProductCard(props) {
     <>
       <div className="best__prod-card">
         <figure className="best__prod-sequence">
-          <img src={imgPath + `/images/bestseller/${sequence}.svg`} alt="" />
+          <img src={baseUrl + `/images/bestseller/${sequence}.svg`} alt="" />
         </figure>
         <div
           className="best__prod-display"
@@ -61,7 +61,7 @@ function ProductCard(props) {
           // onClick={() => setShowDetail(!showDetail)}
           // title={!showDetail && '點擊查看說明'}
         >
-          <img src={imgPath + bottle_img} alt={cust_id} />
+          <img src={baseUrl + bottle_img} alt={cust_id} />
           <h3 className="best__prod-title">{cust_id}</h3>
           <span className="best__prod-price">
             NT ${numberWithCommas(price)}

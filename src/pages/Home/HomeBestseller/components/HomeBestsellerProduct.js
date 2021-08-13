@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { imgPath } from '../../../../config/index'
+import { baseUrl } from '../../../../config/index'
 
 function HomeBestsellerProduct(props) {
   const { data } = props
@@ -35,7 +35,7 @@ function HomeBestsellerProduct(props) {
         <div className="popular__No">
           <img
             className="popular__NoImg"
-            src={imgPath + `/images/bestseller/${sequence}.svg`}
+            src={baseUrl + `/images/bestseller/${sequence}.svg`}
             alt=""
           />
         </div>
@@ -46,7 +46,7 @@ function HomeBestsellerProduct(props) {
             <figure className="popular__customImgBox">
               <img
                 className="popular__customImg"
-                src={imgPath + bottle_img}
+                src={baseUrl + bottle_img}
                 alt=""
               />
             </figure>

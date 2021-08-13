@@ -1,5 +1,5 @@
 import React from 'react'
-import { imgPath } from '../../../config/index'
+import { baseUrl } from '../../../config/index'
 
 export default function MapMarkerIcon(props) {
   const { data, setSelectedShop } = props
@@ -11,7 +11,7 @@ export default function MapMarkerIcon(props) {
         onClick={() => setSelectedShop(data)}
       >
         <img
-          src={imgPath + '/images/course/map-markersolid.svg'}
+          src={baseUrl + '/images/course/map-markersolid.svg'}
           alt="marker"
           className="map__marker"
         />

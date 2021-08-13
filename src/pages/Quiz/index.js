@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './style.scss'
-import { imgPath } from '../../config'
+import { baseUrl } from '../../config'
 import { Link } from 'react-router-dom'
 import Sidebar from './Sidebar'
 
@@ -52,7 +52,7 @@ function Quiz() {
       <div className="quiz__index-img-box">
         <img
           className="quiz__index-img"
-          src={imgPath + '/images/quiz/home-quiz.jpg'}
+          src={baseUrl + '/images/quiz/home-quiz.jpg'}
           alt=""
         />
       </div>
@@ -72,7 +72,7 @@ function Quiz() {
               <div className="quiz__guide-item-box">
                 <img
                   className="quiz__guide-img-custom"
-                  src={imgPath + '/images/quiz/home-custom.jpg'}
+                  src={baseUrl + '/images/quiz/home-custom.jpg'}
                   alt="custom"
                 />
               </div>
@@ -86,7 +86,7 @@ function Quiz() {
               <div className="quiz__guide-item-box">
                 <img
                   className="quiz__guide-img-course"
-                  src={imgPath + '/images/quiz/home-course.jpg'}
+                  src={baseUrl + '/images/quiz/home-course.jpg'}
                   alt="course"
                 />
               </div>
@@ -100,7 +100,7 @@ function Quiz() {
               <div className="quiz__guide-item-box">
                 <img
                   className="quiz__guide-img-bestseller"
-                  src={imgPath + '/images/quiz/home-bestseller.jpg'}
+                  src={baseUrl + '/images/quiz/home-bestseller.jpg'}
                   alt="course"
                 />
               </div>

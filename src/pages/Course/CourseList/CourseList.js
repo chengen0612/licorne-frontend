@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './CourseList.css'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 import authentication from '../../../utils/authentication'
 import CourseContent from './CourseContent'
 import CourseForm from './CourseForm'
@@ -90,7 +90,7 @@ function CourseList() {
     <>
       <div className="content">
         <div className="box">
-          <img src={imgPath + img} alt="" />
+          <img src={baseUrl + img} alt="" />
         </div>
 
         <aside>

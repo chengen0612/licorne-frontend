@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 
 function CourseDiffuser() {
   // 接收資料庫傳來的資料，並讓資料可以設定
@@ -33,7 +33,7 @@ function CourseDiffuser() {
     <>
       <div className="diffuser__content">
         <div className="diffuser__box">
-          <img src={imgPath + img} alt="" />
+          <img src={baseUrl + img} alt="" />
         </div>
 
         <aside className="diffuser__aside">

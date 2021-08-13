@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 import { Link } from 'react-router-dom'
 
 function HomeCustomized() {
@@ -22,7 +22,7 @@ function HomeCustomized() {
         <Link to="/custom/entrance" className="fade-in-image">
           <img
             className="homeCustomWrapperImage mt-4"
-            src={imgPath + '/images/home/customImage.jpg'}
+            src={baseUrl + '/images/home/customImage.jpg'}
             alt="customPerfume"
             role="button"
           />

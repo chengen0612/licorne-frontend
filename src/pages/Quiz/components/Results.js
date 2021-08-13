@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import '../style.css'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 
 function Results({ result }) {
   const history = useHistory()
@@ -25,7 +25,7 @@ const Tea = ({ handleRedirection }) => {
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"
-          src={imgPath + '/images/quiz/result_tea.png'}
+          src={baseUrl + '/images/quiz/result_tea.png'}
           alt=""
         />
       </div>
@@ -54,7 +54,7 @@ const Animal = ({ handleRedirection }) => {
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"
-          src={imgPath + '/images/quiz/result_animal.png'}
+          src={baseUrl + '/images/quiz/result_animal.png'}
           alt=""
         />
       </div>
@@ -83,7 +83,7 @@ const Nature = ({ handleRedirection }) => {
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"
-          src={imgPath + '/images/quiz/result_nature.jpg'}
+          src={baseUrl + '/images/quiz/result_nature.jpg'}
           alt=""
         />
       </div>
@@ -112,7 +112,7 @@ const Cocktail = ({ handleRedirection }) => {
       <div className="quiz__result-img-wrapper">
         <img
           className="quiz__result-img"
-          src={imgPath + '/images/quiz/result_cocktail.png'}
+          src={baseUrl + '/images/quiz/result_cocktail.png'}
           alt=""
         />
       </div>

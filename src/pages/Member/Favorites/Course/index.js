@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
-import { imgPath } from '../../../../config'
+import { baseUrl } from '../../../../config'
 import { Link } from 'react-router-dom'
 import MyCourseFav from '../components/MyCourseFav'
 import authentication from '../../../../utils/authentication'

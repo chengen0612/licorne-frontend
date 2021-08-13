@@ -1,6 +1,6 @@
 import React from 'react'
 import '../style.css'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 
 function Start({ changeHandler }) {
   return (
@@ -19,7 +19,7 @@ function Start({ changeHandler }) {
       </p>
       <img
         className="quiz__img"
-        src={imgPath + '/images/quiz/quiz-start.jpg'}
+        src={baseUrl + '/images/quiz/quiz-start.jpg'}
         alt=""
       />
       <div className="d-flex justify-content-center">

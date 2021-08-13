@@ -22,7 +22,7 @@ import Quiz from './pages/Quiz'
 import SwitchCourse from './routes/SwitchCourse'
 import SwitchCustom from './routes/SwitchCustom'
 
-function Direction() {
+function Paths() {
   // path
   const location = useLocation()
   const history = useHistory()
@@ -134,4 +134,4 @@ function Direction() {
   )
 }
 
-export default Direction
+export default Paths

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { FiSearch, FiMapPin, FiX } from 'react-icons/fi'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 import GoogleMapReact from 'google-map-react'
 import CourseClassRoom from './CourseClassRoom'
 
@@ -15,7 +15,7 @@ const MarkerIcon = (props) => {
       >
         <p className="modal__marker-name">{props.classRoom}</p>
         <img
-          src={imgPath + '/images/course/map-markersolid.svg'}
+          src={baseUrl + '/images/course/map-markersolid.svg'}
           alt=""
           className="modal__marker"
         />
@@ -33,7 +33,7 @@ const MarkerCurentPosition = (props) => {
       >
         <p className="modal__marker-name">{props.classRoom}</p>
         <img
-          src={imgPath + '/images/course/map-markerCurentPosition.svg'}
+          src={baseUrl + '/images/course/map-markerCurentPosition.svg'}
           alt=""
           className="modal__marker"
         />

@@ -9,7 +9,7 @@ import {
   FiUpload,
 } from 'react-icons/fi'
 
-import { imgPath } from '../../../../config'
+import { baseUrl } from '../../../../config'
 import myswal from '../../../../utils/sweetalert'
 import authentication from '../../../../utils/authentication'
 
@@ -98,7 +98,7 @@ function Result(props) {
         <figure className="cust-res__image-top">
           <img
             className="cust-res__image"
-            src={imgPath + productImage}
+            src={baseUrl + productImage}
             alt=""
           />
         </figure>

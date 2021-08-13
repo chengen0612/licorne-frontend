@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 import UploadPreview from '../components/UploadImgPreview'
 import swal from 'sweetalert'
 import authentication from '../../../utils/authentication'
@@ -150,7 +150,7 @@ function Profile(props) {
             <div className="memberData__photoBox">
               <img
                 className="memberData__photo"
-                // src={imgPath + '/images/member/dog.png'}
+                // src={baseUrl + '/images/member/dog.png'}
                 src={
                   values.member_pic
                     ? `http://localhost:6005/images/avatar/${values.member_pic}`

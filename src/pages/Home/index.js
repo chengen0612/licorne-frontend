@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { imgPath } from '../../config/index'
+import { baseUrl } from '../../config/index'
 
 import './style.scss'
 
@@ -18,9 +18,9 @@ function Home() {
     <>
       <div className="home__wrapper">
         {/* eslint-disable */}
-        <img className="home__bg-rose" src={imgPath + '/images/home/rose.svg'} alt="rose" />
-        <img className="home__bg-lemon" src={imgPath + '/images/home/lemon.png'} alt="lemon" />
-        <img className="home__bg-peach" src={imgPath + '/images/home/peach.svg'} alt="peach" />
+        <img className="home__bg-rose" src={baseUrl + '/images/home/rose.svg'} alt="rose" />
+        <img className="home__bg-lemon" src={baseUrl + '/images/home/lemon.png'} alt="lemon" />
+        <img className="home__bg-peach" src={baseUrl + '/images/home/peach.svg'} alt="peach" />
         {/* eslint-enable */}
         <div className="home__backdrop">
           <HomeHero setIsLoaded={setIsLoaded} />

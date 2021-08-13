@@ -1,5 +1,5 @@
 import React from 'react'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 import CourseDescription from './CourseDescription'
 
 function CourseContent(props) {
@@ -14,7 +14,7 @@ function CourseContent(props) {
           <div className="course_box">
             <img
               className="course_img1"
-              src={imgPath + '/images/course/perfume1.jpg'}
+              src={baseUrl + '/images/course/perfume1.jpg'}
               alt=""
             />
           </div>
@@ -22,7 +22,7 @@ function CourseContent(props) {
           <div className="course_box">
             <img
               className="course_img2"
-              src={imgPath + '/images/course/course-perfume2.jpg'}
+              src={baseUrl + '/images/course/course-perfume2.jpg'}
               alt=""
             />
           </div>

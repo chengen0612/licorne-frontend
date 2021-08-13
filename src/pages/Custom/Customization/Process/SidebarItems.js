@@ -1,5 +1,5 @@
 import React from 'react'
-import { imgPath } from '../../../../config'
+import { baseUrl } from '../../../../config'
 
 function SidebarItems(props) {
   const { data, displaySerie } = props
@@ -29,7 +29,7 @@ function SidebarItems(props) {
             <li key={item.id}>
               <img
                 className="cust__items-image"
-                src={imgPath + item.ingredient_img}
+                src={baseUrl + item.ingredient_img}
                 alt={item.name_zh}
                 draggable="true"
                 onDragStart={(e) =>

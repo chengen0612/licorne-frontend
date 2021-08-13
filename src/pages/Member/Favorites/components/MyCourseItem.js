@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../../styles/global.css'
 import '../../style.css'
 import { FiShoppingBag } from 'react-icons/fi'
-import { imgPath } from '../../../../config'
+import { baseUrl } from '../../../../config'
 import swal from 'sweetalert'
 import { Link } from 'react-router-dom'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
-import { imgPath } from '../../../../../../config'
+import { baseUrl } from '../../../../../../config'
 
 function MemberLeftCard(props) {
   const { name_zh, name_en, img_id, seriesName, price, volume, quantity } =
@@ -17,7 +17,7 @@ function MemberLeftCard(props) {
         <div className="memberOrderPerfume__productImageBox">
           <img
             className="memberOrderPerfume__productImage"
-            src={imgPath + img_id}
+            src={baseUrl + img_id}
             alt=""
           />
         </div>

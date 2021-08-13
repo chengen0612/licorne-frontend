@@ -1,5 +1,5 @@
 import React from 'react'
-import { imgPath } from '../../../../config'
+import { baseUrl } from '../../../../config'
 
 function SidebarSeries(props) {
   const { data, displaySerie, setDisplaySerie, selectedItems, selectedSeries } =
@@ -40,7 +40,7 @@ function SidebarSeries(props) {
                     ? `${className[i]} active`
                     : `${className[i]}`
                 }
-                src={imgPath + item.series_img}
+                src={baseUrl + item.series_img}
                 alt={item.name_zh}
                 draggable="false"
                 onDragStart={(e) => e.preventDefailt}

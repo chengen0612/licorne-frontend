@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { imgPath } from '../../../../config'
+import { baseUrl } from '../../../../config'
 import './style.scss'
 
 function Longevity() {
@@ -14,7 +14,7 @@ function Longevity() {
           <h5>古龍水</h5>
           <figure>
             <img
-              src={imgPath + '/images/custom/intro/longevity/cologne.svg'}
+              src={baseUrl + '/images/custom/intro/longevity/cologne.svg'}
               alt="cologne"
             />
           </figure>
@@ -24,7 +24,7 @@ function Longevity() {
           <figure>
             <img
               src={
-                imgPath + '/images/custom/intro/longevity/aromatic-waters.svg'
+                baseUrl + '/images/custom/intro/longevity/aromatic-waters.svg'
               }
               alt="aromatic-waters"
             />
@@ -34,7 +34,7 @@ function Longevity() {
           <h5>淡香精、香水</h5>
           <figure>
             <img
-              src={imgPath + '/images/custom/intro/longevity/perfume.svg'}
+              src={baseUrl + '/images/custom/intro/longevity/perfume.svg'}
               alt="perfume"
             />
           </figure>
@@ -43,7 +43,7 @@ function Longevity() {
           <h5>香精</h5>
           <figure>
             <img
-              src={imgPath + '/images/custom/intro/longevity/pure-perfume.svg'}
+              src={baseUrl + '/images/custom/intro/longevity/pure-perfume.svg'}
               alt="pure-perfume"
             />
           </figure>
@@ -51,7 +51,7 @@ function Longevity() {
       </section>
       <figure className="c-intro-long__chart-wrap">
         <img
-          src={imgPath + '/images/custom/intro/longevity/chart.svg'}
+          src={baseUrl + '/images/custom/intro/longevity/chart.svg'}
           alt="chart"
         />
       </figure>

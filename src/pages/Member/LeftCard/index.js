@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
-import { imgPath } from '../../../config'
+import { baseUrl } from '../../../config'
 import { useHistory, useLocation } from 'react-router-dom'
 import swal from 'sweetalert'
 
@@ -118,7 +118,7 @@ function MemberLeftCard() {
         <div className="memberHomePage__photoBox">
           <img
             className="memberHomePage__photo"
-            // src={imgPath + '/images/member/dog.png'}
+            // src={baseUrl + '/images/member/dog.png'}
             src={
               values.member_pic
                 ? `http://localhost:6005/images/avatar/${values.member_pic}`

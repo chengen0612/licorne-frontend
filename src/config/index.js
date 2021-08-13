@@ -1,10 +1,9 @@
-const domainPath = {
+const domainName = {
   debug: true,
-  developUrl: 'http://localhost:3000',
-  releaseUrl: '',
+  develop: 'http://localhost:3000',
+  release: '',
 }
-export const serverUrl = 'http://localhost:6005'
 
-const imgPath = domainPath.debug ? domainPath.developUrl : domainPath.releaseUrl
+const baseUrl = domainName.debug ? domainName.develop : domainName.release
 
-export { imgPath }
+export { baseUrl }

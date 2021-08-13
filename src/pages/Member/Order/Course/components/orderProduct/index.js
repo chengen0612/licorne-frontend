@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 import { FiEdit } from 'react-icons/fi'
-import { imgPath } from '../../../../../../config'
+import { baseUrl } from '../../../../../../config'
 
 function MemberLeftCard() {
   return (
@@ -10,7 +10,7 @@ function MemberLeftCard() {
         <div className="memberOrderCourse__courseImageBox">
           <img
             className="memberOrderCourse__courseImage"
-            src={imgPath + '/images/member/courseImage.png'}
+            src={baseUrl + '/images/member/courseImage.png'}
             alt=""
           />
         </div>

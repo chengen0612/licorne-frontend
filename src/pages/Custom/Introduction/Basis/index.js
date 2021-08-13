@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { imgPath } from '../../../../config'
+import { baseUrl } from '../../../../config'
 import './style.scss'
 
 function Basis(props) {
@@ -20,7 +20,7 @@ function Basis(props) {
         <figure>
           <img
             className="c-intro__img-alcohol"
-            src={imgPath + '/images/custom/intro/basis/alcohol.svg'}
+            src={baseUrl + '/images/custom/intro/basis/alcohol.svg'}
             alt="alcohol"
           />
         </figure>
@@ -29,7 +29,7 @@ function Basis(props) {
         <figure>
           <img
             className="c-intro__img-water"
-            src={imgPath + '/images/custom/intro/basis/water.svg'}
+            src={baseUrl + '/images/custom/intro/basis/water.svg'}
             alt="water"
           />
         </figure>
@@ -39,21 +39,21 @@ function Basis(props) {
           <figure>
             <img
               className="c-intro__img-oil-lavender"
-              src={imgPath + '/images/custom/intro/basis/oil-lavendar.svg'}
+              src={baseUrl + '/images/custom/intro/basis/oil-lavendar.svg'}
               alt="water"
             />
           </figure>
           <figure>
             <img
               className="c-intro__img-oil-herb"
-              src={imgPath + '/images/custom/intro/basis/oil-herb.svg'}
+              src={baseUrl + '/images/custom/intro/basis/oil-herb.svg'}
               alt="water"
             />
           </figure>
           <figure>
             <img
               className="c-intro__img-oil-orange"
-              src={imgPath + '/images/custom/intro/basis/oil-orange.svg'}
+              src={baseUrl + '/images/custom/intro/basis/oil-orange.svg'}
               alt="water"
             />
           </figure>
@@ -63,7 +63,7 @@ function Basis(props) {
         <figure>
           <img
             className="c-intro__img-finished"
-            src={imgPath + '/images/custom/intro/basis/finished.jpg'}
+            src={baseUrl + '/images/custom/intro/basis/finished.jpg'}
             alt="finished"
           />
         </figure>

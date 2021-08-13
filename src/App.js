@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Direction from './Direction'
-import Water from './animations/Water'
+import Paths from './Paths'
+import Water from './utils/spring/Water'
 
 function App() {
   const [didMount, setDidMount] = useState(false)
@@ -19,7 +19,7 @@ function App() {
       {didMount && (
         <Router>
           <Route path="*">
-            <Direction />
+            <Paths />
           </Route>
         </Router>
       )}

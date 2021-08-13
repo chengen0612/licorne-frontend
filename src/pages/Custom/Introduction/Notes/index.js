@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { imgPath } from '../../../../config/index'
+import { baseUrl } from '../../../../config/index'
 import { topNote, middleNote, baseNote } from './data'
 import './style.scss'
 
@@ -57,7 +57,7 @@ function Notes(props) {
               </h5>
               <span>{item.list.join('、')}</span>
               <figure>
-                <img src={imgPath + item.image} alt={item.name} />
+                <img src={baseUrl + item.image} alt={item.name} />
               </figure>
             </div>
           )
