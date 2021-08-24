@@ -1,202 +1,60 @@
-## 寫作規範
+<img width="178" height="129" src="https://user-images.githubusercontent.com/79037530/130581841-71733aa2-d443-4c73-9ad9-e3b269803b04.png" alt="logo" />
 
-- 引用套件
-- CSS
-  - 共通 CSS
-    - 引用
-    - 自定變數
-    - 共通預設值
-  - 重複區塊模組化
-- 變數命名
-  - CSS
-  - javascript
-- Git Commit
+  > 本專案為中壢資策會 MFEE16 第五組組員共同開發之電商網站。  
+  > 網站以客製化香水為主打，旨在透過新鮮的使用者體驗及活潑的視覺畫面吸引消費者，建立品牌價值。  
+  > 開發內容包含視覺設計、前後端及資料庫的建置，主要使用技術有 `React`、`Node.js`、`MySQL` 。  
+  > 此處僅存放前台 `React` 之目錄。
 
 <br>
-<br>
 
-## 引用套件
+## 前台架構
 
-寫在 `HEADER`
-```html
-<!-- Normalize -->
-<link rel="stylesheet" href="css/normalize.css">
 ```
-
-<br>
-<br>
-
-## CSS
-
-### 共通 CSS
-
-```css
-/* Noto Sans - Regular 400 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
-/* defined */
-:root {
-  /* color */
-  --c-primary: #223843; /* Gunmetal */
-  --c-secondary: #FCF9EE; /* Floral White */
-  --c-cultured: #EFF1F3; /* Cultured */
-  --c-lightgray: #C4C4C4; /* Light Gray */
-  --c-champagne: #FFD289; /* Deep Champagne */
-  --c-berry: #C16E70; /* Fuzzy Wuzzy */
-  --c-warning: ;
-
-  /* font */
-  --f-fam-name: ; /* anything diffrent from default */
-  --f-siz-title: ; /* specific item appear in the whole project */
-  --f-siz-s: ;
-  --f-siz-m: ;
-
-  /* border-radius */
-  --b-btn: 30px;
-  --b-s: 5px;
-  --b-m: 10px;
-
-  /* shadow */
-}
-
-/* default */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Noto Sans', sans-serif;
-}
-
-p, ul, li, article, figure {
-  margin: 0;
-  padding: 0;
-}
-
-a,
-a:link {
-  text-decoration: none;
-  color: #000; /* replace with primary-color */
-}
+├── public                   靜態資源及 html 的存放位置
+└── src                      應用程式的程式碼來源
+   ├── App.js                主應用程式
+   ├── components            共通元件
+   ├── config                環境設定檔
+   ├── pages                 存放各個分頁的程式以及樣式檔
+   ├── Paths.js              附屬於主應用程式之下，決定畫面呈現結果
+   ├── routes                子路由器
+   ├── styles                共通樣式
+   └── utils                 第三方套件模組
 ```
 
 <br>
 
-### 模組化
-#### 模組化目的：
-- 減少重工
-- 方便維護
-- 網站一致性
-
-#### 預計模組化對象：  
-- 整個區塊
-  - Header
-  - Footer
-- 共用 class name
-  - icon
-  - button
-  - a link
-  - 我的最愛按鈕
-  - 官方| 人氣| 課程 的 landing page
-  - 首頁| 官方| 人氣 的 橢圓形商品相關設定
-  - 首頁| 單一課程 的 指向其他頁面的方格圖片
-  - 下拉式選單 (不確定必要性和可行性)
-
-<br>
-<br>
-
-## 變數命名
-
-### **`CSS`**
-
-#### 採用 BEM 命名法  
-
-BEM 是 Yandex 團隊提出的 CSS 命名法，注重程式碼的可閱讀性和命名的一致性。這套命名法讓每個 class name 的作用對象變得明確，依照他提供的規則去命名可以讓命名變得簡單並減少可能因重複命名產生的問題。
+## 使用技術
+- 前端： 　　　ReactJS | JavaScript | CSS | Sass | Bootstrap | Material UI
+- 後端： 　　　Node.js | Express
+- 前後端串接： RESTful API | fetch API | AXIOS | JWT
+- 其他套件： 　google-map-react | react-calendar | style-components | react-credit-cards | react-spring ...
+- 視覺設計： 　Adobe XD | Illustrator | figma
+- 版本控制： 　Git | GitHub
 
 <br>
 
-#### BEM 將 class name 分為三個元素
-
-- Block 區塊
-- Element 元素
-- Modifier 修飾符
-
-`Block`： 代表每個區塊最上層的元素。  
-`Element`： 代表 Block 底下的子元素。  
-`Modifier`： 用來表示作用對象的狀態，如 `active`、 `selected` 等。
+## 團隊分工
+- 侯奕任： 後端架設與整合、資料庫整合、官方商品、訂單系統
+- 蕭永棠： UI/UX、素材處理、註冊登入系統、會員系統
+- 彭郁文： UI/UX、企劃擔當、結帳系統、心理測驗
+- 李蕙如： 資料庫整合、地圖系統、課程系統
+- 吳承恩： 前端架設與整合、版本控制、客製化系統、熱銷商品
+- 張晁榮： 購物車系統、我的最愛系統
 
 <br>
 
-#### BEM 用三種符號作為連結以表示上述元素的關係
-
-`__` 雙底線： 用來連接區塊與子元素。  
-`--` 雙中線： 用來表示作用對象的狀態。  
-`-` 中線： 用來連接由多個單詞組成的名字。
-
-討論以上課示範的`.`串接方式把 `modifier` 獨立出來避免取名過長。
-
-<br>
-
-
-#### 範例
-
-1. 以專題的 header 為例
-
-```html
-<header>
-  <style>
-    .header__icons__item {}
-    .header__icons__item.active {}
-  </style>
-</header>
-<body>
-  <header class="header">
-    <img class="header__logo" src="">
-    <ul class="header__nav">
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-    <ul class="header__icons">
-      <li class="header__icons__item active"><img src=""></li>
-      <li class="header__icons__item"><img src=""></li>
-      <li class="header__icons__item"><img src=""></li>
-    </ul>
-  </header>
-</body>
-```
+## 團隊成員
+- 侯奕任： https://github.com/ikl258794613
+- 蕭永棠： https://github.com/a07401234
+- 彭郁文： https://github.com/wandererwen
+- 李蕙如： https://github.com/loveblue0121
+- 吳承恩： https://github.com/chengen0612
+- 張晁榮： https://github.com/geese-are-cute
 
 <br>
 
-2. 以首頁的人氣熱銷區塊示範巢狀結構應對
-
-```html
-<body>
-  <section class="popular">
-    <h3 class="popular__title"></h3>
-    <div class="popular__items">
-      <div class="popular__item">
-        <div class="popular__rank"></div>
-        <div class="popular__card">
-          <figure class="popular__img-top">
-            <img class="popular__img" src="">
-          </figure>
-          <p class="popular__name"></p>
-          <p class="popular__price"></p>
-        </div>
-      </div>
-    </div>
-    <a class="popular__btn" role="button"></a>
-  </section>
-</body>
-```
-
-BEM 只規範每個區塊的上層標籤必須獨立。假如子標籤的巢狀結構沒有直接的上下關係可直接以最上層的標籤命名作為識別。
-
-
-
-建議閱讀：&nbsp;&nbsp;&nbsp;[BEM，CSS設計模式](https://chupainotebook.blogspot.com/2019/05/bemcss.html)
-
-### 待補...
-
-## github work!!!!!!!!
+## 開發文件
+- [BEM 命名法](https://github.com/chengen0612/pro-licorne/issues/9)
+- [後端架設範例](https://github.com/ikl258794613/test/blob/master/README.md)
+- [購物車及我的最愛 API](https://github.com/chengen0612/pro-licorne/issues/6)
